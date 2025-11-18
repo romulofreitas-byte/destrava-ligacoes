@@ -182,7 +182,43 @@ export default function TermosPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-yellow-400 mb-4">8. Propriedade Intelectual</h2>
+            <h2 className="text-2xl font-bold text-yellow-400 mb-4">8. Privacidade e Uso de Dados</h2>
+            <div className="space-y-4">
+              <p className="text-gray-300">
+                Ao utilizar este site, você concorda com a coleta e uso de dados conforme descrito em nossa 
+                Política de Privacidade. Informações importantes:
+              </p>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-white mb-3">Uso de Dados para Marketing:</h3>
+                <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm">
+                  <li>Utilizamos tecnologias de rastreamento (Meta Pixel) para medir a eficácia de campanhas de tráfego pago</li>
+                  <li>Dados de navegação podem ser compartilhados com o Meta (Facebook/Instagram) para personalização de anúncios</li>
+                  <li>Esses dados são utilizados exclusivamente para otimização de campanhas publicitárias</li>
+                  <li>Você pode gerenciar suas preferências de cookies através do banner de consentimento</li>
+                </ul>
+              </div>
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+                <div className="flex items-start space-x-3">
+                  <AlertTriangle className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-2">Consentimento</h3>
+                    <p className="text-gray-300 text-sm">
+                      Ao aceitar cookies de marketing, você autoriza o compartilhamento de dados de navegação 
+                      com o Meta para fins de publicidade personalizada. Este consentimento pode ser revogado 
+                      a qualquer momento. Para mais detalhes, consulte nossa{' '}
+                      <a href="/privacidade" className="text-amber-400 hover:text-amber-300 underline">
+                        Política de Privacidade
+                      </a>
+                      .
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-yellow-400 mb-4">9. Propriedade Intelectual</h2>
             <div className="space-y-4">
               <p className="text-gray-300">
                 Todo o conteúdo, metodologia e materiais são propriedade exclusiva da 
@@ -201,7 +237,7 @@ export default function TermosPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-yellow-400 mb-4">9. Modificações nos Termos</h2>
+            <h2 className="text-2xl font-bold text-yellow-400 mb-4">10. Modificações nos Termos</h2>
             <div className="space-y-4">
               <p className="text-gray-300">
                 Reservamo-nos o direito de modificar estes termos a qualquer momento. 
@@ -211,7 +247,7 @@ export default function TermosPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-yellow-400 mb-4">10. Resolução de Conflitos</h2>
+            <h2 className="text-2xl font-bold text-yellow-400 mb-4">11. Resolução de Conflitos</h2>
             <div className="space-y-4">
               <p className="text-gray-300">
                 Qualquer disputa será resolvida preferencialmente por acordo amigável.
@@ -220,7 +256,7 @@ export default function TermosPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-yellow-400 mb-4">11. Contato</h2>
+            <h2 className="text-2xl font-bold text-yellow-400 mb-4">12. Contato</h2>
             <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
               <p className="text-gray-300 mb-4">
                 Para dúvidas sobre estes termos ou sobre o programa:
@@ -243,7 +279,7 @@ export default function TermosPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-yellow-400 mb-4">12. Disposições Finais</h2>
+            <h2 className="text-2xl font-bold text-yellow-400 mb-4">13. Disposições Finais</h2>
             <div className="space-y-4">
               <p className="text-gray-300">
                 Estes termos são regidos pela legislação brasileira e estão em conformidade 

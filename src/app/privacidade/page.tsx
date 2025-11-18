@@ -82,15 +82,34 @@ export default function PrivacidadePage() {
             <h2 className="text-2xl font-bold text-yellow-400 mb-4">4. Cookies e Tecnologias Similares</h2>
             <div className="space-y-4">
               <p className="text-gray-300">
-                Utilizamos apenas cookies técnicos essenciais para o funcionamento do site. 
-                Não utilizamos cookies de rastreamento ou analytics sem seu consentimento.
+                Utilizamos cookies técnicos essenciais para o funcionamento do site. 
+                Cookies de análise e marketing são utilizados apenas com seu consentimento explícito.
               </p>
               <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
                 <h3 className="text-lg font-semibold text-white mb-3">Tipos de Cookies:</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li><strong>Cookies Essenciais:</strong> Necessários para o funcionamento básico do site</li>
-                  <li><strong>Cookies de Performance:</strong> Para análise de uso (apenas com consentimento)</li>
+                  <li><strong>Cookies Essenciais:</strong> Necessários para o funcionamento básico do site. Sempre ativos.</li>
+                  <li><strong>Cookies de Análise:</strong> Para análise de uso e performance (Vercel Analytics) - apenas com consentimento</li>
+                  <li><strong>Cookies de Marketing:</strong> Para personalização de anúncios e medição de campanhas (Meta Pixel) - apenas com consentimento</li>
                 </ul>
+              </div>
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-yellow-400 mb-3">Meta Pixel (Facebook Pixel)</h3>
+                <p className="text-gray-300 text-sm mb-2">
+                  Utilizamos o Meta Pixel para:
+                </p>
+                <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm ml-4">
+                  <li>Medir a eficácia de nossas campanhas de tráfego pago</li>
+                  <li>Personalizar anúncios para públicos relevantes</li>
+                  <li>Entender como os visitantes interagem com nosso site</li>
+                  <li>Otimizar campanhas publicitárias no Facebook e Instagram</li>
+                </ul>
+                <p className="text-gray-300 text-sm mt-3">
+                  O Meta Pixel coleta dados sobre suas ações no site (visualizações de página, cliques, etc.) 
+                  e os envia para o Facebook. Esses dados são utilizados para criar públicos personalizados 
+                  e medir o desempenho das campanhas. Você pode gerenciar suas preferências de cookies 
+                  através do banner de cookies ou nas configurações do Facebook.
+                </p>
               </div>
             </div>
           </section>
@@ -99,15 +118,23 @@ export default function PrivacidadePage() {
             <h2 className="text-2xl font-bold text-yellow-400 mb-4">5. Compartilhamento de Dados</h2>
             <div className="space-y-4">
               <p className="text-gray-300">
-                Seus dados <strong className="text-white">não são compartilhados</strong> com terceiros, 
-                exceto quando você clica nos links externos:
+                Seus dados podem ser compartilhados com os seguintes serviços, sempre com seu consentimento:
               </p>
-              <ul className="list-disc list-inside text-gray-300 space-y-2 ml-4">
-                <li><strong>Hotmart:</strong> Plataforma de pagamento (política própria)</li>
-                <li><strong>WhatsApp:</strong> Comunicação direta (política própria)</li>
-                <li><strong>YouTube:</strong> Visualização de vídeos (política própria)</li>
-                <li><strong>Redes Sociais:</strong> LinkedIn, Instagram (políticas próprias)</li>
-              </ul>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-white mb-3">Serviços de Terceiros:</h3>
+                <ul className="list-disc list-inside text-gray-300 space-y-2">
+                  <li><strong>Meta (Facebook/Instagram):</strong> Através do Meta Pixel para medição e personalização de anúncios (apenas com consentimento de marketing)</li>
+                  <li><strong>Vercel Analytics:</strong> Para análise de performance do site (apenas com consentimento de análise)</li>
+                  <li><strong>Hotmart:</strong> Plataforma de pagamento (quando você realiza uma compra)</li>
+                  <li><strong>WhatsApp:</strong> Comunicação direta (quando você clica nos links de contato)</li>
+                  <li><strong>YouTube:</strong> Visualização de vídeos incorporados (política própria do YouTube)</li>
+                </ul>
+              </div>
+              <p className="text-gray-300 text-sm">
+                <strong className="text-white">Importante:</strong> Quando você aceita cookies de marketing, 
+                dados de navegação são compartilhados com o Meta para personalização de anúncios. 
+                Você pode revogar esse consentimento a qualquer momento através do banner de cookies.
+              </p>
             </div>
           </section>
 
@@ -166,6 +193,15 @@ export default function PrivacidadePage() {
                 <li>Resolução de disputas</li>
                 <li>Exercício de direitos em processos judiciais</li>
               </ul>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mt-4">
+                <h3 className="text-lg font-semibold text-white mb-3">Períodos Específicos:</h3>
+                <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm">
+                  <li><strong>Cookies de sessão:</strong> Expiram ao fechar o navegador</li>
+                  <li><strong>Preferências de cookies:</strong> Armazenadas localmente até serem alteradas ou excluídas</li>
+                  <li><strong>Dados do Meta Pixel:</strong> Seguem a política de retenção do Facebook (geralmente 90 dias para eventos, até 2 anos para dados agregados)</li>
+                  <li><strong>Dados de analytics:</strong> Retidos conforme política da Vercel (geralmente agregados e anonimizados)</li>
+                </ul>
+              </div>
             </div>
           </section>
 
@@ -209,10 +245,25 @@ export default function PrivacidadePage() {
                 O tratamento de dados é baseado em:
               </p>
               <ul className="list-disc list-inside text-gray-300 space-y-2 ml-4">
-                <li><strong>Consentimento:</strong> Para cookies não essenciais</li>
-                <li><strong>Interesse legítimo:</strong> Para funcionamento técnico</li>
-                <li><strong>Cumprimento de obrigação legal:</strong> Quando aplicável</li>
+                <li><strong>Consentimento:</strong> Para cookies de análise e marketing (Meta Pixel, Vercel Analytics). Você pode revogar a qualquer momento.</li>
+                <li><strong>Interesse legítimo:</strong> Para funcionamento técnico do site e cookies essenciais</li>
+                <li><strong>Cumprimento de obrigação legal:</strong> Quando aplicável (retenção de dados para fins legais)</li>
               </ul>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mt-4">
+                <h3 className="text-lg font-semibold text-white mb-3">Sobre o Consentimento:</h3>
+                <p className="text-gray-300 text-sm mb-2">
+                  O consentimento para cookies de marketing é especialmente importante para:
+                </p>
+                <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm ml-4">
+                  <li>Medição de eficácia de campanhas de tráfego pago</li>
+                  <li>Personalização de anúncios no Facebook e Instagram</li>
+                  <li>Otimização de investimento em publicidade</li>
+                </ul>
+                <p className="text-gray-300 text-sm mt-3">
+                  Você pode gerenciar ou revogar seu consentimento a qualquer momento através do 
+                  banner de cookies ou entrando em contato conosco.
+                </p>
+              </div>
             </div>
           </section>
         </div>
