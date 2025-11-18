@@ -20,17 +20,17 @@ export const FAQ: React.FC<FAQProps> = ({ items }) => {
       {items.map((item, index) => (
         <div
           key={index}
-          className="bg-podium-dark border border-podium-yellow/15 rounded-xl overflow-hidden"
+          className="bg-gray-800 border border-yellow-400/15 rounded-xl overflow-hidden"
         >
           <button
             onClick={() => toggleItem(index)}
-            className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-podium-dark-secondary transition-colors duration-200"
+            className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-700 transition-colors duration-200"
           >
-            <h3 className="text-lg font-semibold text-podium-text-primary pr-4">
+            <h3 className="text-lg font-semibold text-white pr-4">
               {item.question}
             </h3>
             <ChevronDown
-              className={`w-5 h-5 text-podium-yellow transition-transform duration-200 ${
+              className={`w-5 h-5 text-yellow-400 transition-transform duration-200 ${
                 openIndex === index ? 'rotate-180' : ''
               }`}
             />
@@ -38,7 +38,7 @@ export const FAQ: React.FC<FAQProps> = ({ items }) => {
           
           {openIndex === index && (
             <div className="px-6 pb-4">
-              <p className="text-podium-text-secondary leading-relaxed">
+              <p className="text-gray-300 leading-relaxed">
                 {item.answer}
               </p>
             </div>

@@ -82,3 +82,4 @@ https://vercel.com/mundo-podiums-projects/destrava-ligacoes/7khrFuPU4rxcJAkzyyqt
 
 **⚠️ IMPORTANTE**: Configure as variáveis de ambiente ANTES de testar o site, especialmente `NEXT_PUBLIC_META_PIXEL_ID` para que o Meta Pixel funcione corretamente.
 
+

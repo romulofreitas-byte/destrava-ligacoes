@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { Ubuntu, Montserrat } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-import { CookieConsent } from '@/components/CookieConsent'
-import { MetaPixel } from '@/components/MetaPixel'
+import { ClientComponents } from '@/components/ClientComponents'
 
 const ubuntu = Ubuntu({ 
   subsets: ['latin'],
@@ -67,9 +66,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${ubuntu.variable} ${montserrat.variable} font-body`}>
-        <MetaPixel />
+        <ClientComponents />
         {children}
-        <CookieConsent />
         <Analytics />
       </body>
     </html>

@@ -48,8 +48,8 @@ export const Badge: React.FC<BadgeProps> = ({
   className = ''
 }) => {
   const variantClasses = {
-    primary: 'bg-podium-yellow text-podium-black',
-    secondary: 'bg-podium-dark-secondary text-podium-text-primary border border-podium-yellow/30',
+    primary: 'bg-yellow-400 text-gray-900',
+    secondary: 'bg-gray-700 text-white border border-yellow-400/30',
     success: 'bg-green-500 text-white',
     warning: 'bg-orange-500 text-white'
   };
@@ -88,7 +88,7 @@ export const Heading: React.FC<HeadingProps> = ({
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   
   return (
-    <Tag className={`${levelClasses[level]} text-podium-text-primary ${centerClass} ${className}`}>
+    <Tag className={`${levelClasses[level]} text-white ${centerClass} ${className}`}>
       {children}
     </Tag>
   );
@@ -117,9 +117,9 @@ export const Text: React.FC<TextProps> = ({
   };
   
   const colorClasses = {
-    primary: 'text-podium-text-primary',
-    secondary: 'text-podium-text-secondary',
-    muted: 'text-podium-text-muted'
+    primary: 'text-white',
+    secondary: 'text-gray-300',
+    muted: 'text-gray-400'
   };
   
   const centerClass = center ? 'text-center' : '';

@@ -20,8 +20,8 @@ export const Button: React.FC<ButtonProps> = ({
   const baseClasses = 'font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl';
   
   const variantClasses = {
-    primary: 'bg-podium-yellow text-podium-black hover:brightness-110',
-    secondary: 'border-2 border-podium-yellow text-podium-yellow hover:bg-podium-yellow hover:text-podium-black'
+    primary: 'bg-yellow-400 text-gray-900 hover:brightness-110',
+    secondary: 'border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900'
   };
   
   const sizeClasses = {
