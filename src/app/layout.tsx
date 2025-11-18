@@ -51,11 +51,19 @@ function getValidUrl(baseUrl: string): URL {
   }
 }
 
-const baseUrl = getBaseUrl();
-const metadataBaseUrl = getValidUrl(baseUrl);
+// Get base URL and validate - execute lazily to avoid build-time issues
+function getMetadataBase(): URL {
+  try {
+    const baseUrl = getBaseUrl();
+    return getValidUrl(baseUrl);
+  } catch (error) {
+    console.error('Error getting metadata base URL:', error);
+    return new URL('https://destrava-ligacoes.vercel.app');
+  }
+}
 
 export const metadata: Metadata = {
-  metadataBase: metadataBaseUrl,
+  metadataBase: getMetadataBase(),
   title: 'Escuderia Pódium - Mentoria em Grupo | Do Zero ao Primeiro Contrato',
   description: 'Transforme-se em um piloto de vendas de alta performance. 6 semanas intensivas + 4 encontros mensais para estruturar seu processo comercial e fechar seu primeiro contrato.',
   keywords: 'mentoria vendas, processo comercial, cold call, fechamento vendas, método pódium',
@@ -73,7 +81,7 @@ export const metadata: Metadata = {
     description: 'Do Zero ao Primeiro Contrato Fechado - Juntos no Pódium',
     type: 'website',
     locale: 'pt_BR',
-    url: baseUrl,
+    url: getBaseUrl(),
     images: [
       {
         url: '/romulo-hero-2.png',
