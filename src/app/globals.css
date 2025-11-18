@@ -1,0 +1,332 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-heading: var(--font-ubuntu);
+    --font-body: var(--font-montserrat);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-gray-900 text-white;
+    font-family: var(--font-montserrat), sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-ubuntu), sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  /* Buttons - Minimalista */
+  .btn-primary {
+    @apply bg-yellow-400 text-gray-900 font-semibold px-10 py-4 rounded-full hover:bg-yellow-500 transition-all duration-300 shadow-sm hover:shadow-md;
+    font-family: var(--font-ubuntu), sans-serif;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-white text-white font-semibold px-10 py-4 rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300;
+    font-family: var(--font-ubuntu), sans-serif;
+  }
+  
+  /* Cards - Minimalista com respiro */
+  .card {
+    @apply bg-gray-800/50 border border-gray-700 rounded-3xl p-6 sm:p-8 lg:p-12 hover:border-yellow-400/50 transition-all duration-300;
+  }
+  
+  /* Spacing - Muito respiro */
+  .section-padding {
+    @apply py-20 px-4 sm:py-24 sm:px-6 md:py-32 md:px-8 lg:py-40 lg:px-12;
+  }
+  
+  .container-custom {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Typography */
+  .gradient-text {
+    @apply text-yellow-400;
+  }
+  
+  /* Backgrounds */
+  .hero-gradient {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes progress-flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-progress-flow {
+  animation: progress-flow 2.5s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 18s linear infinite;
+}
+
+/* Hero Animations */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.3px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 3s ease-in-out infinite;
+}
+
+/* 3D Flip Card Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Image Protection Styles */
+.protected-image {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.protected-image img {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Disable text selection globally for images */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Prevent horizontal overflow */
+* {
+  max-width: 100%;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Observações de Precificação Premium */
+.observacoes-precificacao-premium.full-width {
+  @apply w-full bg-gray-800/30 border border-gray-700 rounded-3xl p-8 mt-12;
+}
+
+.section-header-inline {
+  @apply flex items-center justify-between mb-8;
+}
+
+.section-header-inline h3 {
+  @apply text-2xl sm:text-3xl font-bold gradient-text;
+}
+
+.badge-info {
+  @apply bg-yellow-400/10 text-yellow-400 border border-yellow-400/30 px-4 py-2 rounded-full text-sm font-semibold;
+}
+
+.info-cards-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+}
+
+.info-card {
+  @apply relative bg-gray-800/50 border border-gray-700 rounded-2xl p-6 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer;
+}
+
+.info-card.featured {
+  @apply border-yellow-400/50 bg-gray-800/70 shadow-lg shadow-yellow-400/10;
+}
+
+.info-card-header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.info-number {
+  @apply text-gray-400 text-sm font-bold;
+}
+
+.info-icon {
+  @apply text-2xl;
+}
+
+.info-card h4 {
+  @apply text-xl font-bold mb-2 gradient-text;
+}
+
+.info-card p {
+  @apply text-gray-300 text-sm leading-relaxed;
+}
+
+.featured-badge {
+  @apply absolute top-4 right-4 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-md;
+}
+
+/* Gradiente Radial - Para vinheta escura nas bordas */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to));
+}
+
+/* Hero Image Blend - Natural - Preserva cores do rosto */
+.hero-image-blend-natural {
+  filter: brightness(1) contrast(1.05) saturate(1);
+  opacity: 1;
+}
+
+/* Mobile Hero Vignette - Dark gradient for bottom edge */
+.mobile-hero-vignette {
+  position: relative;
+}
+
+.mobile-hero-vignette::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(to top, #111827 0%, rgba(17, 24, 39, 0.95) 40%, rgba(17, 24, 39, 0.7) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Mentor Image Animation - Fade In with Scale */
+@keyframes mentor-image-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-mentor-fade-in {
+  animation: mentor-image-fade 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+/* Float Animation - For floating orbs */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
