@@ -76,7 +76,7 @@ export const ProtectedImage: React.FC<ProtectedImageProps> = ({
     // CSS-based protection
     container.style.userSelect = 'none';
     container.style.webkitUserSelect = 'none';
-    container.style.webkitUserDrag = 'none';
+    (container.style as any).webkitUserDrag = 'none';
     container.style.pointerEvents = 'auto';
 
     return () => {
