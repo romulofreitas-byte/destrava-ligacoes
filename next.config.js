@@ -63,29 +63,11 @@ const nextConfig = {
     });
     */
 
-    // Add cache-control headers for development
-    const cacheHeaders = process.env.NODE_ENV === 'development' 
-      ? [
-          {
-            key: 'Cache-Control',
-            value: 'no-cache, no-store, must-revalidate',
-          },
-          {
-            key: 'Pragma',
-            value: 'no-cache',
-          },
-          {
-            key: 'Expires',
-            value: '0',
-          },
-        ]
-      : [];
-
     return [
       {
-        // Apply security headers to all routes except Next.js internals
+        // Apply security headers to all routes
         source: '/:path*',
-        headers: [...securityHeaders, ...cacheHeaders],
+        headers: securityHeaders,
       },
       // Cache headers for static assets
       {
