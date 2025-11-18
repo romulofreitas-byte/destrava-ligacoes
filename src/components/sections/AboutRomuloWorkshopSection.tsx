@@ -82,7 +82,7 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
                   <span className="text-white font-bold">Rômulo Freitas</span> é criador do <span className="text-yellow-400 font-semibold">Método Pódium</span> e autoridade em vendas com mais de 12 anos de experiência. CEO da <span className="text-yellow-400 font-semibold">Combustível Marketing e Vendas</span>, passou 5 anos na operação à frente da Gestão e Vendas antes de ensinar.
                 </p>
                 <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                  Faz lives e ligações ao vivo no YouTube - é "skin in the game". Atualmente é mentor e lidera a Comunidade Pódium com mais de 100 pilotos focada em resultados reais.
+                  Faz lives e ligações ao vivo no YouTube - é &quot;skin in the game&quot;. Atualmente é mentor e lidera a Comunidade Pódium com mais de 100 pilotos focada em resultados reais.
                 </p>
               </div>
 

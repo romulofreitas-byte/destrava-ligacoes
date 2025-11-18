@@ -9,8 +9,17 @@ declare global {
   }
 }
 
+// Get Meta Pixel ID from environment variable
+const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '2971488916372606';
+
 export const MetaPixel: React.FC = () => {
   useEffect(() => {
+    // Don't initialize if Pixel ID is not configured
+    if (!META_PIXEL_ID) {
+      console.warn('⚠️ Meta Pixel ID not configured. Set NEXT_PUBLIC_META_PIXEL_ID environment variable.');
+      return;
+    }
+
     // Defer initialization using requestIdleCallback to not block rendering
     const initializePixel = () => {
       // Check if in development/test mode
@@ -44,7 +53,7 @@ export const MetaPixel: React.FC = () => {
       // Log debug info in development
       if (isDevelopment) {
         console.log('🔥 Meta Pixel: Initializing in TEST MODE');
-        console.log('📍 Pixel ID: 2971488916372606');
+        console.log('📍 Pixel ID:', META_PIXEL_ID);
       }
 
       // Meta Pixel Code
@@ -70,7 +79,7 @@ export const MetaPixel: React.FC = () => {
       // Initialize and track
       const fbq = (window as any).fbq as (...args: any[]) => void;
       if (fbq) {
-        fbq('init', '2971488916372606');
+        fbq('init', META_PIXEL_ID);
         fbq('track', 'PageView');
         
         // Debug logging
@@ -117,7 +126,7 @@ export const MetaPixel: React.FC = () => {
           height="1"
           width="1"
           style={{ display: 'none' }}
-          src="https://www.facebook.com/tr?id=2971488916372606&ev=PageView&noscript=1"
+          src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
           alt=""
         />
       </noscript>

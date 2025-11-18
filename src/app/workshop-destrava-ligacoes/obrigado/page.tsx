@@ -106,7 +106,7 @@ function ObrigadoContent() {
                   <div className="flex-1">
                           <h3 className="text-white font-bold text-lg mb-2">Entre na Comunidade Pódium</h3>
                           <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                      Junte-se à comunidade "Construindo Empresários" e comece a interagir com outros profissionais.
+                      Junte-se à comunidade &quot;Construindo Empresários&quot; e comece a interagir com outros profissionais.
                     </p>
                     <a
                       href="https://chat.whatsapp.com/L4camOPOJMxDb8et6M80oN"
