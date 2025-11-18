@@ -210,7 +210,7 @@ export const HeroSectionWorkshop: React.FC = () => {
           </div>
 
           {/* Right - Image */}
-          <div className="hidden lg:flex justify-end items-end -mb-20 animate-mentor-fade-in" style={{marginTop: '-160px', animationDelay: '0.8s'}}>
+          <div className="hidden lg:flex justify-end items-end -mb-32 animate-mentor-fade-in" style={{marginTop: '-120px', animationDelay: '0.8s'}}>
             <div className="relative w-full max-w-lg overflow-visible">
               {/* Gradiente radial circular laranja para disfarçar recorte */}
               <div className="absolute inset-0 -z-10 overflow-visible">
@@ -228,6 +228,8 @@ export const HeroSectionWorkshop: React.FC = () => {
                   quality={80}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
+                {/* Gradiente aplicado diretamente na imagem - limitado à largura da foto */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent pointer-events-none z-10"></div>
               </div>
             </div>
           </div>
@@ -235,7 +237,7 @@ export const HeroSectionWorkshop: React.FC = () => {
       </div>
       
       {/* Gradiente aplicado diretamente na imagem - fora do grid */}
-      <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent pointer-events-none z-[25]"></div>
+      <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent pointer-events-none z-[25]"></div>
       
       {/* Pain Points Marquee - Faixa com looping infinito */}
       <PainPointsMarquee />
