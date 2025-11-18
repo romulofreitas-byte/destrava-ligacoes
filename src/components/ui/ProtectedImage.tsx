@@ -89,7 +89,7 @@ export const ProtectedImage: React.FC<ProtectedImageProps> = ({
     };
   }, []);
 
-  const imageStyle: React.CSSProperties = {
+  const imageStyle: React.CSSProperties & { WebkitUserDrag?: string; userDrag?: string; WebkitTouchCallout?: string } = {
     userSelect: 'none',
     WebkitUserSelect: 'none',
     MozUserSelect: 'none',
