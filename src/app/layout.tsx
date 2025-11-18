@@ -20,7 +20,8 @@ const montserrat = Montserrat({
 
 // Get base URL from environment or use default
 // In production, this should be set to your actual domain
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://escuderiapodium.com.br';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://destrava-ligacoes.vercel.app');
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
