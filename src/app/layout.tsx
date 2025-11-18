@@ -30,7 +30,10 @@ export const metadata: Metadata = {
   keywords: 'mentoria vendas, processo comercial, cold call, fechamento vendas, método pódium',
   authors: [{ name: 'Rômulo Freitas' }],
   icons: {
-    icon: '/icon-escuderia.png',
+    icon: [
+      { url: '/icon-escuderia.png', type: 'image/png' },
+      { url: '/icon-escuderia.png', sizes: '32x32', type: 'image/png' },
+    ],
     shortcut: '/icon-escuderia.png',
     apple: '/icon-escuderia.png',
   },
