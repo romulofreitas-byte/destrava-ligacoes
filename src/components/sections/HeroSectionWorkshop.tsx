@@ -139,7 +139,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <a 
                 href="#inscricao"
                 onClick={handleCTAClick}
-                className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105"
+                className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect"
               >
                 <span className="relative drop-shadow-sm">Garantir Minha Vaga</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -189,7 +189,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <a 
                 href="#inscricao"
                 onClick={handleCTAClick}
-                className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105"
+                className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect"
               >
                 <span className="relative drop-shadow-sm">Garantir Minha Vaga</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

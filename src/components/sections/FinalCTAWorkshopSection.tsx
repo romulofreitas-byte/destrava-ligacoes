@@ -108,10 +108,10 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleCTAClick}
-                  className="group relative w-full max-w-md mx-auto inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-6 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-lg sm:text-xl rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105"
+                  className="group relative w-full max-w-md mx-auto inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-6 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-lg sm:text-xl rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect"
                   title="Pagar com PagBank"
                 >
-                  <span className="relative drop-shadow-sm">
+                  <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
                     Garantir Minha Vaga Agora
                   </span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

@@ -330,3 +330,44 @@ img {
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
+
+/* Button Shine Effect - Efeito brilhante para botões CTA */
+@keyframes button-shine {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+.button-shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: button-shine 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.button-shine-effect > * {
+  position: relative;
+  z-index: 2;
+}
