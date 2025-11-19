@@ -18,16 +18,7 @@ const montserrat = Montserrat({
   display: 'swap',
 })
 
-// Get base URL from environment or use default
-// Simplified to avoid runtime errors
-const getMetadataBase = (): URL => {
-  // Use environment variable if available
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://destrava-ligacoes.vercel.app';
-  return new URL(baseUrl);
-};
-
 export const metadata: Metadata = {
-  metadataBase: getMetadataBase(),
   title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',
   description: 'Workshop de 3 horas onde você aprende a destravar ligações, construir discurso de cold call e assiste ligações reais feitas ao vivo. Transforme medo em coragem e travas em resultados.',
   keywords: 'workshop cold call, destravar ligações, como fazer cold call, discurso de vendas, marcar reunião, reuniões de vendas, vendas por telefone',
