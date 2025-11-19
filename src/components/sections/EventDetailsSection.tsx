@@ -89,10 +89,10 @@ export const EventDetailsSection: React.FC = () => {
                     <h3 className="text-white font-bold text-lg mb-2">Investimento</h3>
                     <div className="mb-2">
                       <p className="text-gray-400 text-sm line-through">De R$ 297</p>
-                      <p className="text-yellow-400 font-bold text-2xl drop-shadow-md">R$ 9,99</p>
+                      <p className="text-yellow-400 font-bold text-2xl drop-shadow-md">R$ 49,99</p>
                     </div>
                     <p className="text-gray-300 text-xs leading-relaxed max-w-xs mx-auto">
-                      Valor simbólico para garantir seu compromisso em participar e aprender. Se você paga, você participa e aprende.
+                      Investimento simbólico para 3 horas de consultoria intensiva e transformação prática. Você sai sabendo exatamente como destravar suas ligações.
                     </p>
                   </div>
                 </div>

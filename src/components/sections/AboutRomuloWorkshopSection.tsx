@@ -70,7 +70,8 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
                   alt="Rômulo Freitas"
                   fill
                   className="object-cover"
-                  quality={85}
+                  quality={90}
+                  priority
                 />
               </div>
             </div>

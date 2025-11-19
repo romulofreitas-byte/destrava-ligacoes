@@ -9,6 +9,16 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  webpack: (config, { isServer }) => {
+    // Fix for webpack dynamic import issues
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
+  },
   
   async headers() {
     const securityHeaders = [

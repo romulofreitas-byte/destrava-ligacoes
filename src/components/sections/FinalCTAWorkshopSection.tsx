@@ -71,7 +71,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-3 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Valor Simbólico: R$ 9,99 • Vagas limitadas
+                Investimento Simbólico: R$ 49,99 • Consultoria intensiva • Transformação prática
               </p>
 
               <p className="text-sm sm:text-base text-gray-300 font-light leading-relaxed mb-4 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.3s'}}>
@@ -82,10 +82,10 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.35s'}}>
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                   <span className="text-gray-400 text-sm line-through">De R$ 297</span>
-                  <span className="text-yellow-400 font-bold text-lg">R$ 9,99</span>
+                  <span className="text-yellow-400 font-bold text-lg">R$ 49,99</span>
                 </div>
                 <p className="text-gray-400 text-xs mt-2 max-w-md mx-auto">
-                  Valor simbólico para garantir seu compromisso em participar e aprender. Se você paga, você participa e aprende.
+                  Valor simbólico para garantir acesso à consultoria intensiva e transformação prática. 3 horas que mudam sua forma de vender.
                 </p>
               </div>
 
