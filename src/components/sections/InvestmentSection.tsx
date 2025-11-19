@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedCard } from '@/components/ui/AnimatedCard';
-import { AnimatedButton } from '@/components/ui/AnimatedButton';
 import { Badge } from '@/components/ui/Badge';
 import { CheckCircle, Clock, Users, Award, Bot, Zap, Shield } from 'lucide-react';
 
@@ -120,14 +119,11 @@ export const InvestmentSection: React.FC = () => {
               variants={itemVariants}
               className="text-center"
             >
-              <AnimatedButton
-                href="https://go.hotmart.com/C102646862D"
-                size="md"
-                variant="primary"
-                className="mb-4"
-              >
-                Garantir Minha Vaga na Escuderia
-              </AnimatedButton>
+              {/* INICIO DO BOTAO PAGBANK */}
+              <a href="https://pag.ae/81eiPrem9/button" target="_blank" title="Pagar com PagBank" className="inline-block mb-4">
+                <img src="https://assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar.gif" alt="Pague com PagBank - é rápido, grátis e seguro!" />
+              </a>
+              {/* FIM DO BOTAO PAGBANK */}
                   <p className="small-text">
                     ✓ Vagas limitadas • ✓ Garantia de 7 dias
                   </p>
