@@ -120,7 +120,7 @@ export const InvestmentSection: React.FC = () => {
               className="text-center"
             >
               {/* INICIO DO BOTAO PAGBANK */}
-              <a href="https://pag.ae/81eiPrem9/button" target="_blank" title="Pagar com PagBank" className="inline-block mb-4">
+              <a href="https://pag.ae/81eiPrem9/button" target="_blank" title="Pagar com PagBank">
                 <img src="https://assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar.gif" alt="Pague com PagBank - é rápido, grátis e seguro!" />
               </a>
               {/* FIM DO BOTAO PAGBANK */}
