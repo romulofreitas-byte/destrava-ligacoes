@@ -75,7 +75,15 @@ export const EventDetailsSection: React.FC = () => {
                 </div>
 
                 {/* Investimento */}
-                <div className="relative flex flex-col items-center p-5 bg-gradient-to-br from-yellow-400/20 via-yellow-500/15 to-yellow-400/20 rounded-2xl border-2 border-yellow-400/60 hover:border-yellow-400 transition-all duration-300 md:col-span-2 md:mx-auto md:max-w-md shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 group overflow-hidden">
+                <div 
+                  onClick={() => {
+                    const element = document.getElementById('inscricao');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  className="relative flex flex-col items-center p-5 bg-gradient-to-br from-yellow-400/20 via-yellow-500/15 to-yellow-400/20 rounded-2xl border-2 border-yellow-400/60 hover:border-yellow-400 transition-all duration-300 md:col-span-2 md:mx-auto md:max-w-md shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 group overflow-hidden cursor-pointer hover:scale-[1.02]"
+                >
                   {/* Animated shimmer border */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer bg-[length:200%_auto]"></div>
                   

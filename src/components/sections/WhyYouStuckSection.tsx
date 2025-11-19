@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { AlertTriangle, Heart, Shield, MessageSquare } from 'lucide-react';
+import { SubtleCTA } from '@/components/ui/SubtleCTA';
 
 export const WhyYouStuckSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -129,6 +130,10 @@ export const WhyYouStuckSection: React.FC = () => {
           <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
             <span className="text-yellow-400 font-semibold">A boa notícia:</span> Todas essas travas têm solução. E você vai aprender a superá-las em 3 horas.
           </p>
+        </div>
+
+        <div className="mt-8 animate-fade-in-up" style={{animationDelay: '0.8s'}}>
+          <SubtleCTA />
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Rocket } from 'lucide-react';
+import { SubtleCTA } from '@/components/ui/SubtleCTA';
 
 export const AfterWorkshopSection: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
@@ -104,6 +105,10 @@ export const AfterWorkshopSection: React.FC = () => {
               <span className="text-purple-400">3 horas</span> que mudam tudo. <span className="text-yellow-400">Resultados</span> que começam imediatamente.
             </p>
           </div>
+        </div>
+
+        <div className="mt-8 animate-fade-in-up" style={{animationDelay: '1s'}}>
+          <SubtleCTA />
         </div>
       </div>
     </section>

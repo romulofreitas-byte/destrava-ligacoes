@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Zap } from 'lucide-react';
+import { SubtleCTA } from '@/components/ui/SubtleCTA';
 
 export const WhatYouWillLearnSection: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
@@ -106,6 +107,10 @@ export const WhatYouWillLearnSection: React.FC = () => {
               <span className="text-green-400">100% prático.</span> Sem teoria desnecessária. Apenas o que funciona.
             </p>
           </div>
+        </div>
+
+        <div className="mt-8 animate-fade-in-up" style={{animationDelay: '1.1s'}}>
+          <SubtleCTA />
         </div>
       </div>
     </section>
