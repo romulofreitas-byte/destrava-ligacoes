@@ -38,7 +38,7 @@ export const AboutMentorSection: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           {/* Hero Section - Centered Photo */}
           <div className="text-center mb-16 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-            <div className="relative w-64 h-64 sm:w-96 sm:h-96 mx-auto mb-8">
+            <div className="relative mx-auto mb-8 w-[20.8rem] h-[20.8rem] sm:w-[31.2rem] sm:h-[31.2rem]">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-yellow-500/20 rounded-3xl blur-2xl animate-pulse -z-10"></div>
               <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-yellow-400/30 shadow-2xl shadow-yellow-400/20 hover:border-yellow-400/60 hover:shadow-yellow-400/40 transition-all duration-300">
                 <ProtectedImage 

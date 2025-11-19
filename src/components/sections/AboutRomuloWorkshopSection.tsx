@@ -64,7 +64,7 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Image */}
             <div className="flex justify-center lg:justify-start animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-              <div className="relative w-64 sm:w-80 aspect-[3/4] rounded-2xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl w-[20.8rem] sm:w-[26rem]">
                 <ProtectedImage 
                   src="/romulo-mentor-destrava.jpg"
                   alt="Rômulo Freitas"

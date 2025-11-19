@@ -6,9 +6,11 @@ import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
 
 export const HeroSection: React.FC = () => {
   const [progressWidth, setProgressWidth] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const hasTrackedView = useRef(false);
 
   useEffect(() => {
+    setIsMounted(true);
     // Small delay to ensure animation is visible
     const timer = setTimeout(() => {
       setProgressWidth(110);
@@ -83,14 +85,14 @@ export const HeroSection: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-gray-900/60 via-gray-900/40 to-transparent"></div>
             
             {/* Mentor Image */}
-            <div className="absolute inset-0 flex items-start justify-center" style={{top: '-10px', transform: 'translateX(100px)'}}>
-              <div className="relative">
+            <div className="absolute inset-0 flex items-start justify-center" style={{top: '-20px', transform: 'translateX(10px)'}}>
+              <div className="relative" style={{width: 'calc(60% * 1.3)', height: 'auto'}}>
                 <ProtectedImage 
                   src="/romulo-hero.png"
                   alt="Rômulo Freitas"
-                  width={500}
-                  height={500}
-                  className="w-3/5 h-auto object-contain"
+                  width={650}
+                  height={650}
+                  className="w-full h-auto object-contain"
                   priority
                   quality={80}
                   sizes="(max-width: 768px) 50vw, 100vw"
@@ -144,7 +146,7 @@ export const HeroSection: React.FC = () => {
                 </div>
                 <div className="w-full h-[2px] sm:h-0.5 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
-                  <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full shadow-lg transition-all duration-1000" style={{width: `${progressWidth}%`}}></div>
+                  <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full shadow-lg transition-all duration-1000" style={{width: isMounted ? `${progressWidth}%` : '0%'}} suppressHydrationWarning></div>
                   {/* Continuous flow animation across entire bar */}
                   <div className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-red-300/40 to-transparent animate-progress-flow"></div>
                 </div>
@@ -196,7 +198,7 @@ export const HeroSection: React.FC = () => {
                 </div>
                 <div className="w-full h-[2px] sm:h-0.5 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
-                  <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full shadow-lg transition-all duration-1000" style={{width: `${progressWidth}%`}}></div>
+                  <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full shadow-lg transition-all duration-1000" style={{width: isMounted ? `${progressWidth}%` : '0%'}} suppressHydrationWarning></div>
                   {/* Continuous flow animation across entire bar */}
                   <div className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-red-300/40 to-transparent animate-progress-flow"></div>
                 </div>
@@ -206,18 +208,13 @@ export const HeroSection: React.FC = () => {
 
           {/* Right - Image */}
           <div className="hidden lg:flex justify-end items-end -mb-32 animate-mentor-fade-in" style={{marginTop: '-120px', animationDelay: '0.8s'}}>
-            <div className="relative w-full max-w-lg overflow-visible">
-              {/* Gradiente radial circular laranja para disfarçar recorte */}
-              <div className="absolute inset-0 -z-10 overflow-visible">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-br from-orange-500/80 via-orange-400/60 to-transparent rounded-full"></div>
-              </div>
-              
+            <div className="relative w-full max-w-[70rem] overflow-visible">
               <div className="relative rounded-2xl overflow-visible">
                 <ProtectedImage 
                   src="/romulo-hero.png"
                   alt="Rômulo Freitas"
-                  width={600}
-                  height={600}
+                  width={1318}
+                  height={1318}
                   className="w-full h-auto object-contain hero-image-blend-natural"
                   priority
                   quality={80}
