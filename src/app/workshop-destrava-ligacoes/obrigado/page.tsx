@@ -76,7 +76,7 @@ function ObrigadoContent() {
                   {paymentConfirmed && (
                     <div className="inline-flex items-center px-4 py-2 bg-green-500/20 border border-green-500/50 rounded-full mb-4 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
                       <CreditCard className="w-4 h-4 text-green-400 mr-2" />
-                      <span className="text-green-400 text-sm font-semibold">Pagamento de R$ 9,99 confirmado</span>
+                      <span className="text-green-400 text-sm font-semibold">Pagamento confirmado</span>
                     </div>
                   )}
                   
