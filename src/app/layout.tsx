@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     url: process.env.NEXT_PUBLIC_BASE_URL || 'https://destrava-ligacoes.vercel.app',
     images: [
       {
-        url: '/imagens/romulo-hero.png',
+        url: '/workshop-metodo.png',
         width: 1200,
         height: 630,
         alt: 'Workshop Destrava Ligações - Rômulo Freitas',
@@ -50,6 +50,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',
     description: 'Workshop de 3 horas onde você aprende a destravar ligações, construir discurso de cold call e assiste ligações reais feitas ao vivo.',
+    images: [
+      {
+        url: '/workshop-metodo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Workshop Destrava Ligações - Rômulo Freitas',
+      },
+    ],
   },
 }
 
