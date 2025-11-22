@@ -74,18 +74,18 @@ export const CookieConsent: React.FC = () => {
 
   return (
     <div 
-      className="fixed bottom-0 left-0 right-0 sm:bottom-4 sm:left-auto sm:right-4 sm:w-96 z-50 animate-in slide-in-from-bottom-4 fade-in duration-500"
+      className="fixed bottom-0 left-0 right-0 z-50 animate-in slide-in-from-bottom-4 fade-in duration-500"
       role="dialog"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
       aria-modal="true"
     >
-      <div className="w-full px-4 sm:px-0">
-        <div className="bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-t-2xl sm:rounded-2xl shadow-2xl">
+      <div className="w-full px-4 sm:px-6">
+        <div className="bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-t-2xl shadow-2xl">
           {!showSettings ? (
             // Main consent banner
             <div className="p-4 sm:p-5">
-              <div className="flex items-start space-x-3">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
                 <div className="flex-shrink-0">
                   <div className="w-10 h-10 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center">
                     <Cookie className="w-5 h-5 text-amber-400" aria-hidden="true" />
@@ -100,7 +100,7 @@ export const CookieConsent: React.FC = () => {
                   </h3>
                   <p 
                     id="cookie-consent-description"
-                    className="text-xs leading-relaxed text-gray-300 mb-4"
+                    className="text-xs leading-relaxed text-gray-300 mb-4 sm:mb-0"
                   >
                     Utilizamos cookies essenciais e tecnologias de marketing (incluindo Meta Pixel) para melhorar sua experiência e personalizar anúncios. Ao continuar, você concorda com nossa{' '}
                     <a 
@@ -122,33 +122,33 @@ export const CookieConsent: React.FC = () => {
                     </a>
                     .
                   </p>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto sm:flex-shrink-0">
+                  <button
+                    onClick={handleAcceptAll}
+                    className="w-full sm:w-auto px-4 py-2.5 bg-amber-500/90 text-gray-900 rounded-lg hover:bg-amber-500 transition-all duration-200 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
+                    aria-label="Aceitar todos os cookies"
+                  >
+                    Aceitar Todos
+                  </button>
                   
-                  <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
                     <button
-                      onClick={handleAcceptAll}
-                      className="w-full px-4 py-2.5 bg-amber-500/90 text-gray-900 rounded-lg hover:bg-amber-500 transition-all duration-200 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-                      aria-label="Aceitar todos os cookies"
+                      onClick={handleAcceptEssential}
+                      className="flex-1 sm:flex-none px-4 py-2 border border-gray-600/50 text-gray-300 rounded-lg hover:border-gray-500/70 hover:text-gray-200 transition-all duration-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
+                      aria-label="Rejeitar cookies não essenciais"
                     >
-                      Aceitar Todos
+                      Rejeitar
                     </button>
                     
-                    <div className="flex gap-2">
-                      <button
-                        onClick={handleAcceptEssential}
-                        className="flex-1 px-4 py-2 border border-gray-600/50 text-gray-300 rounded-lg hover:border-gray-500/70 hover:text-gray-200 transition-all duration-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-                        aria-label="Rejeitar cookies não essenciais"
-                      >
-                        Rejeitar
-                      </button>
-                      
-                      <button
-                        onClick={() => setShowSettings(true)}
-                        className="flex-1 px-4 py-2 border border-gray-600/50 text-gray-300 rounded-lg hover:border-gray-500/70 hover:text-gray-200 transition-all duration-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-                        aria-label="Personalizar configurações de cookies"
-                      >
-                        Personalizar
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => setShowSettings(true)}
+                      className="flex-1 sm:flex-none px-4 py-2 border border-gray-600/50 text-gray-300 rounded-lg hover:border-gray-500/70 hover:text-gray-200 transition-all duration-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
+                      aria-label="Personalizar configurações de cookies"
+                    >
+                      Personalizar
+                    </button>
                   </div>
                 </div>
               </div>
@@ -265,7 +265,7 @@ export const CookieConsent: React.FC = () => {
           )}
           
           {/* Footer links */}
-          <div className="px-4 sm:px-5 pb-4 border-t border-gray-700/50 pt-3">
+          <div className="px-4 sm:px-5 pb-4 sm:pb-5 border-t border-gray-700/50 pt-3">
             <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-gray-400">
               <a 
                 href="/privacidade" 
