@@ -10,7 +10,7 @@ declare global {
 }
 
 // Get Meta Pixel ID from environment variable
-const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '2971488916372606';
+const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '687023637552068';
 
 export const MetaPixel: React.FC = () => {
   useEffect(() => {
