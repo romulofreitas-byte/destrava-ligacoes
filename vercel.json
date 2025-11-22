@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/email/check-scheduled",
+      "schedule": "0 */6 * * *"
+    }
+  ]
+}
+
+
+
+
