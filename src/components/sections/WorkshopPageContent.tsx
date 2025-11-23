@@ -5,6 +5,7 @@ import { HeroSectionWorkshop } from '@/components/sections/HeroSectionWorkshop';
 import { EventDetailsSection } from '@/components/sections/EventDetailsSection';
 import { WhoIsItForWorkshopSection } from '@/components/sections/WhoIsItForWorkshopSection';
 import { WhyYouStuckSection } from '@/components/sections/WhyYouStuckSection';
+import { TestimonialsVideoSection } from '@/components/sections/TestimonialsVideoSection';
 import { WhatYouWillLearnSection } from '@/components/sections/WhatYouWillLearnSection';
 import { LiveCallsSection } from '@/components/sections/LiveCallsSection';
 import { AboutRomuloWorkshopSection } from '@/components/sections/AboutRomuloWorkshopSection';
@@ -21,6 +22,7 @@ export const WorkshopPageContent: React.FC = () => {
       <EventDetailsSection />
       <WhoIsItForWorkshopSection />
       <WhyYouStuckSection />
+      <TestimonialsVideoSection />
       <WhatYouWillLearnSection />
       <LiveCallsSection />
       <AboutRomuloWorkshopSection />
