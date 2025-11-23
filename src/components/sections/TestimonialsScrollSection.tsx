@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { MessageSquare } from 'lucide-react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
 
@@ -54,6 +54,16 @@ export const TestimonialsScrollSection: React.FC = () => {
 
   // Duplicar array para criar loop infinito sem "pulo"
   const duplicatedTestimonials = [...testimonials, ...testimonials];
+
+  // Gerar posições iniciais aleatórias para cada coluna (apenas desktop)
+  const initialPositions = useMemo(() => {
+    // Valores aleatórios entre 0% e 50% (já que a animação vai de 0% a -50%)
+    return {
+      col1: Math.random() * 50,
+      col2: Math.random() * 50,
+      col3: Math.random() * 50,
+    };
+  }, []); // Gerar apenas uma vez quando o componente monta
 
   // Toggle pause/resume - funciona com onMouseDown para capturar o evento imediatamente
   const handleTogglePause = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -126,6 +136,9 @@ export const TestimonialsScrollSection: React.FC = () => {
                 <div className="testimonials-column" style={{ animationDelay: '0s' }}>
                   <div 
                     className={`testimonials-scroll testimonials-scroll-mobile testimonials-scroll-col1 ${isPaused ? 'paused' : ''}`}
+                    style={{
+                      '--initial-offset': `-${initialPositions.col1}%`
+                    } as React.CSSProperties}
                   >
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
@@ -155,6 +168,9 @@ export const TestimonialsScrollSection: React.FC = () => {
                 <div className="hidden md:block testimonials-column" style={{ animationDelay: '33s' }}>
                   <div 
                     className={`testimonials-scroll testimonials-scroll-col2 ${isPaused ? 'paused' : ''}`}
+                    style={{
+                      '--initial-offset': `-${initialPositions.col2}%`
+                    } as React.CSSProperties}
                   >
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
@@ -184,6 +200,9 @@ export const TestimonialsScrollSection: React.FC = () => {
                 <div className="hidden lg:block testimonials-column" style={{ animationDelay: '67s' }}>
                   <div 
                     className={`testimonials-scroll testimonials-scroll-col3 ${isPaused ? 'paused' : ''}`}
+                    style={{
+                      '--initial-offset': `-${initialPositions.col3}%`
+                    } as React.CSSProperties}
                   >
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
@@ -229,6 +248,15 @@ export const TestimonialsScrollSection: React.FC = () => {
           animation-fill-mode: both;
         }
 
+        /* Aplicar offset inicial apenas no desktop */
+        @media (min-width: 1024px) {
+          .testimonials-scroll-col1,
+          .testimonials-scroll-col2,
+          .testimonials-scroll-col3 {
+            transform: translateY(var(--initial-offset, 0%));
+          }
+        }
+
         .testimonials-scroll.paused {
           animation-play-state: paused !important;
         }
@@ -248,10 +276,10 @@ export const TestimonialsScrollSection: React.FC = () => {
 
         @keyframes scroll-up {
           0% {
-            transform: translateY(0);
+            transform: translateY(var(--initial-offset, 0%));
           }
           100% {
-            transform: translateY(-50%);
+            transform: translateY(calc(var(--initial-offset, 0%) - 50%));
           }
         }
 
