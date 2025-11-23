@@ -9,13 +9,13 @@ import { TestimonialsVideoSection } from '@/components/sections/TestimonialsVide
 import { WhatYouWillLearnSection } from '@/components/sections/WhatYouWillLearnSection';
 import { LiveCallsSection } from '@/components/sections/LiveCallsSection';
 import { AboutRomuloWorkshopSection } from '@/components/sections/AboutRomuloWorkshopSection';
-import { WhyItWorksSection } from '@/components/sections/WhyItWorksSection';
 import { AfterWorkshopSection } from '@/components/sections/AfterWorkshopSection';
 import { TestimonialsScrollSection } from '@/components/sections/TestimonialsScrollSection';
 import { FinalCTAWorkshopSection } from '@/components/sections/FinalCTAWorkshopSection';
 import { Footer } from '@/components/sections/Footer';
 import { SubtleHelpModal } from '@/components/ui/SubtleHelpModal';
 import { ModalProvider } from '@/contexts/ModalContext';
+import { FloatingWhatsAppButton } from '@/components/FloatingWhatsAppButton';
 
 export const WorkshopPageContent: React.FC = () => {
   return (
@@ -29,12 +29,12 @@ export const WorkshopPageContent: React.FC = () => {
         <WhatYouWillLearnSection />
         <LiveCallsSection />
         <AboutRomuloWorkshopSection />
-        <WhyItWorksSection />
         <AfterWorkshopSection />
         <TestimonialsScrollSection />
         <FinalCTAWorkshopSection />
         <Footer />
         <SubtleHelpModal />
+        <FloatingWhatsAppButton />
       </main>
     </ModalProvider>
   );

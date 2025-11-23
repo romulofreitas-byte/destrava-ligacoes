@@ -55,6 +55,13 @@ export const TestimonialsScrollSection: React.FC = () => {
   // Duplicar array para criar loop infinito sem "pulo"
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
+  // Toggle pause/resume - funciona tanto no mobile (onClick) quanto desktop (onMouseEnter/onMouseLeave)
+  const handleTogglePause = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsPaused(prev => !prev);
+  };
+
   return (
     <section 
       id="depoimentos-scroll" 
@@ -110,7 +117,8 @@ export const TestimonialsScrollSection: React.FC = () => {
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
                         key={`col1-${index}`}
-                        className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20"
+                        className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20 cursor-pointer"
+                        onClick={handleTogglePause}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start">
                           <ProtectedImage
@@ -139,7 +147,8 @@ export const TestimonialsScrollSection: React.FC = () => {
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
                         key={`col2-${index}`}
-                        className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20"
+                        className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20 cursor-pointer"
+                        onClick={handleTogglePause}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start">
                           <ProtectedImage
@@ -168,7 +177,8 @@ export const TestimonialsScrollSection: React.FC = () => {
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
                         key={`col3-${index}`}
-                        className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20"
+                        className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/20 cursor-pointer"
+                        onClick={handleTogglePause}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start">
                           <ProtectedImage
@@ -232,7 +242,7 @@ export const TestimonialsScrollSection: React.FC = () => {
           }
           
           .testimonials-scroll-mobile {
-            animation-duration: 120s !important;
+            animation-duration: 168s !important;
           }
         }
       `}</style>

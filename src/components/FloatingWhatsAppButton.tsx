@@ -43,7 +43,7 @@ export const FloatingWhatsAppButton: React.FC = () => {
         hover:shadow-green-500/50
         hover:scale-105
         transition-all duration-300
-        ${shouldShow ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}
+        ${shouldShow ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none hidden'}
       `}
       aria-label="Entrar na Comunidade Gratuita de Vendas no WhatsApp"
     >
