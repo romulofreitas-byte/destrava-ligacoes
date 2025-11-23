@@ -30,12 +30,12 @@ export const SubtleHelpModal: React.FC = () => {
       ctaSectionRef.current = ctaSection;
     }
 
-    // Timeout de 30 segundos
+    // Timeout de 45 segundos
     timeout30sRef.current = setTimeout(() => {
       if (!hasShownModalRef.current && !ctaButtonClickedRef.current) {
         showModal();
       }
-    }, 30000);
+    }, 45000);
 
     // Observar quando a seção CTA fica visível
     if (ctaSection) {

@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
           <div></div>
 
           {/* Social & Contact */}
-          <div>
+          <div className="hidden md:block">
             <h4 className="text-lg font-semibold text-white mb-4">
               Redes Sociais
             </h4>
