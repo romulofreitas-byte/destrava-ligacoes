@@ -35,8 +35,11 @@ export const FinalCTAWorkshopSection: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleCTAClick = () => {
+  const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     trackCTAClick('Final CTA Workshop - Garantir Vaga', 'final-cta');
+    
+    // The button links to external payment page, so we don't prevent default
+    // Just ensure tracking works correctly
   };
 
   return (

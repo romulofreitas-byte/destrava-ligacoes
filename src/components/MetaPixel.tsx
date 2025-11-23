@@ -28,7 +28,16 @@ export const MetaPixel: React.FC = () => {
         window.location.hostname.includes('vercel.app') ||
         window.location.search.includes('test_pixel=true');
 
-      const consent = localStorage.getItem('cookie-consent');
+      let consent: string | null = null;
+      try {
+        consent = localStorage.getItem('cookie-consent');
+      } catch (error) {
+        // localStorage might not be available (e.g., in private browsing)
+        if (isDevelopment) {
+          console.warn('⚠️ Meta Pixel: localStorage not available', error);
+        }
+        return;
+      }
       
       // In production, require consent. In development, skip consent check.
       if (!isDevelopment) {
@@ -37,7 +46,24 @@ export const MetaPixel: React.FC = () => {
           return;
         }
 
-        const parsedConsent = JSON.parse(consent);
+        let parsedConsent: { marketing?: boolean } | null = null;
+        try {
+          parsedConsent = JSON.parse(consent);
+        } catch (error) {
+          // Invalid JSON in localStorage, treat as no consent
+          if (isDevelopment) {
+            console.warn('⚠️ Meta Pixel: Invalid consent data in localStorage', error);
+          }
+          return;
+        }
+        
+        // Validate consent structure
+        if (!parsedConsent || typeof parsedConsent !== 'object' || typeof parsedConsent.marketing !== 'boolean') {
+          if (isDevelopment) {
+            console.warn('⚠️ Meta Pixel: Invalid consent structure');
+          }
+          return;
+        }
         
         // Only initialize if marketing consent is granted
         if (!parsedConsent.marketing) {

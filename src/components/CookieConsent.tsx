@@ -14,12 +14,23 @@ export const CookieConsent: React.FC = () => {
 
   useEffect(() => {
     // Check if user has already made a choice
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
-      // Small delay to not interrupt initial page load
+    let consent: string | null = null;
+    try {
+      consent = localStorage.getItem('cookie-consent');
+    } catch (error) {
+      // localStorage might not be available (e.g., in private browsing)
+      // Show banner anyway after delay
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 1000);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+    
+    if (!consent) {
+      // Reduced delay to appear faster (500ms instead of 1000ms)
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -31,7 +42,12 @@ export const CookieConsent: React.FC = () => {
       marketing: true,
       timestamp: new Date().toISOString(),
     };
-    localStorage.setItem('cookie-consent', JSON.stringify(allConsent));
+    try {
+      localStorage.setItem('cookie-consent', JSON.stringify(allConsent));
+    } catch (error) {
+      // localStorage might not be available, but continue anyway
+      console.warn('Could not save cookie consent to localStorage', error);
+    }
     setIsVisible(false);
     // Dispatch event for Meta Pixel initialization
     window.dispatchEvent(new CustomEvent('cookieConsentChange'));
@@ -44,7 +60,12 @@ export const CookieConsent: React.FC = () => {
       marketing: false,
       timestamp: new Date().toISOString(),
     };
-    localStorage.setItem('cookie-consent', JSON.stringify(essentialConsent));
+    try {
+      localStorage.setItem('cookie-consent', JSON.stringify(essentialConsent));
+    } catch (error) {
+      // localStorage might not be available, but continue anyway
+      console.warn('Could not save cookie consent to localStorage', error);
+    }
     setIsVisible(false);
     // Dispatch event for Meta Pixel initialization
     window.dispatchEvent(new CustomEvent('cookieConsentChange'));
@@ -55,7 +76,12 @@ export const CookieConsent: React.FC = () => {
       ...preferences,
       timestamp: new Date().toISOString(),
     };
-    localStorage.setItem('cookie-consent', JSON.stringify(consent));
+    try {
+      localStorage.setItem('cookie-consent', JSON.stringify(consent));
+    } catch (error) {
+      // localStorage might not be available, but continue anyway
+      console.warn('Could not save cookie consent to localStorage', error);
+    }
     setIsVisible(false);
     setShowSettings(false);
     // Dispatch event for Meta Pixel initialization

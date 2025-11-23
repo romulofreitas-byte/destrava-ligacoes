@@ -23,10 +23,29 @@ function isPixelAvailable(): boolean {
   }
 
   // In production, check consent
-  const consent = localStorage.getItem('cookie-consent');
+  let consent: string | null = null;
+  try {
+    consent = localStorage.getItem('cookie-consent');
+  } catch (error) {
+    // localStorage might not be available (e.g., in private browsing)
+    return false;
+  }
+  
   if (!consent) return false;
   
-  const parsedConsent = JSON.parse(consent);
+  let parsedConsent: { marketing?: boolean } | null = null;
+  try {
+    parsedConsent = JSON.parse(consent);
+  } catch (error) {
+    // Invalid JSON in localStorage
+    return false;
+  }
+  
+  // Validate consent structure
+  if (!parsedConsent || typeof parsedConsent !== 'object' || typeof parsedConsent.marketing !== 'boolean') {
+    return false;
+  }
+  
   return parsedConsent.marketing === true && typeof window.fbq === 'function';
 }
 
