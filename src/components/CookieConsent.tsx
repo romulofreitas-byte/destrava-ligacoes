@@ -110,70 +110,98 @@ export const CookieConsent: React.FC = () => {
         <div className="bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-t-2xl shadow-2xl">
           {!showSettings ? (
             // Main consent banner
-            <div className="p-4 sm:p-5">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+            <div className="p-3 sm:p-5">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center">
-                    <Cookie className="w-5 h-5 text-amber-400" aria-hidden="true" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center">
+                    <Cookie className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" aria-hidden="true" />
                   </div>
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 
                     id="cookie-consent-title"
-                    className="text-sm font-semibold text-gray-100 mb-1.5"
+                    className="text-xs sm:text-sm font-semibold text-gray-100 mb-1 sm:mb-1.5"
                   >
                     Cookies e Privacidade
                   </h3>
+                  {/* Mobile: texto curto | Desktop: texto completo */}
                   <p 
                     id="cookie-consent-description"
-                    className="text-xs leading-relaxed text-gray-300 mb-4 sm:mb-0"
+                    className="text-xs leading-relaxed text-gray-300 mb-3 sm:mb-0"
                   >
-                    Utilizamos cookies essenciais e tecnologias de marketing (incluindo Meta Pixel) para melhorar sua experiência e personalizar anúncios. Ao continuar, você concorda com nossa{' '}
-                    <a 
-                      href="/privacidade" 
-                      className="text-amber-400 hover:text-amber-300 underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Política de Privacidade
-                    </a>
-                    {' '}e{' '}
-                    <a 
-                      href="/termos" 
-                      className="text-amber-400 hover:text-amber-300 underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Termos de Uso
-                    </a>
-                    .
+                    <span className="sm:hidden">
+                      Utilizamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa{' '}
+                      <a 
+                        href="/privacidade" 
+                        className="text-amber-400 hover:text-amber-300 underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Política de Privacidade
+                      </a>
+                      .
+                    </span>
+                    <span className="hidden sm:inline">
+                      Utilizamos cookies essenciais e tecnologias de marketing (incluindo Meta Pixel) para melhorar sua experiência e personalizar anúncios. Ao continuar, você concorda com nossa{' '}
+                      <a 
+                        href="/privacidade" 
+                        className="text-amber-400 hover:text-amber-300 underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Política de Privacidade
+                      </a>
+                      {' '}e{' '}
+                      <a 
+                        href="/termos" 
+                        className="text-amber-400 hover:text-amber-300 underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Termos de Uso
+                      </a>
+                      .
+                    </span>
                   </p>
                 </div>
                 
-                <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto sm:flex-shrink-0">
-                  <button
-                    onClick={handleAcceptAll}
-                    className="w-full sm:w-auto px-4 py-2.5 bg-amber-500/90 text-gray-900 rounded-lg hover:bg-amber-500 transition-all duration-200 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
-                    aria-label="Aceitar todos os cookies"
-                  >
-                    Aceitar Todos
-                  </button>
-                  
-                  <div className="flex gap-2">
+                {/* Mobile: botão grande + link discreto | Desktop: todos os botões */}
+                <div className="w-full sm:w-auto sm:flex-shrink-0">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <button
-                      onClick={handleAcceptEssential}
-                      className="flex-1 sm:flex-none px-4 py-2 border border-gray-600/50 text-gray-300 rounded-lg hover:border-gray-500/70 hover:text-gray-200 transition-all duration-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
-                      aria-label="Rejeitar cookies não essenciais"
+                      onClick={handleAcceptAll}
+                      className="w-full sm:w-auto px-4 py-2.5 sm:py-2.5 bg-amber-500/90 text-gray-900 rounded-lg hover:bg-amber-500 transition-all duration-200 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
+                      aria-label="Aceitar todos os cookies"
                     >
-                      Rejeitar
+                      Aceitar Todos
                     </button>
                     
+                    {/* Desktop: botões Rejeitar e Personalizar */}
+                    <div className="hidden sm:flex gap-2">
+                      <button
+                        onClick={handleAcceptEssential}
+                        className="px-4 py-2 border border-gray-600/50 text-gray-300 rounded-lg hover:border-gray-500/70 hover:text-gray-200 transition-all duration-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
+                        aria-label="Rejeitar cookies não essenciais"
+                      >
+                        Rejeitar
+                      </button>
+                      
+                      <button
+                        onClick={() => setShowSettings(true)}
+                        className="px-4 py-2 border border-gray-600/50 text-gray-300 rounded-lg hover:border-gray-500/70 hover:text-gray-200 transition-all duration-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
+                        aria-label="Personalizar configurações de cookies"
+                      >
+                        Personalizar
+                      </button>
+                    </div>
+                    
+                    {/* Mobile: link discreto para opções avançadas */}
                     <button
                       onClick={() => setShowSettings(true)}
-                      className="flex-1 sm:flex-none px-4 py-2 border border-gray-600/50 text-gray-300 rounded-lg hover:border-gray-500/70 hover:text-gray-200 transition-all duration-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 whitespace-nowrap"
-                      aria-label="Personalizar configurações de cookies"
+                      className="sm:hidden text-xs text-gray-400 hover:text-amber-400 transition-colors underline text-center py-1"
+                      aria-label="Ver opções avançadas de cookies"
                     >
-                      Personalizar
+                      Opções avançadas
                     </button>
                   </div>
                 </div>
@@ -290,8 +318,8 @@ export const CookieConsent: React.FC = () => {
             </div>
           )}
           
-          {/* Footer links */}
-          <div className="px-4 sm:px-5 pb-4 sm:pb-5 border-t border-gray-700/50 pt-3">
+          {/* Footer links - oculto no mobile, visível no desktop */}
+          <div className="hidden sm:block px-4 sm:px-5 pb-4 sm:pb-5 border-t border-gray-700/50 pt-3">
             <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-gray-400">
               <a 
                 href="/privacidade" 
