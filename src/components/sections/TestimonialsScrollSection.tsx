@@ -104,7 +104,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 1 */}
                 <div className="testimonials-column" style={{ animationDelay: '0s' }}>
                   <div 
-                    className={`testimonials-scroll ${isPaused ? 'paused' : ''}`}
+                    className={`testimonials-scroll testimonials-scroll-mobile ${isPaused ? 'paused' : ''}`}
                     style={{ animationDuration: '100s' }}
                   >
                     {duplicatedTestimonials.map((testimonial, index) => (
@@ -116,11 +116,13 @@ export const TestimonialsScrollSection: React.FC = () => {
                           <ProtectedImage
                             src={testimonial}
                             alt={`Depoimento ${index + 1}`}
-                            width={400}
-                            height={600}
-                            className="w-full h-auto rounded-lg object-contain max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
-                            loading={index < 6 ? 'eager' : 'lazy'}
-                            sizes="(max-width: 640px) 300px, 400px"
+                            width={250}
+                            height={375}
+                            className="w-full h-auto rounded-lg object-contain max-w-[250px] sm:max-w-[350px] md:max-w-[400px] mx-auto sm:mx-0 testimonial-image-mobile"
+                            loading={index < 25 ? 'eager' : 'lazy'}
+                            priority={index < 3}
+                            quality={70}
+                            sizes="(max-width: 640px) 250px, (max-width: 1024px) 350px, 400px"
                           />
                         </div>
                       </div>
@@ -143,11 +145,13 @@ export const TestimonialsScrollSection: React.FC = () => {
                           <ProtectedImage
                             src={testimonial}
                             alt={`Depoimento ${index + 1}`}
-                            width={400}
-                            height={600}
-                            className="w-full h-auto rounded-lg object-contain max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
-                            loading={index < 6 ? 'eager' : 'lazy'}
-                            sizes="(max-width: 640px) 300px, 400px"
+                            width={250}
+                            height={375}
+                            className="w-full h-auto rounded-lg object-contain max-w-[250px] sm:max-w-[350px] md:max-w-[400px] mx-auto sm:mx-0 testimonial-image-mobile"
+                            loading={index < 25 ? 'eager' : 'lazy'}
+                            priority={index < 3}
+                            quality={70}
+                            sizes="(max-width: 640px) 250px, (max-width: 1024px) 350px, 400px"
                           />
                         </div>
                       </div>
@@ -170,11 +174,13 @@ export const TestimonialsScrollSection: React.FC = () => {
                           <ProtectedImage
                             src={testimonial}
                             alt={`Depoimento ${index + 1}`}
-                            width={400}
-                            height={600}
-                            className="w-full h-auto rounded-lg object-contain max-w-[300px] sm:max-w-none mx-auto sm:mx-0"
-                            loading={index < 6 ? 'eager' : 'lazy'}
-                            sizes="(max-width: 640px) 300px, 400px"
+                            width={250}
+                            height={375}
+                            className="w-full h-auto rounded-lg object-contain max-w-[250px] sm:max-w-[350px] md:max-w-[400px] mx-auto sm:mx-0 testimonial-image-mobile"
+                            loading={index < 25 ? 'eager' : 'lazy'}
+                            priority={index < 3}
+                            quality={70}
+                            sizes="(max-width: 640px) 250px, (max-width: 1024px) 350px, 400px"
                           />
                         </div>
                       </div>
@@ -223,6 +229,10 @@ export const TestimonialsScrollSection: React.FC = () => {
         @media (max-width: 768px) {
           .testimonials-column {
             height: 450px;
+          }
+          
+          .testimonials-scroll-mobile {
+            animation-duration: 120s !important;
           }
         }
       `}</style>
