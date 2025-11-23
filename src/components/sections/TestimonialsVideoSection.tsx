@@ -45,7 +45,7 @@ export const TestimonialsVideoSection: React.FC = () => {
     },
     {
       id: 'vinicius',
-      title: 'Vinícius - Transformação no processo de destravamento',
+      title: 'Vinícius - Pagou R$3k, R$5k em mentorias mas só teve resultado na Pódium',
       description: 'Mentorado da Mentoria Elite Pódium que passou pelo processo de destravamento e obteve resultados reais',
       url: 'https://youtu.be/X14E0T7IfHU',
       icon: Users,
@@ -77,7 +77,7 @@ export const TestimonialsVideoSection: React.FC = () => {
           {/* Main Headline */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             Mentorados que{' '}
-            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-md animate-shimmer bg-[length:200%_auto]">destravaram</span>
+            <span className="text-yellow-400 drop-shadow-md">destravaram</span>
             {' '}através do processo
           </h2>
 
@@ -150,13 +150,9 @@ export const TestimonialsVideoSection: React.FC = () => {
                       <span className="text-yellow-400 text-sm font-semibold">{video.type}</span>
                     </div>
                     
-                    <h3 className="text-base sm:text-xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors duration-300">
+                    <h3 className="text-base sm:text-xl font-bold text-white mb-4 group-hover:text-yellow-400 transition-colors duration-300">
                       {video.title}
                     </h3>
-                    
-                    <p className="text-gray-300 text-xs sm:text-base leading-relaxed mb-4">
-                      {video.description}
-                    </p>
 
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-400/10 to-yellow-500/5 border border-yellow-400/30 text-yellow-400 rounded-full group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-yellow-500 group-hover:text-gray-900 group-hover:border-yellow-400 transition-all duration-300 text-sm font-semibold shadow-lg group-hover:shadow-yellow-400/40">
                       <Play className="w-4 h-4 group-hover:animate-pulse" />

@@ -143,7 +143,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © 2025 Escuderia Pódium. Todos os direitos reservados. | CNPJ: 43.393.622/0001-30
+              © 2025 Mundo Pódium. Todos os direitos reservados. | CNPJ: 43.393.622/0001-30
             </div>
             
             <div className="flex space-x-6 text-sm">
