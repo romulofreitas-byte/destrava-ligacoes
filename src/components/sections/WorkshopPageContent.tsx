@@ -12,6 +12,7 @@ import { WhyItWorksSection } from '@/components/sections/WhyItWorksSection';
 import { AfterWorkshopSection } from '@/components/sections/AfterWorkshopSection';
 import { FinalCTAWorkshopSection } from '@/components/sections/FinalCTAWorkshopSection';
 import { Footer } from '@/components/sections/Footer';
+import { SubtleHelpModal } from '@/components/ui/SubtleHelpModal';
 
 export const WorkshopPageContent: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ export const WorkshopPageContent: React.FC = () => {
       <AfterWorkshopSection />
       <FinalCTAWorkshopSection />
       <Footer />
+      <SubtleHelpModal />
     </main>
   );
 };
