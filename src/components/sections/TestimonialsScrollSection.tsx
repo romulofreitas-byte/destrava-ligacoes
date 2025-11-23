@@ -101,6 +101,18 @@ export const TestimonialsScrollSection: React.FC = () => {
             className={`bg-gray-800/40 border-2 rounded-3xl p-3 sm:p-6 lg:p-12 backdrop-blur-xl shadow-2xl transition-all duration-300 relative overflow-hidden group ${
               isPaused ? 'border-yellow-400/50' : 'border-gray-700/50'
             }`}
+            onMouseEnter={() => {
+              // Pause apenas no desktop (lg+)
+              if (window.innerWidth >= 1024) {
+                setIsPaused(true);
+              }
+            }}
+            onMouseLeave={() => {
+              // Resume apenas no desktop (lg+)
+              if (window.innerWidth >= 1024) {
+                setIsPaused(false);
+              }
+            }}
           >
             {/* Animated border glow */}
             <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r from-yellow-400/20 via-transparent to-yellow-400/20 transition-opacity duration-500 animate-shimmer ${
@@ -113,8 +125,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 1 */}
                 <div className="testimonials-column" style={{ animationDelay: '0s' }}>
                   <div 
-                    className={`testimonials-scroll testimonials-scroll-mobile ${isPaused ? 'paused' : ''}`}
-                    style={{ animationDuration: '100s' }}
+                    className={`testimonials-scroll testimonials-scroll-mobile testimonials-scroll-col1 ${isPaused ? 'paused' : ''}`}
                   >
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
@@ -122,7 +133,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
                         onMouseDown={handleTogglePause}
                       >
-                        <div className="relative w-full flex justify-center sm:justify-start">
+                        <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
                             src={testimonial}
                             alt={`Depoimento ${index + 1}`}
@@ -143,8 +154,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 2 */}
                 <div className="hidden md:block testimonials-column" style={{ animationDelay: '33s' }}>
                   <div 
-                    className={`testimonials-scroll ${isPaused ? 'paused' : ''}`}
-                    style={{ animationDuration: '117s' }}
+                    className={`testimonials-scroll testimonials-scroll-col2 ${isPaused ? 'paused' : ''}`}
                   >
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
@@ -152,7 +162,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
                         onMouseDown={handleTogglePause}
                       >
-                        <div className="relative w-full flex justify-center sm:justify-start">
+                        <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
                             src={testimonial}
                             alt={`Depoimento ${index + 1}`}
@@ -173,8 +183,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 3 - Only on desktop */}
                 <div className="hidden lg:block testimonials-column" style={{ animationDelay: '67s' }}>
                   <div 
-                    className={`testimonials-scroll ${isPaused ? 'paused' : ''}`}
-                    style={{ animationDuration: '133s' }}
+                    className={`testimonials-scroll testimonials-scroll-col3 ${isPaused ? 'paused' : ''}`}
                   >
                     {duplicatedTestimonials.map((testimonial, index) => (
                       <div
@@ -182,7 +191,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
                         onMouseDown={handleTogglePause}
                       >
-                        <div className="relative w-full flex justify-center sm:justify-start">
+                        <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
                             src={testimonial}
                             alt={`Depoimento ${index + 1}`}
@@ -222,6 +231,19 @@ export const TestimonialsScrollSection: React.FC = () => {
 
         .testimonials-scroll.paused {
           animation-play-state: paused !important;
+        }
+
+        /* Durações para desktop/tablet (aumentadas em 40%) */
+        @media (min-width: 768px) {
+          .testimonials-scroll-col1 {
+            animation-duration: 140s;
+          }
+          .testimonials-scroll-col2 {
+            animation-duration: 164s;
+          }
+          .testimonials-scroll-col3 {
+            animation-duration: 186s;
+          }
         }
 
         @keyframes scroll-up {
