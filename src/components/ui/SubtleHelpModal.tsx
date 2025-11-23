@@ -1,26 +1,124 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Youtube, MessageCircle } from 'lucide-react';
 import { trackWhatsAppClick, trackCustomEvent } from '@/lib/metaPixel';
+import { useModalContext } from '@/contexts/ModalContext';
 
 export const SubtleHelpModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const { setIsModalOpen, ctaButtonClicked } = useModalContext();
+  const ctaSectionRef = useRef<HTMLElement | null>(null);
+  const timeout30sRef = useRef<NodeJS.Timeout | null>(null);
+  const timeout5sAfterCtaRef = useRef<NodeJS.Timeout | null>(null);
+  const ctaObserverRef = useRef<IntersectionObserver | null>(null);
+  const hasShownModalRef = useRef(false);
+  const ctaButtonClickedRef = useRef(ctaButtonClicked);
+  
+  // Atualizar ref quando ctaButtonClicked mudar
+  useEffect(() => {
+    ctaButtonClickedRef.current = ctaButtonClicked;
+  }, [ctaButtonClicked]);
 
   useEffect(() => {
     setIsMounted(true);
-    
-    // Aparece após 45 segundos
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 45000);
 
-    return () => clearTimeout(timer);
+    // Encontrar a seção CTA pelo ID
+    const ctaSection = document.getElementById('inscricao');
+    if (ctaSection) {
+      ctaSectionRef.current = ctaSection;
+    }
+
+    // Timeout de 30 segundos
+    timeout30sRef.current = setTimeout(() => {
+      if (!hasShownModalRef.current && !ctaButtonClickedRef.current) {
+        showModal();
+      }
+    }, 30000);
+
+    // Observar quando a seção CTA fica visível
+    if (ctaSection) {
+      ctaObserverRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasShownModalRef.current && !ctaButtonClickedRef.current) {
+              // CTA ficou visível, aguardar 5 segundos
+              timeout5sAfterCtaRef.current = setTimeout(() => {
+                if (!hasShownModalRef.current && !ctaButtonClickedRef.current) {
+                  showModal();
+                }
+              }, 5000);
+             
+              // Parar de observar após detectar
+              if (ctaObserverRef.current) {
+                ctaObserverRef.current.disconnect();
+              }
+            }
+          });
+        },
+        { threshold: 0.3 } // 30% da seção visível
+      );
+
+      ctaObserverRef.current.observe(ctaSection);
+    }
+
+    return () => {
+      if (timeout30sRef.current) {
+        clearTimeout(timeout30sRef.current);
+      }
+      if (timeout5sAfterCtaRef.current) {
+        clearTimeout(timeout5sAfterCtaRef.current);
+      }
+      if (ctaObserverRef.current) {
+        ctaObserverRef.current.disconnect();
+      }
+    };
   }, []);
+
+  // Efeito separado para cancelar timeouts quando o botão for clicado
+  useEffect(() => {
+    if (ctaButtonClicked && !hasShownModalRef.current) {
+      // Cancelar todos os timeouts se o botão foi clicado
+      if (timeout30sRef.current) {
+        clearTimeout(timeout30sRef.current);
+        timeout30sRef.current = null;
+      }
+      if (timeout5sAfterCtaRef.current) {
+        clearTimeout(timeout5sAfterCtaRef.current);
+        timeout5sAfterCtaRef.current = null;
+      }
+      if (ctaObserverRef.current) {
+        ctaObserverRef.current.disconnect();
+        ctaObserverRef.current = null;
+      }
+    }
+  }, [ctaButtonClicked]);
+
+  const showModal = () => {
+    if (hasShownModalRef.current) return;
+    
+    hasShownModalRef.current = true;
+    setIsVisible(true);
+    // Atualizar contexto apenas se disponível (fallback seguro)
+    setIsModalOpen(true);
+    
+    // Limpar todos os timeouts quando o modal aparece
+    if (timeout30sRef.current) {
+      clearTimeout(timeout30sRef.current);
+    }
+    if (timeout5sAfterCtaRef.current) {
+      clearTimeout(timeout5sAfterCtaRef.current);
+    }
+    if (ctaObserverRef.current) {
+      ctaObserverRef.current.disconnect();
+    }
+  };
 
   const handleClose = () => {
     setIsVisible(false);
+    // Atualizar contexto apenas se disponível (fallback seguro)
+    setIsModalOpen(false);
   };
 
   const handleYouTubeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {

@@ -3,11 +3,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Zap, Clock, Users } from 'lucide-react';
 import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
+import { useModalContext } from '@/contexts/ModalContext';
 
 export const FinalCTAWorkshopSection: React.FC = () => {
   const [progressWidth, setProgressWidth] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const hasTrackedView = useRef(false);
+  // Usar contexto com fallback seguro - retorna função vazia se não estiver disponível
+  const { setCtaButtonClicked } = useModalContext();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,6 +40,9 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     trackCTAClick('Final CTA Workshop - Garantir Vaga', 'final-cta');
+    
+    // Atualizar contexto para indicar que o botão foi clicado (apenas se contexto disponível)
+    setCtaButtonClicked(true);
     
     // The button links to external payment page, so we don't prevent default
     // Just ensure tracking works correctly
