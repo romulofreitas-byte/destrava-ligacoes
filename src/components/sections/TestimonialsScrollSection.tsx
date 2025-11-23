@@ -217,10 +217,11 @@ export const TestimonialsScrollSection: React.FC = () => {
           flex-direction: column;
           animation: scroll-up linear infinite;
           will-change: transform;
+          animation-fill-mode: both;
         }
 
         .testimonials-scroll.paused {
-          animation-play-state: paused;
+          animation-play-state: paused !important;
         }
 
         @keyframes scroll-up {
