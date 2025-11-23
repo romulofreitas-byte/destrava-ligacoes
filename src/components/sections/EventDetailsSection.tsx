@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, Clock, Video, MapPin, Gift } from 'lucide-react';
+import { Calendar, Clock, Video, MapPin } from 'lucide-react';
 
 export const EventDetailsSection: React.FC = () => {
   return (
@@ -71,37 +71,6 @@ export const EventDetailsSection: React.FC = () => {
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Horário</h3>
                     <p className="text-gray-300 text-sm">13h</p>
-                  </div>
-                </div>
-
-                {/* Investimento */}
-                <div 
-                  onClick={() => {
-                    const element = document.getElementById('inscricao');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }}
-                  className="relative flex flex-col items-center p-5 bg-gradient-to-br from-yellow-400/20 via-yellow-500/15 to-yellow-400/20 rounded-2xl border-2 border-yellow-400/60 hover:border-yellow-400 transition-all duration-300 md:col-span-2 md:mx-auto md:max-w-md shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 group overflow-hidden cursor-pointer hover:scale-[1.02]"
-                >
-                  {/* Animated shimmer border */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer bg-[length:200%_auto]"></div>
-                  
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-400/10 via-yellow-500/20 to-yellow-400/10 blur-xl opacity-50 animate-pulse"></div>
-                  
-                  <div className="relative z-10 w-full text-center">
-                    <div className="w-14 h-14 bg-gradient-to-br from-yellow-400/30 to-yellow-500/20 border-2 border-yellow-400/60 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg shadow-yellow-400/40 animate-pulse">
-                      <Gift className="w-7 h-7 text-yellow-400 drop-shadow-lg" />
-                    </div>
-                    <h3 className="text-white font-bold text-lg mb-2">Investimento</h3>
-                    <div className="mb-2">
-                      <p className="text-gray-400 text-sm line-through">De R$ 297</p>
-                      <p className="text-yellow-400 font-bold text-2xl drop-shadow-md">R$ 49,99</p>
-                    </div>
-                    <p className="text-gray-300 text-xs leading-relaxed max-w-xs mx-auto">
-                      Investimento simbólico para 3 horas de consultoria intensiva e transformação prática. Você sai sabendo exatamente como destravar suas ligações.
-                    </p>
                   </div>
                 </div>
               </div>

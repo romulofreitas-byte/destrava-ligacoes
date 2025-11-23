@@ -106,7 +106,7 @@ export const HeroSectionWorkshop: React.FC = () => {
         {/* Badge - Above Image */}
         <div className="px-4 pt-4 pb-2 text-center">
           <div className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full backdrop-blur-sm shadow-lg animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">26 de Novembro • 3 horas intensas • 100% prático • R$ 49,99</span>
+            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">26 de Novembro • 3 horas intensas • 100% prático</span>
           </div>
         </div>
 
@@ -187,7 +187,7 @@ export const HeroSectionWorkshop: React.FC = () => {
           <div className="max-w-2xl text-left relative z-30">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-4 backdrop-blur-sm shadow-lg hover:shadow-yellow-400/20 transition-all duration-300 animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">26 de Novembro • 3 horas intensas • 100% prático • R$ 49,99</span>
+              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">26 de Novembro • 3 horas intensas • 100% prático</span>
             </div>
 
             {/* Main Headline */}
