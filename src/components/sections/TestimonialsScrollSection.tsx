@@ -98,12 +98,16 @@ export const TestimonialsScrollSection: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div 
             ref={containerRef}
-            className="bg-gray-800/40 border-2 border-gray-700/50 rounded-3xl p-3 sm:p-6 lg:p-12 backdrop-blur-xl shadow-2xl hover:border-yellow-400/50 transition-all duration-300 relative overflow-hidden group"
+            className={`bg-gray-800/40 border-2 rounded-3xl p-3 sm:p-6 lg:p-12 backdrop-blur-xl shadow-2xl transition-all duration-300 relative overflow-hidden group ${
+              isPaused ? 'border-yellow-400/50' : 'border-gray-700/50 hover:border-yellow-400/50'
+            }`}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
             {/* Animated border glow */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-yellow-400/20 via-transparent to-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+            <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r from-yellow-400/20 via-transparent to-yellow-400/20 transition-opacity duration-500 animate-shimmer ${
+              isPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+            }`}></div>
             
             {/* Scroll Container */}
             <div className="relative z-10 overflow-hidden">
