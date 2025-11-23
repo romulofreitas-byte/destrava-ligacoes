@@ -56,16 +56,16 @@ export const TestimonialsScrollSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Duplicar array para criar loop infinito sem "pulo" - triplicar para garantir visibilidade constante
-  const duplicatedTestimonials = useMemo(() => [...testimonials, ...testimonials, ...testimonials], []);
+  // Duplicar array para criar loop infinito sem "pulo"
+  const duplicatedTestimonials = useMemo(() => [...testimonials, ...testimonials], []);
 
-  // Gerar posições iniciais aleatórias para cada coluna
+  // Gerar posições iniciais aleatórias para cada coluna (apenas desktop)
   const initialPositions = useMemo(() => {
-    // Valores aleatórios entre 0% e 33% (já que agora temos 3x o array, animação vai de 0% a -33%)
+    // Valores aleatórios entre 0% e 50% (animação vai de 0% a -50%)
     return {
-      col1: Math.random() * 33,
-      col2: Math.random() * 33,
-      col3: Math.random() * 33,
+      col1: Math.random() * 50,
+      col2: Math.random() * 50,
+      col3: Math.random() * 50,
     };
   }, []);
 
@@ -96,10 +96,11 @@ export const TestimonialsScrollSection: React.FC = () => {
     };
   }, []);
 
+  // Flag para prevenir duplo toggle entre touch e click
+  const touchHandledRef = useRef(false);
+
   // Toggle pause/resume manual - funciona com clique e touch
-  const handleTogglePause = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleTogglePause = () => {
     setIsManuallyPaused(prev => {
       const newState = !prev;
       setIsPaused(newState);
@@ -109,12 +110,26 @@ export const TestimonialsScrollSection: React.FC = () => {
 
   // Handle click (funciona em mobile e desktop)
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    handleTogglePause(e);
+    e.preventDefault();
+    e.stopPropagation();
+    // Se foi touch, não processar click
+    if (touchHandledRef.current) {
+      touchHandledRef.current = false;
+      return;
+    }
+    handleTogglePause();
   };
 
   // Handle touch (para mobile)
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    handleTogglePause(e);
+    e.preventDefault();
+    e.stopPropagation();
+    touchHandledRef.current = true;
+    handleTogglePause();
+    // Reset flag após um tempo
+    setTimeout(() => {
+      touchHandledRef.current = false;
+    }, 300);
   };
 
   // Controlar pause baseado em hover apenas no desktop, mas não interferir com clique manual
@@ -200,7 +215,6 @@ export const TestimonialsScrollSection: React.FC = () => {
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
                         onClick={handleClick}
                         onTouchStart={handleTouchStart}
-                        onMouseDown={(e) => e.preventDefault()}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
@@ -234,7 +248,6 @@ export const TestimonialsScrollSection: React.FC = () => {
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
                         onClick={handleClick}
                         onTouchStart={handleTouchStart}
-                        onMouseDown={(e) => e.preventDefault()}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
@@ -268,7 +281,6 @@ export const TestimonialsScrollSection: React.FC = () => {
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
                         onClick={handleClick}
                         onTouchStart={handleTouchStart}
-                        onMouseDown={(e) => e.preventDefault()}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
@@ -310,11 +322,22 @@ export const TestimonialsScrollSection: React.FC = () => {
           animation-play-state: running;
         }
 
-        /* Aplicar offset inicial */
-        .testimonials-scroll-col1,
-        .testimonials-scroll-col2,
-        .testimonials-scroll-col3 {
-          transform: translateY(var(--initial-offset, 0%));
+        /* Aplicar offset inicial apenas no desktop */
+        @media (min-width: 1024px) {
+          .testimonials-scroll-col1,
+          .testimonials-scroll-col2,
+          .testimonials-scroll-col3 {
+            transform: translateY(var(--initial-offset, 0%));
+          }
+        }
+
+        /* No mobile, garantir que comece em 0% (sem offset) */
+        @media (max-width: 1023px) {
+          .testimonials-scroll-col1,
+          .testimonials-scroll-col2,
+          .testimonials-scroll-col3 {
+            transform: translateY(0%);
+          }
         }
 
         /* Estado running - prioridade alta */
@@ -350,8 +373,8 @@ export const TestimonialsScrollSection: React.FC = () => {
             transform: translateY(var(--initial-offset, 0%));
           }
           100% {
-            /* Agora temos 3x o array, então animamos apenas 33% para loop perfeito */
-            transform: translateY(calc(var(--initial-offset, 0%) - 33.333%));
+            /* Com 2x o array, animamos 50% para loop perfeito */
+            transform: translateY(calc(var(--initial-offset, 0%) - 50%));
           }
         }
 
