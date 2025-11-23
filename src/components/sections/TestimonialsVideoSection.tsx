@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Play, Users } from 'lucide-react';
 import { VideoModal } from '@/components/ui/VideoModal';
 import { trackVideoOpen } from '@/lib/metaPixel';
@@ -112,11 +113,14 @@ export const TestimonialsVideoSection: React.FC = () => {
                   <div className="relative flex-shrink-0">
                     <div className="relative w-full lg:w-48 h-32 sm:h-48 bg-gray-700/50 rounded-xl overflow-hidden border-2 border-yellow-400/20 group-hover:border-yellow-400/50 transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:shadow-yellow-400/30">
                       {thumbnailUrl ? (
-                        <img
+                        <Image
                           src={thumbnailUrl}
                           alt={video.title}
+                          width={192}
+                          height={192}
                           className="w-full h-full object-cover object-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
                           loading="lazy"
+                          unoptimized
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
