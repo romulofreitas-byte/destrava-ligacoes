@@ -50,9 +50,7 @@ const testimonials = [
 
 export const TestimonialsScrollSection: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isManuallyPaused, setIsManuallyPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -69,7 +67,7 @@ export const TestimonialsScrollSection: React.FC = () => {
     };
   }, []);
 
-  // IntersectionObserver para detectar quando a seção entra na viewport
+  // IntersectionObserver para detectar quando a seção entra na viewport (com margem antecipada)
   useEffect(() => {
     if (!sectionRef.current) return;
 
@@ -82,8 +80,8 @@ export const TestimonialsScrollSection: React.FC = () => {
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px',
+        threshold: 0,
+        rootMargin: '300px',
       }
     );
 
@@ -96,59 +94,38 @@ export const TestimonialsScrollSection: React.FC = () => {
     };
   }, []);
 
-  // Flag para prevenir duplo toggle entre touch e click
-  const touchHandledRef = useRef(false);
-
-  // Toggle pause/resume manual - funciona com clique e touch
-  const handleTogglePause = () => {
-    setIsManuallyPaused(prev => {
-      const newState = !prev;
-      setIsPaused(newState);
-      return newState;
-    });
-  };
-
-  // Handle click (funciona em mobile e desktop)
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    // Se foi touch, não processar click
-    if (touchHandledRef.current) {
-      touchHandledRef.current = false;
-      return;
-    }
-    handleTogglePause();
-  };
-
-  // Handle touch (para mobile)
+  // Handle touch start - pausa quando o usuário toca/segura
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    touchHandledRef.current = true;
-    handleTogglePause();
-    // Reset flag após um tempo
-    setTimeout(() => {
-      touchHandledRef.current = false;
-    }, 300);
+    setIsPaused(true);
   };
 
-  // Controlar pause baseado em hover apenas no desktop, mas não interferir com clique manual
-  const handleMouseEnter = () => {
-    if (window.innerWidth >= 1024 && !isManuallyPaused) {
-      setIsHovered(true);
-      setIsPaused(true);
-    }
+  // Handle touch end - retoma quando o usuário solta
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsPaused(false);
   };
 
+  // Handle mouse down - pausa quando o usuário clica/segura (desktop)
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsPaused(true);
+  };
+
+  // Handle mouse up - retoma quando o usuário solta (desktop)
+  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsPaused(false);
+  };
+
+  // Também retomar quando o mouse sai do elemento (caso o usuário arraste para fora)
   const handleMouseLeave = () => {
-    if (window.innerWidth >= 1024 && !isManuallyPaused) {
-      setIsHovered(false);
-      setIsPaused(false);
-    }
+    setIsPaused(false);
   };
-
-  // Determinar se deve estar pausado: manual tem prioridade sobre hover
-  const shouldBePaused = isPaused;
 
   return (
     <section 
@@ -188,14 +165,13 @@ export const TestimonialsScrollSection: React.FC = () => {
           <div 
             ref={containerRef}
             className={`bg-gray-800/40 border-2 rounded-3xl p-3 sm:p-6 lg:p-12 backdrop-blur-xl shadow-2xl transition-all duration-300 relative overflow-hidden group ${
-              shouldBePaused ? 'border-yellow-400/50' : 'border-gray-700/50'
+              isPaused ? 'border-yellow-400/50' : 'border-gray-700/50'
             }`}
-            onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
             {/* Animated border glow */}
             <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r from-yellow-400/20 via-transparent to-yellow-400/20 transition-opacity duration-500 animate-shimmer ${
-              shouldBePaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              isPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
             }`}></div>
             
             {/* Scroll Container */}
@@ -204,7 +180,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 1 */}
                 <div className="testimonials-column" style={{ animationDelay: '0s' }}>
                   <div 
-                    className={`testimonials-scroll testimonials-scroll-mobile testimonials-scroll-col1 ${shouldBePaused ? 'paused' : 'running'} ${isVisible ? 'visible' : ''}`}
+                    className={`testimonials-scroll testimonials-scroll-mobile testimonials-scroll-col1 ${isPaused ? 'paused' : 'running'}`}
                     style={{
                       '--initial-offset': `-${initialPositions.col1}%`
                     } as React.CSSProperties}
@@ -213,8 +189,10 @@ export const TestimonialsScrollSection: React.FC = () => {
                       <div
                         key={`col1-${index}`}
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
-                        onClick={handleClick}
                         onTouchStart={handleTouchStart}
+                        onTouchEnd={handleTouchEnd}
+                        onMouseDown={handleMouseDown}
+                        onMouseUp={handleMouseUp}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
@@ -237,7 +215,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 2 */}
                 <div className="hidden md:block testimonials-column" style={{ animationDelay: '33s' }}>
                   <div 
-                    className={`testimonials-scroll testimonials-scroll-col2 ${shouldBePaused ? 'paused' : 'running'} ${isVisible ? 'visible' : ''}`}
+                    className={`testimonials-scroll testimonials-scroll-col2 ${isPaused ? 'paused' : 'running'}`}
                     style={{
                       '--initial-offset': `-${initialPositions.col2}%`
                     } as React.CSSProperties}
@@ -246,8 +224,10 @@ export const TestimonialsScrollSection: React.FC = () => {
                       <div
                         key={`col2-${index}`}
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
-                        onClick={handleClick}
                         onTouchStart={handleTouchStart}
+                        onTouchEnd={handleTouchEnd}
+                        onMouseDown={handleMouseDown}
+                        onMouseUp={handleMouseUp}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
@@ -270,7 +250,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 3 - Only on desktop */}
                 <div className="hidden lg:block testimonials-column" style={{ animationDelay: '67s' }}>
                   <div 
-                    className={`testimonials-scroll testimonials-scroll-col3 ${shouldBePaused ? 'paused' : 'running'} ${isVisible ? 'visible' : ''}`}
+                    className={`testimonials-scroll testimonials-scroll-col3 ${isPaused ? 'paused' : 'running'}`}
                     style={{
                       '--initial-offset': `-${initialPositions.col3}%`
                     } as React.CSSProperties}
@@ -279,8 +259,10 @@ export const TestimonialsScrollSection: React.FC = () => {
                       <div
                         key={`col3-${index}`}
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
-                        onClick={handleClick}
                         onTouchStart={handleTouchStart}
+                        onTouchEnd={handleTouchEnd}
+                        onMouseDown={handleMouseDown}
+                        onMouseUp={handleMouseUp}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start md:justify-center">
                           <ProtectedImage
@@ -350,11 +332,6 @@ export const TestimonialsScrollSection: React.FC = () => {
           animation-play-state: paused !important;
         }
 
-        /* Quando visível, garantir que está rodando (a menos que esteja pausado) */
-        .testimonials-scroll.visible:not(.paused) {
-          animation-play-state: running !important;
-        }
-
         /* Durações para desktop/tablet */
         @media (min-width: 768px) {
           .testimonials-scroll-col1 {
@@ -392,11 +369,6 @@ export const TestimonialsScrollSection: React.FC = () => {
           .testimonials-scroll-mobile {
             animation-duration: 168s !important;
             /* Garantir que a animação inicie automaticamente no mobile */
-            animation-play-state: running !important;
-          }
-
-          /* No mobile, garantir que sempre esteja rodando quando visível */
-          .testimonials-scroll-mobile.visible:not(.paused) {
             animation-play-state: running !important;
           }
         }
