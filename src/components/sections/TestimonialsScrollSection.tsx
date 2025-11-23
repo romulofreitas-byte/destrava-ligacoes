@@ -55,7 +55,7 @@ export const TestimonialsScrollSection: React.FC = () => {
   // Duplicar array para criar loop infinito sem "pulo"
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
-  // Toggle pause/resume - funciona tanto no mobile (onClick) quanto desktop (onMouseEnter/onMouseLeave)
+  // Toggle pause/resume - funciona com onMouseDown para capturar o evento imediatamente
   const handleTogglePause = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -99,10 +99,8 @@ export const TestimonialsScrollSection: React.FC = () => {
           <div 
             ref={containerRef}
             className={`bg-gray-800/40 border-2 rounded-3xl p-3 sm:p-6 lg:p-12 backdrop-blur-xl shadow-2xl transition-all duration-300 relative overflow-hidden group ${
-              isPaused ? 'border-yellow-400/50' : 'border-gray-700/50 hover:border-yellow-400/50'
+              isPaused ? 'border-yellow-400/50' : 'border-gray-700/50'
             }`}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
           >
             {/* Animated border glow */}
             <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r from-yellow-400/20 via-transparent to-yellow-400/20 transition-opacity duration-500 animate-shimmer ${
@@ -122,7 +120,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                       <div
                         key={`col1-${index}`}
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
-                        onClick={handleTogglePause}
+                        onMouseDown={handleTogglePause}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start">
                           <ProtectedImage
@@ -152,7 +150,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                       <div
                         key={`col2-${index}`}
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
-                        onClick={handleTogglePause}
+                        onMouseDown={handleTogglePause}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start">
                           <ProtectedImage
@@ -182,7 +180,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                       <div
                         key={`col3-${index}`}
                         className="mb-2 sm:mb-3 lg:mb-6 bg-gray-900/50 border border-gray-700/30 rounded-xl p-2 sm:p-3 lg:p-3 cursor-pointer select-none"
-                        onClick={handleTogglePause}
+                        onMouseDown={handleTogglePause}
                       >
                         <div className="relative w-full flex justify-center sm:justify-start">
                           <ProtectedImage
