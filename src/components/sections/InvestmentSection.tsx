@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { AnimatedCard } from '@/components/ui/AnimatedCard';
 import { Badge } from '@/components/ui/Badge';
 import { CheckCircle, Clock, Users, Award, Bot, Zap, Shield } from 'lucide-react';
@@ -120,8 +121,15 @@ export const InvestmentSection: React.FC = () => {
               className="text-center"
             >
               {/* INICIO DO BOTAO PAGBANK */}
-              <a href="https://pag.ae/81eiPrem9/button" target="_blank" title="Pagar com PagBank">
-                <img src="https://assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar.gif" alt="Pague com PagBank - é rápido, grátis e seguro!" />
+              <a href="https://pag.ae/81eiPrem9/button" target="_blank" rel="noopener noreferrer" title="Pagar com PagBank">
+                <Image 
+                  src="https://assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar.gif" 
+                  alt="Pague com PagBank - é rápido, grátis e seguro!" 
+                  width={205}
+                  height={30}
+                  unoptimized
+                  className="inline-block"
+                />
               </a>
               {/* FIM DO BOTAO PAGBANK */}
                   <p className="small-text">
