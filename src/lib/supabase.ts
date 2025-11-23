@@ -1,22 +1,164 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Configuração do Supabase
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  console.warn('⚠️ Supabase não configurado. Configure NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY no .env.local');
+// Validação robusta das variáveis de ambiente
+function validateSupabaseConfig(): { isValid: boolean; errors: string[] } {
+  const errors: string[] = [];
+
+  if (!SUPABASE_URL) {
+    errors.push('NEXT_PUBLIC_SUPABASE_URL não está configurada');
+  } else if (!SUPABASE_URL.startsWith('https://') || !SUPABASE_URL.includes('.supabase.co')) {
+    errors.push(`NEXT_PUBLIC_SUPABASE_URL parece inválida: ${SUPABASE_URL.substring(0, 50)}...`);
+  }
+
+  if (!SUPABASE_SERVICE_ROLE_KEY) {
+    errors.push('SUPABASE_SERVICE_ROLE_KEY não está configurada');
+  } else if (SUPABASE_SERVICE_ROLE_KEY.length < 50) {
+    errors.push('SUPABASE_SERVICE_ROLE_KEY parece inválida (muito curta)');
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
+}
+
+const configValidation = validateSupabaseConfig();
+
+if (!configValidation.isValid) {
+  console.error('❌ Supabase não configurado corretamente:');
+  configValidation.errors.forEach((error) => {
+    console.error(`  - ${error}`);
+  });
+  console.error('\n📝 Para corrigir:');
+  console.error('  1. Crie um arquivo .env.local na raiz do projeto');
+  console.error('  2. Adicione as variáveis:');
+  console.error('     NEXT_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co');
+  console.error('     SUPABASE_SERVICE_ROLE_KEY=sua-service-role-key');
+  console.error('  3. Reinicie o servidor de desenvolvimento');
 }
 
 // Cliente Supabase para operações server-side (usa service role key para bypass RLS)
-export const supabase = SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY
+export const supabase: SupabaseClient | null = configValidation.isValid && SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY
   ? createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
       auth: {
         autoRefreshToken: false,
         persistSession: false,
       },
+      db: {
+        schema: 'public',
+      },
     })
   : null;
+
+// Função para verificar conexão com Supabase
+export async function testSupabaseConnection(): Promise<{
+  success: boolean;
+  error?: string;
+  details?: {
+    connected: boolean;
+    tableExists: boolean;
+    canRead: boolean;
+    canWrite: boolean;
+  };
+}> {
+  if (!supabase) {
+    return {
+      success: false,
+      error: 'Supabase não configurado',
+    };
+  }
+
+  const details = {
+    connected: false,
+    tableExists: false,
+    canRead: false,
+    canWrite: false,
+  };
+
+  try {
+    // Teste 1: Verificar se consegue conectar (fazendo uma query simples)
+    const { data, error } = await supabase
+      .from('workshop_registrations')
+      .select('id')
+      .limit(1);
+
+    if (error) {
+      // Verificar se é erro de tabela não encontrada
+      if (error.code === '42P01' || error.message.includes('does not exist')) {
+        return {
+          success: false,
+          error: 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql',
+          details: {
+            ...details,
+            connected: true,
+          },
+        };
+      }
+
+      return {
+        success: false,
+        error: `Erro ao conectar: ${error.message} (código: ${error.code})`,
+        details: {
+          ...details,
+          connected: true,
+        },
+      };
+    }
+
+    details.connected = true;
+    details.tableExists = true;
+    details.canRead = true;
+
+    // Teste 2: Verificar se consegue escrever (fazendo um upsert de teste que será revertido)
+    const testChargeId = `test-connection-${Date.now()}`;
+    const { error: writeError } = await supabase
+      .from('workshop_registrations')
+      .upsert(
+        {
+          charge_id: testChargeId,
+          status: 'TEST',
+          nome: 'Test Connection',
+        },
+        {
+          onConflict: 'charge_id',
+        }
+      );
+
+    if (writeError) {
+      return {
+        success: false,
+        error: `Erro ao escrever: ${writeError.message} (código: ${writeError.code})`,
+        details: {
+          ...details,
+          canWrite: false,
+        },
+      };
+    }
+
+    details.canWrite = true;
+
+    // Limpar registro de teste
+    await supabase
+      .from('workshop_registrations')
+      .delete()
+      .eq('charge_id', testChargeId);
+
+    return {
+      success: true,
+      details,
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      error: `Erro inesperado ao testar conexão: ${error.message}`,
+      details,
+    };
+  }
+}
 
 // Tipos para a tabela workshop_registrations
 export interface WorkshopRegistration {
@@ -43,6 +185,46 @@ export interface WorkshopRegistration {
 }
 
 /**
+ * Retry logic para operações do Supabase
+ */
+async function withRetry<T>(
+  operation: () => Promise<T>,
+  maxRetries: number = 3,
+  delayMs: number = 1000
+): Promise<T> {
+  let lastError: any;
+  
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await operation();
+    } catch (error: any) {
+      lastError = error;
+      
+      // Não fazer retry para erros de validação ou configuração
+      if (
+        error.code === '23505' || // Unique constraint violation
+        error.code === '23503' || // Foreign key violation
+        error.code === '42P01' || // Table doesn't exist
+        error.message?.includes('not configured')
+      ) {
+        throw error;
+      }
+
+      if (attempt < maxRetries) {
+        const waitTime = delayMs * attempt;
+        console.warn(`⚠️ Tentativa ${attempt}/${maxRetries} falhou, tentando novamente em ${waitTime}ms...`, {
+          error: error.message,
+          code: error.code,
+        });
+        await new Promise((resolve) => setTimeout(resolve, waitTime));
+      }
+    }
+  }
+  
+  throw lastError;
+}
+
+/**
  * Cria ou atualiza um registro de workshop no Supabase
  * @param data Dados do registro do workshop
  * @returns Resultado da operação
@@ -51,8 +233,22 @@ export async function upsertWorkshopRegistration(
   data: WorkshopRegistration
 ): Promise<{ success: boolean; error?: string; data?: WorkshopRegistration }> {
   if (!supabase) {
-    console.error('❌ Supabase não configurado');
-    return { success: false, error: 'Supabase não configurado' };
+    const errorMsg = 'Supabase não configurado. Verifique NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  // Validação básica dos dados
+  if (!data.charge_id) {
+    const errorMsg = 'charge_id é obrigatório';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  if (!data.status) {
+    const errorMsg = 'status é obrigatório';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
   }
 
   try {
@@ -83,25 +279,49 @@ export async function upsertWorkshopRegistration(
       registrationData.created_at = new Date().toISOString();
     }
 
-    // Usar upsert para criar ou atualizar baseado no charge_id
-    const { data: result, error } = await supabase
-      .from('workshop_registrations')
-      .upsert(registrationData, {
-        onConflict: 'charge_id',
-        ignoreDuplicates: false,
-      })
-      .select()
-      .single();
+    // Usar retry logic para operações críticas
+    const { data: result, error } = await withRetry(async () => {
+      const response = await supabase!
+        .from('workshop_registrations')
+        .upsert(registrationData, {
+          onConflict: 'charge_id',
+          ignoreDuplicates: false,
+        })
+        .select()
+        .single();
+      
+      if (response.error) {
+        throw response.error;
+      }
+      
+      return response;
+    });
 
     if (error) {
+      // Tratamento específico de erros comuns
+      let errorMessage = error.message;
+      
+      if (error.code === '42P01') {
+        errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
+      } else if (error.code === '23505') {
+        errorMessage = `Registro com charge_id ${data.charge_id} já existe (violação de constraint único)`;
+      } else if (error.code === '23502') {
+        errorMessage = `Campo obrigatório ausente: ${error.column || 'desconhecido'}`;
+      } else if (error.code === 'PGRST301') {
+        errorMessage = 'Erro de permissão. Verifique se a service role key está correta';
+      }
+
       console.error('❌ Erro ao salvar registro no Supabase:', {
-        error: error.message,
+        error: errorMessage,
         code: error.code,
         details: error.details,
         hint: error.hint,
         charge_id: data.charge_id,
+        email: data.email,
+        status: data.status,
       });
-      return { success: false, error: error.message };
+      
+      return { success: false, error: errorMessage };
     }
 
     console.log('✅ Registro do workshop salvo no Supabase:', {
@@ -113,8 +333,13 @@ export async function upsertWorkshopRegistration(
 
     return { success: true, data: result as WorkshopRegistration };
   } catch (error: any) {
-    console.error('❌ Erro inesperado ao salvar no Supabase:', error);
-    return { success: false, error: error.message || 'Erro desconhecido' };
+    const errorMessage = error.message || 'Erro desconhecido';
+    console.error('❌ Erro inesperado ao salvar no Supabase:', {
+      error: errorMessage,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+      charge_id: data.charge_id,
+    });
+    return { success: false, error: errorMessage };
   }
 }
 
@@ -129,26 +354,54 @@ export async function updateEmailStatus(
   emailSent: boolean = true
 ): Promise<{ success: boolean; error?: string }> {
   if (!supabase) {
-    return { success: false, error: 'Supabase não configurado' };
+    const errorMsg = 'Supabase não configurado. Verifique NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  if (!chargeId) {
+    const errorMsg = 'chargeId é obrigatório';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
   }
 
   try {
-    const { error } = await supabase
-      .from('workshop_registrations')
-      .update({
-        email_sent: emailSent,
-        email_sent_at: emailSent ? new Date().toISOString() : null,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('charge_id', chargeId);
+    const { error } = await withRetry(async () => {
+      const response = await supabase!
+        .from('workshop_registrations')
+        .update({
+          email_sent: emailSent,
+          email_sent_at: emailSent ? new Date().toISOString() : null,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('charge_id', chargeId);
+      
+      if (response.error) {
+        throw response.error;
+      }
+      
+      return response;
+    });
 
     if (error) {
+      let errorMessage = error.message;
+      
+      if (error.code === '42P01') {
+        errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
+      } else if (error.code === 'PGRST116') {
+        // Registro não encontrado - não é necessariamente um erro crítico
+        console.warn('⚠️ Registro não encontrado ao atualizar status de email:', {
+          charge_id: chargeId,
+        });
+        return { success: false, error: 'Registro não encontrado' };
+      }
+
       console.error('❌ Erro ao atualizar status de email:', {
-        error: error.message,
+        error: errorMessage,
         code: error.code,
         charge_id: chargeId,
       });
-      return { success: false, error: error.message };
+      return { success: false, error: errorMessage };
     }
 
     console.log('✅ Status de email atualizado no Supabase:', {
@@ -158,8 +411,13 @@ export async function updateEmailStatus(
 
     return { success: true };
   } catch (error: any) {
-    console.error('❌ Erro inesperado ao atualizar status de email:', error);
-    return { success: false, error: error.message || 'Erro desconhecido' };
+    const errorMessage = error.message || 'Erro desconhecido';
+    console.error('❌ Erro inesperado ao atualizar status de email:', {
+      error: errorMessage,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+      charge_id: chargeId,
+    });
+    return { success: false, error: errorMessage };
   }
 }
 
@@ -172,29 +430,61 @@ export async function getWorkshopRegistration(
   chargeId: string
 ): Promise<{ success: boolean; data?: WorkshopRegistration; error?: string }> {
   if (!supabase) {
-    return { success: false, error: 'Supabase não configurado' };
+    const errorMsg = 'Supabase não configurado. Verifique NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  if (!chargeId) {
+    const errorMsg = 'chargeId é obrigatório';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
   }
 
   try {
-    const { data, error } = await supabase
-      .from('workshop_registrations')
-      .select('*')
-      .eq('charge_id', chargeId)
-      .single();
+    const { data, error } = await withRetry(async () => {
+      const response = await supabase!
+        .from('workshop_registrations')
+        .select('*')
+        .eq('charge_id', chargeId)
+        .single();
+      
+      if (response.error && response.error.code !== 'PGRST116') {
+        throw response.error;
+      }
+      
+      return response;
+    });
 
     if (error) {
       if (error.code === 'PGRST116') {
-        // Registro não encontrado
+        // Registro não encontrado - não é um erro, apenas não existe
         return { success: true, data: undefined };
       }
-      console.error('❌ Erro ao buscar registro:', error);
-      return { success: false, error: error.message };
+
+      let errorMessage = error.message;
+      
+      if (error.code === '42P01') {
+        errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
+      }
+
+      console.error('❌ Erro ao buscar registro:', {
+        error: errorMessage,
+        code: error.code,
+        charge_id: chargeId,
+      });
+      return { success: false, error: errorMessage };
     }
 
     return { success: true, data: data as WorkshopRegistration };
   } catch (error: any) {
-    console.error('❌ Erro inesperado ao buscar registro:', error);
-    return { success: false, error: error.message || 'Erro desconhecido' };
+    const errorMessage = error.message || 'Erro desconhecido';
+    console.error('❌ Erro inesperado ao buscar registro:', {
+      error: errorMessage,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+      charge_id: chargeId,
+    });
+    return { success: false, error: errorMessage };
   }
 }
 

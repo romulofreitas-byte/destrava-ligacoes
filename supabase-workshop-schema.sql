@@ -1,10 +1,12 @@
 -- Schema SQL para criar a tabela workshop_registrations no Supabase
 -- Execute este script no SQL Editor do Supabase
+-- IMPORTANTE: Este script é idempotente - pode ser executado múltiplas vezes sem problemas
 
 -- Criar tabela workshop_registrations
+-- A constraint UNIQUE em charge_id é essencial para o funcionamento do upsert
 CREATE TABLE IF NOT EXISTS workshop_registrations (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  charge_id TEXT UNIQUE NOT NULL,
+  charge_id TEXT UNIQUE NOT NULL, -- Constraint UNIQUE necessário para upsert com onConflict
   reference_id TEXT,
   
   -- Dados do Cliente
@@ -34,10 +36,22 @@ CREATE TABLE IF NOT EXISTS workshop_registrations (
 );
 
 -- Criar índices para consultas rápidas
+-- Nota: O índice em charge_id é redundante pois já existe constraint UNIQUE, mas não causa problemas
 CREATE INDEX IF NOT EXISTS idx_workshop_registrations_charge_id ON workshop_registrations(charge_id);
 CREATE INDEX IF NOT EXISTS idx_workshop_registrations_email ON workshop_registrations(email);
 CREATE INDEX IF NOT EXISTS idx_workshop_registrations_status ON workshop_registrations(status);
 CREATE INDEX IF NOT EXISTS idx_workshop_registrations_created_at ON workshop_registrations(created_at DESC);
+
+-- Verificar se a tabela foi criada corretamente (opcional - apenas para validação)
+-- SELECT 
+--   table_name, 
+--   column_name, 
+--   data_type, 
+--   is_nullable,
+--   column_default
+-- FROM information_schema.columns 
+-- WHERE table_name = 'workshop_registrations' 
+-- ORDER BY ordinal_position;
 
 -- Criar função para atualizar updated_at automaticamente
 CREATE OR REPLACE FUNCTION update_updated_at_column()
