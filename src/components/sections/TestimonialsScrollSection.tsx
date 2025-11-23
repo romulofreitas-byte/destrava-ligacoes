@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { MessageSquare } from 'lucide-react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
 
@@ -50,7 +50,9 @@ const testimonials = [
 
 export const TestimonialsScrollSection: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   // Duplicar array para criar loop infinito sem "pulo"
   const duplicatedTestimonials = [...testimonials, ...testimonials];
@@ -65,6 +67,33 @@ export const TestimonialsScrollSection: React.FC = () => {
     };
   }, []); // Gerar apenas uma vez quando o componente monta
 
+  // IntersectionObserver para detectar quando a seção entra na viewport
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Dispara quando 10% da seção está visível
+        rootMargin: '0px',
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   // Toggle pause/resume - funciona com onMouseDown para capturar o evento imediatamente
   const handleTogglePause = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -74,6 +103,7 @@ export const TestimonialsScrollSection: React.FC = () => {
 
   return (
     <section 
+      ref={sectionRef}
       id="depoimentos-scroll" 
       className="relative overflow-hidden py-20 md:py-[75px] bg-gray-900"
     >
@@ -135,7 +165,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 1 */}
                 <div className="testimonials-column" style={{ animationDelay: '0s' }}>
                   <div 
-                    className={`testimonials-scroll testimonials-scroll-mobile testimonials-scroll-col1 ${isPaused ? 'paused' : ''}`}
+                    className={`testimonials-scroll testimonials-scroll-mobile testimonials-scroll-col1 ${isPaused ? 'paused' : ''} ${isVisible ? 'animation-running' : ''}`}
                     style={{
                       '--initial-offset': `-${initialPositions.col1}%`
                     } as React.CSSProperties}
@@ -167,7 +197,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 2 */}
                 <div className="hidden md:block testimonials-column" style={{ animationDelay: '33s' }}>
                   <div 
-                    className={`testimonials-scroll testimonials-scroll-col2 ${isPaused ? 'paused' : ''}`}
+                    className={`testimonials-scroll testimonials-scroll-col2 ${isPaused ? 'paused' : ''} ${isVisible ? 'animation-running' : ''}`}
                     style={{
                       '--initial-offset': `-${initialPositions.col2}%`
                     } as React.CSSProperties}
@@ -199,7 +229,7 @@ export const TestimonialsScrollSection: React.FC = () => {
                 {/* Column 3 - Only on desktop */}
                 <div className="hidden lg:block testimonials-column" style={{ animationDelay: '67s' }}>
                   <div 
-                    className={`testimonials-scroll testimonials-scroll-col3 ${isPaused ? 'paused' : ''}`}
+                    className={`testimonials-scroll testimonials-scroll-col3 ${isPaused ? 'paused' : ''} ${isVisible ? 'animation-running' : ''}`}
                     style={{
                       '--initial-offset': `-${initialPositions.col3}%`
                     } as React.CSSProperties}
@@ -246,6 +276,8 @@ export const TestimonialsScrollSection: React.FC = () => {
           animation: scroll-up linear infinite;
           will-change: transform;
           animation-fill-mode: both;
+          /* Garantir que a animação inicie automaticamente no mobile */
+          animation-play-state: running;
         }
 
         /* Aplicar offset inicial apenas no desktop */
@@ -259,6 +291,11 @@ export const TestimonialsScrollSection: React.FC = () => {
 
         .testimonials-scroll.paused {
           animation-play-state: paused !important;
+        }
+
+        /* Forçar animação a rodar quando a seção estiver visível */
+        .testimonials-scroll.animation-running {
+          animation-play-state: running !important;
         }
 
         /* Durações para desktop/tablet (aumentadas em 40%) */
@@ -296,6 +333,8 @@ export const TestimonialsScrollSection: React.FC = () => {
           
           .testimonials-scroll-mobile {
             animation-duration: 168s !important;
+            /* Garantir que a animação inicie automaticamente no mobile */
+            animation-play-state: running !important;
           }
         }
       `}</style>
