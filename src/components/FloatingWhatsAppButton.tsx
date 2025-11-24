@@ -33,7 +33,7 @@ export const FloatingWhatsAppButton: React.FC = () => {
       rel="noopener noreferrer"
       onClick={handleClick}
       className={`
-        fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[60]
+        fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[80]
         group flex items-center gap-2 sm:gap-3
         px-4 py-3 sm:px-5 sm:py-4
         bg-gradient-to-r from-green-500 to-green-600
