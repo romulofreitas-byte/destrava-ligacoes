@@ -170,11 +170,11 @@ export const HeroSectionWorkshop: React.FC = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="inline-flex flex-col items-center space-y-3 animate-fade-in-up relative z-[70]" style={{animationDelay: '0.2s'}}>
+            <div className="inline-flex flex-col items-center space-y-3 animate-fade-in-up relative z-10" style={{animationDelay: '0.2s'}}>
               <a 
                 href="#inscricao"
                 onClick={handleCTAClick}
-                className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-[70]"
+                className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10"
               >
                 <span className="relative drop-shadow-sm">Quero Destravar Minhas Ligações por R$ 49,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -232,11 +232,11 @@ export const HeroSectionWorkshop: React.FC = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="inline-flex flex-col items-start space-y-2 animate-fade-in-up relative z-[70]" style={{animationDelay: '0.2s'}}>
+            <div className="inline-flex flex-col items-start space-y-2 animate-fade-in-up relative z-10" style={{animationDelay: '0.2s'}}>
               <a 
                 href="#inscricao"
                 onClick={handleCTAClick}
-                className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-[70]"
+                className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10"
               >
                 <span className="relative drop-shadow-sm">Quero Destravar Minhas Ligações por R$ 49,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

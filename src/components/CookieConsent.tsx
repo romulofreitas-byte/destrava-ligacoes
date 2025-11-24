@@ -100,7 +100,7 @@ export const CookieConsent: React.FC = () => {
 
   return (
     <div 
-      className="fixed bottom-0 left-0 right-0 z-50 animate-in slide-in-from-bottom-4 fade-in duration-500"
+      className="fixed bottom-0 left-0 right-0 z-[100] animate-in slide-in-from-bottom-4 fade-in duration-500"
       role="dialog"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"

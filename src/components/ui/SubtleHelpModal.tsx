@@ -137,7 +137,7 @@ export const SubtleHelpModal: React.FC = () => {
 
   return (
     <div 
-      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[65] max-w-[320px] sm:max-w-[380px] w-full animate-slide-in-left"
+      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[95] max-w-[320px] sm:max-w-[380px] w-full animate-slide-in-left"
     >
       <div className="relative bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl p-4 sm:p-5 backdrop-blur-sm">
         {/* Close Button */}
