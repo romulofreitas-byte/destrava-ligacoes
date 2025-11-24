@@ -39,7 +39,7 @@ export const TestimonialsVideoSection: React.FC = () => {
     {
       id: 'lucas',
       title: 'Lucas - Destravamento após anos travado',
-      description: 'Mentorado da Mentoria Elite Pódium que estava travado há anos e conseguiu destravar através do processo de destravamento',
+      description: 'Mentorado que estava travado há anos e conseguiu destravar através do processo de destravamento',
       url: 'https://youtu.be/7jmzCwzby3g',
       icon: Users,
       type: 'Depoimento'
@@ -47,7 +47,7 @@ export const TestimonialsVideoSection: React.FC = () => {
     {
       id: 'vinicius',
       title: 'Vinícius - Pagou R$3k, R$5k em mentorias mas só teve resultado na Pódium',
-      description: 'Mentorado da Mentoria Elite Pódium que passou pelo processo de destravamento e obteve resultados reais',
+      description: 'Mentorado que passou pelo processo de destravamento e obteve resultados reais',
       url: 'https://youtu.be/X14E0T7IfHU',
       icon: Users,
       type: 'Depoimento'
@@ -84,7 +84,7 @@ export const TestimonialsVideoSection: React.FC = () => {
 
           {/* Subheadline */}
           <p className="text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            Veja depoimentos reais de mentorados da Mentoria Elite Pódium que passaram pelo processo de destravamento e transformaram suas ligações
+            Veja depoimentos reais de mentorados que passaram pelo processo de destravamento e transformaram suas ligações
           </p>
         </div>
 

@@ -22,12 +22,12 @@ export const WorkshopPageContent: React.FC = () => {
     <ModalProvider>
       <main className="min-h-screen bg-gray-900">
         <HeroSectionWorkshop />
+        <LiveCallsSection />
         <EventDetailsSection />
         <WhoIsItForWorkshopSection />
         <WhyYouStuckSection />
         <TestimonialsVideoSection />
         <WhatYouWillLearnSection />
-        <LiveCallsSection />
         <AboutRomuloWorkshopSection />
         <AfterWorkshopSection />
         <TestimonialsScrollSection />

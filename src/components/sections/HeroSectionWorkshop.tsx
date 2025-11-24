@@ -32,23 +32,29 @@ export const HeroSectionWorkshop: React.FC = () => {
   }, []);
 
   const handleCTAClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    trackCTAClick('Hero Section Workshop - CTA Button', 'hero-workshop');
-    
-    // Prevent default anchor behavior
-    e.preventDefault();
-    
-    // Find the target section
-    const targetSection = document.getElementById('inscricao');
-    
-    if (targetSection) {
-      // Smooth scroll to the section
-      targetSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    } else {
-      // Fallback: try to navigate to the URL if section not found
-      window.location.href = '#inscricao';
+    try {
+      trackCTAClick('Hero Section Workshop - CTA Button', 'hero-workshop');
+      
+      // Find the target section
+      const targetSection = document.getElementById('inscricao');
+      
+      if (targetSection) {
+        // Prevent default only if we can scroll smoothly
+        e.preventDefault();
+        // Smooth scroll to the section
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      } else {
+        // If section not found, let the default anchor behavior work
+        // Don't prevent default - let browser handle the navigation
+        console.warn('Section #inscricao not found, using default anchor behavior');
+      }
+    } catch (error) {
+      // If any error occurs, let the default anchor behavior work
+      console.error('Error in CTA click handler:', error);
+      // Don't prevent default - let browser handle the navigation
     }
   };
 
@@ -106,7 +112,7 @@ export const HeroSectionWorkshop: React.FC = () => {
         {/* Badge - Above Image */}
         <div className="px-4 pt-4 pb-2 text-center">
           <div className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full backdrop-blur-sm shadow-lg animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">26 de Novembro • 3 horas intensas • 100% prático</span>
+            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">26 de Novembro • 3 horas intensas • 100% prático • <span className="text-red-400 font-bold">Sem Replay</span></span>
           </div>
         </div>
 
@@ -126,7 +132,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                   height={650}
                   className="w-full h-auto object-contain"
                   priority
-                  quality={90}
+                  quality={75}
                   sizes="(max-width: 768px) 50vw, 100vw"
                 />
                 {/* Gradiente aplicado diretamente na imagem */}
@@ -146,19 +152,31 @@ export const HeroSectionWorkshop: React.FC = () => {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-[11px] text-gray-300 font-light leading-relaxed drop-shadow-md animate-fade-in-up mb-6" style={{animationDelay: '0.15s'}}>
+            <p className="text-[11px] text-gray-300 font-light leading-relaxed drop-shadow-md animate-fade-in-up mb-4" style={{animationDelay: '0.15s'}}>
               O Workshop que transforma medo em coragem,<br className="lg:hidden" />{' '}
               insegurança em técnica e travas em resultados reais.
             </p>
 
+            {/* Price Display */}
+            <div className="mb-4 animate-fade-in-up" style={{animationDelay: '0.17s'}}>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
+                <span className="text-gray-400 text-[10px] line-through">De R$ 297</span>
+                <span className="text-yellow-400 font-bold text-sm">R$ 49,99</span>
+              </div>
+              <div className="mt-1.5 flex items-center justify-center gap-1.5">
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                <span className="text-red-400 text-[9px] font-semibold">26 de Novembro • Sem Replay</span>
+              </div>
+            </div>
+
             {/* CTA Button */}
-            <div className="inline-flex flex-col items-center space-y-3 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <div className="inline-flex flex-col items-center space-y-3 animate-fade-in-up relative z-[70]" style={{animationDelay: '0.2s'}}>
               <a 
                 href="#inscricao"
                 onClick={handleCTAClick}
-                className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer"
+                className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-[70]"
               >
-                <span className="relative drop-shadow-sm">Garantir Minha Vaga</span>
+                <span className="relative drop-shadow-sm">Quero Destravar Minhas Ligações por R$ 49,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 
@@ -187,7 +205,7 @@ export const HeroSectionWorkshop: React.FC = () => {
           <div className="max-w-2xl text-left relative z-30">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-4 backdrop-blur-sm shadow-lg hover:shadow-yellow-400/20 transition-all duration-300 animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">26 de Novembro • 3 horas intensas • 100% prático</span>
+              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">26 de Novembro • 3 horas intensas • 100% prático • <span className="text-red-400 font-bold">Sem Replay</span></span>
             </div>
 
             {/* Main Headline */}
@@ -197,18 +215,30 @@ export const HeroSectionWorkshop: React.FC = () => {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-[13px] sm:text-base text-gray-300 font-light leading-relaxed mb-6 drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.15s'}}>
+            <p className="text-[13px] sm:text-base text-gray-300 font-light leading-relaxed mb-4 drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.15s'}}>
               O Workshop que transforma medo em coragem, insegurança em técnica e travas em resultados reais. Aprenda o discurso perfeito e assista ligações reais feitas ao vivo.
             </p>
 
+            {/* Price Display */}
+            <div className="mb-4 animate-fade-in-up" style={{animationDelay: '0.17s'}}>
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
+                <span className="text-gray-400 text-sm line-through">De R$ 297</span>
+                <span className="text-yellow-400 font-bold text-xl">R$ 49,99</span>
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                <span className="text-red-400 text-xs font-semibold">26 de Novembro • Sem Replay</span>
+              </div>
+            </div>
+
             {/* CTA Button */}
-            <div className="inline-flex flex-col items-start space-y-2 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <div className="inline-flex flex-col items-start space-y-2 animate-fade-in-up relative z-[70]" style={{animationDelay: '0.2s'}}>
               <a 
                 href="#inscricao"
                 onClick={handleCTAClick}
-                className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer"
+                className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-[70]"
               >
-                <span className="relative drop-shadow-sm">Garantir Minha Vaga</span>
+                <span className="relative drop-shadow-sm">Quero Destravar Minhas Ligações por R$ 49,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 
@@ -239,7 +269,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                   height={1318}
                   className="w-full h-auto object-contain hero-image-blend-natural"
                   priority
-                  quality={90}
+                  quality={75}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 {/* Gradiente aplicado diretamente na imagem - limitado à largura da foto */}
