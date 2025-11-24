@@ -251,71 +251,84 @@ export async function upsertWorkshopRegistration(
     return { success: false, error: errorMsg };
   }
 
+  // Preparar dados para inserção/atualização
+  const registrationData: Partial<WorkshopRegistration> = {
+    charge_id: data.charge_id,
+    reference_id: data.reference_id,
+    nome: data.nome,
+    email: data.email,
+    tax_id: data.tax_id,
+    telefone_country: data.telefone_country,
+    telefone_area: data.telefone_area,
+    telefone_number: data.telefone_number,
+    status: data.status,
+    amount: data.amount,
+    amount_brl: data.amount_brl,
+    payment_method: data.payment_method,
+    installments: data.installments,
+    description: data.description,
+    paid_at: data.paid_at,
+    email_sent: data.email_sent ?? false,
+    email_sent_at: data.email_sent_at,
+    updated_at: new Date().toISOString(),
+  };
+
+  // Se não tiver created_at, definir como agora
+  if (!data.created_at) {
+    registrationData.created_at = new Date().toISOString();
+  }
+
+  // Usar retry logic para operações críticas
   try {
-    // Preparar dados para inserção/atualização
-    const registrationData: Partial<WorkshopRegistration> = {
-      charge_id: data.charge_id,
-      reference_id: data.reference_id,
-      nome: data.nome,
-      email: data.email,
-      tax_id: data.tax_id,
-      telefone_country: data.telefone_country,
-      telefone_area: data.telefone_area,
-      telefone_number: data.telefone_number,
-      status: data.status,
-      amount: data.amount,
-      amount_brl: data.amount_brl,
-      payment_method: data.payment_method,
-      installments: data.installments,
-      description: data.description,
-      paid_at: data.paid_at,
-      email_sent: data.email_sent ?? false,
-      email_sent_at: data.email_sent_at,
-      updated_at: new Date().toISOString(),
-    };
+      const result = await withRetry(async () => {
+        const response = await supabase!
+          .from('workshop_registrations')
+          .upsert(registrationData, {
+            onConflict: 'charge_id',
+            ignoreDuplicates: false,
+          })
+          .select()
+          .single();
+        
+        if (response.error) {
+          throw response.error;
+        }
+        
+        return response;
+      });
 
-    // Se não tiver created_at, definir como agora
-    if (!data.created_at) {
-      registrationData.created_at = new Date().toISOString();
-    }
-
-    // Usar retry logic para operações críticas
-    const { data: result, error } = await withRetry(async () => {
-      const response = await supabase!
-        .from('workshop_registrations')
-        .upsert(registrationData, {
-          onConflict: 'charge_id',
-          ignoreDuplicates: false,
-        })
-        .select()
-        .single();
-      
-      if (response.error) {
-        throw response.error;
+      // Se chegou aqui, a operação foi bem-sucedida
+      if (result.data) {
+        console.log('✅ Registro do workshop salvo no Supabase:', {
+          charge_id: data.charge_id,
+          email: data.email,
+          status: data.status,
+          id: result.data.id,
+        });
+        return { success: true, data: result.data as WorkshopRegistration };
       }
       
-      return response;
-    });
-
-    if (error) {
+      // Se não tem data mas também não tem error, algo estranho aconteceu
+      return { success: false, error: 'Operação concluída mas nenhum dado retornado' };
+    } catch (error: any) {
       // Tratamento específico de erros comuns
-      let errorMessage = error.message;
+      let errorMessage = error?.message || 'Erro desconhecido ao salvar registro';
       
-      if (error.code === '42P01') {
+      if (error?.code === '42P01') {
         errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
-      } else if (error.code === '23505') {
+      } else if (error?.code === '23505') {
         errorMessage = `Registro com charge_id ${data.charge_id} já existe (violação de constraint único)`;
-      } else if (error.code === '23502') {
+      } else if (error?.code === '23502') {
         errorMessage = `Campo obrigatório ausente: ${error.column || 'desconhecido'}`;
-      } else if (error.code === 'PGRST301') {
+      } else if (error?.code === 'PGRST301') {
         errorMessage = 'Erro de permissão. Verifique se a service role key está correta';
       }
 
       console.error('❌ Erro ao salvar registro no Supabase:', {
         error: errorMessage,
-        code: error.code,
-        details: error.details,
-        hint: error.hint,
+        code: error?.code,
+        details: error?.details,
+        hint: error?.hint,
         charge_id: data.charge_id,
         email: data.email,
         status: data.status,
@@ -323,24 +336,6 @@ export async function upsertWorkshopRegistration(
       
       return { success: false, error: errorMessage };
     }
-
-    console.log('✅ Registro do workshop salvo no Supabase:', {
-      charge_id: data.charge_id,
-      email: data.email,
-      status: data.status,
-      id: result?.id,
-    });
-
-    return { success: true, data: result as WorkshopRegistration };
-  } catch (error: any) {
-    const errorMessage = error.message || 'Erro desconhecido';
-    console.error('❌ Erro inesperado ao salvar no Supabase:', {
-      error: errorMessage,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
-      charge_id: data.charge_id,
-    });
-    return { success: false, error: errorMessage };
-  }
 }
 
 /**
@@ -366,7 +361,7 @@ export async function updateEmailStatus(
   }
 
   try {
-    const { error } = await withRetry(async () => {
+    await withRetry(async () => {
       const response = await supabase!
         .from('workshop_registrations')
         .update({
@@ -383,27 +378,6 @@ export async function updateEmailStatus(
       return response;
     });
 
-    if (error) {
-      let errorMessage = error.message;
-      
-      if (error.code === '42P01') {
-        errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
-      } else if (error.code === 'PGRST116') {
-        // Registro não encontrado - não é necessariamente um erro crítico
-        console.warn('⚠️ Registro não encontrado ao atualizar status de email:', {
-          charge_id: chargeId,
-        });
-        return { success: false, error: 'Registro não encontrado' };
-      }
-
-      console.error('❌ Erro ao atualizar status de email:', {
-        error: errorMessage,
-        code: error.code,
-        charge_id: chargeId,
-      });
-      return { success: false, error: errorMessage };
-    }
-
     console.log('✅ Status de email atualizado no Supabase:', {
       charge_id: chargeId,
       email_sent: emailSent,
@@ -411,10 +385,21 @@ export async function updateEmailStatus(
 
     return { success: true };
   } catch (error: any) {
-    const errorMessage = error.message || 'Erro desconhecido';
-    console.error('❌ Erro inesperado ao atualizar status de email:', {
+    let errorMessage = error?.message || 'Erro desconhecido ao atualizar status de email';
+    
+    if (error?.code === '42P01') {
+      errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
+    } else if (error?.code === 'PGRST116') {
+      // Registro não encontrado - não é necessariamente um erro crítico
+      console.warn('⚠️ Registro não encontrado ao atualizar status de email:', {
+        charge_id: chargeId,
+      });
+      return { success: false, error: 'Registro não encontrado' };
+    }
+
+    console.error('❌ Erro ao atualizar status de email:', {
       error: errorMessage,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+      code: error?.code,
       charge_id: chargeId,
     });
     return { success: false, error: errorMessage };
@@ -442,7 +427,7 @@ export async function getWorkshopRegistration(
   }
 
   try {
-    const { data, error } = await withRetry(async () => {
+    const result = await withRetry(async () => {
       const response = await supabase!
         .from('workshop_registrations')
         .select('*')
@@ -456,29 +441,34 @@ export async function getWorkshopRegistration(
       return response;
     });
 
-    if (error) {
-      if (error.code === 'PGRST116') {
+    if (result.error) {
+      if (result.error.code === 'PGRST116') {
         // Registro não encontrado - não é um erro, apenas não existe
         return { success: true, data: undefined };
       }
 
-      let errorMessage = error.message;
+      let errorMessage = result.error.message || 'Erro desconhecido ao buscar registro';
       
-      if (error.code === '42P01') {
+      if (result.error.code === '42P01') {
         errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
       }
 
       console.error('❌ Erro ao buscar registro:', {
         error: errorMessage,
-        code: error.code,
+        code: result.error.code,
         charge_id: chargeId,
       });
       return { success: false, error: errorMessage };
     }
 
-    return { success: true, data: data as WorkshopRegistration };
+    return { success: true, data: result.data as WorkshopRegistration };
   } catch (error: any) {
-    const errorMessage = error.message || 'Erro desconhecido';
+    let errorMessage = error?.message || 'Erro desconhecido ao buscar registro';
+    
+    if (error?.code === '42P01') {
+      errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
+    }
+    
     console.error('❌ Erro inesperado ao buscar registro:', {
       error: errorMessage,
       stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
