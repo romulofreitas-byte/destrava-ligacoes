@@ -1,4 +1,5 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { randomUUID } from 'crypto';
 
 // Configuração do Supabase
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
@@ -532,5 +533,73 @@ export async function getPaidRegistrations(): Promise<{ success: boolean; data?:
     });
     return { success: false, error: errorMessage };
   }
+}
+
+/**
+ * Adiciona um convidado especial (mentorado ou convidado da comunidade) ao Supabase
+ * Gera um charge_id único usando UUID e preenche campos de pagamento com valores padrão
+ * @param nome Nome do convidado
+ * @param email Email do convidado
+ * @param tipo Tipo de convidado: MENTORADO ou CONVIDADO
+ * @returns Resultado da operação
+ */
+export async function addInvitedGuest(
+  nome: string,
+  email: string,
+  tipo: 'MENTORADO' | 'CONVIDADO'
+): Promise<{ success: boolean; error?: string; data?: WorkshopRegistration; chargeId?: string }> {
+  if (!supabase) {
+    const errorMsg = 'Supabase não configurado. Verifique NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  // Validação básica
+  if (!nome || !email) {
+    const errorMsg = 'Nome e email são obrigatórios';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  // Gerar charge_id único usando UUID (formato: invite-{uuid})
+  const chargeId = `invite-${randomUUID()}`;
+
+  // Criar registro com valores padrão para pessoas que não compraram
+  const registrationData: WorkshopRegistration = {
+    charge_id: chargeId,
+    reference_id: `invitation-${tipo.toLowerCase()}-${Date.now()}`,
+    nome: nome,
+    email: email,
+    status: 'INVITED',
+    amount: 0,
+    amount_brl: 0.00,
+    payment_method: undefined,
+    installments: undefined,
+    description: `Convite especial - ${tipo === 'MENTORADO' ? 'Mentorado (Elite/Escuderia Pódium)' : 'Convidado (Comunidade Pódium)'}`,
+    email_sent: false,
+    paid_at: undefined,
+  };
+
+  // Usar upsertWorkshopRegistration existente
+  const result = await upsertWorkshopRegistration(registrationData);
+
+  if (result.success && result.data) {
+    console.log('✅ Convidado adicionado ao Supabase:', {
+      charge_id: chargeId,
+      email: email,
+      nome: nome,
+      tipo: tipo,
+    });
+    return { 
+      success: true, 
+      data: result.data,
+      chargeId: chargeId,
+    };
+  }
+
+  return { 
+    success: false, 
+    error: result.error || 'Erro desconhecido ao adicionar convidado',
+  };
 }
 
