@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start -p 3002",
     "lint": "next lint",
-    "test:email-pagamento": "node scripts/test-email-pagamento.js"
+    "test:email-pagamento": "node scripts/test-email-pagamento.js",
+    "send:retroactive-email": "node scripts/send-retroactive-email.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.84.0",

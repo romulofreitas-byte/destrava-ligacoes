@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendImmediateEmail, sendOneDayBeforeEmail, sendDayOfEmail, getEmailRecord } from '@/lib/email-cadence';
 import { getPaymentStatus } from '@/lib/pagbank';
+import { updateEmailStatus } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
@@ -55,6 +56,14 @@ export async function POST(request: NextRequest) {
     }
 
     if (result.success) {
+      // Atualizar Supabase após envio bem-sucedido
+      try {
+        await updateEmailStatus(chargeId, true);
+      } catch (supabaseError: any) {
+        console.warn('⚠️ Erro ao atualizar status de email no Supabase (não crítico):', supabaseError?.message);
+        // Não falhar a requisição se o Supabase falhar
+      }
+      
       return NextResponse.json({ 
         success: true,
         message: 'Email enviado com sucesso',

@@ -478,3 +478,59 @@ export async function getWorkshopRegistration(
   }
 }
 
+/**
+ * Busca todos os registros com pagamento confirmado que precisam receber e-mails agendados
+ * @returns Lista de registros com status PAID
+ */
+export async function getPaidRegistrations(): Promise<{ success: boolean; data?: WorkshopRegistration[]; error?: string }> {
+  if (!supabase) {
+    const errorMsg = 'Supabase não configurado. Verifique NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  try {
+    const result = await withRetry(async () => {
+      const response = await supabase!
+        .from('workshop_registrations')
+        .select('*')
+        .eq('status', 'PAID')
+        .not('email', 'is', null); // Apenas registros com email
+      
+      if (response.error) {
+        throw response.error;
+      }
+      
+      return response;
+    }) as { data: WorkshopRegistration[] | null; error: any };
+
+    if (result.error) {
+      let errorMessage = result.error?.message || 'Erro desconhecido ao buscar registros';
+      
+      if (result.error?.code === '42P01') {
+        errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
+      }
+
+      console.error('❌ Erro ao buscar registros:', {
+        error: errorMessage,
+        code: result.error?.code,
+      });
+      return { success: false, error: errorMessage };
+    }
+
+    return { success: true, data: (result.data || []) as WorkshopRegistration[] };
+  } catch (error: any) {
+    let errorMessage = error?.message || 'Erro desconhecido ao buscar registros';
+    
+    if (error?.code === '42P01') {
+      errorMessage = 'Tabela workshop_registrations não existe. Execute o script SQL em supabase-workshop-schema.sql';
+    }
+    
+    console.error('❌ Erro inesperado ao buscar registros:', {
+      error: errorMessage,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+    });
+    return { success: false, error: errorMessage };
+  }
+}
+

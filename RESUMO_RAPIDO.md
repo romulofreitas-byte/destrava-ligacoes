@@ -38,3 +38,7 @@ npm run dev
 
 Para instruções detalhadas, veja: **PASSOS_SETUP.md**
 
+
+
+
+

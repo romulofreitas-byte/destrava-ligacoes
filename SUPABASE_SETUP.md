@@ -73,3 +73,7 @@ Para verificar se a integração está funcionando:
 - Todos os dados do workshop são salvos em `workshop_registrations`
 - A integração é não-bloqueante (não interfere no fluxo de pagamento)
 
+
+
+
+

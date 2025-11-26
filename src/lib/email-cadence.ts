@@ -1,6 +1,7 @@
 import { sendEmail } from './email';
 import { getWorkshopEmailTemplate, getOneDayBeforeEmailTemplate, getOneHourBeforeEmailTemplate } from './email-templates';
 import { WORKSHOP_INFO } from './constants';
+import { updateEmailStatus, getWorkshopRegistration, getPaidRegistrations } from './supabase';
 
 export interface EmailCadenceData {
   email: string;
@@ -111,6 +112,13 @@ export async function sendOneDayBeforeEmail(data: EmailCadenceData): Promise<{ s
       record.sentAt.oneDayBefore = new Date();
       emailRecords.set(data.chargeId, record);
       console.log(`Email 1 dia antes enviado para ${data.email}`);
+      
+      // Atualizar Supabase para manter sincronização
+      try {
+        await updateEmailStatus(data.chargeId, true);
+      } catch (supabaseError: any) {
+        console.warn('⚠️ Erro ao atualizar status de email no Supabase (não crítico):', supabaseError?.message);
+      }
     }
 
     return result;
@@ -148,6 +156,13 @@ export async function sendDayOfEmail(data: EmailCadenceData): Promise<{ success:
       record.sentAt.oneHourBefore = new Date();
       emailRecords.set(data.chargeId, record);
       console.log(`Email de 1 hora antes enviado para ${data.email}`);
+      
+      // Atualizar Supabase para manter sincronização
+      try {
+        await updateEmailStatus(data.chargeId, true);
+      } catch (supabaseError: any) {
+        console.warn('⚠️ Erro ao atualizar status de email no Supabase (não crítico):', supabaseError?.message);
+      }
     }
 
     return result;
@@ -164,8 +179,29 @@ export async function checkAndSendScheduledEmails(): Promise<void> {
   const oneDayBefore = new Date(workshopDate);
   oneDayBefore.setDate(oneDayBefore.getDate() - 1);
   
+  // Buscar registros do Supabase com pagamento confirmado
+  const supabaseResult = await getPaidRegistrations();
+  const registrationsFromSupabase = supabaseResult.success && supabaseResult.data ? supabaseResult.data : [];
+  
+  // Sincronizar registros do Supabase com Map em memória
+  for (const registration of registrationsFromSupabase) {
+    if (registration.charge_id && registration.email) {
+      const existingRecord = getEmailRecord(registration.charge_id);
+      if (!existingRecord) {
+        // Criar registro no Map se não existir
+        createEmailRecord({
+          email: registration.email,
+          nome: registration.nome || registration.email.split('@')[0],
+          chargeId: registration.charge_id,
+          referenceId: registration.reference_id || '',
+        });
+      }
+    }
+  }
+  
   // Enviar email 1 dia antes (no dia 25 de novembro, pela manhã)
   if (now >= oneDayBefore && now < workshopDate) {
+    // Primeiro, processar registros do Map em memória
     for (const [chargeId, record] of emailRecords.entries()) {
       if (!record.emailsSent.oneDayBefore) {
         await sendOneDayBeforeEmail({
@@ -174,6 +210,22 @@ export async function checkAndSendScheduledEmails(): Promise<void> {
           chargeId: record.chargeId,
           referenceId: record.referenceId,
         });
+      }
+    }
+    
+    // Depois, processar registros do Supabase que não estão no Map
+    for (const registration of registrationsFromSupabase) {
+      if (registration.charge_id && registration.email) {
+        const record = getEmailRecord(registration.charge_id);
+        // Se não tem registro no Map ou não foi enviado, tentar enviar
+        if (!record || !record.emailsSent.oneDayBefore) {
+          await sendOneDayBeforeEmail({
+            email: registration.email,
+            nome: registration.nome || registration.email.split('@')[0],
+            chargeId: registration.charge_id,
+            referenceId: registration.reference_id || '',
+          });
+        }
       }
     }
   }
@@ -187,6 +239,7 @@ export async function checkAndSendScheduledEmails(): Promise<void> {
   const workshopStartTime = new Date(workshopDate);
   
   if (now >= oneHourBeforeStart && now < workshopStartTime) {
+    // Primeiro, processar registros do Map em memória
     for (const [chargeId, record] of emailRecords.entries()) {
       if (!record.emailsSent.oneHourBefore) {
         await sendDayOfEmail({
@@ -195,6 +248,22 @@ export async function checkAndSendScheduledEmails(): Promise<void> {
           chargeId: record.chargeId,
           referenceId: record.referenceId,
         });
+      }
+    }
+    
+    // Depois, processar registros do Supabase que não estão no Map
+    for (const registration of registrationsFromSupabase) {
+      if (registration.charge_id && registration.email) {
+        const record = getEmailRecord(registration.charge_id);
+        // Se não tem registro no Map ou não foi enviado, tentar enviar
+        if (!record || !record.emailsSent.oneHourBefore) {
+          await sendDayOfEmail({
+            email: registration.email,
+            nome: registration.nome || registration.email.split('@')[0],
+            chargeId: registration.charge_id,
+            referenceId: registration.reference_id || '',
+          });
+        }
       }
     }
   }
@@ -269,6 +338,124 @@ export async function sendOneHourBeforeEmailManual(email: string, nome?: string)
   } catch (error: any) {
     console.error('Erro ao enviar email de lembrete de 1 hora manual:', error);
     return { success: false, error: error.message || 'Erro ao enviar email' };
+  }
+}
+
+export interface RetroactiveEmailResult {
+  success: boolean;
+  emailsSent: {
+    immediate: boolean;
+    oneDayBefore: boolean;
+    oneHourBefore: boolean;
+  };
+  results: {
+    immediate?: { success: boolean; error?: string };
+    oneDayBefore?: { success: boolean; error?: string };
+    oneHourBefore?: { success: boolean; error?: string };
+  };
+  error?: string;
+}
+
+/**
+ * Envia e-mails retroativos para um aluno que comprou antes do sistema de e-mails ser instalado
+ * Calcula quais e-mails devem ser enviados baseado na data atual e prazos do workshop
+ */
+export async function sendRetroactiveEmails(
+  data: EmailCadenceData
+): Promise<RetroactiveEmailResult> {
+  try {
+    const now = new Date();
+    const workshopDate = WORKSHOP_INFO.dateObj;
+    const oneDayBefore = new Date(workshopDate);
+    oneDayBefore.setDate(oneDayBefore.getDate() - 1);
+    oneDayBefore.setHours(0, 0, 0, 0); // Início do dia 25/11
+    
+    const oneHourBefore = new Date(workshopDate);
+    oneHourBefore.setHours(oneHourBefore.getHours() - 1); // 26/11 às 12:00
+
+    // Garantir que existe um registro no Map em memória
+    let record = getEmailRecord(data.chargeId);
+    if (!record) {
+      record = createEmailRecord(data);
+    }
+
+    const result: RetroactiveEmailResult = {
+      success: true,
+      emailsSent: {
+        immediate: false,
+        oneDayBefore: false,
+        oneHourBefore: false,
+      },
+      results: {},
+    };
+
+    // 1. Email imediato: sempre enviar se não foi enviado
+    if (!record.emailsSent.immediate) {
+      console.log(`📧 Enviando email imediato para ${data.email}...`);
+      const immediateResult = await sendImmediateEmail(data);
+      result.results.immediate = immediateResult;
+      result.emailsSent.immediate = immediateResult.success;
+      
+      if (!immediateResult.success) {
+        result.success = false;
+      }
+    } else {
+      console.log(`✓ Email imediato já foi enviado para ${data.email}`);
+      result.emailsSent.immediate = true;
+      result.results.immediate = { success: true };
+    }
+
+    // 2. Email 1 dia antes: enviar se hoje >= 25/11 e não foi enviado
+    if (now >= oneDayBefore && !record.emailsSent.oneDayBefore) {
+      console.log(`📧 Enviando email de 1 dia antes para ${data.email}...`);
+      const oneDayResult = await sendOneDayBeforeEmail(data);
+      result.results.oneDayBefore = oneDayResult;
+      result.emailsSent.oneDayBefore = oneDayResult.success;
+      
+      if (!oneDayResult.success) {
+        result.success = false;
+      }
+    } else if (record.emailsSent.oneDayBefore) {
+      console.log(`✓ Email de 1 dia antes já foi enviado para ${data.email}`);
+      result.emailsSent.oneDayBefore = true;
+      result.results.oneDayBefore = { success: true };
+    } else {
+      console.log(`⏳ Email de 1 dia antes será enviado automaticamente em 25/11 para ${data.email}`);
+      result.results.oneDayBefore = { success: false, error: 'Ainda não é o momento de enviar (será enviado em 25/11)' };
+    }
+
+    // 3. Email 1 hora antes: enviar se hoje >= 26/11 12:00 e não foi enviado
+    if (now >= oneHourBefore && !record.emailsSent.oneHourBefore) {
+      console.log(`📧 Enviando email de 1 hora antes para ${data.email}...`);
+      const oneHourResult = await sendDayOfEmail(data);
+      result.results.oneHourBefore = oneHourResult;
+      result.emailsSent.oneHourBefore = oneHourResult.success;
+      
+      if (!oneHourResult.success) {
+        result.success = false;
+      }
+    } else if (record.emailsSent.oneHourBefore) {
+      console.log(`✓ Email de 1 hora antes já foi enviado para ${data.email}`);
+      result.emailsSent.oneHourBefore = true;
+      result.results.oneHourBefore = { success: true };
+    } else {
+      console.log(`⏳ Email de 1 hora antes será enviado automaticamente em 26/11 às 12:00 para ${data.email}`);
+      result.results.oneHourBefore = { success: false, error: 'Ainda não é o momento de enviar (será enviado em 26/11 às 12:00)' };
+    }
+
+    return result;
+  } catch (error: any) {
+    console.error('Erro ao enviar e-mails retroativos:', error);
+    return {
+      success: false,
+      emailsSent: {
+        immediate: false,
+        oneDayBefore: false,
+        oneHourBefore: false,
+      },
+      results: {},
+      error: error.message || 'Erro ao enviar e-mails retroativos',
+    };
   }
 }
 
