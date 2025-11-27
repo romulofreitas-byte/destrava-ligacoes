@@ -18,8 +18,8 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 // Informações do Workshop
 export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVE SUAS LIGAÇÕES | MUNDO PÓDIUM',
-  date: '26 de novembro de 2025',
-  dateObj: new Date('2025-11-26T13:00:00-03:00'), // 26 de novembro de 2025, 13:00 BRT
+  date: '10 de dezembro de 2025',
+  dateObj: new Date('2025-12-10T13:00:00-03:00'), // 10 de dezembro de 2025, 13:00 BRT
   time: '13:00 – 17:00',
   timezone: 'America/Sao_Paulo',
   duration: '4 horas',

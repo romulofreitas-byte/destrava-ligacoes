@@ -230,7 +230,7 @@ export async function checkAndSendScheduledEmails(): Promise<void> {
     }
   }
 
-  // Enviar email de 1 hora antes do evento (26 de novembro, às 12:00 BRT = 15:00 UTC)
+  // Enviar email de 1 hora antes do evento (10 de dezembro, às 12:00 BRT = 15:00 UTC)
   // Janela: entre 11h e 13h BRT (14h e 16h UTC)
   const oneHourBefore = new Date(workshopDate);
   oneHourBefore.setHours(oneHourBefore.getHours() - 1);
@@ -368,10 +368,10 @@ export async function sendRetroactiveEmails(
     const workshopDate = WORKSHOP_INFO.dateObj;
     const oneDayBefore = new Date(workshopDate);
     oneDayBefore.setDate(oneDayBefore.getDate() - 1);
-    oneDayBefore.setHours(0, 0, 0, 0); // Início do dia 25/11
+    oneDayBefore.setHours(0, 0, 0, 0); // Início do dia 9/12
     
     const oneHourBefore = new Date(workshopDate);
-    oneHourBefore.setHours(oneHourBefore.getHours() - 1); // 26/11 às 12:00
+    oneHourBefore.setHours(oneHourBefore.getHours() - 1); // 10/12 às 12:00
 
     // Garantir que existe um registro no Map em memória
     let record = getEmailRecord(data.chargeId);
@@ -424,7 +424,7 @@ export async function sendRetroactiveEmails(
       result.results.oneDayBefore = { success: false, error: 'Ainda não é o momento de enviar (será enviado em 25/11)' };
     }
 
-    // 3. Email 1 hora antes: enviar se hoje >= 26/11 12:00 e não foi enviado
+      // 3. Email 1 hora antes: enviar se hoje >= 10/12 12:00 e não foi enviado
     if (now >= oneHourBefore && !record.emailsSent.oneHourBefore) {
       console.log(`📧 Enviando email de 1 hora antes para ${data.email}...`);
       const oneHourResult = await sendDayOfEmail(data);
@@ -439,8 +439,8 @@ export async function sendRetroactiveEmails(
       result.emailsSent.oneHourBefore = true;
       result.results.oneHourBefore = { success: true };
     } else {
-      console.log(`⏳ Email de 1 hora antes será enviado automaticamente em 26/11 às 12:00 para ${data.email}`);
-      result.results.oneHourBefore = { success: false, error: 'Ainda não é o momento de enviar (será enviado em 26/11 às 12:00)' };
+      console.log(`⏳ Email de 1 hora antes será enviado automaticamente em 10/12 às 12:00 para ${data.email}`);
+      result.results.oneHourBefore = { success: false, error: 'Ainda não é o momento de enviar (será enviado em 10/12 às 12:00)' };
     }
 
     return result;

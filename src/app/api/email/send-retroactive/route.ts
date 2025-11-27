@@ -218,7 +218,7 @@ export async function GET(request: NextRequest) {
 
     // Calcular quais e-mails seriam enviados
     const now = new Date();
-    const workshopDate = new Date('2025-11-26T13:00:00-03:00');
+    const workshopDate = new Date('2025-12-10T13:00:00-03:00');
     const oneDayBefore = new Date(workshopDate);
     oneDayBefore.setDate(oneDayBefore.getDate() - 1);
     oneDayBefore.setHours(0, 0, 0, 0);

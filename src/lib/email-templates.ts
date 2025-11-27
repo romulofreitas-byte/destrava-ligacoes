@@ -49,7 +49,7 @@ export function getWorkshopEmailTemplate(data: WorkshopEmailData): string {
                   📅 Detalhes do Workshop
                 </h2>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Data:</strong> Quarta-feira, 26 de novembro de 2025
+                  <strong style="color: #78350f;">Data:</strong> Quarta-feira, 10 de dezembro de 2025
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
@@ -185,7 +185,7 @@ export function getOneDayBeforeEmailTemplate(data: WorkshopEmailData): string {
                   📅 Informações Importantes
                 </h2>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Data:</strong> <span style="color: #1f2937; font-weight: bold;">Amanhã, 26 de novembro de 2025</span>
+                  <strong style="color: #78350f;">Data:</strong> <span style="color: #1f2937; font-weight: bold;">Amanhã, 10 de dezembro de 2025</span>
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
@@ -337,7 +337,7 @@ export function getOneHourBeforeEmailTemplate(data: WorkshopEmailData): string {
                   📅 Informações do Workshop
                 </h2>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Data:</strong> <span style="color: #1f2937; font-weight: bold;">Hoje, 26 de novembro de 2025</span>
+                  <strong style="color: #78350f;">Data:</strong> <span style="color: #1f2937; font-weight: bold;">Hoje, 10 de dezembro de 2025</span>
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Horário:</strong> <span style="color: #dc2626; font-weight: bold;">13:00 – 17:00</span> (Fuso horário: America/Sao_Paulo)
@@ -482,7 +482,7 @@ export function getInvitationEmailTemplate(
                   🎯 Este é um convite exclusivo para você, como parte da nossa comunidade.
                 </p>
                 <p style="margin: 15px 0 0; color: #78350f; font-size: 16px; line-height: 1.6;">
-                  Você terá <strong>acesso gratuito</strong> a este workshop de 3 horas que acontecerá no dia 26 de novembro, das 13:00 às 17:00.
+                  Você terá <strong>acesso gratuito</strong> a este workshop de 3 horas que acontecerá no dia 10 de dezembro, das 13:00 às 17:00.
                 </p>
               </div>
               
@@ -491,7 +491,7 @@ export function getInvitationEmailTemplate(
                   📅 Detalhes do Workshop
                 </h2>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Data:</strong> Quarta-feira, 26 de novembro de 2025
+                  <strong style="color: #78350f;">Data:</strong> Quarta-feira, 10 de dezembro de 2025
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
