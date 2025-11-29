@@ -22,7 +22,8 @@ export const WhatYouWillLearnSection: React.FC = () => {
     'Construção de discurso: como montar sua fala perfeita do zero',
     'Treinamento ao vivo: veja ligações reais sendo feitas e analisadas',
     'Construção de prompts: use IA para acelerar seu processo de prospecção',
-    'Prática real: faça suas primeiras ligações durante o workshop'
+    'Prática real: faça suas primeiras ligações durante o workshop',
+    'Estratégias de follow-up: como manter o interesse após a primeira ligação'
   ];
 
   useEffect(() => {

@@ -13,7 +13,8 @@ export const WhoIsItForWorkshopSection: React.FC = () => {
     'Prestadores de serviço que não conseguem marcar reuniões qualificadas',
     'Donos de agência que fazem prospecção e precisam melhorar resultados',
     'SDRs, BDRs e líderes comerciais que querem aumentar conversão em ligações',
-    'Assessores de investimento que precisam gerar agenda qualificada, construir book e quebrar objeções de telefone'
+    'Assessores de investimento que precisam gerar agenda qualificada, construir book e quebrar objeções de telefone',
+    'Profissionais que querem escalar vendas e aumentar receita através de ligações estratégicas'
   ];
 
   useEffect(() => {
