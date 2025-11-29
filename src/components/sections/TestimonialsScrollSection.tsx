@@ -173,9 +173,16 @@ export const TestimonialsScrollSection: React.FC = () => {
             {' '}estão dizendo
           </h2>
 
-          <p className="text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+          <p className="text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up mb-4" style={{animationDelay: '0.3s'}}>
             Depoimentos reais de pilotos, mentorados e audiência do YouTube que transformaram suas ligações
           </p>
+          
+          <p className="text-xs text-gray-400 font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.35s'}}>
+            <span className="text-blue-400">Profissionais de mercados regulamentados usam cold call diariamente.</span> Quando aprendem a ligar com estrutura, agenda qualifica mais rápido.
+          </p>
+          
+          {/* Placeholder para futuros prints de prova social */}
+          {/* TODO: Adicionar prints de ligação, alunos, ROI, agendas cheias quando disponíveis */}
         </div>
 
         {/* Scroll Card Container */}

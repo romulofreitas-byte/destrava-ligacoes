@@ -80,11 +80,11 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-3 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento Simbólico: R$ 49,99 • Consultoria intensiva • Transformação prática
+                Investimento Simbólico: R$ 49,99 • 3 horas intensivas • Entrega real
               </p>
 
               <p className="hidden sm:block text-sm sm:text-base text-gray-300 font-light leading-relaxed mb-4 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-                Vagas limitadas. Evento ao vivo, sem replay. Não perca a oportunidade de destravar suas ligações de uma vez por todas.
+                Este não é um workshop gratuito. É um investimento simbólico que garante entrega real, demonstração prática e construção ao vivo. Vagas limitadas. Evento ao vivo, sem replay.
               </p>
 
               {/* Pricing Info */}
@@ -94,7 +94,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   <span className="text-yellow-400 font-bold text-lg">R$ 49,99</span>
                 </div>
                 <p className="hidden sm:block text-gray-400 text-xs mt-2 max-w-md mx-auto">
-                  Valor simbólico para garantir acesso à consultoria intensiva e transformação prática. 3 horas que mudam sua forma de vender.
+                  Valor simbólico para filtrar comprometimento real. Não é funil isca gratuito — é treinamento prático com entrega real. 3 horas que valem mais que cursos de 30 horas.
                 </p>
               </div>
 

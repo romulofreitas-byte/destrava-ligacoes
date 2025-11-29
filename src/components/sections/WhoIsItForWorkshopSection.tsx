@@ -9,16 +9,11 @@ export const WhoIsItForWorkshopSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const profiles = [
-    'Freelancers travados, inseguros ou endividados',
-    'Líderes comerciais que querem aumentar conversão',
-    'SDR/BDR que precisam melhorar resultados',
-    'Gestores e coordenadores de vendas',
-    'Donos de agência buscando mais clientes',
-    'Consultores que não conseguem fechar com consistência',
-    'Advogados e prestadores de serviço que vendem high ticket',
-    'Autônomos que não conseguem fechar clientes',
-    'Experts que precisam de pipeline',
-    'Prestadores de serviço que operam como "empresa de uma pessoa só"'
+    'Freelancers travados em cold call que não conseguem superar o medo de ligar',
+    'Prestadores de serviço que não conseguem marcar reuniões qualificadas',
+    'Donos de agência que fazem prospecção e precisam melhorar resultados',
+    'SDRs, BDRs e líderes comerciais que querem aumentar conversão em ligações',
+    'Assessores de investimento que precisam gerar agenda qualificada, construir book e quebrar objeções de telefone'
   ];
 
   useEffect(() => {
@@ -60,12 +55,11 @@ export const WhoIsItForWorkshopSection: React.FC = () => {
           </div>
           
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            Se você vende serviços,{' '}
-            <span className="bg-gradient-to-r from-yellow-400 via-green-400 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">você precisa disso</span>
+            Para Quem é o Workshop
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            A trava no telefone é universal. Este workshop é para quem quer transformar medo em técnica e começar a gerar vendas imediatas.
+            Este workshop serve para qualquer profissional que dependa de Cold Call ou prospecção ativa. Se você precisa ligar para gerar resultados, este é o seu lugar.
           </p>
         </div>
 
@@ -104,7 +98,7 @@ export const WhoIsItForWorkshopSection: React.FC = () => {
 
             <div className="mt-8 pt-8 border-t border-gray-700/50">
               <p className="text-center text-yellow-400 font-semibold text-lg">
-                Não importa seu nível de experiência. Se você vende serviços, você precisa destravar suas ligações.
+                Não importa seu nicho ou nível de experiência. Se você depende do telefone para gerar negócios, este workshop é para você.
               </p>
             </div>
           </div>

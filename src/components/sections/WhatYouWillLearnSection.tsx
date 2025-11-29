@@ -10,14 +10,19 @@ export const WhatYouWillLearnSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const learnings = [
-    'Como montar o discurso perfeito de cold call',
-    'Como abrir a ligação sem ser invasivo',
-    'Como conduzir uma conversa que marca Reuniões de Vendas',
-    'Como lidar com rejeição, silêncio e objeções',
-    'Como falar com autoridade (mesmo sendo iniciante)',
-    'Como vender para decisores',
-    'Como destravar de vez o medo de ligar',
-    'Como criar urgência e fechar agendamentos na ligação'
+    'Mentalidade de Empresário: como pensar como dono e agir com autoridade',
+    'Clareza de metas e objetivo comercial: defina exatamente o que você quer conquistar',
+    'Entendimento profundo do mercado e ICP: conheça seu cliente ideal como nunca antes',
+    'Técnicas de destravamento emocional: supere medo, vergonha e insegurança',
+    'Técnica dos 5 minutos: ganhe atenção e interesse nos primeiros segundos',
+    'Técnica das 2 ligações: estratégia comprovada para marcar reuniões',
+    'Técnica da não antecipação: evite erros que matam a conversa',
+    'Script Base Pódium universal: estrutura que funciona em qualquer nicho',
+    'Script adaptado para mercados regulados (investimentos): versão segura e efetiva',
+    'Construção de discurso: como montar sua fala perfeita do zero',
+    'Treinamento ao vivo: veja ligações reais sendo feitas e analisadas',
+    'Construção de prompts: use IA para acelerar seu processo de prospecção',
+    'Prática real: faça suas primeiras ligações durante o workshop'
   ];
 
   useEffect(() => {

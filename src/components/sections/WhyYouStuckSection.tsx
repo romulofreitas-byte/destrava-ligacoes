@@ -12,25 +12,25 @@ export const WhyYouStuckSection: React.FC = () => {
     {
       icon: Heart,
       title: 'Vergonha e Medo',
-      description: 'Medo de parecer vendedor chato ou invasivo. Você sabe que precisa ligar, mas o corpo trava quando pega o telefone.',
+      description: 'O coração acelera, as mãos suam, o corpo trava. Você sabe que precisa ligar, mas o medo de parecer invasivo ou ser rejeitado paralisa você completamente. A vergonha de "incomodar" fala mais alto.',
       color: 'red'
     },
     {
       icon: MessageSquare,
       title: 'Falta de Discurso',
-      description: 'Você não sabe exatamente o que dizer. Fica sem palavras, sem roteiro, sem método.',
+      description: 'Você pega o telefone e... silêncio. Não sabe como começar, o que dizer, como criar interesse. Fica sem palavras porque não existe um roteiro claro e testado para seguir.',
       color: 'yellow'
     },
     {
       icon: Shield,
       title: 'Falta de Método',
-      description: 'Não existe um processo claro. Cada ligação é diferente e cada abordagem é improvisada.',
+      description: 'Cada ligação é uma aposta. Não há processo, não há estrutura, não há segurança. Você improvisa na esperança de que funcione, mas a insegurança cresce a cada tentativa fracassada.',
       color: 'blue'
     },
     {
       icon: AlertTriangle,
       title: 'Perda de Oportunidades',
-      description: 'Enquanto você trava, oportunidades reais passam. Clientes potenciais podem fechar com outro fornecedor.',
+      description: 'Enquanto você trava e adia, clientes reais estão fechando com concorrentes. Oportunidades de negócios que poderiam transformar sua receita simplesmente desaparecem. O tempo passa e você fica para trás.',
       color: 'orange'
     }
   ];
@@ -89,7 +89,7 @@ export const WhyYouStuckSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            Entenda a raiz do problema. Não é falta de coragem — é falta de método. E isso tem solução.
+            Entenda a raiz do problema. Não é falta de coragem ou talento — é falta de método, discurso e mentalidade correta. E todas essas travas têm solução prática e imediata.
           </p>
         </div>
 
