@@ -12,25 +12,25 @@ export const WhyYouStuckSection: React.FC = () => {
     {
       icon: Heart,
       title: 'Vergonha e Medo',
-      description: 'O coração acelera, as mãos suam, o corpo trava. Você sabe que precisa ligar, mas o medo de parecer invasivo ou ser rejeitado paralisa você completamente. A vergonha de "incomodar" fala mais alto.',
+      description: 'O coração acelera, o corpo trava. O medo de parecer invasivo ou ser rejeitado paralisa você. A vergonha de "incomodar" fala mais alto.',
       color: 'red'
     },
     {
       icon: MessageSquare,
       title: 'Falta de Discurso',
-      description: 'Você pega o telefone e... silêncio. Não sabe como começar, o que dizer, como criar interesse. Fica sem palavras porque não existe um roteiro claro e testado para seguir.',
+      description: 'Você pega o telefone e... silêncio. Não sabe como começar, o que dizer. Fica sem palavras porque não existe um roteiro claro e testado.',
       color: 'yellow'
     },
     {
       icon: Shield,
       title: 'Falta de Método',
-      description: 'Cada ligação é uma aposta. Não há processo, não há estrutura, não há segurança. Você improvisa na esperança de que funcione, mas a insegurança cresce a cada tentativa fracassada.',
+      description: 'Cada ligação é uma aposta. Não há processo, não há estrutura. Você improvisa na esperança de que funcione, mas a insegurança cresce.',
       color: 'blue'
     },
     {
       icon: AlertTriangle,
       title: 'Perda de Oportunidades',
-      description: 'Enquanto você trava e adia, clientes reais estão fechando com concorrentes. Oportunidades de negócios que poderiam transformar sua receita simplesmente desaparecem. O tempo passa e você fica para trás.',
+      description: 'Enquanto você trava e adia, clientes reais estão fechando com concorrentes. Oportunidades que poderiam transformar sua receita desaparecem.',
       color: 'orange'
     }
   ];
@@ -89,7 +89,7 @@ export const WhyYouStuckSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            Entenda a raiz do problema. Não é falta de coragem ou talento — é falta de método, discurso e mentalidade correta. E todas essas travas têm solução prática e imediata.
+            Não é falta de coragem — é falta de método, discurso e mentalidade. Todas essas travas têm solução prática e imediata.
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export const WhyYouStuckSection: React.FC = () => {
 
         <div className="mt-12 text-center animate-fade-in-up" style={{animationDelay: '0.7s'}}>
           <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
-            <span className="text-yellow-400 font-semibold">A boa notícia:</span> Todas essas travas têm solução. E você vai aprender a superá-las em 3 horas.
+            <span className="text-yellow-400 font-semibold">A boa notícia:</span> Você vai aprender a superar todas essas travas em 3 horas.
           </p>
         </div>
 

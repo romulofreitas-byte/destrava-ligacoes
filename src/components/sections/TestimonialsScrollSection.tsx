@@ -4,7 +4,7 @@ import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { MessageSquare } from 'lucide-react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
 
-// Lista de todos os depoimentos da pasta Testimonials Pódium
+// Lista reduzida de depoimentos mais relevantes (20-25 selecionados)
 const testimonials = [
   '/Testimonials Pódium/IMG_0336.PNG',
   '/Testimonials Pódium/IMG_0337.PNG',
@@ -15,7 +15,6 @@ const testimonials = [
   '/Testimonials Pódium/IMG_0549.PNG',
   '/Testimonials Pódium/IMG_0576.PNG',
   '/Testimonials Pódium/IMG_0609.PNG',
-  '/Testimonials Pódium/IMG_0932.PNG',
   '/Testimonials Pódium/IMG_1241.PNG',
   '/Testimonials Pódium/IMG_1742.PNG',
   '/Testimonials Pódium/IMG_1743.PNG',
@@ -30,22 +29,8 @@ const testimonials = [
   '/Testimonials Pódium/IMG_2870.PNG',
   '/Testimonials Pódium/IMG_2872.PNG',
   '/Testimonials Pódium/IMG_3486.PNG',
-  '/Testimonials Pódium/IMG_6039.PNG',
   '/Testimonials Pódium/IMG_6301.PNG',
-  '/Testimonials Pódium/IMG_7911.PNG',
   '/Testimonials Pódium/IMG_8052.PNG',
-  '/Testimonials Pódium/IMG_8264.PNG',
-  '/Testimonials Pódium/IMG_8264(1).PNG',
-  '/Testimonials Pódium/IMG_8291.PNG',
-  '/Testimonials Pódium/IMG_8735.PNG',
-  '/Testimonials Pódium/IMG_9469.PNG',
-  '/Testimonials Pódium/IMG_9470.PNG',
-  '/Testimonials Pódium/IMG_9510.PNG',
-  '/Testimonials Pódium/IMG_9582.PNG',
-  '/Testimonials Pódium/IMG_9583.PNG',
-  '/Testimonials Pódium/IMG_9584.PNG',
-  '/Testimonials Pódium/IMG_9755.PNG',
-  '/Testimonials Pódium/IMG_9874.PNG',
 ];
 
 export const TestimonialsScrollSection: React.FC = () => {

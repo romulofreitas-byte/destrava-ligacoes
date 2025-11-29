@@ -8,24 +8,24 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
 
   const differences = [
     {
-      icon: Sparkles,
-      title: 'Não é Funil Isca Gratuito',
-      description: 'Muitos workshops gratuitos prometem tudo e entregam teoria rasa. Aqui você investe simbolicamente e recebe 3 horas de consultoria intensiva com entrega real.'
-    },
-    {
       icon: Target,
-      title: 'Mercado Saturado de Promessas',
-      description: 'Você já viu promessas "Photoshop" demais. Aqui é diferente: demonstração real, construção real, prática real. Sem exageros, apenas resultados.'
+      title: 'Demonstração Real, Não Teoria',
+      description: 'Você assiste ligações reais ao vivo, não promessas vazias. Construção prática, resultados reais.'
     },
     {
       icon: Zap,
       title: '3h Práticas + Demonstração + Construção',
-      description: 'Não é palestra onde você só ouve. Você constrói seu script, pratica ao vivo, assiste demonstrações reais e sai com material implementável.'
+      description: 'Você constrói seu script, pratica ao vivo e sai com material implementável no dia seguinte.'
     },
     {
       icon: Shield,
-      title: 'Linguagem Aplicável a Qualquer Nicho',
-      description: 'O método funciona para serviços, produtos, agências, consultorias e até mercados regulados. Você adapta a estrutura para o seu contexto específico.'
+      title: 'Aplicável a Qualquer Nicho',
+      description: 'Funciona para serviços, produtos, agências e mercados regulados. Você adapta para seu contexto.'
+    },
+    {
+      icon: Sparkles,
+      title: 'Investimento Simbólico, Entrega Real',
+      description: 'R$ 49,99 garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático.'
     }
   ];
 
@@ -56,7 +56,7 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            O mercado está cheio de promessas vazias. Este workshop é diferente: entrega real, prática real, resultados reais.
+            Entrega real, prática real, resultados reais. Investimento simbólico de R$ 49,99 para garantir comprometimento e qualidade.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
         <div className="max-w-4xl mx-auto animate-fade-in-up" style={{transitionDelay: '0.7s'}}>
           <div className="bg-gradient-to-r from-blue-400/10 to-purple-400/10 border border-blue-400/30 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
             <p className="text-white text-center text-sm sm:text-base leading-relaxed">
-              <span className="text-blue-400 font-semibold">Se você trabalha com investimentos,</span> sabe que não existe venda sem ligação. Técnicas de rapport, autoridade e convite para reunião fazem toda a diferença. Aqui você aprende o que funciona com decisores de qualquer perfil, respeitando as regulações do seu mercado.
+              <span className="text-blue-400 font-semibold">Para investimentos:</span> Técnicas de rapport, autoridade e convite para reunião que funcionam com decisores, respeitando regulações do mercado.
             </p>
           </div>
         </div>

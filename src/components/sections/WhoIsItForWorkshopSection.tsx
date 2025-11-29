@@ -9,12 +9,10 @@ export const WhoIsItForWorkshopSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const profiles = [
-    'Freelancers travados em cold call que não conseguem superar o medo de ligar',
-    'Prestadores de serviço que não conseguem marcar reuniões qualificadas',
-    'Donos de agência que fazem prospecção e precisam melhorar resultados',
-    'SDRs, BDRs e líderes comerciais que querem aumentar conversão em ligações',
-    'Assessores de investimento que precisam gerar agenda qualificada, construir book e quebrar objeções de telefone',
-    'Profissionais que querem escalar vendas e aumentar receita através de ligações estratégicas'
+    'Freelancers e prestadores de serviço travados em cold call',
+    'Donos de agência e líderes comerciais que precisam melhorar resultados',
+    'SDRs e BDRs que querem aumentar conversão em ligações',
+    'Assessores de investimento que precisam gerar agenda qualificada e quebrar objeções'
   ];
 
   useEffect(() => {
@@ -60,7 +58,7 @@ export const WhoIsItForWorkshopSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            Este workshop serve para qualquer profissional que dependa de Cold Call ou prospecção ativa. Se você precisa ligar para gerar resultados, este é o seu lugar.
+            Para qualquer profissional que depende de Cold Call ou prospecção ativa para gerar resultados.
           </p>
         </div>
 
@@ -98,8 +96,8 @@ export const WhoIsItForWorkshopSection: React.FC = () => {
             </div>
 
             <div className="mt-8 pt-8 border-t border-gray-700/50">
-              <p className="text-center text-yellow-400 font-semibold text-lg">
-                Não importa seu nicho ou nível de experiência. Se você depende do telefone para gerar negócios, este workshop é para você.
+              <p className="text-center text-yellow-400 font-semibold text-base">
+                Se você depende do telefone para gerar negócios, este workshop é para você.
               </p>
             </div>
           </div>

@@ -10,20 +10,16 @@ export const WhatYouWillLearnSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const learnings = [
-    'Mentalidade de Empresário: como pensar como dono e agir com autoridade',
-    'Clareza de metas e objetivo comercial: defina exatamente o que você quer conquistar',
-    'Entendimento profundo do mercado e ICP: conheça seu cliente ideal como nunca antes',
-    'Técnicas de destravamento emocional: supere medo, vergonha e insegurança',
-    'Técnica dos 5 minutos: ganhe atenção e interesse nos primeiros segundos',
-    'Técnica das 2 ligações: estratégia comprovada para marcar reuniões',
-    'Técnica da não antecipação: evite erros que matam a conversa',
-    'Script Base Pódium universal: estrutura que funciona em qualquer nicho',
-    'Script adaptado para mercados regulados (investimentos): versão segura e efetiva',
-    'Construção de discurso: como montar sua fala perfeita do zero',
+    'Mentalidade de Empresário: pensar como dono e agir com autoridade',
+    'Clareza de metas e ICP: defina exatamente o que você quer conquistar e conheça seu cliente ideal',
+    'Técnicas de destravamento: supere medo, vergonha e insegurança emocional',
+    'Técnicas comprovadas: 5 minutos, 2 ligações e não antecipação para marcar reuniões',
+    'Script Base Pódium: estrutura universal que funciona em qualquer nicho',
+    'Script para investimentos: versão segura e efetiva para mercados regulados',
+    'Construção de discurso: monte sua fala perfeita do zero',
     'Treinamento ao vivo: veja ligações reais sendo feitas e analisadas',
-    'Construção de prompts: use IA para acelerar seu processo de prospecção',
     'Prática real: faça suas primeiras ligações durante o workshop',
-    'Estratégias de follow-up: como manter o interesse após a primeira ligação'
+    'Estratégias de follow-up e uso de IA para acelerar prospecção'
   ];
 
   useEffect(() => {

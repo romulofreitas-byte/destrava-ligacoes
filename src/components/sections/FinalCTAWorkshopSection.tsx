@@ -140,6 +140,14 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   <div className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-green-300/40 to-transparent animate-progress-flow"></div>
                 </div>
               </div>
+
+              {/* Future Hook - Integrated */}
+              <div className="mt-8 pt-8 border-t border-gray-700/50 animate-fade-in-up" style={{animationDelay: '0.7s'}}>
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                  Este Workshop é a primeira etapa para dominar prospecção ativa com consistência.{' '}
+                  <span className="text-yellow-400 font-semibold">No final, você terá clareza sobre o próximo passo.</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
