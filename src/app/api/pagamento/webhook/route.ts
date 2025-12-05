@@ -5,20 +5,33 @@ import { upsertWorkshopRegistration, updateEmailStatus } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('🔔 ===== WEBHOOK RECEBIDO =====');
+    console.log('⏰ Timestamp:', new Date().toISOString());
+    
     const body = await request.json();
+    console.log('📦 Body recebido:', JSON.stringify(body, null, 2));
     
     // PagBank envia notificações com charge_id
     const { charge_id } = body;
 
     if (!charge_id) {
+      console.error('❌ charge_id não fornecido no body');
       return NextResponse.json(
         { error: 'charge_id não fornecido' },
         { status: 400 }
       );
     }
 
+    console.log('🔍 Consultando status do pagamento para charge_id:', charge_id);
+    
     // Consultar status do pagamento
     const payment = await getPaymentStatus(charge_id);
+    console.log('✅ Status do pagamento obtido:', {
+      status: payment.status,
+      has_customer: !!payment.customer,
+      customer_email: payment.customer?.email || 'N/A',
+      customer_name: payment.customer?.name || 'N/A',
+    });
 
     // Processar status do pagamento
     // Aqui você pode salvar no banco de dados, enviar emails, etc.
@@ -95,7 +108,20 @@ export async function POST(request: NextRequest) {
       if (customerEmail) {
         // Disparar email imediato
         try {
-          console.log(`📧 Tentando enviar email para ${customerEmail}...`);
+          console.log('📧 ===== INICIANDO ENVIO DE EMAIL =====');
+          console.log('📧 Destinatário:', customerEmail);
+          console.log('📧 Nome:', customerName);
+          console.log('📧 Charge ID:', charge_id);
+          console.log('📧 Reference ID:', payment.reference_id);
+          
+          // Verificar se RESEND_API_KEY está configurada
+          if (!process.env.RESEND_API_KEY) {
+            console.error('❌ CRÍTICO: RESEND_API_KEY não está configurada!');
+            console.error('❌ O email NÃO será enviado. Configure a variável de ambiente no Vercel.');
+          } else {
+            console.log('✅ RESEND_API_KEY está configurada');
+          }
+          
           const emailResult = await sendImmediateEmail({
             email: customerEmail,
             nome: customerName,
@@ -104,27 +130,40 @@ export async function POST(request: NextRequest) {
           });
           
           if (emailResult.success) {
-            console.log(`✅ Email enviado com sucesso para ${customerEmail} (charge_id: ${charge_id})`);
+            console.log('✅ ===== EMAIL ENVIADO COM SUCESSO =====');
+            console.log('✅ Destinatário:', customerEmail);
+            console.log('✅ Message ID:', emailResult.messageId || 'N/A');
+            console.log('✅ Charge ID:', charge_id);
             
             // Atualizar status de email no Supabase
             try {
               await updateEmailStatus(charge_id, true);
+              console.log('✅ Status de email atualizado no Supabase');
             } catch (emailStatusError: any) {
               console.error('⚠️ Erro ao atualizar status de email no Supabase (não crítico):', emailStatusError);
             }
           } else {
-            console.error(`❌ Erro ao enviar email para ${customerEmail}:`, emailResult.error);
+            console.error('❌ ===== FALHA AO ENVIAR EMAIL =====');
+            console.error('❌ Destinatário:', customerEmail);
+            console.error('❌ Erro:', emailResult.error);
+            console.error('❌ Charge ID:', charge_id);
+            console.error('❌ Reference ID:', payment.reference_id);
             // Log detalhado para debugging
-            console.error('Detalhes do erro:', {
+            console.error('❌ Detalhes completos:', {
               charge_id,
               reference_id: payment.reference_id,
               customer_email: customerEmail,
+              customer_name: customerName,
               error: emailResult.error,
+              has_resend_key: !!process.env.RESEND_API_KEY,
             });
           }
         } catch (emailError: any) {
-          console.error('❌ Erro ao enviar email (exceção):', emailError);
-          console.error('Stack trace:', emailError.stack);
+          console.error('❌ ===== EXCEÇÃO AO ENVIAR EMAIL =====');
+          console.error('❌ Erro:', emailError.message);
+          console.error('❌ Stack trace:', emailError.stack);
+          console.error('❌ Charge ID:', charge_id);
+          console.error('❌ Customer Email:', customerEmail);
         }
       } else {
         console.warn('⚠️ ATENÇÃO: Email do cliente não encontrado na resposta do PagBank');

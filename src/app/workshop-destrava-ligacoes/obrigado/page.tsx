@@ -12,6 +12,9 @@ function ObrigadoContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [emailSent, setEmailSent] = useState<boolean | null>(null);
+  const [resendingEmail, setResendingEmail] = useState(false);
+  const [resendMessage, setResendMessage] = useState('');
 
   useEffect(() => {
     // Verificar parâmetros do PagBank na URL
@@ -43,6 +46,7 @@ function ObrigadoContent() {
               if (!data.found) {
                 // Se não encontrou registro, tentar enviar email imediato
                 console.log('📧 Email não encontrado no registro. Tentando enviar via fallback...');
+                setEmailSent(false);
                 fetch('/api/email/send', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
@@ -55,20 +59,25 @@ function ObrigadoContent() {
                 .then(result => {
                   if (result.success) {
                     console.log('✅ Email enviado com sucesso via fallback');
+                    setEmailSent(true);
                   } else {
                     console.error('❌ Erro ao enviar email via fallback:', result.error);
                     console.warn('⚠️ O email pode não ter sido enviado. Verifique os logs do servidor.');
+                    setEmailSent(false);
                   }
                 })
                 .catch(err => {
                   console.error('❌ Erro ao enviar email (fallback):', err);
+                  setEmailSent(false);
                 });
               } else {
                 console.log('✅ Email já foi enviado anteriormente');
+                setEmailSent(true);
               }
             })
             .catch(err => {
               console.error('❌ Erro ao verificar status do email:', err);
+              setEmailSent(false);
               // Tentar enviar mesmo assim
               fetch('/api/email/send', {
                 method: 'POST',
@@ -77,7 +86,14 @@ function ObrigadoContent() {
                   chargeId: chargeId,
                   type: 'immediate',
                 }),
-              }).catch(fallbackErr => {
+              })
+              .then(res => res.json())
+              .then(result => {
+                if (result.success) {
+                  setEmailSent(true);
+                }
+              })
+              .catch(fallbackErr => {
                 console.error('❌ Erro ao enviar email (fallback após erro):', fallbackErr);
               });
             });
@@ -99,6 +115,43 @@ function ObrigadoContent() {
       setPaymentConfirmed(true);
     }
   }, [router, searchParams]);
+
+  const handleResendEmail = async () => {
+    const chargeId = searchParams?.get('charge_id');
+    
+    if (!chargeId) {
+      setResendMessage('Não foi possível identificar o pagamento. Entre em contato pelo WhatsApp.');
+      return;
+    }
+
+    setResendingEmail(true);
+    setResendMessage('');
+
+    try {
+      const response = await fetch('/api/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chargeId: chargeId,
+          type: 'immediate',
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setEmailSent(true);
+        setResendMessage('✅ Email reenviado com sucesso! Verifique sua caixa de entrada e spam.');
+      } else {
+        setResendMessage('❌ Erro ao reenviar email. Entre em contato pelo WhatsApp.');
+      }
+    } catch (error) {
+      console.error('Erro ao reenviar email:', error);
+      setResendMessage('❌ Erro ao reenviar email. Entre em contato pelo WhatsApp.');
+    } finally {
+      setResendingEmail(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-gray-900">
@@ -212,6 +265,78 @@ function ObrigadoContent() {
                           </div>
                         </div>
                       </div>
+
+                      {/* Email Status & Resend */}
+                      {paymentConfirmed && (
+                        <div className="flex items-start space-x-4 p-4 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:border-blue-400/50 transition-all duration-300">
+                          <div className="w-10 h-10 bg-blue-400/10 border border-blue-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <Mail className="w-5 h-5 text-blue-400" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-white font-bold text-lg mb-2">Status do E-mail de Confirmação</h3>
+                            
+                            {emailSent === null && (
+                              <div className="flex items-center space-x-2 mb-3">
+                                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
+                                <p className="text-gray-300 text-sm">Verificando envio do e-mail...</p>
+                              </div>
+                            )}
+                            
+                            {emailSent === true && (
+                              <div className="flex items-center space-x-2 mb-3">
+                                <CheckCircle className="w-5 h-5 text-green-400" />
+                                <p className="text-green-400 text-sm font-semibold">E-mail de confirmação enviado com sucesso!</p>
+                              </div>
+                            )}
+                            
+                            {emailSent === false && (
+                              <div className="mb-3">
+                                <div className="flex items-center space-x-2 mb-2">
+                                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                  <p className="text-yellow-400 text-sm font-semibold">E-mail não foi enviado automaticamente</p>
+                                </div>
+                                <p className="text-gray-300 text-sm mb-3">
+                                  Não se preocupe! Você pode reenviar o e-mail de confirmação clicando no botão abaixo.
+                                </p>
+                              </div>
+                            )}
+
+                            {resendMessage && (
+                              <div className={`p-3 rounded-lg mb-3 ${
+                                resendMessage.includes('✅') 
+                                  ? 'bg-green-500/20 border border-green-500/50 text-green-400' 
+                                  : 'bg-yellow-500/20 border border-yellow-500/50 text-yellow-400'
+                              }`}>
+                                <p className="text-sm">{resendMessage}</p>
+                              </div>
+                            )}
+                            
+                            {(emailSent === false || emailSent === null) && (
+                              <button
+                                onClick={handleResendEmail}
+                                disabled={resendingEmail}
+                                className="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                              >
+                                {resendingEmail ? (
+                                  <>
+                                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                                    Enviando...
+                                  </>
+                                ) : (
+                                  <>
+                                    <Mail className="w-4 h-4 mr-2" />
+                                    Reenviar E-mail de Confirmação
+                                  </>
+                                )}
+                              </button>
+                            )}
+                            
+                            <p className="text-gray-400 text-xs mt-3">
+                              💡 Dica: Verifique também sua caixa de spam. Se não receber o e-mail, entre em contato pelo WhatsApp.
+                            </p>
+                          </div>
+                        </div>
+                      )}
                 </div>
               </div>
             </div>

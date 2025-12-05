@@ -52,18 +52,26 @@ export function createEmailRecord(data: EmailCadenceData): EmailSentRecord {
   return record;
 }
 
-export async function sendImmediateEmail(data: EmailCadenceData): Promise<{ success: boolean; error?: string }> {
+export async function sendImmediateEmail(data: EmailCadenceData): Promise<{ success: boolean; error?: string; messageId?: string }> {
   try {
+    console.log('📧 [CADENCE] ===== sendImmediateEmail chamada =====');
+    console.log('📧 [CADENCE] Email:', data.email);
+    console.log('📧 [CADENCE] Nome:', data.nome);
+    console.log('📧 [CADENCE] Charge ID:', data.chargeId);
+    
     const record = getEmailRecord(data.chargeId) || createEmailRecord(data);
     
     if (record.emailsSent.immediate) {
-      console.log(`Email imediato já enviado para ${data.email}`);
+      console.log(`✅ [CADENCE] Email imediato já enviado para ${data.email}`);
       return { success: true };
     }
 
+    console.log('📧 [CADENCE] Gerando template de email...');
     const html = getWorkshopEmailTemplate({ nome: data.nome, email: data.email });
     const subject = '🎉 Pagamento Confirmado - Workshop Destrave Suas Ligações';
+    console.log('📧 [CADENCE] Template gerado, assunto:', subject);
 
+    console.log('📧 [CADENCE] Chamando sendEmail...');
     const result = await sendEmail({
       to: data.email,
       subject,
@@ -74,12 +82,18 @@ export async function sendImmediateEmail(data: EmailCadenceData): Promise<{ succ
       record.emailsSent.immediate = true;
       record.sentAt.immediate = new Date();
       emailRecords.set(data.chargeId, record);
-      console.log(`Email imediato enviado para ${data.email}`);
+      console.log(`✅ [CADENCE] Email imediato enviado para ${data.email}`);
+      console.log(`✅ [CADENCE] Message ID: ${result.messageId}`);
+      console.log(`✅ [CADENCE] Registro atualizado no Map em memória`);
+    } else {
+      console.error(`❌ [CADENCE] Falha ao enviar email para ${data.email}`);
+      console.error(`❌ [CADENCE] Erro: ${result.error}`);
     }
 
     return result;
   } catch (error: any) {
-    console.error('Erro ao enviar email imediato:', error);
+    console.error('❌ [CADENCE] Exceção ao enviar email imediato:', error);
+    console.error('❌ [CADENCE] Stack:', error.stack);
     return { success: false, error: error.message || 'Erro ao enviar email' };
   }
 }
