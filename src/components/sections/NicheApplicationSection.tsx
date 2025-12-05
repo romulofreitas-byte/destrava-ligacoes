@@ -106,15 +106,15 @@ export const NicheApplicationSection: React.FC = () => {
               <ul className="space-y-2 text-gray-300 text-sm">
                 <li className="flex items-start space-x-2">
                   <span className="text-blue-400">•</span>
-                  <span>'Já tenho assessor' → Como criar valor diferencial</span>
+                  <span>&quot;Já tenho assessor&quot; → Como criar valor diferencial</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-blue-400">•</span>
-                  <span>'Não tenho tempo' → Como gerar urgência e interesse</span>
+                  <span>&quot;Não tenho tempo&quot; → Como gerar urgência e interesse</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-blue-400">•</span>
-                  <span>'Me manda no WhatsApp' → Como manter a conversa no telefone</span>
+                  <span>&quot;Me manda no WhatsApp&quot; → Como manter a conversa no telefone</span>
                 </li>
               </ul>
             </div>
