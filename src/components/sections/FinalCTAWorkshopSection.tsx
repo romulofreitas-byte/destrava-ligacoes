@@ -80,11 +80,11 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-3 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento Simbólico: R$ 99,99 • 3 horas intensivas • Entrega real
+                Investimento Estratégico: R$ 99,99 • 3 horas intensivas • Ferramentas Exclusivas
               </p>
 
               <p className="hidden sm:block text-sm sm:text-base text-gray-300 font-light leading-relaxed mb-4 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-                Este não é um workshop gratuito. É um investimento simbólico que garante entrega real, demonstração prática e construção ao vivo. Vagas limitadas. Evento ao vivo, sem replay.
+                Este não é um workshop gratuito. É um investimento estratégico que garante entrega real, demonstração prática, construção ao vivo e <span className="text-yellow-400 font-semibold">ferramentas exclusivas</span> (Calculadoras de Ligações e Precificação). Vagas limitadas. Evento ao vivo, sem replay.
               </p>
 
               {/* Pricing Info */}
@@ -94,7 +94,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   <span className="text-yellow-400 font-bold text-lg">R$ 99,99</span>
                 </div>
                 <p className="hidden sm:block text-gray-400 text-xs mt-2 max-w-md mx-auto">
-                  Valor simbólico para filtrar comprometimento real. Não é funil isca gratuito — é treinamento prático com entrega real. 3 horas que valem mais que cursos de 30 horas.
+                  Investimento estratégico para destravar sua prospecção e receber as <span className="text-yellow-400 font-semibold">ferramentas exclusivas</span>. Não é funil isca gratuito — é treinamento prático com entrega real. 3 horas que valem mais que cursos de 30 horas.
                 </p>
               </div>
 
@@ -121,7 +121,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   title="Pagar com PagBank"
                 >
                   <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
-                    Garantir Minha Vaga Agora
+                    Garantir vaga por R$ 99,99
                   </span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>

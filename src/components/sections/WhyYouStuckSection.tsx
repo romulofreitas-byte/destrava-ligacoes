@@ -13,24 +13,28 @@ export const WhyYouStuckSection: React.FC = () => {
       icon: Heart,
       title: 'Vergonha e Medo',
       description: 'O coração acelera, o corpo trava. O medo de parecer invasivo ou ser rejeitado paralisa você. A vergonha de "incomodar" fala mais alto.',
+      solution: 'Você vai aprender a transformar rejeição em qualificação. Cada "não" vira informação valiosa.',
       color: 'red'
     },
     {
       icon: MessageSquare,
-      title: 'Falta de Discurso',
+      title: 'Falta de Protocolo',
       description: 'Você pega o telefone e... silêncio. Não sabe como começar, o que dizer. Fica sem palavras porque não existe um roteiro claro e testado.',
+      solution: 'Você terá a anatomia de um script de ligação — estrutura adaptável que funciona em qualquer nicho.',
       color: 'yellow'
     },
     {
       icon: Shield,
-      title: 'Falta de Método',
+      title: 'Falta de Previsibilidade',
       description: 'Cada ligação é uma aposta. Não há processo, não há estrutura. Você improvisa na esperança de que funcione, mas a insegurança cresce.',
+      solution: 'Você terá métricas e ferramentas para transformar faturamento em missão diária previsível.',
       color: 'blue'
     },
     {
       icon: AlertTriangle,
       title: 'Perda de Oportunidades',
       description: 'Enquanto você trava e adia, clientes reais estão fechando com concorrentes. Oportunidades que poderiam transformar sua receita desaparecem.',
+      solution: 'Em 48h após o workshop, você estará marcando suas primeiras reuniões de alto valor.',
       color: 'orange'
     }
   ];
@@ -84,12 +88,12 @@ export const WhyYouStuckSection: React.FC = () => {
           </div>
           
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            Por que você trava no{' '}
+            A VERDADE: Por que você trava no{' '}
             <span className="bg-gradient-to-r from-red-400 via-yellow-400 to-red-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">telefone?</span>
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            Não é falta de coragem — é falta de método, discurso e mentalidade. Todas essas travas têm solução prática e imediata.
+            Não é falta de coragem — é falta de método, discurso e mentalidade. A boa notícia: você vai aprender a superar todas essas travas em 3 horas.
           </p>
         </div>
 
@@ -120,7 +124,10 @@ export const WhyYouStuckSection: React.FC = () => {
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold text-white">{reason.title}</h3>
                 </div>
-                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{reason.description}</p>
+                <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-3">{reason.description}</p>
+                <p className="text-yellow-400 leading-relaxed text-sm sm:text-base font-medium">
+                  <span className="text-green-400 font-semibold">✓ Solução:</span> {reason.solution}
+                </p>
               </div>
             );
           })}
@@ -128,7 +135,7 @@ export const WhyYouStuckSection: React.FC = () => {
 
         <div className="mt-12 text-center animate-fade-in-up" style={{animationDelay: '0.7s'}}>
           <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
-            <span className="text-yellow-400 font-semibold">A boa notícia:</span> Você vai aprender a superar todas essas travas em 3 horas.
+            <span className="text-yellow-400 font-semibold">A boa notícia:</span> Todas essas travas têm solução prática e imediata. Em 3 horas, você terá o protocolo para transformar medo em reuniões qualificadas.
           </p>
         </div>
 

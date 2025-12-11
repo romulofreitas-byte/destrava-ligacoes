@@ -31,7 +31,7 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
     { icon: TrendingUp, label: 'Anos de Experiência', value: '12+' },
     { icon: Briefcase, label: 'CEO da Combustível', value: 'Marketing e Vendas' },
     { icon: Award, label: 'Criador do Método', value: 'Pódium' },
-    { icon: Video, label: 'Ligações ao Vivo', value: 'YouTube' }
+    { icon: Video, label: 'Execução Comprovada', value: 'Ligações ao Vivo' }
   ];
 
   return (
@@ -83,7 +83,7 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
                   <span className="text-white font-bold">Rômulo Freitas</span> é criador do <span className="text-yellow-400 font-semibold">Método Pódium</span> e autoridade em vendas com mais de 12 anos de experiência. CEO da <span className="text-yellow-400 font-semibold">Combustível Marketing e Vendas</span>, passou 5 anos na operação à frente da Gestão e Vendas antes de ensinar.
                 </p>
                 <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                  Faz lives e ligações ao vivo no YouTube - é &quot;skin in the game&quot;. Diferente dos experts que só vendem teoria, Rômulo Freitas faz <span className="text-yellow-400 font-semibold">ligações reais ao vivo</span> com clientes potenciais. Você aprende com quem faz.
+                  Faz lives e ligações ao vivo no YouTube — é &quot;skin in the game&quot;. Diferente dos experts que só vendem teoria, Rômulo Freitas faz <span className="text-yellow-400 font-semibold">ligações reais ao vivo</span> com clientes potenciais. Você aprende com quem faz.
                 </p>
               </div>
 

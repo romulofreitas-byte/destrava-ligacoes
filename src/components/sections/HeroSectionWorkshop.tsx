@@ -112,7 +112,7 @@ export const HeroSectionWorkshop: React.FC = () => {
         {/* Badge - Above Image */}
         <div className="px-4 pt-4 pb-2 text-center">
           <div className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full backdrop-blur-sm shadow-lg animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">07 de Janeiro • 3 horas intensas • 100% prático • <span className="text-red-400 font-bold">Sem Replay</span></span>
+            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">07 de Janeiro • 3 horas intensas • Ferramentas Exclusivas • <span className="text-red-400 font-bold">Sem Replay</span></span>
           </div>
         </div>
 
@@ -148,12 +148,12 @@ export const HeroSectionWorkshop: React.FC = () => {
             {/* Main Headline */}
             <h1 className="text-[17px] sm:text-xl font-bold text-white leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.1s'}}>
               Transforme o medo de ligar em{' '}
-              <span className="text-yellow-400 drop-shadow-md animate-pulse">reuniões qualificadas</span>
+              <span className="text-yellow-400 drop-shadow-md animate-pulse">reuniões qualificadas em 48h</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-[11px] text-gray-300 font-light leading-relaxed drop-shadow-md animate-fade-in-up mb-6" style={{animationDelay: '0.15s'}}>
-              Para quem depende do telefone para fechar negócios. Aprenda o discurso perfeito e assista ligações reais ao vivo.
+              Para quem depende do telefone para fechar negócios. Aprenda a ciência que transforma ligações em reuniões. Assista ligações reais ao vivo e saia com seu script pronto.
             </p>
 
             {/* Price Display */}
@@ -204,18 +204,18 @@ export const HeroSectionWorkshop: React.FC = () => {
           <div className="max-w-2xl text-left relative z-30">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-4 backdrop-blur-sm shadow-lg hover:shadow-yellow-400/20 transition-all duration-300 animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">07 de Janeiro • 3 horas intensas • 100% prático • <span className="text-red-400 font-bold">Sem Replay</span></span>
+              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">07 de Janeiro • 3 horas intensas • Ferramentas Exclusivas • <span className="text-red-400 font-bold">Sem Replay</span></span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-white mb-5 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.1s'}}>
               Transforme o medo de ligar em{' '}
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto] drop-shadow-md">reuniões qualificadas</span>
+              <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto] drop-shadow-md">reuniões qualificadas em 48h</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-[13px] sm:text-sm text-gray-300 font-light leading-relaxed mb-6 drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.15s'}}>
-              Para quem depende do telefone para fechar negócios. Aprenda o discurso perfeito e assista ligações reais ao vivo.
+              Para quem depende do telefone para fechar negócios. Aprenda a ciência que transforma ligações em reuniões. Assista ligações reais ao vivo e saia com seu script pronto.
             </p>
 
             {/* Price Display */}

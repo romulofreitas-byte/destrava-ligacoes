@@ -10,16 +10,54 @@ export const WhatYouWillLearnSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const learnings = [
-    'Mentalidade de Empresário: pensar como dono e agir com autoridade',
-    'Clareza de metas e ICP: defina exatamente o que você quer conquistar e conheça seu cliente ideal',
-    'Técnicas de destravamento: supere medo, vergonha e insegurança emocional',
-    'Técnicas comprovadas: 5 minutos, 2 ligações e não antecipação para marcar reuniões',
-    'Script Base Pódium: estrutura universal que funciona em qualquer nicho',
-    'Script para investimentos: versão segura e efetiva para mercados regulados',
-    'Construção de discurso: monte sua fala perfeita do zero',
-    'Treinamento ao vivo: veja ligações reais sendo feitas e analisadas',
-    'Prática real: faça suas primeiras ligações durante o workshop',
-    'Estratégias de follow-up e uso de IA para acelerar prospecção'
+    {
+      text: 'Calculadora de Ligações: Transforme sua meta de faturamento em um número exato de ligações diárias (ex: R$ 50k/mês = 127 ligações/semana)',
+      isExclusive: true
+    },
+    {
+      text: 'Calculadora de Precificação Inteligente: Aprenda a justificar seu high-ticket e vender valor estratégico (não preço)',
+      isExclusive: true
+    },
+    {
+      text: 'Mentalidade Pódium: Pense como dono e aplique a responsabilidade radical para agir com autoridade',
+      isExclusive: false
+    },
+    {
+      text: '5 Técnicas de Destravamento: Use a Regra dos 5 Segundos e a Respiração de Empresário para dissolver a ansiedade no ato',
+      isExclusive: false
+    },
+    {
+      text: 'Anatomia de um Script de Ligação: Estrutura adaptável que funciona em qualquer nicho e garante a R1 em 15 minutos',
+      isExclusive: false
+    },
+    {
+      text: 'Execução ao Vivo: Veja ligações reais sendo feitas e analisadas ao vivo',
+      isExclusive: false
+    },
+    {
+      text: 'Clareza de metas e ICP: defina exatamente o que você quer conquistar e conheça seu cliente ideal',
+      isExclusive: false
+    },
+    {
+      text: 'Técnicas comprovadas: 5 minutos, 2 ligações e não antecipação para marcar reuniões',
+      isExclusive: false
+    },
+    {
+      text: 'Script para investimentos: versão segura e efetiva para mercados regulados',
+      isExclusive: false
+    },
+    {
+      text: 'Construção de discurso: monte sua fala perfeita do zero',
+      isExclusive: false
+    },
+    {
+      text: 'Prática real: faça suas primeiras ligações durante o workshop',
+      isExclusive: false
+    },
+    {
+      text: 'Estratégias de follow-up e uso de IA para acelerar prospecção',
+      isExclusive: false
+    }
   ];
 
   useEffect(() => {
@@ -78,7 +116,11 @@ export const WhatYouWillLearnSection: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className={`bg-gray-800/40 border border-gray-700/50 rounded-2xl p-5 sm:p-6 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-green-400/50 hover:shadow-green-400/20 ${
+                  className={`bg-gray-800/40 border ${
+                    item.isExclusive 
+                      ? 'border-yellow-400/50 shadow-yellow-400/20' 
+                      : 'border-gray-700/50'
+                  } rounded-2xl p-5 sm:p-6 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-green-400/50 hover:shadow-green-400/20 ${
                     isHovered ? 'scale-[1.02] -translate-y-1' : 'hover:scale-[1.01]'
                   } ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -88,14 +130,27 @@ export const WhatYouWillLearnSection: React.FC = () => {
                   onMouseLeave={() => setHoveredItem(null)}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`w-10 h-10 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                      isHovered ? 'scale-125 bg-green-400/20' : ''
+                    <div className={`w-10 h-10 ${
+                      item.isExclusive
+                        ? 'bg-yellow-400/20 border-yellow-400/50'
+                        : 'bg-green-400/10 border-green-400/30'
+                    } border rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                      isHovered ? `scale-125 ${item.isExclusive ? 'bg-yellow-400/30' : 'bg-green-400/20'}` : ''
                     }`}>
-                      <CheckCircle2 className={`w-5 h-5 text-green-400 transition-all duration-300 ${
+                      <CheckCircle2 className={`w-5 h-5 ${
+                        item.isExclusive ? 'text-yellow-400' : 'text-green-400'
+                      } transition-all duration-300 ${
                         isHovered ? 'scale-110' : ''
                       }`} />
                     </div>
-                    <p className="text-gray-300 leading-relaxed text-sm sm:text-base flex-1">{item}</p>
+                    <div className="flex-1">
+                      {item.isExclusive && (
+                        <span className="inline-block mb-1 px-2 py-0.5 bg-yellow-400/20 border border-yellow-400/50 rounded text-yellow-400 text-[10px] font-bold uppercase tracking-wide">
+                          Ferramenta Exclusiva
+                        </span>
+                      )}
+                      <p className="text-gray-300 leading-relaxed text-sm sm:text-base mt-1">{item.text}</p>
+                    </div>
                   </div>
                 </div>
               );
