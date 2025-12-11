@@ -166,6 +166,12 @@ export const HeroSectionWorkshop: React.FC = () => {
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                 <span className="text-red-400 text-[9px] font-semibold">07 de Janeiro • Sem Replay</span>
               </div>
+              {/* Bônus Badge */}
+              <div className="mt-2 flex items-center justify-center">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
+                  <span className="text-purple-400 text-[9px] font-semibold">🎁 Bônus: Plataforma + Gravação</span>
+                </div>
+              </div>
             </div>
 
             {/* CTA Button */}
@@ -227,6 +233,12 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="mt-2 flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                 <span className="text-red-400 text-xs font-semibold">07 de Janeiro • Sem Replay</span>
+              </div>
+              {/* Bônus Badge */}
+              <div className="mt-2 flex items-center justify-center">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
+                  <span className="text-purple-400 text-xs font-semibold">🎁 Bônus: Plataforma + Gravação</span>
+                </div>
               </div>
             </div>
 

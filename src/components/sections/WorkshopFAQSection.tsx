@@ -26,6 +26,14 @@ export const WorkshopFAQSection: React.FC = () => {
     {
       question: 'Por que custa R$ 99,99?',
       answer: 'É um investimento simbólico que garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático de 3 horas com demonstração real.'
+    },
+    {
+      question: 'Como funciona o acesso à plataforma Mundo Pódium?',
+      answer: 'Após a compra, você recebe acesso imediato à plataforma Mundo Pódium com seções específicas do workshop. O workshop será realizado diretamente na plataforma, onde você terá acesso a materiais, ferramentas e conteúdo exclusivo. Você mantém acesso desde a compra até 7 dias após o workshop para explorar tudo. Após o workshop, você receberá um cupom promocional para continuar na comunidade com um valor especial.'
+    },
+    {
+      question: 'Tenho acesso à plataforma por quanto tempo?',
+      answer: 'Você tem acesso à plataforma desde o momento da compra até 7 dias após o workshop. Durante esse período, você pode explorar todas as seções específicas do workshop, materiais, ferramentas e conteúdo disponível. Após o workshop, você receberá um cupom promocional caso queira continuar na comunidade com acesso completo e permanente.'
     }
   ];
 

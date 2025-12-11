@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, Clock, Video, MapPin } from 'lucide-react';
+import { Calendar, Clock, Video, MapPin, Monitor } from 'lucide-react';
 
 export const EventDetailsSection: React.FC = () => {
   return (
@@ -71,6 +71,18 @@ export const EventDetailsSection: React.FC = () => {
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Horário</h3>
                     <p className="text-gray-300 text-sm">13h</p>
+                  </div>
+                </div>
+
+                {/* Plataforma */}
+                <div className="flex items-start space-x-4 p-4 bg-gray-800/30 rounded-2xl border border-green-400/50 hover:border-green-400/70 transition-all duration-300 md:col-span-2">
+                  <div className="w-12 h-12 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Monitor className="w-6 h-6 text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-1">Plataforma</h3>
+                    <p className="text-gray-300 text-sm">Mundo Pódium • Ecossistema oficial do Método Pódium</p>
+                    <p className="text-green-400 text-xs mt-1 font-medium">Acesso imediato após compra</p>
                   </div>
                 </div>
               </div>

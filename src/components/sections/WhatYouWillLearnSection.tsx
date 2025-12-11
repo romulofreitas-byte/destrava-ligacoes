@@ -11,51 +11,51 @@ export const WhatYouWillLearnSection: React.FC = () => {
 
   const learnings = [
     {
-      text: 'Calculadora de Ligações: Transforme sua meta de faturamento em um número exato de ligações diárias (ex: R$ 50k/mês = 127 ligações/semana)',
+      text: 'Calculadora de Ligações: Transforme sua meta de faturamento em número exato de ligações diárias',
       isExclusive: true
     },
     {
-      text: 'Calculadora de Precificação Inteligente: Aprenda a justificar seu high-ticket e vender valor estratégico (não preço)',
+      text: 'Calculadora de Precificação: Justifique seu high-ticket e venda valor estratégico',
       isExclusive: true
     },
     {
-      text: 'Mentalidade Pódium: Pense como dono e aplique a responsabilidade radical para agir com autoridade',
+      text: 'Mentalidade Pódium: Pense como dono e aja com autoridade',
       isExclusive: false
     },
     {
-      text: '5 Técnicas de Destravamento: Use a Regra dos 5 Segundos e a Respiração de Empresário para dissolver a ansiedade no ato',
+      text: '5 Técnicas de Destravamento: Dissolva a ansiedade no ato',
       isExclusive: false
     },
     {
-      text: 'Anatomia de um Script de Ligação: Estrutura adaptável que funciona em qualquer nicho e garante a R1 em 15 minutos',
+      text: 'Script de Ligação: Estrutura adaptável que funciona em qualquer nicho',
       isExclusive: false
     },
     {
-      text: 'Execução ao Vivo: Veja ligações reais sendo feitas e analisadas ao vivo',
+      text: 'Execução ao Vivo: Veja ligações reais sendo feitas e analisadas',
       isExclusive: false
     },
     {
-      text: 'Clareza de metas e ICP: defina exatamente o que você quer conquistar e conheça seu cliente ideal',
+      text: 'Clareza de metas e ICP: Defina o que quer conquistar e conheça seu cliente ideal',
       isExclusive: false
     },
     {
-      text: 'Técnicas comprovadas: 5 minutos, 2 ligações e não antecipação para marcar reuniões',
+      text: 'Técnicas comprovadas: 5 minutos, 2 ligações para marcar reuniões',
       isExclusive: false
     },
     {
-      text: 'Script para investimentos: versão segura e efetiva para mercados regulados',
+      text: 'Script para investimentos: Versão segura para mercados regulados',
       isExclusive: false
     },
     {
-      text: 'Construção de discurso: monte sua fala perfeita do zero',
+      text: 'Construção de discurso: Monte sua fala do zero',
       isExclusive: false
     },
     {
-      text: 'Prática real: faça suas primeiras ligações durante o workshop',
+      text: 'Prática real: Faça suas primeiras ligações durante o workshop',
       isExclusive: false
     },
     {
-      text: 'Estratégias de follow-up e uso de IA para acelerar prospecção',
+      text: 'Follow-up e IA: Estratégias para acelerar prospecção',
       isExclusive: false
     }
   ];
@@ -103,9 +103,14 @@ export const WhatYouWillLearnSection: React.FC = () => {
             <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">reais em 3 horas</span>
           </h2>
 
-          <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+          <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up mb-4" style={{animationDelay: '0.3s'}}>
             Conteúdo prático, direto ao ponto, focado em resultados imediatos.
           </p>
+          
+          {/* Bônus Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-400/10 border border-purple-400/30 rounded-lg animate-fade-in-up" style={{animationDelay: '0.35s'}}>
+            <span className="text-purple-400 text-xs font-semibold">🎁 Bônus Exclusivo: Acesso à Plataforma + Gravação do Workshop</span>
+          </div>
         </div>
 
         <div className="max-w-4xl mx-auto">

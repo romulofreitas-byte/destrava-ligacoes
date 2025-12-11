@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Zap, Clock, Users } from 'lucide-react';
+import { Zap, Clock, Users, Key } from 'lucide-react';
 import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
 
@@ -99,7 +99,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </div>
 
               {/* Urgency Indicators */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
                 <div className="flex items-center justify-center space-x-2 p-3 bg-green-400/10 border border-green-400/30 rounded-xl">
                   <Users className="w-5 h-5 text-green-400" />
                   <span className="text-green-400 font-semibold text-sm">Vagas Limitadas</span>
@@ -107,6 +107,27 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 <div className="flex items-center justify-center space-x-2 p-3 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
                   <Clock className="w-5 h-5 text-yellow-400" />
                   <span className="text-yellow-400 font-semibold text-sm">Sem Replay</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2 p-3 bg-purple-400/10 border border-purple-400/30 rounded-xl">
+                  <Key className="w-5 h-5 text-purple-400" />
+                  <span className="text-purple-400 font-semibold text-sm">Acesso Imediato</span>
+                </div>
+              </div>
+
+              {/* Platform Access Benefit */}
+              <div className="mb-8 animate-fade-in-up" style={{animationDelay: '0.45s'}}>
+                <div className="bg-gradient-to-r from-purple-400/10 to-blue-400/10 border border-purple-400/30 rounded-2xl p-4 sm:p-6 backdrop-blur-sm">
+                  <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <Key className="w-6 h-6 text-purple-400 flex-shrink-0" />
+                    <div className="text-center sm:text-left">
+                      <p className="text-gray-300 text-sm sm:text-base">
+                        <span className="text-purple-400 font-semibold">Acesso imediato</span> à plataforma Mundo Pódium — o ecossistema oficial do Método Pódium
+                      </p>
+                      <p className="text-gray-400 text-xs sm:text-sm mt-1">
+                        Seções exclusivas • Gravação do workshop • Acesso até 7 dias • Cupom promocional
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -141,13 +162,6 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Future Hook - Integrated */}
-              <div className="mt-8 pt-8 border-t border-gray-700/50 animate-fade-in-up" style={{animationDelay: '0.7s'}}>
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                  Este Workshop é a primeira etapa para dominar prospecção ativa com consistência.{' '}
-                  <span className="text-yellow-400 font-semibold">No final, você terá clareza sobre o próximo passo.</span>
-                </p>
-              </div>
             </div>
           </div>
         </div>

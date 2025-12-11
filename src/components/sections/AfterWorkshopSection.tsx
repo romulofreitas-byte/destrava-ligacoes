@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { CheckCircle2, Rocket } from 'lucide-react';
+import { CheckCircle2, Rocket, Calendar, Gift } from 'lucide-react';
 import { SubtleCTA } from '@/components/ui/SubtleCTA';
 
 export const AfterWorkshopSection: React.FC = () => {
@@ -104,6 +104,35 @@ export const AfterWorkshopSection: React.FC = () => {
             <p className="text-white font-bold text-base sm:text-lg">
               <span className="text-purple-400">3 horas</span> que mudam tudo. <span className="text-yellow-400">Resultados</span> que começam imediatamente.
             </p>
+          </div>
+        </div>
+
+        {/* Acesso à Plataforma e Cupom Promocional */}
+        <div className="mt-8 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.95s'}}>
+          <div className="bg-gradient-to-r from-green-400/10 to-yellow-400/10 border-2 border-green-400/30 rounded-3xl p-6 sm:p-8 backdrop-blur-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-6 h-6 text-green-400" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-white font-bold text-base sm:text-lg mb-1">Acesso até 7 dias após o Workshop</h3>
+                  <p className="text-gray-300 text-xs sm:text-sm">Explore a plataforma Mundo Pódium e teste tudo</p>
+                </div>
+              </div>
+              
+              <div className="hidden sm:block w-px h-12 bg-gray-700/50"></div>
+              
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-yellow-400/10 border border-yellow-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Gift className="w-6 h-6 text-yellow-400" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-white font-bold text-base sm:text-lg mb-1">Cupom Promocional</h3>
+                  <p className="text-gray-300 text-xs sm:text-sm">Continue na comunidade com valor especial</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
