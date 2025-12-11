@@ -158,13 +158,13 @@ export async function POST(request: NextRequest) {
           status: registrationData.status,
         });
 
-        const supabaseResult = await upsertWorkshopRegistration(registrationData);
+        const upsertResult = await upsertWorkshopRegistration(registrationData);
         
-        if (supabaseResult.success) {
+        if (upsertResult.success) {
           console.log('✅ Registro atualizado no Supabase com sucesso');
         } else {
           console.error('⚠️ Erro ao salvar no Supabase (não crítico - fluxo continua):', {
-            error: supabaseResult.error,
+            error: upsertResult.error,
           });
         }
 
