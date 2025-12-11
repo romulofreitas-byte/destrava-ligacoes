@@ -216,7 +216,14 @@ async function makeAuthenticatedRequest(
   const agent = getHttpsAgent();
 
   return new Promise((resolve, reject) => {
-    const requestOptions = {
+    const requestOptions: {
+      hostname: string;
+      port: number | string;
+      path: string;
+      method: string;
+      headers: Record<string, string>;
+      agent: any;
+    } = {
       hostname: url.hostname,
       port: url.port || 443,
       path: url.pathname + url.search,
@@ -254,7 +261,7 @@ async function makeAuthenticatedRequest(
     });
 
     if (options.body) {
-      requestOptions.headers['Content-Length'] = Buffer.byteLength(options.body);
+      requestOptions.headers['Content-Length'] = Buffer.byteLength(options.body).toString();
       req.write(options.body);
     }
 
