@@ -53,7 +53,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                     <div className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" />
                       <p className="text-white text-sm sm:text-base font-semibold leading-relaxed">
-                        <span className="text-yellow-400">"Se tu me cobrasse 500 conto eu pagaria"</span>
+                        <span className="text-yellow-400">&ldquo;Se tu me cobrasse 500 conto eu pagaria&rdquo;</span>
                       </p>
                     </div>
                   </div>
