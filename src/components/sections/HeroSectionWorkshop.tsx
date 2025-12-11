@@ -147,14 +147,13 @@ export const HeroSectionWorkshop: React.FC = () => {
           <div className="max-w-md mx-auto text-center space-y-4">
             {/* Main Headline */}
             <h1 className="text-[17px] sm:text-xl font-bold text-white leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-              Destrave suas ligações com mentalidade, técnica e conversão<br className="lg:hidden" />{' '}
-              <span className="text-yellow-400 drop-shadow-md animate-pulse">e comece a marcar reuniões qualificadas</span>
+              Transforme o medo de ligar em{' '}
+              <span className="text-yellow-400 drop-shadow-md animate-pulse">reuniões qualificadas</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-[11px] text-gray-300 font-light leading-relaxed drop-shadow-md animate-fade-in-up mb-4" style={{animationDelay: '0.15s'}}>
-              Para freelancers, vendedores, gestores e assessores de investimento<br className="lg:hidden" />{' '}
-              que dependem do telefone para fechar negócios e gerar agenda qualificada.
+            <p className="text-[11px] text-gray-300 font-light leading-relaxed drop-shadow-md animate-fade-in-up mb-6" style={{animationDelay: '0.15s'}}>
+              Para quem depende do telefone para fechar negócios. Aprenda o discurso perfeito e assista ligações reais ao vivo.
             </p>
 
             {/* Price Display */}
@@ -209,14 +208,14 @@ export const HeroSectionWorkshop: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-              Destrave suas ligações com mentalidade, técnica e conversão{' '}
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto] drop-shadow-md">e comece a marcar reuniões qualificadas</span>
+            <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-white mb-5 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+              Transforme o medo de ligar em{' '}
+              <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto] drop-shadow-md">reuniões qualificadas</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-[13px] sm:text-base text-gray-300 font-light leading-relaxed mb-4 drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.15s'}}>
-              Para freelancers, vendedores, gestores e assessores de investimento que dependem do telefone para fechar negócios e gerar agenda qualificada. Aprenda o discurso perfeito e assista ligações reais feitas ao vivo.
+            <p className="text-[13px] sm:text-sm text-gray-300 font-light leading-relaxed mb-6 drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.15s'}}>
+              Para quem depende do telefone para fechar negócios. Aprenda o discurso perfeito e assista ligações reais ao vivo.
             </p>
 
             {/* Price Display */}

@@ -16,7 +16,6 @@ import { AboutRomuloWorkshopSection } from '@/components/sections/AboutRomuloWor
 import { AfterWorkshopSection } from '@/components/sections/AfterWorkshopSection';
 import { TestimonialsScrollSection } from '@/components/sections/TestimonialsScrollSection';
 import { FinalCTAWorkshopSection } from '@/components/sections/FinalCTAWorkshopSection';
-import { LogoSeparator } from '@/components/sections/LogoSeparator';
 import { WorkshopFAQSection } from '@/components/sections/WorkshopFAQSection';
 import { Footer } from '@/components/sections/Footer';
 import { SubtleHelpModal } from '@/components/ui/SubtleHelpModal';
@@ -36,11 +35,9 @@ export const WorkshopPageContent: React.FC = () => {
         <WhyYouStuckSection />
         <TestimonialsVideoSection />
         <WhatYouWillLearnSection />
-        <LogoSeparator />
         <AboutRomuloWorkshopSection />
         <WhyDifferentWorkshopSection />
         <NicheApplicationSection />
-        <LogoSeparator />
         <AfterWorkshopSection />
         <TestimonialsScrollSection />
         <WorkshopFAQSection />
