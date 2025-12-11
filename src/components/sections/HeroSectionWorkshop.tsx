@@ -13,7 +13,7 @@ export const HeroSectionWorkshop: React.FC = () => {
   useEffect(() => {
     setIsMounted(true);
     const timer = setTimeout(() => {
-      setProgressWidth(93); // 93% preenchido para criar urgência
+      setProgressWidth(6); // 6% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -162,12 +162,12 @@ export const HeroSectionWorkshop: React.FC = () => {
                 <span className="text-gray-400 text-[10px] line-through">De R$ 297</span>
                 <span className="text-yellow-400 font-bold text-sm">R$ 99,99</span>
               </div>
-              <div className="mt-1.5 flex items-center justify-center gap-1.5">
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-red-400 text-[9px] font-semibold">07 de Janeiro • Sem Replay</span>
-              </div>
-              {/* Bônus Badge */}
-              <div className="mt-2 flex items-center justify-center">
+              <div className="mt-1.5 flex flex-col items-center gap-1.5">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                  <span className="text-red-400 text-[9px] font-semibold">07 de Janeiro • Sem Replay</span>
+                </div>
+                {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
                   <span className="text-purple-400 text-[9px] font-semibold">🎁 Bônus: Plataforma + Gravação</span>
                 </div>
@@ -189,7 +189,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">93%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">6%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
@@ -230,12 +230,12 @@ export const HeroSectionWorkshop: React.FC = () => {
                 <span className="text-gray-400 text-sm line-through">De R$ 297</span>
                 <span className="text-yellow-400 font-bold text-xl">R$ 99,99</span>
               </div>
-              <div className="mt-2 flex items-center gap-2">
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-red-400 text-xs font-semibold">07 de Janeiro • Sem Replay</span>
-              </div>
-              {/* Bônus Badge */}
-              <div className="mt-2 flex items-center justify-center">
+              <div className="mt-2 flex flex-col items-start gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                  <span className="text-red-400 text-xs font-semibold">07 de Janeiro • Sem Replay</span>
+                </div>
+                {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
                   <span className="text-purple-400 text-xs font-semibold">🎁 Bônus: Plataforma + Gravação</span>
                 </div>
@@ -257,7 +257,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">93%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">6%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
