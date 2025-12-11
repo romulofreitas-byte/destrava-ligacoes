@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { HeroSectionWorkshop } from '@/components/sections/HeroSectionWorkshop';
-import { FirstEditionSuccessBanner } from '@/components/sections/FirstEditionSuccessBanner';
+import { WorkshopTestimonialBanner } from '@/components/sections/WorkshopTestimonialBanner';
 import { EventDetailsSection } from '@/components/sections/EventDetailsSection';
 import { WhoIsItForWorkshopSection } from '@/components/sections/WhoIsItForWorkshopSection';
 import { ColdCallQuizSection } from '@/components/sections/ColdCallQuizSection';
@@ -28,7 +28,7 @@ export const WorkshopPageContent: React.FC = () => {
     <ModalProvider>
       <main className="min-h-screen bg-gray-900">
         <HeroSectionWorkshop />
-        <FirstEditionSuccessBanner />
+        <WorkshopTestimonialBanner />
         <LiveCallsSection />
         <EventDetailsSection />
         <WhoIsItForWorkshopSection />

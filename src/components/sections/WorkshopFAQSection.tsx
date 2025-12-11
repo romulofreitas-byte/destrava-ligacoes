@@ -24,7 +24,7 @@ export const WorkshopFAQSection: React.FC = () => {
       answer: 'Sim. Você vai praticar ao vivo, construir seu script e fazer suas primeiras ligações com suporte e análise em tempo real.'
     },
     {
-      question: 'Por que custa R$ 49,99?',
+      question: 'Por que custa R$ 99,99?',
       answer: 'É um investimento simbólico que garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático de 3 horas com demonstração real.'
     }
   ];
@@ -116,6 +116,8 @@ export const WorkshopFAQSection: React.FC = () => {
     </section>
   );
 };
+
+
 
 
 

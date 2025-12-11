@@ -1,26 +1,59 @@
 /**
- * Script para enviar email de confirmação para Gilson Silva Castro via Resend
+ * Script para atualizar email do José Oliveira e reenviar email de confirmação
  * 
- * Uso: node scripts/send-email-gilson.js
+ * Uso: node scripts/update-email-jose.js
  */
 
+const { createClient } = require('@supabase/supabase-js');
 const { Resend } = require('resend');
+const fs = require('fs');
+const path = require('path');
 
-// API Key do Resend
-const RESEND_API_KEY = 're_YvGf7VWV_K9DgWEdAoPjxtHzMYFqPvKjz';
+// Carregar variáveis de ambiente do .env.local se existir
+const envPath = path.join(__dirname, '..', '.env.local');
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  envContent.split(/\r?\n/).forEach(line => {
+    const trimmedLine = line.trim();
+    if (trimmedLine && !trimmedLine.startsWith('#')) {
+      const equalIndex = trimmedLine.indexOf('=');
+      if (equalIndex > 0) {
+        const key = trimmedLine.substring(0, equalIndex).trim();
+        let value = trimmedLine.substring(equalIndex + 1).trim();
+        value = value.replace(/^["']|["']$/g, '');
+        if (key && value) {
+          process.env[key] = value;
+        }
+      }
+    }
+  });
+}
 
-// Dados do participante
-const dadosParticipante = {
-  nome: 'Gilson Silva Castro',
-  email: 'azimutegestao@gmail.com',
-};
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+const RESEND_API_KEY = process.env.RESEND_API_KEY?.trim();
+
+if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+  console.error('❌ Erro: NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY devem estar configurados');
+  process.exit(1);
+}
+
+if (!RESEND_API_KEY) {
+  console.error('❌ Erro: RESEND_API_KEY deve estar configurado');
+  process.exit(1);
+}
+
+// Dados do cliente
+const chargeId = 'F6AB5AE6-DE9C-4DED-B9A6-FD3A6FD893C9';
+const novoEmail = 'conatusdayones@gmail.com';
+const emailAntigo = 'dayones@conatus.com';
 
 // Informações do Google Meet
 const meetInfo = {
-  link: 'https://meet.google.com/awb-vxqu-xnm',
-  phone: '(BR) +55 21 4560-7556',
-  pin: '523 187 755#',
-  phoneLink: 'https://tel.meet/awb-vxqu-xnm?pin=4122161251082',
+  link: process.env.GOOGLE_MEET_LINK || 'https://meet.google.com/awb-vxqu-xnm',
+  phone: process.env.GOOGLE_MEET_PHONE || '(BR) +55 21 4560-7556',
+  pin: process.env.GOOGLE_MEET_PIN || '523 187 755#',
+  phoneLink: process.env.GOOGLE_MEET_PHONE_LINK || 'https://tel.meet/awb-vxqu-xnm?pin=4122161251082',
 };
 
 function getWorkshopEmailTemplate(data) {
@@ -141,64 +174,117 @@ function getWorkshopEmailTemplate(data) {
   `.trim();
 }
 
-async function enviarEmail() {
+async function atualizarEmailEReenviar() {
   try {
-    console.log('📧 Enviando email de confirmação via Resend...');
-    console.log(`   Para: ${dadosParticipante.email}`);
-    console.log(`   Nome: ${dadosParticipante.nome}`);
-    
+    console.log('🚀 Iniciando atualização de email e reenvio...\n');
+    console.log(`📋 Charge ID: ${chargeId}`);
+    console.log(`📧 Email antigo: ${emailAntigo}`);
+    console.log(`📧 Email novo: ${novoEmail}\n`);
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
+
+    // 1. Buscar registro atual
+    console.log('🔍 Buscando registro no Supabase...');
+    const { data: registro, error: buscaError } = await supabase
+      .from('workshop_registrations')
+      .select('*')
+      .eq('charge_id', chargeId)
+      .single();
+
+    if (buscaError || !registro) {
+      console.error('❌ Erro: Registro não encontrado no Supabase');
+      console.error(`   Charge ID: ${chargeId}`);
+      process.exit(1);
+    }
+
+    console.log('✅ Registro encontrado!');
+    console.log(`   Nome: ${registro.nome}`);
+    console.log(`   Email atual: ${registro.email}\n`);
+
+    // 2. Atualizar email no Supabase
+    console.log('📝 Atualizando email no Supabase...');
+    const { data: registroAtualizado, error: updateError } = await supabase
+      .from('workshop_registrations')
+      .update({
+        email: novoEmail,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('charge_id', chargeId)
+      .select()
+      .single();
+
+    if (updateError) {
+      console.error('❌ Erro ao atualizar email no Supabase:', updateError.message);
+      process.exit(1);
+    }
+
+    console.log('✅ Email atualizado no Supabase com sucesso!\n');
+
+    // 3. Enviar email de confirmação
+    console.log('📧 Enviando email de confirmação para o novo endereço...');
     const resend = new Resend(RESEND_API_KEY);
-    
-    // Gerar HTML do email
-    const html = getWorkshopEmailTemplate(dadosParticipante);
-    
+
+    const html = getWorkshopEmailTemplate({
+      nome: registro.nome,
+      email: novoEmail,
+    });
+
     const subject = '🎉 Pagamento Confirmado - Workshop Destrave Suas Ligações';
-    
-    const fromEmail = 'noreply@pitstop.mundopodium.com.br';
+
+    const fromEmail =
+      process.env.FROM_EMAIL && !process.env.FROM_EMAIL.includes('escuderiapodium')
+        ? process.env.FROM_EMAIL
+        : 'noreply@pitstop.mundopodium.com.br';
+
     const fromWithName = `Rômulo, Pódium <${fromEmail}>`;
-    
-    const { data, error } = await resend.emails.send({
+
+    const { data: emailData, error: emailError } = await resend.emails.send({
       from: fromWithName,
-      to: [dadosParticipante.email],
+      to: [novoEmail],
       subject,
       html,
     });
 
-    if (error) {
-      throw new Error(error.message || 'Erro ao enviar email');
+    if (emailError) {
+      console.error('❌ Erro ao enviar email:', emailError.message);
+      process.exit(1);
     }
 
     console.log('✅ Email enviado com sucesso!');
-    console.log(`   Message ID: ${data?.id || 'N/A'}`);
-    console.log(`   Para: ${dadosParticipante.email}`);
-    
-    return true;
-  } catch (error) {
-    console.error('❌ Erro ao enviar email:', error.message);
-    throw error;
-  }
-}
+    console.log(`   Message ID: ${emailData?.id || 'N/A'}\n`);
 
-async function main() {
-  try {
-    console.log('🚀 Iniciando envio de email de confirmação...\n');
-    
-    await enviarEmail();
-    
-    console.log('\n✅ Processo concluído com sucesso!');
+    // 4. Atualizar status de email no Supabase
+    console.log('📝 Atualizando status de email no Supabase...');
+    await supabase
+      .from('workshop_registrations')
+      .update({
+        email_sent: true,
+        email_sent_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .eq('charge_id', chargeId);
+
+    console.log('✅ Status de email atualizado no Supabase\n');
+
+    console.log('============================================================');
+    console.log('✅ PROCESSO CONCLUÍDO COM SUCESSO!');
+    console.log('============================================================');
+    console.log(`📋 Cliente: ${registro.nome}`);
+    console.log(`📧 Email atualizado: ${novoEmail}`);
+    console.log(`📧 Message ID: ${emailData?.id || 'N/A'}`);
+    console.log('============================================================\n');
   } catch (error) {
     console.error('\n❌ Erro no processo:', error.message);
     process.exit(1);
   }
 }
 
-main();
-
-
-
-
-
-
+atualizarEmailEReenviar();
 
 
 

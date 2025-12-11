@@ -80,7 +80,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-3 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento Simbólico: R$ 49,99 • 3 horas intensivas • Entrega real
+                Investimento Simbólico: R$ 99,99 • 3 horas intensivas • Entrega real
               </p>
 
               <p className="hidden sm:block text-sm sm:text-base text-gray-300 font-light leading-relaxed mb-4 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.3s'}}>
@@ -91,7 +91,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.35s'}}>
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                   <span className="text-gray-400 text-sm line-through">De R$ 297</span>
-                  <span className="text-yellow-400 font-bold text-lg">R$ 49,99</span>
+                  <span className="text-yellow-400 font-bold text-lg">R$ 99,99</span>
                 </div>
                 <p className="hidden sm:block text-gray-400 text-xs mt-2 max-w-md mx-auto">
                   Valor simbólico para filtrar comprometimento real. Não é funil isca gratuito — é treinamento prático com entrega real. 3 horas que valem mais que cursos de 30 horas.
@@ -113,12 +113,12 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               {/* CTA Button */}
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
                 <a
-                  href="https://pag.ae/81eiPrem9/button"
+                  href="https://pagamento.sejaefi.com.br/a18de564-b46a-4007-917d-e3598403b8ca"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleCTAClick}
                   className="group relative w-full max-w-md mx-auto inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-6 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-lg sm:text-xl rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect"
-                  title="Pagar com PagBank"
+                  title="Pagar com Banco Efí"
                 >
                   <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
                     Garantir Minha Vaga Agora

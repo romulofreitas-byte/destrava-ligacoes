@@ -37,7 +37,7 @@ export const EventDetailsSection: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Data</h3>
-                    <p className="text-gray-300 text-sm">10 de Dezembro de 2025</p>
+                    <p className="text-gray-300 text-sm">07 de Janeiro de 2026</p>
                   </div>
                 </div>
 

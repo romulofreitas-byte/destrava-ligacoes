@@ -120,18 +120,19 @@ export const InvestmentSection: React.FC = () => {
               variants={itemVariants}
               className="text-center"
             >
-              {/* INICIO DO BOTAO PAGBANK */}
-              <a href="https://pag.ae/81eiPrem9/button" target="_blank" rel="noopener noreferrer" title="Pagar com PagBank">
-                <Image 
-                  src="https://assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar.gif" 
-                  alt="Pague com PagBank - é rápido, grátis e seguro!" 
-                  width={205}
-                  height={30}
-                  unoptimized
-                  className="inline-block"
-                />
+              {/* INICIO DO BOTAO BANCO EFÍ */}
+              <a 
+                href="https://pagamento.sejaefi.com.br/a18de564-b46a-4007-917d-e3598403b8ca" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                title="Pagar com Banco Efí"
+                className="inline-block"
+              >
+                <button className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-green-500/40 hover:scale-105">
+                  Garantir Minha Vaga
+                </button>
               </a>
-              {/* FIM DO BOTAO PAGBANK */}
+              {/* FIM DO BOTAO BANCO EFÍ */}
                   <p className="small-text">
                     ✓ Vagas limitadas • ✓ Garantia de 7 dias
                   </p>

@@ -66,6 +66,18 @@ export async function sendImmediateEmail(data: EmailCadenceData): Promise<{ succ
       return { success: true };
     }
 
+    // Validação: verificar se email e nome estão presentes
+    if (!data.email || !data.email.includes('@')) {
+      const errorMsg = 'Email inválido ou não fornecido';
+      console.error(`❌ [CADENCE] ${errorMsg}`);
+      return { success: false, error: errorMsg };
+    }
+
+    if (!data.nome || data.nome.trim().length === 0) {
+      console.warn(`⚠️ [CADENCE] Nome não fornecido, usando fallback`);
+      data.nome = data.nome || data.email.split('@')[0] || 'Participante';
+    }
+
     console.log('📧 [CADENCE] Gerando template de email...');
     const html = getWorkshopEmailTemplate({ nome: data.nome, email: data.email });
     const subject = '🎉 Pagamento Confirmado - Workshop Destrave Suas Ligações';
@@ -85,6 +97,13 @@ export async function sendImmediateEmail(data: EmailCadenceData): Promise<{ succ
       console.log(`✅ [CADENCE] Email imediato enviado para ${data.email}`);
       console.log(`✅ [CADENCE] Message ID: ${result.messageId}`);
       console.log(`✅ [CADENCE] Registro atualizado no Map em memória`);
+      
+      // Atualizar Supabase para manter sincronização
+      try {
+        await updateEmailStatus(data.chargeId, true);
+      } catch (supabaseError: any) {
+        console.warn('⚠️ [CADENCE] Erro ao atualizar status de email no Supabase (não crítico):', supabaseError?.message);
+      }
     } else {
       console.error(`❌ [CADENCE] Falha ao enviar email para ${data.email}`);
       console.error(`❌ [CADENCE] Erro: ${result.error}`);

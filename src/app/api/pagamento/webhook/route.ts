@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPaymentStatus } from '@/lib/pagbank';
 import { sendImmediateEmail } from '@/lib/email-cadence';
-import { upsertWorkshopRegistration, updateEmailStatus } from '@/lib/supabase';
+import { upsertWorkshopRegistration, updateEmailStatus, getWorkshopRegistration } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   try {
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
       const customerName = payment.customer?.name || 'Participante';
       
       if (customerEmail) {
-        // Disparar email imediato
+        // Disparar email imediato com retry automático
         try {
           console.log('📧 ===== INICIANDO ENVIO DE EMAIL =====');
           console.log('📧 Destinatário:', customerEmail);
@@ -122,41 +122,76 @@ export async function POST(request: NextRequest) {
             console.log('✅ RESEND_API_KEY está configurada');
           }
           
-          const emailResult = await sendImmediateEmail({
-            email: customerEmail,
-            nome: customerName,
-            chargeId: charge_id,
-            referenceId: payment.reference_id,
-          });
-          
-          if (emailResult.success) {
-            console.log('✅ ===== EMAIL ENVIADO COM SUCESSO =====');
-            console.log('✅ Destinatário:', customerEmail);
-            console.log('✅ Message ID:', emailResult.messageId || 'N/A');
-            console.log('✅ Charge ID:', charge_id);
-            
-            // Atualizar status de email no Supabase
+          // Tentar enviar e-mail com retry (3 tentativas)
+          let emailSent = false;
+          let lastError: string | undefined;
+
+          for (let attempt = 1; attempt <= 3; attempt++) {
             try {
-              await updateEmailStatus(charge_id, true);
-              console.log('✅ Status de email atualizado no Supabase');
-            } catch (emailStatusError: any) {
-              console.error('⚠️ Erro ao atualizar status de email no Supabase (não crítico):', emailStatusError);
+              console.log(`📧 Tentativa ${attempt}/3 de envio de e-mail...`);
+              
+              const emailResult = await sendImmediateEmail({
+                email: customerEmail,
+                nome: customerName,
+                chargeId: charge_id,
+                referenceId: payment.reference_id,
+              });
+
+              if (emailResult.success) {
+                console.log('✅ ===== EMAIL ENVIADO COM SUCESSO =====');
+                console.log('✅ Destinatário:', customerEmail);
+                console.log('✅ Message ID:', emailResult.messageId || 'N/A');
+                console.log('✅ Charge ID:', charge_id);
+                
+                // Atualizar status de email no Supabase
+                try {
+                  await updateEmailStatus(charge_id, true);
+                  console.log('✅ Status de email atualizado no Supabase');
+                } catch (emailStatusError: any) {
+                  console.error('⚠️ Erro ao atualizar status de email no Supabase (não crítico):', emailStatusError);
+                }
+                
+                emailSent = true;
+                break; // Sair do loop de retry
+              } else {
+                lastError = emailResult.error;
+                console.error(`❌ Tentativa ${attempt} falhou:`, emailResult.error);
+                
+                // Aguardar antes da próxima tentativa (5s, 10s, 15s)
+                if (attempt < 3) {
+                  const delay = attempt * 5000;
+                  console.log(`⏳ Aguardando ${delay}ms antes da próxima tentativa...`);
+                  await new Promise(resolve => setTimeout(resolve, delay));
+                }
+              }
+            } catch (emailError: any) {
+              lastError = emailError.message;
+              console.error(`❌ Exceção na tentativa ${attempt}:`, emailError.message);
+              
+              if (attempt < 3) {
+                const delay = attempt * 5000;
+                await new Promise(resolve => setTimeout(resolve, delay));
+              }
             }
-          } else {
-            console.error('❌ ===== FALHA AO ENVIAR EMAIL =====');
+          }
+
+          if (!emailSent) {
+            console.error('❌ ===== FALHA AO ENVIAR EMAIL APÓS 3 TENTATIVAS =====');
             console.error('❌ Destinatário:', customerEmail);
-            console.error('❌ Erro:', emailResult.error);
+            console.error('❌ Último erro:', lastError);
             console.error('❌ Charge ID:', charge_id);
             console.error('❌ Reference ID:', payment.reference_id);
-            // Log detalhado para debugging
-            console.error('❌ Detalhes completos:', {
-              charge_id,
-              reference_id: payment.reference_id,
-              customer_email: customerEmail,
-              customer_name: customerName,
-              error: emailResult.error,
-              has_resend_key: !!process.env.RESEND_API_KEY,
-            });
+            console.error('⚠️ O e-mail será tentado novamente via fallback ou polling');
+            
+            // Tentar buscar dados do Supabase como fallback
+            try {
+              const supabaseRegistration = await getWorkshopRegistration(charge_id);
+              if (supabaseRegistration.success && supabaseRegistration.data) {
+                console.log('ℹ️ Registro encontrado no Supabase, pode ser processado posteriormente');
+              }
+            } catch (fallbackError) {
+              console.warn('⚠️ Erro ao buscar registro no Supabase (fallback):', fallbackError);
+            }
           }
         } catch (emailError: any) {
           console.error('❌ ===== EXCEÇÃO AO ENVIAR EMAIL =====');

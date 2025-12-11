@@ -90,8 +90,8 @@ export const HeroSectionWorkshop: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span className="text-[10px] sm:text-sm font-bold relative z-[100]" style={{fontFamily: 'var(--font-ubuntu), sans-serif'}}>
-                  <span className="hidden sm:inline">10 de Dezembro</span>
-                  <span className="sm:hidden">10/12</span>
+                  <span className="hidden sm:inline">07 de Janeiro</span>
+                  <span className="sm:hidden">07/01</span>
                 </span>
               </div>
               <div className="flex items-center gap-1 relative z-[100]">
@@ -112,7 +112,7 @@ export const HeroSectionWorkshop: React.FC = () => {
         {/* Badge - Above Image */}
         <div className="px-4 pt-4 pb-2 text-center">
           <div className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full backdrop-blur-sm shadow-lg animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">10 de Dezembro • 3 horas intensas • 100% prático • <span className="text-red-400 font-bold">Sem Replay</span></span>
+            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">07 de Janeiro • 3 horas intensas • 100% prático • <span className="text-red-400 font-bold">Sem Replay</span></span>
           </div>
         </div>
 
@@ -161,11 +161,11 @@ export const HeroSectionWorkshop: React.FC = () => {
             <div className="mb-4 animate-fade-in-up" style={{animationDelay: '0.17s'}}>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                 <span className="text-gray-400 text-[10px] line-through">De R$ 297</span>
-                <span className="text-yellow-400 font-bold text-sm">R$ 49,99</span>
+                <span className="text-yellow-400 font-bold text-sm">R$ 99,99</span>
               </div>
               <div className="mt-1.5 flex items-center justify-center gap-1.5">
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-red-400 text-[9px] font-semibold">10 de Dezembro • Sem Replay</span>
+                <span className="text-red-400 text-[9px] font-semibold">07 de Janeiro • Sem Replay</span>
               </div>
             </div>
 
@@ -176,7 +176,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                 onClick={handleCTAClick}
                 className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10"
               >
-                <span className="relative drop-shadow-sm">Garantir vaga por R$ 49,99</span>
+                <span className="relative drop-shadow-sm">Garantir vaga por R$ 99,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 
@@ -205,7 +205,7 @@ export const HeroSectionWorkshop: React.FC = () => {
           <div className="max-w-2xl text-left relative z-30">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-4 backdrop-blur-sm shadow-lg hover:shadow-yellow-400/20 transition-all duration-300 animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">10 de Dezembro • 3 horas intensas • 100% prático • <span className="text-red-400 font-bold">Sem Replay</span></span>
+              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">07 de Janeiro • 3 horas intensas • 100% prático • <span className="text-red-400 font-bold">Sem Replay</span></span>
             </div>
 
             {/* Main Headline */}
@@ -223,11 +223,11 @@ export const HeroSectionWorkshop: React.FC = () => {
             <div className="mb-4 animate-fade-in-up" style={{animationDelay: '0.17s'}}>
               <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                 <span className="text-gray-400 text-sm line-through">De R$ 297</span>
-                <span className="text-yellow-400 font-bold text-xl">R$ 49,99</span>
+                <span className="text-yellow-400 font-bold text-xl">R$ 99,99</span>
               </div>
               <div className="mt-2 flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-red-400 text-xs font-semibold">10 de Dezembro • Sem Replay</span>
+                <span className="text-red-400 text-xs font-semibold">07 de Janeiro • Sem Replay</span>
               </div>
             </div>
 
@@ -238,7 +238,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                 onClick={handleCTAClick}
                 className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10"
               >
-                <span className="relative drop-shadow-sm">Garantir vaga por R$ 49,99</span>
+                <span className="relative drop-shadow-sm">Garantir vaga por R$ 99,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 

@@ -267,3 +267,5 @@ Certifique-se de que todas essas variáveis estão configuradas no Vercel:
 - **PagBank Support:** https://pagseguro.uol.com.br/atendimento
 - **Vercel Support:** https://vercel.com/support
 
+
+

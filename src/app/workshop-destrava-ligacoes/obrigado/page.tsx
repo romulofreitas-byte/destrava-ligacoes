@@ -355,7 +355,7 @@ function ObrigadoContent() {
                         </div>
                         <div>
                           <p className="text-gray-400 text-xs mb-1">Data</p>
-                          <p className="text-white font-semibold text-sm">10 de Dezembro de 2025</p>
+                          <p className="text-white font-semibold text-sm">07 de Janeiro de 2026</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
