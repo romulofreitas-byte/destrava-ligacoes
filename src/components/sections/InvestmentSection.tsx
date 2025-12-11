@@ -120,19 +120,19 @@ export const InvestmentSection: React.FC = () => {
               variants={itemVariants}
               className="text-center"
             >
-              {/* INICIO DO BOTAO PAGBANK */}
+              {/* INICIO DO BOTAO CHECKOUT MUNDO PÓDIUM */}
               <a 
-                href="https://pag.ae/81iozcaHN" 
+                href="https://plataforma.mundopodium.com.br/checkout/workshop-destrava-ligacoes" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                title="Pagar com PagBank"
+                title="Checkout Mundo Pódium"
                 className="inline-block"
               >
                 <button className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-green-500/40 hover:scale-105">
                   Garantir Minha Vaga
                 </button>
               </a>
-              {/* FIM DO BOTAO PAGBANK */}
+              {/* FIM DO BOTAO CHECKOUT MUNDO PÓDIUM */}
                   <p className="small-text">
                     ✓ Vagas limitadas • ✓ Garantia de 7 dias
                   </p>

@@ -185,6 +185,28 @@ export interface WorkshopRegistration {
   email_sent_at?: string;
 }
 
+// Tipos para a tabela wdl3 (sem campos de email)
+export interface WDL3Registration {
+  id?: string;
+  charge_id: string;
+  reference_id?: string;
+  nome?: string;
+  email?: string;
+  tax_id?: string;
+  telefone_country?: string;
+  telefone_area?: string;
+  telefone_number?: string;
+  status: string;
+  amount?: number;
+  amount_brl?: number;
+  payment_method?: string;
+  installments?: number;
+  description?: string;
+  created_at?: string;
+  updated_at?: string;
+  paid_at?: string;
+}
+
 /**
  * Retry logic para operações do Supabase
  */
@@ -601,5 +623,189 @@ export async function addInvitedGuest(
     success: false, 
     error: result.error || 'Erro desconhecido ao adicionar convidado',
   };
+}
+
+/**
+ * Cria ou atualiza um registro WDL3 no Supabase
+ * @param data Dados do registro WDL3
+ * @returns Resultado da operação
+ */
+export async function upsertWDL3Registration(
+  data: WDL3Registration
+): Promise<{ success: boolean; error?: string; data?: WDL3Registration }> {
+  if (!supabase) {
+    const errorMsg = 'Supabase não configurado. Verifique NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  // Validação básica dos dados
+  if (!data.charge_id) {
+    const errorMsg = 'charge_id é obrigatório';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  if (!data.status) {
+    const errorMsg = 'status é obrigatório';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  // Preparar dados para inserção/atualização
+  const registrationData: Partial<WDL3Registration> = {
+    charge_id: data.charge_id,
+    reference_id: data.reference_id,
+    nome: data.nome,
+    email: data.email,
+    tax_id: data.tax_id,
+    telefone_country: data.telefone_country,
+    telefone_area: data.telefone_area,
+    telefone_number: data.telefone_number,
+    status: data.status,
+    amount: data.amount,
+    amount_brl: data.amount_brl,
+    payment_method: data.payment_method,
+    installments: data.installments,
+    description: data.description,
+    paid_at: data.paid_at,
+    updated_at: new Date().toISOString(),
+  };
+
+  // Se não tiver created_at, definir como agora
+  if (!data.created_at) {
+    registrationData.created_at = new Date().toISOString();
+  }
+
+  // Usar retry logic para operações críticas
+  try {
+      const result = await withRetry(async () => {
+        const response = await supabase!
+          .from('wdl3')
+          .upsert(registrationData, {
+            onConflict: 'charge_id',
+            ignoreDuplicates: false,
+          })
+          .select()
+          .single();
+        
+        if (response.error) {
+          throw response.error;
+        }
+        
+        return response;
+      });
+
+      // Se chegou aqui, a operação foi bem-sucedida
+      if (result.data) {
+        console.log('✅ Registro WDL3 salvo no Supabase:', {
+          charge_id: data.charge_id,
+          email: data.email,
+          status: data.status,
+          id: result.data.id,
+        });
+        return { success: true, data: result.data as WDL3Registration };
+      }
+      
+      // Se não tem data mas também não tem error, algo estranho aconteceu
+      return { success: false, error: 'Operação concluída mas nenhum dado retornado' };
+    } catch (error: any) {
+      // Tratamento específico de erros comuns
+      let errorMessage = error?.message || 'Erro desconhecido ao salvar registro';
+      
+      if (error?.code === '42P01') {
+        errorMessage = 'Tabela wdl3 não existe. Execute o script SQL em supabase-wdl3-schema.sql';
+      } else if (error?.code === '23505') {
+        errorMessage = `Registro com charge_id ${data.charge_id} já existe (violação de constraint único)`;
+      } else if (error?.code === '23502') {
+        errorMessage = `Campo obrigatório ausente: ${error.column || 'desconhecido'}`;
+      } else if (error?.code === 'PGRST301') {
+        errorMessage = 'Erro de permissão. Verifique se a service role key está correta';
+      }
+
+      console.error('❌ Erro ao salvar registro WDL3 no Supabase:', {
+        error: errorMessage,
+        code: error?.code,
+        details: error?.details,
+        hint: error?.hint,
+        charge_id: data.charge_id,
+        email: data.email,
+        status: data.status,
+      });
+      
+      return { success: false, error: errorMessage };
+    }
+}
+
+/**
+ * Busca um registro WDL3 pelo charge_id
+ * @param chargeId ID do pagamento
+ * @returns Registro encontrado ou null
+ */
+export async function getWDL3Registration(
+  chargeId: string
+): Promise<{ success: boolean; data?: WDL3Registration; error?: string }> {
+  if (!supabase) {
+    const errorMsg = 'Supabase não configurado. Verifique NEXT_PUBLIC_SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  if (!chargeId) {
+    const errorMsg = 'chargeId é obrigatório';
+    console.error(`❌ ${errorMsg}`);
+    return { success: false, error: errorMsg };
+  }
+
+  try {
+    const result = await withRetry(async () => {
+      const response = await supabase!
+        .from('wdl3')
+        .select('*')
+        .eq('charge_id', chargeId)
+        .single();
+      
+      if (response.error && response.error.code !== 'PGRST116') {
+        throw response.error;
+      }
+      
+      return response;
+    });
+
+    if (result.error) {
+      if (result.error.code === 'PGRST116') {
+        // Registro não encontrado - não é um erro, apenas não existe
+        return { success: true, data: undefined };
+      }
+
+      let errorMessage = result.error.message || 'Erro desconhecido ao buscar registro';
+      
+      if (result.error.code === '42P01') {
+        errorMessage = 'Tabela wdl3 não existe. Execute o script SQL em supabase-wdl3-schema.sql';
+      }
+
+      console.error('❌ Erro ao buscar registro WDL3:', {
+        error: errorMessage,
+        code: result.error.code,
+        charge_id: chargeId,
+      });
+      return { success: false, error: errorMessage };
+    }
+
+    return { success: true, data: result.data as WDL3Registration };
+  } catch (error: any) {
+    let errorMessage = error?.message || 'Erro desconhecido ao buscar registro';
+    
+    if (error?.code === '42P01') {
+      errorMessage = 'Tabela wdl3 não existe. Execute o script SQL em supabase-wdl3-schema.sql';
+    }
+    
+    console.error('❌ Erro inesperado ao buscar registro WDL3:', {
+      error: errorMessage,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+      charge_id: chargeId,
+    });
+    return { success: false, error: errorMessage };
+  }
 }
 
