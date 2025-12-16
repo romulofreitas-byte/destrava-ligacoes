@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Zap, Clock, Users, Key } from 'lucide-react';
+import { Zap, Clock, Users } from 'lucide-react';
 import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
 
@@ -14,7 +14,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgressWidth(6); // 6% preenchido
+      setProgressWidth(93); // 93% preenchido para criar urgência
     }, 100);
 
     return () => clearTimeout(timer);
@@ -80,11 +80,11 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-3 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento Estratégico: R$ 99,99 • 3 horas intensivas • Ferramentas Exclusivas
+                Investimento Simbólico: R$ 99,99 • 3 horas intensivas • Entrega real
               </p>
 
               <p className="hidden sm:block text-sm sm:text-base text-gray-300 font-light leading-relaxed mb-4 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-                Este não é um workshop gratuito. É um investimento estratégico que garante entrega real, demonstração prática, construção ao vivo e <span className="text-yellow-400 font-semibold">ferramentas exclusivas</span> (Calculadoras de Ligações e Precificação). Vagas limitadas. Evento ao vivo, sem replay.
+                Este não é um workshop gratuito. É um investimento simbólico que garante entrega real, demonstração prática e construção ao vivo. Vagas limitadas. Evento ao vivo, sem replay.
               </p>
 
               {/* Pricing Info */}
@@ -94,12 +94,12 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   <span className="text-yellow-400 font-bold text-lg">R$ 99,99</span>
                 </div>
                 <p className="hidden sm:block text-gray-400 text-xs mt-2 max-w-md mx-auto">
-                  Investimento estratégico para destravar sua prospecção e receber as <span className="text-yellow-400 font-semibold">ferramentas exclusivas</span>. Não é funil isca gratuito — é treinamento prático com entrega real. 3 horas que valem mais que cursos de 30 horas.
+                  Valor simbólico para filtrar comprometimento real. Não é funil isca gratuito — é treinamento prático com entrega real. 3 horas que valem mais que cursos de 30 horas.
                 </p>
               </div>
 
               {/* Urgency Indicators */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
                 <div className="flex items-center justify-center space-x-2 p-3 bg-green-400/10 border border-green-400/30 rounded-xl">
                   <Users className="w-5 h-5 text-green-400" />
                   <span className="text-green-400 font-semibold text-sm">Vagas Limitadas</span>
@@ -108,41 +108,20 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   <Clock className="w-5 h-5 text-yellow-400" />
                   <span className="text-yellow-400 font-semibold text-sm">Sem Replay</span>
                 </div>
-                <div className="flex items-center justify-center space-x-2 p-3 bg-purple-400/10 border border-purple-400/30 rounded-xl">
-                  <Key className="w-5 h-5 text-purple-400" />
-                  <span className="text-purple-400 font-semibold text-sm">Acesso Imediato</span>
-                </div>
-              </div>
-
-              {/* Platform Access Benefit */}
-              <div className="mb-8 animate-fade-in-up" style={{animationDelay: '0.45s'}}>
-                <div className="bg-gradient-to-r from-purple-400/10 to-blue-400/10 border border-purple-400/30 rounded-2xl p-4 sm:p-6 backdrop-blur-sm">
-                  <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
-                    <Key className="w-6 h-6 text-purple-400 flex-shrink-0" />
-                    <div className="text-center sm:text-left">
-                      <p className="text-gray-300 text-sm sm:text-base">
-                        <span className="text-purple-400 font-semibold">Acesso imediato</span> à plataforma Mundo Pódium — o ecossistema oficial do Método Pódium
-                      </p>
-                      <p className="text-gray-400 text-xs sm:text-sm mt-1">
-                        Seções exclusivas • Gravação do workshop • Acesso até 7 dias • Cupom promocional
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* CTA Button */}
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
                 <a
-                  href="https://plataforma.mundopodium.com.br/checkout/workshop-destrava-ligacoes"
+                  href="https://pag.ae/81iozcaHN"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleCTAClick}
                   className="group relative w-full max-w-md mx-auto inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-6 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-lg sm:text-xl rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect"
-                  title="Checkout Mundo Pódium"
+                  title="Pagar com PagBank"
                 >
                   <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
-                    Garantir vaga por R$ 99,99
+                    Garantir Minha Vaga Agora
                   </span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
@@ -152,7 +131,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               <div className="space-y-2 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold animate-pulse">6%</span>
+                  <span className="text-green-400 font-semibold animate-pulse">93%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
@@ -162,6 +141,13 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 </div>
               </div>
 
+              {/* Future Hook - Integrated */}
+              <div className="mt-8 pt-8 border-t border-gray-700/50 animate-fade-in-up" style={{animationDelay: '0.7s'}}>
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                  Este Workshop é a primeira etapa para dominar prospecção ativa com consistência.{' '}
+                  <span className="text-yellow-400 font-semibold">No final, você terá clareza sobre o próximo passo.</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
