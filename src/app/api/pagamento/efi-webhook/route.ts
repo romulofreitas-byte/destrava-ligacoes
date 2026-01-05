@@ -5,7 +5,8 @@ import {
   extractCustomerFromWebhook,
   type EfipixWebhookNotification 
 } from '@/lib/efi';
-import { upsertWDL3Registration } from '@/lib/supabase';
+import { sendImmediateEmail } from '@/lib/email-cadence';
+import { upsertWorkshopRegistration, updateEmailStatus, getWorkshopRegistration } from '@/lib/supabase';
 
 /**
  * Webhook do Banco Efí para receber notificações de pagamento PIX
@@ -69,12 +70,47 @@ export async function POST(request: NextRequest) {
           // Continuar mesmo se não conseguir consultar a cobrança
         }
 
+        // Buscar registro no Supabase pelo txid ou endToEndId
+        // O txid é o identificador da cobrança, que deve estar salvo no Supabase
+        let registration = null;
+        
+        // Tentar buscar pelo txid como charge_id
+        const supabaseResult = await getWorkshopRegistration(txid);
+        if (supabaseResult.success && supabaseResult.data) {
+          registration = supabaseResult.data;
+          console.log('✅ Registro encontrado no Supabase pelo txid:', txid);
+        }
+
+        // Se não encontrou, tentar buscar pelo endToEndId
+        if (!registration && endToEndId) {
+          // Nota: Pode ser necessário criar uma função específica para buscar por endToEndId
+          // Por enquanto, vamos usar o txid
+          console.log('ℹ️ Tentando buscar por endToEndId:', endToEndId);
+        }
+
         // Extrair dados do cliente
         let customerEmail: string | undefined;
         let customerName: string | undefined;
 
-        // Prioridade 1: Dados da cobrança
-        if (chargeData) {
+        // Prioridade 1: Dados do Supabase (se encontrado)
+        if (registration) {
+          customerEmail = registration.email;
+          customerName = registration.nome;
+          console.log('📧 Dados do cliente do Supabase:', {
+            email: customerEmail,
+            nome: customerName,
+          });
+        }
+
+        // Prioridade 2: Dados da cobrança (infoAdicionais)
+        if (!customerEmail && chargeData) {
+          const emailInfo = chargeData.infoAdicionais?.find(info => 
+            info.nome === 'Email' || info.nome.toLowerCase() === 'email'
+          );
+          if (emailInfo) {
+            customerEmail = emailInfo.valor;
+          }
+          
           // Nome do devedor
           if (chargeData.devedor?.nome) {
             customerName = chargeData.devedor.nome;
@@ -86,7 +122,7 @@ export async function POST(request: NextRequest) {
           });
         }
 
-        // Prioridade 2: infoPagador do PIX (se disponível)
+        // Prioridade 3: infoPagador do PIX (se disponível)
         if (!customerEmail && pix.infoPagador) {
           // Tentar extrair email do infoPagador (formato pode variar)
           const emailMatch = pix.infoPagador.match(/[\w\.-]+@[\w\.-]+\.\w+/);
@@ -116,30 +152,99 @@ export async function POST(request: NextRequest) {
           paid_at: chargeData?.status === 'CONCLUIDA' ? new Date().toISOString() : undefined,
         };
 
-        console.log('💾 Salvando/atualizando registro WDL3 no Supabase:', {
+        console.log('💾 Salvando/atualizando registro no Supabase:', {
           txid,
           email: customerEmail,
           status: registrationData.status,
         });
 
-        const upsertResult = await upsertWDL3Registration(registrationData);
+        const upsertResult = await upsertWorkshopRegistration(registrationData);
         
         if (upsertResult.success) {
-          console.log('✅ Registro WDL3 atualizado no Supabase com sucesso');
+          console.log('✅ Registro atualizado no Supabase com sucesso');
         } else {
           console.error('⚠️ Erro ao salvar no Supabase (não crítico - fluxo continua):', {
             error: upsertResult.error,
           });
         }
 
-        // Se pagamento está confirmado, apenas logar (emails serão enviados pela plataforma Mundo Pódium)
-        if (chargeData?.status === 'CONCLUIDA') {
-          console.log('✅ Pagamento confirmado e registrado no Supabase:', {
+        // Se pagamento está confirmado e temos email, enviar e-mail de confirmação
+        if (chargeData?.status === 'CONCLUIDA' && customerEmail) {
+          console.log('✅ Pagamento confirmado, enviando e-mail:', {
             txid,
             email: customerEmail,
             nome: customerName,
           });
-          console.log('ℹ️ Email de confirmação será enviado pela plataforma Mundo Pódium');
+
+          // Tentar enviar e-mail com retry
+          let emailSent = false;
+          let lastError: string | undefined;
+
+          for (let attempt = 1; attempt <= 3; attempt++) {
+            try {
+              console.log(`📧 Tentativa ${attempt}/3 de envio de e-mail...`);
+              
+              const emailResult = await sendImmediateEmail({
+                email: customerEmail,
+                nome: customerName || 'Participante',
+                chargeId: txid,
+                referenceId: endToEndId || txid,
+              });
+
+              if (emailResult.success) {
+                console.log('✅ ===== EMAIL ENVIADO COM SUCESSO =====');
+                console.log('✅ Destinatário:', customerEmail);
+                console.log('✅ Message ID:', emailResult.messageId || 'N/A');
+                console.log('✅ TXID:', txid);
+                
+                // Atualizar status de email no Supabase
+                try {
+                  await updateEmailStatus(txid, true);
+                  console.log('✅ Status de email atualizado no Supabase');
+                } catch (emailStatusError: any) {
+                  console.error('⚠️ Erro ao atualizar status de email no Supabase (não crítico):', emailStatusError);
+                }
+                
+                emailSent = true;
+                break; // Sair do loop de retry
+              } else {
+                lastError = emailResult.error;
+                console.error(`❌ Tentativa ${attempt} falhou:`, emailResult.error);
+                
+                // Aguardar antes da próxima tentativa (5s, 10s, 15s)
+                if (attempt < 3) {
+                  const delay = attempt * 5000;
+                  console.log(`⏳ Aguardando ${delay}ms antes da próxima tentativa...`);
+                  await new Promise(resolve => setTimeout(resolve, delay));
+                }
+              }
+            } catch (emailError: any) {
+              lastError = emailError.message;
+              console.error(`❌ Exceção na tentativa ${attempt}:`, emailError.message);
+              
+              if (attempt < 3) {
+                const delay = attempt * 5000;
+                await new Promise(resolve => setTimeout(resolve, delay));
+              }
+            }
+          }
+
+          if (!emailSent) {
+            console.error('❌ ===== FALHA AO ENVIAR EMAIL APÓS 3 TENTATIVAS =====');
+            console.error('❌ Destinatário:', customerEmail);
+            console.error('❌ Último erro:', lastError);
+            console.error('❌ TXID:', txid);
+            console.error('⚠️ O e-mail será tentado novamente via fallback ou polling');
+          }
+        } else if (!customerEmail) {
+          console.warn('⚠️ ATENÇÃO: Email do cliente não encontrado');
+          console.warn('Dados disponíveis:', {
+            txid,
+            endToEndId,
+            has_charge_data: !!chargeData,
+            has_registration: !!registration,
+          });
+          console.warn('⚠️ O email de confirmação NÃO será enviado automaticamente.');
         } else if (chargeData?.status !== 'CONCLUIDA') {
           console.log('ℹ️ Pagamento ainda não confirmado:', {
             txid,
@@ -151,6 +256,7 @@ export async function POST(request: NextRequest) {
           txid,
           endToEndId,
           processed: true,
+          emailSent: chargeData?.status === 'CONCLUIDA' && customerEmail ? true : false,
         });
 
       } catch (pixError: any) {
