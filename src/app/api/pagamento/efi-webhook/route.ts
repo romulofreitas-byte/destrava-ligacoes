@@ -102,15 +102,8 @@ export async function POST(request: NextRequest) {
           });
         }
 
-        // Prioridade 2: Dados da cobrança (infoAdicionais)
+        // Prioridade 2: Dados da cobrança (devedor)
         if (!customerEmail && chargeData) {
-          const emailInfo = chargeData.infoAdicionais?.find(info => 
-            info.nome === 'Email' || info.nome.toLowerCase() === 'email'
-          );
-          if (emailInfo) {
-            customerEmail = emailInfo.valor;
-          }
-          
           // Nome do devedor
           if (chargeData.devedor?.nome) {
             customerName = chargeData.devedor.nome;
