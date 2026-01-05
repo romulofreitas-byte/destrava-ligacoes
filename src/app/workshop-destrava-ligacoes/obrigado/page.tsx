@@ -440,8 +440,7 @@ function ObrigadoContent() {
                     <div className="mb-6 p-4 bg-blue-400/10 border border-blue-400/30 rounded-xl">
                       <p className="text-white font-semibold mb-2">🎉 Acesso Imediato à Plataforma Mundo Pódium</p>
                       <p className="text-gray-300 text-sm leading-relaxed">
-                        Parabéns! Você adquiriu o Workshop por R$ 99,99 e já tem acesso imediato à Plataforma Mundo Pódium. 
-                        A partir de 01 de Janeiro de 2026, o valor do Workshop será de R$ 149,99.
+                        Parabéns! Você adquiriu o Workshop por R$ 149,99 e já tem acesso imediato à Plataforma Mundo Pódium.
                       </p>
                     </div>
 

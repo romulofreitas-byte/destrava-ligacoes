@@ -160,7 +160,7 @@ export const HeroSectionWorkshop: React.FC = () => {
             <div className="mb-4 animate-fade-in-up" style={{animationDelay: '0.17s'}}>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                 <span className="text-gray-400 text-[10px] line-through">De R$ 297</span>
-                <span className="text-yellow-400 font-bold text-sm">R$ 99,99</span>
+                <span className="text-yellow-400 font-bold text-sm">R$ 149,99</span>
               </div>
               <div className="mt-1.5 flex flex-col items-center gap-1.5">
                 <div className="flex items-center gap-1.5">
@@ -181,7 +181,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                 onClick={handleCTAClick}
                 className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10"
               >
-                <span className="relative drop-shadow-sm">Garantir vaga por R$ 99,99</span>
+                <span className="relative drop-shadow-sm">Garantir vaga por R$ 149,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 
@@ -228,7 +228,7 @@ export const HeroSectionWorkshop: React.FC = () => {
             <div className="mb-4 animate-fade-in-up" style={{animationDelay: '0.17s'}}>
               <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                 <span className="text-gray-400 text-sm line-through">De R$ 297</span>
-                <span className="text-yellow-400 font-bold text-xl">R$ 99,99</span>
+                <span className="text-yellow-400 font-bold text-xl">R$ 149,99</span>
               </div>
               <div className="mt-2 flex flex-col items-start gap-2">
                 <div className="flex items-center gap-2">
@@ -249,7 +249,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                 onClick={handleCTAClick}
                 className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10"
               >
-                <span className="relative drop-shadow-sm">Garantir vaga por R$ 99,99</span>
+                <span className="relative drop-shadow-sm">Garantir vaga por R$ 149,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 

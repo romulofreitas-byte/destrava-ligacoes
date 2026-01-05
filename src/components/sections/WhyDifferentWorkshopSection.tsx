@@ -25,7 +25,7 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
     {
       icon: Sparkles,
       title: 'Investimento Simbólico, Entrega Real',
-      description: 'R$ 99,99 garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático.'
+      description: 'R$ 149,99 garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático.'
     }
   ];
 
@@ -56,7 +56,7 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            Entrega real, prática real, resultados reais. Investimento simbólico de R$ 99,99 para garantir comprometimento e qualidade.
+            Entrega real, prática real, resultados reais. Investimento simbólico de R$ 149,99 para garantir comprometimento e qualidade.
           </p>
         </div>
 
