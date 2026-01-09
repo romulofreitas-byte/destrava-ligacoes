@@ -4,7 +4,6 @@ import React from 'react';
 import { HeroSectionWorkshop } from '@/components/sections/HeroSectionWorkshop';
 import { WorkshopTestimonialBanner } from '@/components/sections/WorkshopTestimonialBanner';
 import { EventDetailsSection } from '@/components/sections/EventDetailsSection';
-import { PlataformaMundoPodiumSection } from '@/components/sections/PlataformaMundoPodiumSection';
 import { WhoIsItForWorkshopSection } from '@/components/sections/WhoIsItForWorkshopSection';
 import { ColdCallQuizSection } from '@/components/sections/ColdCallQuizSection';
 import { WhyYouStuckSection } from '@/components/sections/WhyYouStuckSection';
@@ -31,7 +30,6 @@ export const WorkshopPageContent: React.FC = () => {
         <WorkshopTestimonialBanner />
         <LiveCallsSection />
         <EventDetailsSection />
-        <PlataformaMundoPodiumSection />
         <WhoIsItForWorkshopSection />
         <ColdCallQuizSection />
         <WhyYouStuckSection />

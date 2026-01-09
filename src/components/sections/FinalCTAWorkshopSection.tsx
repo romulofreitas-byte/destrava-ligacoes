@@ -14,7 +14,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgressWidth(102); // 102% preenchido
+      setProgressWidth(7); // 7% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -71,7 +71,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
             <div className="relative z-10 text-center">
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-400/20 to-green-500/10 border border-green-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-green-400/20 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
                 <Zap className="w-4 h-4 text-green-400 mr-2" />
-                <span className="text-green-400 font-semibold text-xs tracking-wide">Última Chance</span>
+                <span className="text-green-400 font-semibold text-xs tracking-wide">Vagas Abertas - 21 de Janeiro</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight animate-fade-in-up" style={{animationDelay: '0.2s'}}>
@@ -80,7 +80,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-3 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento Simbólico: R$ 149,99 • 3 horas intensivas • Entrega real
+                Investimento Simbólico: R$ 149,99 • 21 de Janeiro • 3 horas intensivas • Entrega real
               </p>
 
               <p className="hidden sm:block text-sm sm:text-base text-gray-300 font-light leading-relaxed mb-4 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.3s'}}>
@@ -127,11 +127,27 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 </a>
               </div>
 
+              {/* Payment Methods Badges */}
+              <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.55s'}}>
+                <p className="text-gray-400 text-xs mb-3">Formas de pagamento:</p>
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                  <div className="inline-flex items-center px-3 py-1.5 bg-green-500/10 border border-green-500/30 rounded-lg">
+                    <span className="text-green-400 font-semibold text-xs">Pix</span>
+                  </div>
+                  <div className="inline-flex items-center px-3 py-1.5 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+                    <span className="text-yellow-400 font-semibold text-xs">Boleto</span>
+                  </div>
+                  <div className="inline-flex items-center px-3 py-1.5 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                    <span className="text-blue-400 font-semibold text-xs">Cartão de Crédito</span>
+                  </div>
+                </div>
+              </div>
+
               {/* Progress Bar */}
               <div className="space-y-2 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold animate-pulse">102%</span>
+                  <span className="text-green-400 font-semibold animate-pulse">7%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}

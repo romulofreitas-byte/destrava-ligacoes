@@ -13,7 +13,7 @@ export const HeroSectionWorkshop: React.FC = () => {
   useEffect(() => {
     setIsMounted(true);
     const timer = setTimeout(() => {
-      setProgressWidth(102); // 102% preenchido
+      setProgressWidth(7); // 7% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -90,8 +90,8 @@ export const HeroSectionWorkshop: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span className="text-[10px] sm:text-sm font-bold relative z-[100]" style={{fontFamily: 'var(--font-ubuntu), sans-serif'}}>
-                  <span className="hidden sm:inline">07 de Janeiro</span>
-                  <span className="sm:hidden">07/01</span>
+                  <span className="hidden sm:inline">21 de Janeiro</span>
+                  <span className="sm:hidden">21/01</span>
                 </span>
               </div>
               <div className="flex items-center gap-1 relative z-[100]">
@@ -112,7 +112,7 @@ export const HeroSectionWorkshop: React.FC = () => {
         {/* Badge - Above Image */}
         <div className="px-4 pt-4 pb-2 text-center">
           <div className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full backdrop-blur-sm shadow-lg animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">07 de Janeiro • 3 horas intensas • Ferramentas Exclusivas • <span className="text-red-400 font-bold">Sem Replay</span></span>
+            <span className="text-yellow-400 font-semibold text-[10px] leading-tight tracking-wide drop-shadow-sm">21 de Janeiro • 3 horas intensas • Ferramentas Exclusivas • <span className="text-red-400 font-bold">Sem Replay</span></span>
           </div>
         </div>
 
@@ -165,7 +165,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="mt-1.5 flex flex-col items-center gap-1.5">
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-[9px] font-semibold">07 de Janeiro • Sem Replay</span>
+                  <span className="text-red-400 text-[9px] font-semibold">21 de Janeiro • Sem Replay</span>
                 </div>
                 {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
@@ -189,7 +189,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">102%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">7%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
@@ -210,7 +210,7 @@ export const HeroSectionWorkshop: React.FC = () => {
           <div className="max-w-2xl text-left relative z-30">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-4 backdrop-blur-sm shadow-lg hover:shadow-yellow-400/20 transition-all duration-300 animate-fade-in-up" style={{animationDelay: '0.05s'}}>
-              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">07 de Janeiro • 3 horas intensas • Ferramentas Exclusivas • <span className="text-red-400 font-bold">Sem Replay</span></span>
+              <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">21 de Janeiro • 3 horas intensas • Ferramentas Exclusivas • <span className="text-red-400 font-bold">Sem Replay</span></span>
             </div>
 
             {/* Main Headline */}
@@ -233,7 +233,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="mt-2 flex flex-col items-start gap-2">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-xs font-semibold">07 de Janeiro • Sem Replay</span>
+                  <span className="text-red-400 text-xs font-semibold">21 de Janeiro • Sem Replay</span>
                 </div>
                 {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
@@ -257,7 +257,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">102%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">7%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}

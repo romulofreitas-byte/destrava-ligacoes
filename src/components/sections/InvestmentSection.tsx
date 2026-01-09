@@ -120,19 +120,19 @@ export const InvestmentSection: React.FC = () => {
               variants={itemVariants}
               className="text-center"
             >
-              {/* INICIO DO BOTAO CHECKOUT MUNDO PÓDIUM */}
+              {/* INICIO DO BOTAO BANCO EFÍ */}
               <a 
-                href="https://plataforma.mundopodium.com.br/checkout/workshop-destrava-ligacoes" 
+                href="https://pagamento.sejaefi.com.br/a18de564-b46a-4007-917d-e3598403b8ca" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                title="Checkout Mundo Pódium"
+                title="Pagar com Banco Efí"
                 className="inline-block"
               >
                 <button className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-green-500/40 hover:scale-105">
                   Garantir Minha Vaga
                 </button>
               </a>
-              {/* FIM DO BOTAO CHECKOUT MUNDO PÓDIUM */}
+              {/* FIM DO BOTAO BANCO EFÍ */}
                   <p className="small-text">
                     ✓ Vagas limitadas • ✓ Garantia de 7 dias
                   </p>
