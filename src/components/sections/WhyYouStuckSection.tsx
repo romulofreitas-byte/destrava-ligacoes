@@ -93,7 +93,7 @@ export const WhyYouStuckSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            Falta de método, discurso e mentalidade. Você vai aprender a superar todas essas travas em 3 horas.
+            Falta de método, discurso e mentalidade. Você vai aprender a superar todas essas travas em 2 módulos complementares.
           </p>
         </div>
 
@@ -135,7 +135,7 @@ export const WhyYouStuckSection: React.FC = () => {
 
         <div className="mt-12 text-center animate-fade-in-up" style={{animationDelay: '0.7s'}}>
           <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Todas essas travas têm solução prática. Em 3 horas, você terá o protocolo para transformar medo em reuniões qualificadas.
+            Todas essas travas têm solução prática. Em 2 módulos complementares, você terá o protocolo para transformar medo em reuniões qualificadas.
           </p>
         </div>
 

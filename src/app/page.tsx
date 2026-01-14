@@ -4,7 +4,7 @@ import { WorkshopPageContent } from '@/components/sections/WorkshopPageContent';
 
 export const metadata: Metadata = {
   title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',
-  description: 'Workshop de 3 horas onde você aprende a destravar ligações, construir discurso de cold call e assiste ligações reais feitas ao vivo. Transforme medo em coragem e travas em resultados.',
+  description: 'Workshop em 2 módulos (6 horas) onde você aprende a destravar ligações, construir discurso de cold call e faz ligações reais na Sala de Ligação com acompanhamento direto. Transforme medo em coragem e travas em resultados.',
   keywords: 'workshop cold call, destravar ligações, como fazer cold call, discurso de vendas, marcar reunião, reuniões de vendas, vendas por telefone',
   authors: [{ name: 'Rômulo Freitas' }],
   icons: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',
-    description: 'Workshop de 3 horas onde você aprende a destravar ligações, construir discurso de cold call e assiste ligações reais feitas ao vivo. Transforme medo em coragem e travas em resultados.',
+    description: 'Workshop em 2 módulos (6 horas) onde você aprende a destravar ligações, construir discurso de cold call e faz ligações reais na Sala de Ligação com acompanhamento direto. Transforme medo em coragem e travas em resultados.',
     type: 'website',
     locale: 'pt_BR',
     images: [

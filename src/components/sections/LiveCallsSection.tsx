@@ -29,18 +29,18 @@ export const LiveCallsSection: React.FC = () => {
   const benefits = [
     {
       icon: Eye,
-      title: 'Prova Imediata',
-      description: 'Você vê na prática como um profissional experiente faz. Não é teoria — é realidade.'
+      title: 'Acompanhamento Direto',
+      description: 'Feedback em tempo real durante suas ligações.'
     },
     {
       icon: TrendingUp,
-      title: 'Aumenta Confiança',
-      description: 'Ver ligações reais sendo feitas ao vivo mostra que é possível. Você se sente capaz.'
+      title: 'Feedback Imediato',
+      description: 'Análise na hora do que funcionou e o que melhorar.'
     },
     {
       icon: Award,
-      title: 'Aprendizado Real',
-      description: 'Cada ligação é analisada e explicada. Você entende o porquê de cada palavra, cada pausa.'
+      title: 'Prática Real',
+      description: 'Ligações reais com suporte. Simulações para quem tem receio.'
     }
   ];
 
@@ -69,21 +69,13 @@ export const LiveCallsSection: React.FC = () => {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20">
                   <Phone className="w-4 h-4 text-yellow-400 mr-2" />
-                  <span className="text-yellow-400 font-semibold text-xs tracking-wide">A Parte Mais Poderosa</span>
+                  <span className="text-yellow-400 font-semibold text-xs tracking-wide">Módulo 2 - Sala de Ligação</span>
                 </div>
                 
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
                   Ligações reais{' '}
                   <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">ao vivo</span>
                 </h2>
-                
-                <p className="text-base sm:text-lg text-gray-300 font-light leading-relaxed max-w-3xl mx-auto mb-6">
-                  Você não vai ver teoria.
-                </p>
-                
-                <p className="text-lg sm:text-xl text-white font-bold leading-relaxed max-w-3xl mx-auto">
-                  Você vai ver o que <span className="text-yellow-400">NINGUÉM</span> mostra: ligações reais, analisadas e explicadas.
-                </p>
               </div>
 
               <div className="bg-gray-900/50 rounded-2xl p-6 border border-yellow-400/20">
@@ -92,7 +84,7 @@ export const LiveCallsSection: React.FC = () => {
                   <span className="text-red-400 font-semibold text-sm">AO VIVO</span>
                 </div>
                 <p className="text-center text-gray-300 text-sm sm:text-base">
-                  Durante o workshop, o Rômulo fará ligações reais para clientes potenciais. Você assiste, aprende e entende cada movimento.
+                  Faça ligações reais com acompanhamento direto e feedback em tempo real.
                 </p>
               </div>
             </div>

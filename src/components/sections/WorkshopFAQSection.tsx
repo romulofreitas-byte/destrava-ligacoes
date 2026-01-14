@@ -25,7 +25,7 @@ export const WorkshopFAQSection: React.FC = () => {
     },
     {
       question: 'Por que custa R$ 149,99?',
-      answer: 'É um investimento simbólico que garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático de 3 horas com demonstração real.'
+      answer: 'É um investimento simbólico que garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático em 2 módulos (6 horas no total) com demonstração real.'
     },
     {
       question: 'Como funciona o acesso à plataforma Mundo Pódium?',

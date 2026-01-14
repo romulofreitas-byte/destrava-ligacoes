@@ -15,12 +15,12 @@ export const WhyPriceSection: React.FC = () => {
     {
       icon: Target,
       title: 'Não é Palestra Rasa',
-      description: 'Não é um webinário genérico onde você só ouve. É um treinamento prático de 3 horas com demonstração real, construção ao vivo e material implementável.'
+      description: 'Não é um webinário genérico onde você só ouve. É um treinamento prático em 2 módulos com demonstração real, construção ao vivo e material implementável.'
     },
     {
       icon: Zap,
       title: 'Treinamento Prático com Entrega Real',
-      description: '3 horas intensivas onde você constrói seu script, pratica ao vivo, assiste demonstrações e sai com tudo pronto para implementar no dia seguinte.'
+      description: '2 módulos intensivos onde você constrói seu script, pratica ao vivo, assiste demonstrações e sai com tudo pronto para implementar.'
     },
     {
       icon: DollarSign,
@@ -92,7 +92,7 @@ export const WhyPriceSection: React.FC = () => {
                 <span className="text-yellow-400">Ensino direto e implementável.</span> Este é o primeiro investimento simbólico para entrar na mentalidade empresarial de quem transforma conhecimento em resultados.
               </p>
               <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                3 horas que valem mais que cursos de 30 horas. Porque aqui você não apenas aprende — você pratica, constrói e sai pronto para implementar.
+                2 módulos que valem mais que cursos de 30 horas. Porque aqui você não apenas aprende — você pratica, constrói e sai pronto para implementar.
               </p>
             </div>
           </div>

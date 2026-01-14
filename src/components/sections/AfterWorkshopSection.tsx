@@ -58,7 +58,7 @@ export const AfterWorkshopSection: React.FC = () => {
           
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             Transformações reais{' '}
-            <span className="bg-gradient-to-r from-purple-400 via-yellow-400 to-purple-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">após 3 horas</span>
+            <span className="bg-gradient-to-r from-purple-400 via-yellow-400 to-purple-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">após os 2 módulos</span>
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
@@ -102,13 +102,20 @@ export const AfterWorkshopSection: React.FC = () => {
         <div className="mt-12 text-center animate-fade-in-up" style={{animationDelay: '0.9s'}}>
           <div className="inline-block bg-gradient-to-r from-purple-400/10 to-yellow-400/10 border border-purple-400/30 rounded-2xl p-6 backdrop-blur-sm max-w-2xl">
             <p className="text-white font-bold text-base sm:text-lg">
-              <span className="text-purple-400">3 horas</span> que mudam tudo. <span className="text-yellow-400">Resultados</span> que começam imediatamente.
+              <span className="text-purple-400">2 módulos</span> que mudam tudo. <span className="text-yellow-400">Resultados</span> que começam imediatamente.
             </p>
           </div>
         </div>
 
-        {/* Acesso à Plataforma e Cupom Promocional */}
+        {/* Bônus Inclusos */}
         <div className="mt-8 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.95s'}}>
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-400/20 to-purple-500/10 border border-purple-400/30 rounded-full backdrop-blur-md shadow-lg shadow-purple-400/20">
+              <Gift className="w-4 h-4 text-purple-400 mr-2" />
+              <span className="text-purple-400 font-semibold text-xs tracking-wide">Bônus Inclusos</span>
+            </div>
+          </div>
+          
           <div className="bg-gradient-to-r from-green-400/10 to-yellow-400/10 border-2 border-green-400/30 rounded-3xl p-6 sm:p-8 backdrop-blur-sm">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
               <div className="flex items-center space-x-3">
@@ -116,8 +123,8 @@ export const AfterWorkshopSection: React.FC = () => {
                   <Calendar className="w-6 h-6 text-green-400" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-white font-bold text-base sm:text-lg mb-1">Acesso até 7 dias após o Workshop</h3>
-                  <p className="text-gray-300 text-xs sm:text-sm">Explore a plataforma Mundo Pódium e teste tudo</p>
+                  <h3 className="text-white font-bold text-base sm:text-lg mb-1">Acesso à Plataforma + Gravação</h3>
+                  <p className="text-gray-300 text-xs sm:text-sm">Acesso imediato à plataforma Mundo Pódium até 7 dias após o workshop</p>
                 </div>
               </div>
               

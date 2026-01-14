@@ -100,17 +100,12 @@ export const WhatYouWillLearnSection: React.FC = () => {
           
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             Transformações{' '}
-            <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">reais em 3 horas</span>
+            <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">reais em 2 módulos</span>
           </h2>
 
-          <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up mb-4" style={{animationDelay: '0.3s'}}>
-            Conteúdo prático, direto ao ponto, focado em resultados imediatos.
+          <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+            Conteúdo distribuído em dois módulos complementares. Preparação no primeiro, prática no segundo.
           </p>
-          
-          {/* Bônus Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-400/10 border border-purple-400/30 rounded-lg animate-fade-in-up" style={{animationDelay: '0.35s'}}>
-            <span className="text-purple-400 text-xs font-semibold">🎁 Bônus Exclusivo: Acesso à Plataforma + Gravação do Workshop</span>
-          </div>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -166,7 +161,7 @@ export const WhatYouWillLearnSection: React.FC = () => {
         <div className="mt-12 text-center animate-fade-in-up" style={{animationDelay: '1s'}}>
           <div className="inline-block bg-green-400/10 border border-green-400/30 rounded-2xl p-6 backdrop-blur-sm">
             <p className="text-white font-semibold text-base sm:text-lg">
-              <span className="text-green-400">100% prático.</span> Sem teoria desnecessária. Apenas o que funciona.
+              Apenas o que funciona. <span className="text-green-400">Implementação imediata.</span>
             </p>
           </div>
         </div>

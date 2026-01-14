@@ -79,23 +79,16 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">agora</span>
               </h2>
 
-              <p className="text-sm text-green-400 font-medium mb-3 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento Simbólico: R$ 149,99 • 21 de Janeiro • 3 horas intensivas • Entrega real
-              </p>
-
-              <p className="hidden sm:block text-sm sm:text-base text-gray-300 font-light leading-relaxed mb-4 max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-                Este não é um workshop gratuito. É um investimento simbólico que garante entrega real, demonstração prática e construção ao vivo. Vagas limitadas. Evento ao vivo, sem replay.
+              <p className="text-sm text-green-400 font-medium mb-4 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
+                Investimento Simbólico: R$ 149,99 • 2 módulos • Entrega real
               </p>
 
               {/* Pricing Info */}
-              <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.35s'}}>
+              <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                   <span className="text-gray-400 text-sm line-through">De R$ 297</span>
                   <span className="text-yellow-400 font-bold text-lg">R$ 149,99</span>
                 </div>
-                <p className="hidden sm:block text-gray-400 text-xs mt-2 max-w-md mx-auto">
-                  Valor simbólico para filtrar comprometimento real. Não é funil isca gratuito — é treinamento prático com entrega real. 3 horas que valem mais que cursos de 30 horas.
-                </p>
               </div>
 
               {/* Urgency Indicators */}

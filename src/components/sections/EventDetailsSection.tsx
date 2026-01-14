@@ -37,18 +37,19 @@ export const EventDetailsSection: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Data</h3>
-                    <p className="text-gray-300 text-sm">21 de Janeiro de 2026</p>
+                    <p className="text-gray-300 text-sm">21 de Janeiro</p>
+                    <p className="text-yellow-400 text-xs mt-1 font-medium">2 módulos em dias diferentes</p>
                   </div>
                 </div>
 
-                {/* Duração */}
+                {/* Duração Total */}
                 <div className="flex items-start space-x-4 p-4 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
                   <div className="w-12 h-12 bg-yellow-400/10 border border-yellow-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Clock className="w-6 h-6 text-yellow-400" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg mb-1">Duração</h3>
-                    <p className="text-gray-300 text-sm">3 horas intensas</p>
+                    <h3 className="text-white font-bold text-lg mb-1">Duração Total</h3>
+                    <p className="text-gray-300 text-sm">6 horas (3h por módulo)</p>
                   </div>
                 </div>
 
