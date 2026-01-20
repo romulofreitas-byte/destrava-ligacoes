@@ -14,7 +14,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgressWidth(57); // 57% preenchido
+      setProgressWidth(92); // 92% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -140,7 +140,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               <div className="space-y-2 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold animate-pulse">57%</span>
+                  <span className="text-green-400 font-semibold animate-pulse">92%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
