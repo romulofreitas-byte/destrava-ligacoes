@@ -47,12 +47,12 @@ export const WhyPriceSection: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20 hover:shadow-yellow-400/40 transition-all duration-300 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
             <DollarSign className="w-4 h-4 text-yellow-400 mr-2" />
-            <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">Por Que Custa R$ 149,99</span>
+            <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">Por Que Custa R$ 297,99</span>
           </div>
           
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             Por que custa{' '}
-            <span className="bg-gradient-to-r from-yellow-400 via-green-400 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">R$ 149,99</span>?
+            <span className="bg-gradient-to-r from-yellow-400 via-green-400 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">R$ 297,99</span>?
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>

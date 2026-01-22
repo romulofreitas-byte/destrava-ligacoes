@@ -63,7 +63,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
               {/* Call to Action */}
               <div className="text-center">
                 <p className="text-gray-300 text-sm sm:text-base mb-4">
-                  <span className="text-yellow-400 font-semibold">4ª Edição</span> - 21 de Janeiro de 2026
+                  <span className="text-yellow-400 font-semibold">4ª Edição</span> - 04 de Fevereiro de 2025
                 </p>
                 <p className="text-gray-400 text-xs sm:text-sm">
                   Garanta sua vaga e transforme suas ligações como centenas de participantes já fizeram

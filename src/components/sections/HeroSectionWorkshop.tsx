@@ -13,7 +13,7 @@ export const HeroSectionWorkshop: React.FC = () => {
   useEffect(() => {
     setIsMounted(true);
     const timer = setTimeout(() => {
-      setProgressWidth(92); // 92% preenchido
+      setProgressWidth(7); // 7% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -90,8 +90,8 @@ export const HeroSectionWorkshop: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span className="text-[10px] sm:text-sm font-bold relative z-[100]" style={{fontFamily: 'var(--font-ubuntu), sans-serif'}}>
-                  <span className="hidden sm:inline">21 de Janeiro</span>
-                  <span className="sm:hidden">21/01</span>
+                  <span className="hidden sm:inline">04 de Fevereiro</span>
+                  <span className="sm:hidden">04/02</span>
                 </span>
               </div>
               <div className="flex items-center gap-1 relative z-[100]">
@@ -159,13 +159,13 @@ export const HeroSectionWorkshop: React.FC = () => {
             {/* Price Display */}
             <div className="mb-4 animate-fade-in-up" style={{animationDelay: '0.17s'}}>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
-                <span className="text-gray-400 text-[10px] line-through">De R$ 297</span>
-                <span className="text-yellow-400 font-bold text-sm">R$ 149,99</span>
+                <span className="text-gray-400 text-[10px] line-through">De R$ 497</span>
+                <span className="text-yellow-400 font-bold text-sm">R$ 297,99</span>
               </div>
               <div className="mt-1.5 flex flex-col items-center gap-1.5">
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-[9px] font-semibold">21 de Janeiro • Sem Replay</span>
+                  <span className="text-red-400 text-[9px] font-semibold">04 de Fevereiro • Sem Replay</span>
                 </div>
                 {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
@@ -181,7 +181,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                 onClick={handleCTAClick}
                 className="group relative inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10"
               >
-                <span className="relative drop-shadow-sm">Garantir vaga por R$ 149,99</span>
+                <span className="relative drop-shadow-sm">Garantir vaga por R$ 297,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 
@@ -189,7 +189,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">92%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">7%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
@@ -227,13 +227,13 @@ export const HeroSectionWorkshop: React.FC = () => {
             {/* Price Display */}
             <div className="mb-4 animate-fade-in-up" style={{animationDelay: '0.17s'}}>
               <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
-                <span className="text-gray-400 text-sm line-through">De R$ 297</span>
-                <span className="text-yellow-400 font-bold text-xl">R$ 149,99</span>
+                <span className="text-gray-400 text-sm line-through">De R$ 497</span>
+                <span className="text-yellow-400 font-bold text-xl">R$ 297,99</span>
               </div>
               <div className="mt-2 flex flex-col items-start gap-2">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-xs font-semibold">21 de Janeiro • Sem Replay</span>
+                  <span className="text-red-400 text-xs font-semibold">04 de Fevereiro • Sem Replay</span>
                 </div>
                 {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
@@ -249,7 +249,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                 onClick={handleCTAClick}
                 className="group relative inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10"
               >
-                <span className="relative drop-shadow-sm">Garantir vaga por R$ 149,99</span>
+                <span className="relative drop-shadow-sm">Garantir vaga por R$ 297,99</span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 
@@ -257,7 +257,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">92%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">7%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
