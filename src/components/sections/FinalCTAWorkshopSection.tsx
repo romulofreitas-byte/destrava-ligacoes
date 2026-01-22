@@ -106,7 +106,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               {/* CTA Button */}
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
                 <a
-                  href="https://pag.ae/81o5iAnjr"
+                  href="https://pag.ae/81rhnvLuv"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleCTAClick}
