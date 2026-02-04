@@ -34,7 +34,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                 </h3>
                 
                 <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-                  A <strong className="text-yellow-400">5ª Edição</strong> está chegando! Veja o que o Igor Carvalhosa disse sobre o Workshop Destrava Ligações.
+                  Veja o que o Igor Carvalhosa disse sobre o Workshop Destrava Ligações nas edições anteriores.
                 </p>
               </div>
 
@@ -77,10 +77,10 @@ export const WorkshopTestimonialBanner: React.FC = () => {
               {/* Call to Action */}
               <div className="text-center">
                 <p className="text-gray-300 text-sm sm:text-base mb-4">
-                  <span className="text-yellow-400 font-semibold">5ª Edição</span> - 04 de Fevereiro de 2025
+                  <span className="text-yellow-400 font-semibold">Vagas encerradas</span>, próximo workshop será no dia 04/03
                 </p>
                 <p className="text-gray-400 text-xs sm:text-sm">
-                  Garanta sua vaga e transforme suas ligações como centenas de participantes já fizeram
+                  Transforme suas ligações como centenas de participantes já fizeram
                 </p>
               </div>
             </div>
