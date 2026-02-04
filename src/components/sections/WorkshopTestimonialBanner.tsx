@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { MessageCircle, Star } from 'lucide-react';
-import { ProtectedImage } from '@/components/ui/ProtectedImage';
+import Image from 'next/image';
 
 export const WorkshopTestimonialBanner: React.FC = () => {
   return (
@@ -39,7 +39,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
               {/* Testimonial Image */}
               <div className="flex justify-center mb-6">
                 <div className="relative max-w-md w-full bg-gray-800/30 rounded-2xl p-4 border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 group-hover:scale-[1.02]">
-                  <ProtectedImage 
+                  <Image 
                     src="/depoimentos/depoimento-igor-carvalhosa.png"
                     alt="Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações - +9h de conteúdo ao vivo, superou expectativas e vale mais de 2 mil reais"
                     width={800}
