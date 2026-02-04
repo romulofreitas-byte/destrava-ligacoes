@@ -46,6 +46,9 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                     height={600}
                     className="w-full h-auto rounded-xl object-contain"
                     quality={90}
+                    priority
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                   />
                   
                   {/* Highlight Quote */}
