@@ -1,10 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { MessageCircle, Star } from 'lucide-react';
 import Image from 'next/image';
 
 export const WorkshopTestimonialBanner: React.FC = () => {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <section className="relative overflow-hidden py-8 md:py-10 bg-gradient-to-br from-yellow-500/10 via-green-400/5 to-transparent border-b border-yellow-400/20">
       {/* Background */}
@@ -39,17 +41,26 @@ export const WorkshopTestimonialBanner: React.FC = () => {
               {/* Testimonial Image */}
               <div className="flex justify-center mb-6">
                 <div className="relative max-w-md w-full bg-gray-800/30 rounded-2xl p-4 border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 group-hover:scale-[1.02]">
-                  <Image 
-                    src="/depoimentos/depoimento-igor-carvalhosa.png"
-                    alt="Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações - +9h de conteúdo ao vivo, superou expectativas e vale mais de 2 mil reais"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto rounded-xl object-contain"
-                    quality={90}
-                    priority
-                    unoptimized
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-                  />
+                  {!imgError ? (
+                    <Image 
+                      src="/depoimentos/depoimento-igor-carvalhosa.png"
+                      alt="Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações - +9h de conteúdo ao vivo, superou expectativas e vale mais de 2 mil reais"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto rounded-xl object-contain"
+                      quality={90}
+                      priority
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                      onError={() => setImgError(true)}
+                    />
+                  ) : (
+                    <img 
+                      src="/depoimentos/depoimento-igor-carvalhosa.png"
+                      alt="Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações - +9h de conteúdo ao vivo, superou expectativas e vale mais de 2 mil reais"
+                      className="w-full h-auto rounded-xl object-contain"
+                    />
+                  )}
                   
                   {/* Highlight Quote */}
                   <div className="mt-4 p-3 bg-gradient-to-r from-yellow-400/20 to-green-400/20 border border-yellow-400/30 rounded-xl">
