@@ -23,7 +23,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
               <div className="text-center mb-6">
                 <div className="inline-flex items-center px-4 py-2 bg-yellow-400/20 border border-yellow-400/40 rounded-full backdrop-blur-md mb-4">
                   <MessageCircle className="w-4 h-4 text-yellow-400 mr-2" />
-                  <span className="text-yellow-400 font-bold text-xs tracking-wide">Depoimento Real - 2ª Edição</span>
+                  <span className="text-yellow-400 font-bold text-xs tracking-wide">Depoimento Real - Workshop</span>
                 </div>
                 
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
@@ -32,7 +32,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                 </h3>
                 
                 <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-                  A <strong className="text-yellow-400">4ª Edição</strong> está chegando! Veja o que um participante da 2ª Edição disse sobre o Workshop.
+                  A <strong className="text-yellow-400">4ª Edição</strong> está chegando! Veja o que o Igor Carvalhosa disse sobre o Workshop Destrava Ligações.
                 </p>
               </div>
 
@@ -40,8 +40,8 @@ export const WorkshopTestimonialBanner: React.FC = () => {
               <div className="flex justify-center mb-6">
                 <div className="relative max-w-md w-full bg-gray-800/30 rounded-2xl p-4 border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 group-hover:scale-[1.02]">
                   <ProtectedImage 
-                    src="/Depoimento Workshop Destrava Ligações 2ª Edição.png"
-                    alt="Depoimento real de participante da 2ª Edição do Workshop Destrava Ligações - Se tu me cobrasse 500 conto eu pagaria"
+                    src="/depoimentos/depoimento-igor-carvalhosa.png"
+                    alt="Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações - +9h de conteúdo ao vivo, superou expectativas e vale mais de 2 mil reais"
                     width={800}
                     height={600}
                     className="w-full h-auto rounded-xl object-contain"
@@ -53,7 +53,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                     <div className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" />
                       <p className="text-white text-sm sm:text-base font-semibold leading-relaxed">
-                        <span className="text-yellow-400">&ldquo;Se tu me cobrasse 500 conto eu pagaria&rdquo;</span>
+                        <span className="text-yellow-400">&ldquo;Vale mais de 2 mil reais fácil&rdquo;</span>
                       </p>
                     </div>
                   </div>
