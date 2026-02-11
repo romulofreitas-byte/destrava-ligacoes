@@ -14,7 +14,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgressWidth(99); // 99% preenchido
+      setProgressWidth(18); // 18% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -71,12 +71,12 @@ export const FinalCTAWorkshopSection: React.FC = () => {
             <div className="relative z-10 text-center">
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-400/20 to-green-500/10 border border-green-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-green-400/20 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
                 <Zap className="w-4 h-4 text-green-400 mr-2" />
-                <span className="text-green-400 font-semibold text-xs tracking-wide">Adquira a próxima edição - 04/03</span>
+                <span className="text-green-400 font-semibold text-xs tracking-wide">6ª Edição — Vagas Abertas — 04 de Março</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-                Adquira a{' '}
-                <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">próxima edição</span>
+                Garanta sua vaga na{' '}
+                <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">6ª edição</span>
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-4 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
@@ -95,7 +95,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
                 <div className="flex items-center justify-center space-x-2 p-3 bg-green-400/10 border border-green-400/30 rounded-xl">
                   <Users className="w-5 h-5 text-green-400" />
-                  <span className="text-green-400 font-semibold text-sm">Próxima edição: 04/03</span>
+                  <span className="text-green-400 font-semibold text-sm">Vagas Limitadas</span>
                 </div>
                 <div className="flex items-center justify-center space-x-2 p-3 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
                   <Clock className="w-5 h-5 text-yellow-400" />
@@ -114,7 +114,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   title="Pagar com PagBank"
                 >
                   <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
-                    Adquirir Próxima Edição
+                    Garantir Minha Vaga Agora
                   </span>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
@@ -139,8 +139,8 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               {/* Progress Bar */}
               <div className="space-y-2 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
-                  <span className="text-gray-300">Próxima edição disponível</span>
-                  <span className="text-green-400 font-semibold animate-pulse">04/03</span>
+                  <span className="text-gray-300">Vagas preenchidas</span>
+                  <span className="text-green-400 font-semibold animate-pulse">18%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
