@@ -13,7 +13,7 @@ export const HeroSectionWorkshop: React.FC = () => {
   useEffect(() => {
     setIsMounted(true);
     const timer = setTimeout(() => {
-      setProgressWidth(96); // 96% preenchido
+      setProgressWidth(7); // 7% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -90,8 +90,8 @@ export const HeroSectionWorkshop: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span className="text-[10px] sm:text-sm font-bold relative z-[100]" style={{fontFamily: 'var(--font-ubuntu), sans-serif'}}>
-                  <span className="hidden sm:inline">04 de Março</span>
-                  <span className="sm:hidden">04/03</span>
+                  <span className="hidden sm:inline">25 de Março</span>
+                  <span className="sm:hidden">25/03</span>
                 </span>
               </div>
               <div className="flex items-center gap-1 relative z-[100]">
@@ -165,7 +165,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="mt-1.5 flex flex-col items-center gap-1.5">
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-[9px] font-semibold">04 de Março • Sem Replay</span>
+                  <span className="text-red-400 text-[9px] font-semibold">25 de Março • Sem Replay</span>
                 </div>
                 {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
@@ -189,7 +189,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">96%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">7%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
@@ -233,7 +233,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="mt-2 flex flex-col items-start gap-2">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-xs font-semibold">04 de Março • Sem Replay</span>
+                  <span className="text-red-400 text-xs font-semibold">25 de Março • Sem Replay</span>
                 </div>
                 {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
@@ -257,7 +257,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">96%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">7%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
