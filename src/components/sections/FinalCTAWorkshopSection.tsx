@@ -14,7 +14,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgressWidth(85); // 85% preenchido
+      setProgressWidth(8); // 8% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -71,23 +71,23 @@ export const FinalCTAWorkshopSection: React.FC = () => {
             <div className="relative z-10 text-center">
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-400/20 to-green-500/10 border border-green-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-green-400/20 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
                 <Zap className="w-4 h-4 text-green-400 mr-2" />
-                <span className="text-green-400 font-semibold text-xs tracking-wide">7ª Edição — Vagas Abertas — 25 de Março</span>
+                <span className="text-green-400 font-semibold text-xs tracking-wide">8ª Edição — Vagas Abertas — 09/04</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight animate-fade-in-up" style={{animationDelay: '0.2s'}}>
                 Garanta sua vaga na{' '}
-                <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">7ª edição</span>
+                <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">8ª edição</span>
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-4 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento Simbólico: R$ 297,99 • 2 módulos • Entrega real
+                Investimento Simbólico: R$ 347,99 • 2 módulos • Entrega real
               </p>
 
               {/* Pricing Info */}
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                   <span className="text-gray-400 text-sm line-through">De R$ 497</span>
-                  <span className="text-yellow-400 font-bold text-lg">R$ 297,99</span>
+                  <span className="text-yellow-400 font-bold text-lg">R$ 347,99</span>
                 </div>
               </div>
 
@@ -106,7 +106,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               {/* CTA Button */}
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
                 <a
-                  href="https://pag.ae/81rhnvLuv"
+                  href="https://pag.ae/81CXHs2nH"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleCTAClick}
@@ -140,7 +140,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               <div className="space-y-2 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold animate-pulse">85%</span>
+                  <span className="text-green-400 font-semibold animate-pulse">8%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
