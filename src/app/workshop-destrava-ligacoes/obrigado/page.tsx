@@ -5,6 +5,7 @@ import { CheckCircle, Users, Calendar, ArrowRight, CreditCard, Mail, Clock, Vide
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
 
 const Footer = dynamic(() => import('@/components/sections/Footer').then(mod => ({ default: mod.Footer })), { ssr: false });
 
@@ -354,8 +355,17 @@ function ObrigadoContent() {
                           <Calendar className="w-4 h-4 text-yellow-400" />
                         </div>
                         <div>
-                          <p className="text-gray-400 text-xs mb-1">Data</p>
-                          <p className="text-white font-semibold text-sm">7 de Janeiro de 2026</p>
+                          <p className="text-gray-400 text-xs mb-1">Módulo 1</p>
+                          <p className="text-white font-semibold text-sm">{WORKSHOP_INFO.date}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
+                        <div className="w-8 h-8 bg-yellow-400/10 border border-yellow-400/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Calendar className="w-4 h-4 text-yellow-400" />
+                        </div>
+                        <div>
+                          <p className="text-gray-400 text-xs mb-1">Módulo 2</p>
+                          <p className="text-white font-semibold text-sm">{WORKSHOP_MODULE_2_INFO.date}</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
@@ -373,7 +383,7 @@ function ObrigadoContent() {
                         </div>
                         <div>
                           <p className="text-gray-400 text-xs mb-1">Duração</p>
-                          <p className="text-white font-semibold text-sm">3 horas intensas</p>
+                          <p className="text-white font-semibold text-sm">6 horas (3h por módulo)</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
@@ -504,8 +514,9 @@ function ObrigadoContent() {
                       <div className="p-4 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
                         <p className="text-yellow-400 font-semibold text-sm mb-2">📅 Workshop Destrava Ligações | 2026</p>
                         <p className="text-gray-300 text-sm">
-                          <strong>Data:</strong> Quarta-feira, 7 de janeiro de 2026<br />
-                          <strong>Horário:</strong> 1:00pm – 5:00pm (Fuso horário: America/Sao_Paulo)
+                          <strong>Módulo 1:</strong> {WORKSHOP_INFO.dateEmailLine}<br />
+                          <strong>Módulo 2:</strong> {WORKSHOP_MODULE_2_INFO.dateEmailLine}<br />
+                          <strong>Horário:</strong> {WORKSHOP_INFO.time} (Fuso horário: {WORKSHOP_INFO.timezone})
                         </p>
                       </div>
                     </div>

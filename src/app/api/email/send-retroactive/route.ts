@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { sendRetroactiveEmails, EmailCadenceData } from '@/lib/email-cadence';
 import { getWorkshopRegistration, updateEmailStatus } from '@/lib/supabase';
 import { getPaymentStatus } from '@/lib/pagbank';
+import { WORKSHOP_INFO } from '@/lib/constants';
 
 /**
  * Endpoint para disparar e-mails retroativos para alunos que compraram antes do sistema de e-mails
@@ -218,7 +219,7 @@ export async function GET(request: NextRequest) {
 
     // Calcular quais e-mails seriam enviados
     const now = new Date();
-    const workshopDate = new Date('2025-12-10T13:00:00-03:00');
+    const workshopDate = WORKSHOP_INFO.dateObj;
     const oneDayBefore = new Date(workshopDate);
     oneDayBefore.setDate(oneDayBefore.getDate() - 1);
     oneDayBefore.setHours(0, 0, 0, 0);

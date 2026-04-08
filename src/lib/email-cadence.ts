@@ -263,7 +263,7 @@ export async function checkAndSendScheduledEmails(): Promise<void> {
     }
   }
 
-  // Enviar email de 1 hora antes do evento (10 de dezembro, às 12:00 BRT = 15:00 UTC)
+  // Enviar email de 1 hora antes do primeiro módulo (WORKSHOP_INFO.dateObj, 1h antes do horário de início)
   // Janela: entre 11h e 13h BRT (14h e 16h UTC)
   const oneHourBefore = new Date(workshopDate);
   oneHourBefore.setHours(oneHourBefore.getHours() - 1);

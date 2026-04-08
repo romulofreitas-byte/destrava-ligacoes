@@ -1,4 +1,4 @@
-import { getGoogleMeetInfo } from './constants';
+import { getGoogleMeetInfo, WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from './constants';
 
 export interface WorkshopEmailData {
   nome: string;
@@ -49,7 +49,10 @@ export function getWorkshopEmailTemplate(data: WorkshopEmailData): string {
                   📅 Detalhes do Workshop
                 </h2>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Data:</strong> Quarta-feira, 10 de dezembro de 2025
+                  <strong style="color: #78350f;">Módulo 1:</strong> ${WORKSHOP_INFO.dateEmailLine}
+                </p>
+                <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
+                  <strong style="color: #78350f;">Módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.dateEmailLine}
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
@@ -185,7 +188,10 @@ export function getOneDayBeforeEmailTemplate(data: WorkshopEmailData): string {
                   📅 Informações Importantes
                 </h2>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Data:</strong> <span style="color: #1f2937; font-weight: bold;">Amanhã, 10 de dezembro de 2025</span>
+                  <strong style="color: #78350f;">Módulo 1 (amanhã):</strong> <span style="color: #1f2937; font-weight: bold;">${WORKSHOP_INFO.date}</span>
+                </p>
+                <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
+                  <strong style="color: #78350f;">Módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.dateEmailLine}
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
@@ -337,7 +343,10 @@ export function getOneHourBeforeEmailTemplate(data: WorkshopEmailData): string {
                   📅 Informações do Workshop
                 </h2>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Data:</strong> <span style="color: #1f2937; font-weight: bold;">Hoje, 10 de dezembro de 2025</span>
+                  <strong style="color: #78350f;">Módulo 1 (hoje):</strong> <span style="color: #1f2937; font-weight: bold;">${WORKSHOP_INFO.date}</span>
+                </p>
+                <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
+                  <strong style="color: #78350f;">Módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.dateEmailLine}
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Horário:</strong> <span style="color: #dc2626; font-weight: bold;">13:00 – 17:00</span> (Fuso horário: America/Sao_Paulo)
@@ -482,7 +491,7 @@ export function getInvitationEmailTemplate(
                   🎯 Este é um convite exclusivo para você, como parte da nossa comunidade.
                 </p>
                 <p style="margin: 15px 0 0; color: #78350f; font-size: 16px; line-height: 1.6;">
-                  Você terá <strong>acesso gratuito</strong> a este workshop de 3 horas que acontecerá no dia 10 de dezembro, das 13:00 às 17:00.
+                  Você terá <strong>acesso gratuito</strong> a este workshop em 2 módulos (6 horas no total), nos dias <strong>15 e 22 de abril de 2026</strong>, das 13:00 às 17:00 em cada encontro.
                 </p>
               </div>
               
@@ -491,7 +500,10 @@ export function getInvitationEmailTemplate(
                   📅 Detalhes do Workshop
                 </h2>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Data:</strong> Quarta-feira, 10 de dezembro de 2025
+                  <strong style="color: #78350f;">Módulo 1:</strong> ${WORKSHOP_INFO.dateEmailLine}
+                </p>
+                <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
+                  <strong style="color: #78350f;">Módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.dateEmailLine}
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
@@ -500,7 +512,7 @@ export function getInvitationEmailTemplate(
                   <strong style="color: #78350f;">Formato:</strong> Online • Ao vivo • 100% prático
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Duração:</strong> 3 horas intensas
+                  <strong style="color: #78350f;">Duração:</strong> 6 horas no total (3h por módulo)
                 </p>
               </div>
               

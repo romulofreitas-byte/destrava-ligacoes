@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Calendar, Clock, Video, MapPin, Monitor } from 'lucide-react';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
 
 export const EventDetailsSection: React.FC = () => {
   return (
@@ -36,9 +37,14 @@ export const EventDetailsSection: React.FC = () => {
                     <Calendar className="w-6 h-6 text-yellow-400" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg mb-1">Data</h3>
-                    <p className="text-gray-300 text-sm">09 de Abril</p>
-                    <p className="text-yellow-400 text-xs mt-1 font-medium">2 módulos em dias diferentes</p>
+                    <h3 className="text-white font-bold text-lg mb-1">Datas</h3>
+                    <p className="text-gray-300 text-sm">
+                      Módulo 1: {WORKSHOP_INFO.dateDisplayLong} ({WORKSHOP_INFO.dateDisplayShort})
+                    </p>
+                    <p className="text-gray-300 text-sm mt-1">
+                      Módulo 2: {WORKSHOP_MODULE_2_INFO.dateDisplayLong} ({WORKSHOP_MODULE_2_INFO.dateDisplayShort})
+                    </p>
+                    <p className="text-yellow-400 text-xs mt-2 font-medium">2 módulos em dias diferentes</p>
                   </div>
                 </div>
 

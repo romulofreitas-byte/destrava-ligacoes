@@ -3,84 +3,164 @@
 import React, { useState } from 'react';
 import { MessageCircle, Star } from 'lucide-react';
 import Image from 'next/image';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
 
-export const WorkshopTestimonialBanner: React.FC = () => {
+type FeaturedWorkshopTestimonial = {
+  id: string;
+  imageSrc: string;
+  imageAlt: string;
+  highlight: string;
+  name: string;
+  company?: string;
+  companyUrl?: string;
+  bodyQuote?: string;
+  imagePriority?: boolean;
+};
+
+const featuredWorkshopTestimonials: FeaturedWorkshopTestimonial[] = [
+  {
+    id: 'igor',
+    imageSrc: '/depoimentos/depoimento-igor-carvalhosa.png',
+    imageAlt:
+      'Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações — mais de 9h de conteúdo ao vivo, superou expectativas',
+    highlight: 'Vale mais de 2 mil reais fácil',
+    name: 'Igor Carvalhosa',
+    imagePriority: true,
+  },
+  {
+    id: 'robson',
+    imageSrc: '/depoimentos/depoimento-regularize-health-crm.png',
+    imageAlt:
+      'Print do CRM enviado por Robson Vieira (Regularize Health): gráfico de barras por mês em 2026 com série Recebidas e salto de faturamento recebido',
+    highlight: 'Triplicamos o faturamento no mês seguinte',
+    name: 'Robson Vieira',
+    company: 'Regularize Health',
+    companyUrl: 'https://www.regularizehealth.com.br',
+    bodyQuote:
+      'Desde que começamos a colocar em prática os conceitos do Rômulo Freitas, aplicando no inbound e no follow-up, triplicamos nosso faturamento já no mês seguinte.',
+  },
+];
+
+function FeaturedWorkshopCard({
+  testimonial,
+}: {
+  testimonial: FeaturedWorkshopTestimonial;
+}) {
   const [imgError, setImgError] = useState(false);
 
   return (
+    <div className="relative w-full bg-gray-800/30 rounded-2xl p-4 border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 group/card hover:scale-[1.02]">
+      {testimonial.bodyQuote && (
+        <blockquote className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 border-l-2 border-yellow-400/40 pl-3">
+          &ldquo;{testimonial.bodyQuote}&rdquo;
+        </blockquote>
+      )}
+
+      {!imgError ? (
+        <Image
+          src={testimonial.imageSrc}
+          alt={testimonial.imageAlt}
+          width={800}
+          height={600}
+          className="w-full h-auto rounded-xl object-contain"
+          quality={90}
+          priority={testimonial.imagePriority ?? false}
+          unoptimized
+          sizes="(max-width: 768px) 100vw, 50vw"
+          onError={() => setImgError(true)}
+        />
+      ) : (
+        <img
+          src={testimonial.imageSrc}
+          alt={testimonial.imageAlt}
+          className="w-full h-auto rounded-xl object-contain"
+        />
+      )}
+
+      <div className="mt-4 p-3 bg-gradient-to-r from-yellow-400/20 to-green-400/20 border border-yellow-400/30 rounded-xl">
+        <div className="flex items-start gap-2">
+          <Star
+            className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5"
+            fill="currentColor"
+          />
+          <p className="text-white text-sm sm:text-base font-semibold leading-relaxed">
+            <span className="text-yellow-400">
+              &ldquo;{testimonial.highlight}&rdquo;
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-4 text-center sm:text-left">
+        <p className="text-white font-semibold text-sm sm:text-base">
+          {testimonial.name}
+        </p>
+        {testimonial.company && testimonial.companyUrl && (
+          <a
+            href={testimonial.companyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-400/90 hover:text-green-400 text-sm underline-offset-2 hover:underline inline-block mt-0.5"
+          >
+            {testimonial.company}
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export const WorkshopTestimonialBanner: React.FC = () => {
+  return (
     <section className="relative overflow-hidden py-8 md:py-10 bg-gradient-to-br from-yellow-500/10 via-green-400/5 to-transparent border-b border-yellow-400/20">
-      {/* Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="bg-gradient-to-br from-yellow-500/20 via-green-400/15 to-yellow-500/20 border-2 border-yellow-400/50 rounded-2xl p-6 sm:p-8 lg:p-10 backdrop-blur-sm shadow-2xl hover:shadow-yellow-400/30 transition-all duration-300 relative overflow-hidden group">
-            {/* Animated border */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-400/20 via-transparent to-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
-            
+
             <div className="relative z-10">
-              {/* Badge */}
               <div className="text-center mb-6">
                 <div className="inline-flex items-center px-4 py-2 bg-yellow-400/20 border border-yellow-400/40 rounded-full backdrop-blur-md mb-4">
                   <MessageCircle className="w-4 h-4 text-yellow-400 mr-2" />
-                  <span className="text-yellow-400 font-bold text-xs tracking-wide">Depoimento Real - Workshop</span>
+                  <span className="text-yellow-400 font-bold text-xs tracking-wide">
+                    Depoimentos reais — Workshop
+                  </span>
                 </div>
-                
+
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
                   O que dizem os participantes das{' '}
-                  <span className="bg-gradient-to-r from-yellow-400 via-green-400 to-yellow-400 bg-clip-text text-transparent">edições anteriores</span>
+                  <span className="bg-gradient-to-r from-yellow-400 via-green-400 to-yellow-400 bg-clip-text text-transparent">
+                    edições anteriores
+                  </span>
                 </h3>
-                
+
                 <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-                  Veja o que o Igor Carvalhosa disse sobre o Workshop Destrava Ligações nas edições anteriores.
+                  Depoimentos reais de quem aplicou o método nas edições anteriores
+                  do Workshop Destrava Ligações.
                 </p>
               </div>
 
-              {/* Testimonial Image */}
-              <div className="flex justify-center mb-6">
-                <div className="relative max-w-md w-full bg-gray-800/30 rounded-2xl p-4 border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 group-hover:scale-[1.02]">
-                  {!imgError ? (
-                    <Image 
-                      src="/depoimentos/depoimento-igor-carvalhosa.png"
-                      alt="Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações - +9h de conteúdo ao vivo, superou expectativas e vale mais de 2 mil reais"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto rounded-xl object-contain"
-                      quality={90}
-                      priority
-                      unoptimized
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-                      onError={() => setImgError(true)}
-                    />
-                  ) : (
-                    <img 
-                      src="/depoimentos/depoimento-igor-carvalhosa.png"
-                      alt="Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações - +9h de conteúdo ao vivo, superou expectativas e vale mais de 2 mil reais"
-                      className="w-full h-auto rounded-xl object-contain"
-                    />
-                  )}
-                  
-                  {/* Highlight Quote */}
-                  <div className="mt-4 p-3 bg-gradient-to-r from-yellow-400/20 to-green-400/20 border border-yellow-400/30 rounded-xl">
-                    <div className="flex items-start gap-2">
-                      <Star className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" />
-                      <p className="text-white text-sm sm:text-base font-semibold leading-relaxed">
-                        <span className="text-yellow-400">&ldquo;Vale mais de 2 mil reais fácil&rdquo;</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                {featuredWorkshopTestimonials.map((t) => (
+                  <FeaturedWorkshopCard key={t.id} testimonial={t} />
+                ))}
               </div>
 
-              {/* Call to Action */}
               <div className="text-center">
                 <p className="text-gray-300 text-sm sm:text-base mb-4">
-                  <span className="text-yellow-400 font-semibold">8ª Edição aberta!</span> Primeiro módulo no dia 09/04 — garanta sua vaga
+                  <span className="text-yellow-400 font-semibold">
+                    8ª Edição aberta!
+                  </span>{' '}
+                  Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
+                  {WORKSHOP_MODULE_2_INFO.dateDisplayShort} — garanta sua vaga
                 </p>
                 <p className="text-gray-400 text-xs sm:text-sm">
-                  Transforme suas ligações como centenas de participantes já fizeram
+                  Transforme suas ligações como centenas de participantes já
+                  fizeram
                 </p>
               </div>
             </div>
@@ -90,4 +170,3 @@ export const WorkshopTestimonialBanner: React.FC = () => {
     </section>
   );
 };
-

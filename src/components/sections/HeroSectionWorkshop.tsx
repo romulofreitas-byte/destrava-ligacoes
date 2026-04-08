@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
 import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
 import { PainPointsMarquee } from './PainPointsMarquee';
+import { WORKSHOP_INFO } from '@/lib/constants';
 
 export const HeroSectionWorkshop: React.FC = () => {
   const [progressWidth, setProgressWidth] = useState(0);
@@ -90,8 +91,8 @@ export const HeroSectionWorkshop: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span className="text-[10px] sm:text-sm font-bold relative z-[100]" style={{fontFamily: 'var(--font-ubuntu), sans-serif'}}>
-                  <span className="hidden sm:inline">09 de Abril</span>
-                  <span className="sm:hidden">09/04</span>
+                  <span className="hidden sm:inline">{WORKSHOP_INFO.dateDisplayLong}</span>
+                  <span className="sm:hidden">{WORKSHOP_INFO.dateDisplayShort}</span>
                 </span>
               </div>
               <div className="flex items-center gap-1 relative z-[100]">
@@ -165,7 +166,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="mt-1.5 flex flex-col items-center gap-1.5">
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-[9px] font-semibold">09 de Abril • Sem Replay</span>
+                  <span className="text-red-400 text-[9px] font-semibold">{WORKSHOP_INFO.dateDisplayLong} • Sem Replay</span>
                 </div>
                 {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
@@ -233,7 +234,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="mt-2 flex flex-col items-start gap-2">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                  <span className="text-red-400 text-xs font-semibold">09 de Abril • Sem Replay</span>
+                  <span className="text-red-400 text-xs font-semibold">{WORKSHOP_INFO.dateDisplayLong} • Sem Replay</span>
                 </div>
                 {/* Bônus Badge */}
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">

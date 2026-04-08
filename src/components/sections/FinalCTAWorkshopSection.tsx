@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Zap, Clock, Users } from 'lucide-react';
 import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
+import { WORKSHOP_INFO } from '@/lib/constants';
 
 export const FinalCTAWorkshopSection: React.FC = () => {
   const [progressWidth, setProgressWidth] = useState(0);
@@ -71,7 +72,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
             <div className="relative z-10 text-center">
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-400/20 to-green-500/10 border border-green-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-green-400/20 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
                 <Zap className="w-4 h-4 text-green-400 mr-2" />
-                <span className="text-green-400 font-semibold text-xs tracking-wide">8ª Edição — Vagas Abertas — 09/04</span>
+                <span className="text-green-400 font-semibold text-xs tracking-wide">8ª Edição — Vagas Abertas — {WORKSHOP_INFO.dateDisplayShort}</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight animate-fade-in-up" style={{animationDelay: '0.2s'}}>

@@ -3,6 +3,7 @@
 import React from 'react';
 import { HeroSectionWorkshop } from '@/components/sections/HeroSectionWorkshop';
 import { WorkshopModulesSection } from '@/components/sections/WorkshopModulesSection';
+import { WorkshopModuleDatesSection } from '@/components/sections/WorkshopModuleDatesSection';
 import { WorkshopTestimonialBanner } from '@/components/sections/WorkshopTestimonialBanner';
 import { EventDetailsSection } from '@/components/sections/EventDetailsSection';
 import { WhoIsItForWorkshopSection } from '@/components/sections/WhoIsItForWorkshopSection';
@@ -30,6 +31,7 @@ export const WorkshopPageContent: React.FC = () => {
         <HeroSectionWorkshop />
         <WorkshopTestimonialBanner />
         <WorkshopModulesSection />
+        <WorkshopModuleDatesSection />
         <LiveCallsSection />
         <EventDetailsSection />
         <WhoIsItForWorkshopSection />
