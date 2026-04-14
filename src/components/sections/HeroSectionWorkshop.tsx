@@ -14,7 +14,7 @@ export const HeroSectionWorkshop: React.FC = () => {
   useEffect(() => {
     setIsMounted(true);
     const timer = setTimeout(() => {
-      setProgressWidth(8); // 8% preenchido
+      setProgressWidth(72); // 72% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -190,7 +190,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">8%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">72%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}
@@ -258,7 +258,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">8%</span>
+                  <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">72%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}

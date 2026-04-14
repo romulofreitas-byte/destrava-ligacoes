@@ -49,33 +49,29 @@ function FeaturedWorkshopCard({
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="relative w-full bg-gray-800/30 rounded-2xl p-4 border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 group/card hover:scale-[1.02]">
-      {testimonial.bodyQuote && (
-        <blockquote className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 border-l-2 border-yellow-400/40 pl-3">
-          &ldquo;{testimonial.bodyQuote}&rdquo;
-        </blockquote>
-      )}
-
-      {!imgError ? (
-        <Image
-          src={testimonial.imageSrc}
-          alt={testimonial.imageAlt}
-          width={800}
-          height={600}
-          className="w-full h-auto rounded-xl object-contain"
-          quality={90}
-          priority={testimonial.imagePriority ?? false}
-          unoptimized
-          sizes="(max-width: 768px) 100vw, 50vw"
-          onError={() => setImgError(true)}
-        />
-      ) : (
-        <img
-          src={testimonial.imageSrc}
-          alt={testimonial.imageAlt}
-          className="w-full h-auto rounded-xl object-contain"
-        />
-      )}
+    <div className="relative w-full bg-gray-800/30 rounded-2xl p-4 sm:p-5 border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 group/card">
+      <div className="relative w-full aspect-[16/10] rounded-xl bg-gray-900/40 overflow-hidden">
+        {!imgError ? (
+          <Image
+            src={testimonial.imageSrc}
+            alt={testimonial.imageAlt}
+            fill
+            className="object-contain p-2 sm:p-3"
+            quality={90}
+            priority={testimonial.imagePriority ?? false}
+            unoptimized
+            sizes="(max-width: 768px) 100vw, 768px"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element -- fallback when next/image fails
+          <img
+            src={testimonial.imageSrc}
+            alt={testimonial.imageAlt}
+            className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-2 sm:p-3"
+          />
+        )}
+      </div>
 
       <div className="mt-4 p-3 bg-gradient-to-r from-yellow-400/20 to-green-400/20 border border-yellow-400/30 rounded-xl">
         <div className="flex items-start gap-2">
@@ -106,6 +102,12 @@ function FeaturedWorkshopCard({
           </a>
         )}
       </div>
+
+      {testimonial.bodyQuote && (
+        <blockquote className="mt-4 text-left text-sm text-gray-400 leading-relaxed border-l-2 border-yellow-400/30 pl-3">
+          &ldquo;{testimonial.bodyQuote}&rdquo;
+        </blockquote>
+      )}
     </div>
   );
 }
@@ -118,7 +120,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="bg-gradient-to-br from-yellow-500/20 via-green-400/15 to-yellow-500/20 border-2 border-yellow-400/50 rounded-2xl p-6 sm:p-8 lg:p-10 backdrop-blur-sm shadow-2xl hover:shadow-yellow-400/30 transition-all duration-300 relative overflow-hidden group">
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-400/20 via-transparent to-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
 
@@ -144,7 +146,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="flex flex-col gap-8 max-w-3xl mx-auto mb-6">
                 {featuredWorkshopTestimonials.map((t) => (
                   <FeaturedWorkshopCard key={t.id} testimonial={t} />
                 ))}
