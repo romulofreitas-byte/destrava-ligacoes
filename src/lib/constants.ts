@@ -76,5 +76,8 @@ export const PLATAFORMA_MUNDO_PODIUM_COPY = {
     'É o mesmo tipo de interface que Rômulo demonstra nesse vídeo — hospedada no Circle.',
   tourInsightLine:
     'No mesmo vídeo do depoimento, Rômulo abre a interface no Circle e mostra o ambiente em ação.',
+  /** Uma linha no mobile (evita caixa roxa + título longo empilhados) */
+  mayconVideoMobileCompactLine:
+    'No vídeo abaixo: relato do Maycon e tour da Mundo Pódium no Circle com o Rômulo.',
 } as const;
 

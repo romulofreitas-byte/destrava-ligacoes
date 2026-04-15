@@ -31,23 +31,6 @@ import { PLATAFORMA_MUNDO_PODIUM_COPY, WORKSHOP_PLATFORM_RULES } from '@/lib/con
 const CHECKOUT_URL =
   'https://plataforma.mundopodium.com.br/checkout/plataforma-mundo-podium';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.06 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 const highlights = [
   { k: '~80', unit: '/sem.', label: 'contatos na prática', glow: 'from-yellow-400/20 to-amber-600/10' },
   { k: 'Nicho', unit: '', label: 'marmoraria + discurso técnico', glow: 'from-purple-400/20 to-pink-500/10' },
@@ -212,7 +195,7 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="plataforma-mundo-podium"
-      className="relative overflow-hidden py-14 md:py-24 bg-gray-900"
+      className="relative overflow-hidden py-10 sm:py-14 md:py-24 bg-gray-900"
     >
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90" />
@@ -225,74 +208,62 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
         />
       </div>
 
-      <motion.div
-        className="container-custom relative z-10 max-w-6xl mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-      >
+      <div className="container-custom relative z-10 max-w-6xl mx-auto">
         <div className="text-center max-w-4xl mx-auto">
-          <motion.div variants={itemVariants} className="mb-8">
+          <div className="mb-8">
             <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-yellow-400/20 to-purple-500/15 border border-yellow-400/35 rounded-full backdrop-blur-md shadow-lg shadow-yellow-400/15">
               <Crown className="w-5 h-5 text-yellow-400 mr-2" />
               <span className="text-yellow-400 font-bold text-sm tracking-wide">
                 Mundo Pódium
               </span>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.08] drop-shadow-lg"
-          >
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.08] drop-shadow-lg">
             O ecossistema que{' '}
             <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-purple-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">
               sustenta
             </span>{' '}
             o destravamento
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-lg sm:text-xl text-gray-400 mb-12 md:mb-14 max-w-2xl mx-auto leading-relaxed"
-          >
+          <p className="text-lg sm:text-xl text-gray-400 mb-12 md:mb-14 max-w-2xl mx-auto leading-relaxed">
             Workshop na ligação. Plataforma no Circle para profundidade, ritmo e
             mercado.
-          </motion.p>
+          </p>
         </div>
 
-        <motion.div variants={itemVariants} className="mb-14 md:mb-20">
-          <div className="relative bg-gray-800/30 border-2 border-yellow-400/35 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-xl max-w-6xl mx-auto overflow-hidden hover:border-yellow-400/50 hover:shadow-yellow-400/15 transition-all duration-500">
+        <div className="mb-12 sm:mb-14 md:mb-20">
+          <div className="relative bg-gray-800/30 border-2 border-yellow-400/35 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl backdrop-blur-xl max-w-6xl mx-auto overflow-hidden hover:border-yellow-400/50 hover:shadow-yellow-400/15 transition-all duration-500">
             <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.06] via-transparent to-purple-500/[0.07] pointer-events-none" />
-            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
-              <div className="flex items-center gap-1.5 rounded-full border border-purple-400/60 bg-purple-950/80 px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wide text-purple-200 shadow-lg shadow-purple-500/30 backdrop-blur-md">
-                <MonitorPlay className="h-3.5 w-3.5 text-purple-300 shrink-0" />
-                <span className="hidden sm:inline">Com demo da plataforma</span>
-                <span className="sm:hidden">+ demo</span>
+            <div className="relative z-10 text-center mb-5 sm:mb-6 md:mb-8">
+              <div className="flex flex-col items-center gap-3 sm:gap-4">
+                <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+                  <div className="inline-flex items-center gap-2 text-yellow-400/90 text-[11px] sm:text-xs font-bold tracking-widest uppercase">
+                    <Mic2 className="w-4 h-4 shrink-0" />
+                    Depoimento
+                  </div>
+                  <div className="flex items-center gap-1.5 rounded-full border border-purple-400/60 bg-purple-950/80 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wide text-purple-200 shadow-md shadow-purple-500/25 backdrop-blur-md">
+                    <MonitorPlay className="h-3.5 w-3.5 text-purple-300 shrink-0" />
+                    <span className="hidden sm:inline">Com demo da plataforma</span>
+                    <span className="sm:hidden">Tour no Circle</span>
+                  </div>
+                </div>
+                <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-white leading-tight px-1">
+                  Maycon Ferraz —{' '}
+                  <span className="bg-gradient-to-r from-yellow-400 to-amber-200 bg-clip-text text-transparent">
+                    depois do workshop
+                  </span>
+                </h3>
+                <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed px-1 hidden md:block">
+                  {PLATAFORMA_MUNDO_PODIUM_COPY.mayconVideoSubtitle}
+                </p>
+                <p className="text-gray-400 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed px-1 md:hidden">
+                  {PLATAFORMA_MUNDO_PODIUM_COPY.mayconVideoMobileCompactLine}
+                </p>
               </div>
-            </div>
-            <div className="relative z-10 text-center mb-6 md:mb-8">
-              <div className="inline-flex items-center gap-2 text-yellow-400/90 text-xs font-bold tracking-widest uppercase mb-4">
-                <Mic2 className="w-4 h-4" />
-                Depoimento
-              </div>
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-                Maycon Ferraz —{' '}
-                <span className="bg-gradient-to-r from-yellow-400 to-amber-200 bg-clip-text text-transparent">
-                  depois do workshop
-                </span>
-              </h3>
-              <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mb-6">
-                {PLATAFORMA_MUNDO_PODIUM_COPY.mayconVideoSubtitle}
-              </p>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="mx-auto mb-8 max-w-2xl"
-              >
+
+              <div className="mx-auto mt-6 max-w-2xl hidden md:block">
                 <div className="relative overflow-hidden rounded-2xl border-2 border-purple-400/55 bg-gradient-to-br from-purple-500/20 via-purple-900/30 to-gray-900/80 p-4 sm:p-5 shadow-xl shadow-purple-500/25 ring-1 ring-purple-400/20">
                   <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_40%,rgba(250,204,21,0.08)_50%,transparent_60%)] animate-shimmer bg-[length:200%_100%] pointer-events-none" />
                   <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
@@ -316,30 +287,25 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
-            <div className="relative z-10">
+            <div className="relative z-10 -mx-1 px-0 sm:mx-0 sm:px-0">
               <WorkshopDepoimentoVideoPlayer variant="hero" />
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div variants={itemVariants} className="max-w-4xl mx-auto mb-3 text-center">
+        <div className="max-w-4xl mx-auto mb-3 text-center">
           <p className="text-gray-500 text-xs font-semibold uppercase tracking-widest">
             No depoimento — caso real
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-8 max-w-4xl mx-auto"
-        >
-          {highlights.map((h, i) => (
-            <motion.div
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-8 max-w-4xl mx-auto">
+          {highlights.map((h) => (
+            <div
               key={h.label}
-              variants={itemVariants}
-              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 400, damping: 18 } }}
-              className={`relative overflow-hidden rounded-2xl border border-gray-600/50 bg-gradient-to-br ${h.glow} p-6 text-center backdrop-blur-md shadow-lg hover:border-yellow-400/40 transition-colors duration-300`}
+              className={`relative overflow-hidden rounded-2xl border border-gray-600/50 bg-gradient-to-br ${h.glow} p-6 text-center backdrop-blur-md shadow-lg hover:border-yellow-400/40 hover:-translate-y-1 transition-all duration-300`}
             >
               <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-yellow-400/5 to-transparent pointer-events-none" />
               <p className="relative text-3xl sm:text-4xl font-black text-white tracking-tight">
@@ -351,79 +317,59 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
               <p className="relative text-gray-400 text-xs sm:text-sm mt-2 font-medium leading-snug">
                 {h.label}
               </p>
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
-              />
-            </motion.div>
+              <div className="absolute bottom-0 left-0 right-0 h-1 origin-center scale-x-100 bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent" />
+            </div>
           ))}
-        </motion.div>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-center text-gray-500 text-xs font-semibold uppercase tracking-widest mb-4"
-        >
-          O que mudou na prática — resumo do relato
-        </motion.p>
-
-        <div className="relative mb-14 md:mb-16">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-gray-900 to-transparent z-[1] md:hidden" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-gray-900 to-transparent z-[1] md:hidden" />
-          <motion.div
-            variants={containerVariants}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 pt-1 scrollbar-thin [scrollbar-color:rgba(250,204,21,0.3)_transparent] md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible"
-          >
-            {mayconInsights.map((item) => {
-              const InsightIcon = item.Icon;
-              return (
-                <motion.div
-                  key={item.title}
-                  variants={itemVariants}
-                  whileHover={{
-                    y: -8,
-                    transition: { type: 'spring', stiffness: 420, damping: 22 },
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`group relative shrink-0 snap-center w-[min(260px,82vw)] md:w-auto rounded-2xl border bg-gray-900/50 backdrop-blur-xl p-5 cursor-default ${item.accent} shadow-lg hover:shadow-2xl transition-shadow duration-300`}
-                >
-                  <div
-                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.iconBg} opacity-40 group-hover:opacity-70 transition-opacity duration-300 pointer-events-none`}
-                  />
-                  <div className="relative flex flex-col items-center text-center md:items-start md:text-left">
-                    <div
-                      className={`mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${item.iconBg} border border-white/10 shadow-inner`}
-                    >
-                      <InsightIcon className={`h-7 w-7 ${item.iconColor}`} strokeWidth={1.75} />
-                    </div>
-                    <h4 className="text-base font-bold text-white mb-1.5">{item.title}</h4>
-                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{item.line}</p>
-                  </div>
-                  <div className="absolute top-3 right-3 h-2 w-2 rounded-full bg-yellow-400/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </motion.div>
-              );
-            })}
-          </motion.div>
         </div>
 
-        <motion.div variants={itemVariants} className="max-w-6xl mx-auto mb-14 md:mb-16">
+        <p className="text-center text-gray-500 text-xs font-semibold uppercase tracking-widest mb-4">
+          O que mudou na prática — resumo do relato
+        </p>
+
+        <div className="mb-12 md:mb-16 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          {mayconInsights.map((item) => {
+            const InsightIcon = item.Icon;
+            return (
+              <div
+                key={item.title}
+                className={`group relative min-w-0 rounded-2xl border bg-gray-900/50 backdrop-blur-xl p-3.5 sm:p-5 cursor-default ${item.accent} shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300`}
+              >
+                <div
+                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.iconBg} opacity-40 group-hover:opacity-70 transition-opacity duration-300 pointer-events-none`}
+                />
+                <div className="relative flex flex-col items-center text-center lg:items-start lg:text-left">
+                  <div
+                    className={`mb-2.5 sm:mb-4 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.iconBg} border border-white/10 shadow-inner shrink-0`}
+                  >
+                    <InsightIcon className={`h-5 w-5 sm:h-7 sm:w-7 ${item.iconColor}`} strokeWidth={1.75} />
+                  </div>
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1 leading-tight">{item.title}</h4>
+                  <p className="text-gray-400 text-[11px] sm:text-xs leading-snug sm:text-sm sm:leading-relaxed">
+                    {item.line}
+                  </p>
+                </div>
+                <div className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-yellow-400/40 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="max-w-6xl mx-auto mb-14 md:mb-16">
           <div className="relative rounded-[28px] p-[1px] bg-gradient-to-br from-purple-500/60 via-yellow-500/35 to-amber-600/40 shadow-2xl shadow-purple-500/10">
             <div className="relative overflow-hidden rounded-[27px] bg-gray-950/90 backdrop-blur-2xl">
               <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
               <div className="absolute -bottom-20 -left-16 h-40 w-40 rounded-full bg-yellow-500/15 blur-3xl pointer-events-none" />
 
-              <div className="relative z-10 px-5 pt-8 pb-6 md:px-10 md:pt-10">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
-                  <div>
-                    <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/35 bg-purple-500/10 px-3 py-1.5 mb-4">
-                      <Sparkles className="h-4 w-4 text-purple-300" />
+              <div className="relative z-10 px-4 pt-6 pb-5 sm:px-6 sm:pt-8 md:px-10 md:pt-10 md:pb-6">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6 mb-6 md:mb-8 text-center md:text-left">
+                  <div className="mx-auto md:mx-0 max-w-xl md:max-w-none">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/35 bg-purple-500/10 px-3 py-1.5 mb-3 md:mb-4">
+                      <Sparkles className="h-4 w-4 text-purple-300 shrink-0" />
                       <span className="text-[11px] font-bold uppercase tracking-widest text-purple-200/90">
                         Plataforma Mundo Pódium
                       </span>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+                    <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
                       O que entra no seu{' '}
                       <span className="bg-gradient-to-r from-purple-300 to-yellow-300 bg-clip-text text-transparent">
                         arsenal
@@ -431,14 +377,45 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                       depois do workshop
                     </h3>
                   </div>
-                  <p className="text-gray-400 text-sm max-w-md md:text-right leading-relaxed">
-                    Toque em cada pilar para ver o benefício. Tudo no Circle, integrado ao
-                    que você vive nos dois módulos ao vivo.
+                  <p className="text-gray-500 text-xs sm:text-sm max-w-md mx-auto md:mx-0 md:text-gray-400 md:text-sm md:text-right leading-relaxed md:max-w-sm">
+                    <span className="md:hidden">Escolha um pilar abaixo. Tudo no Circle.</span>
+                    <span className="hidden md:inline">
+                      Toque em cada pilar para ver o benefício. Tudo no Circle, integrado ao que você
+                      vive nos dois módulos ao vivo.
+                    </span>
                   </p>
                 </div>
 
+                <nav className="md:hidden space-y-2 mb-6" aria-label="Pilares da plataforma">
+                  {platformBenefits.map((b, i) => {
+                    const RowIcon = b.Icon;
+                    const rowOn = i === activeBenefit;
+                    return (
+                      <button
+                        key={b.id}
+                        type="button"
+                        aria-current={rowOn ? 'true' : undefined}
+                        onClick={() => setActiveBenefit(i)}
+                        className={`flex w-full min-w-0 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-semibold transition-all ${
+                          rowOn
+                            ? 'border-yellow-400/55 bg-yellow-400/10 text-white shadow-md shadow-yellow-500/10'
+                            : 'border-gray-600/70 bg-gray-800/45 text-gray-300 active:bg-gray-800/70'
+                        }`}
+                      >
+                        <RowIcon
+                          className={`h-5 w-5 shrink-0 ${rowOn ? 'text-yellow-400' : 'text-gray-500'}`}
+                        />
+                        <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                          <span className="truncate">{b.title}</span>
+                          <span className="text-[11px] font-normal text-gray-500">{b.tagline}</span>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </nav>
+
                 <div
-                  className="flex flex-wrap gap-2 mb-8"
+                  className="hidden md:flex flex-wrap gap-2 mb-8"
                   role="tablist"
                   aria-label="Pilares da plataforma"
                 >
@@ -470,25 +447,22 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                     <motion.div
                       key={active.id}
                       role="tabpanel"
-                      initial={{ opacity: 0, x: 24 }}
+                      initial={false}
                       animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -16 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      exit={{ opacity: 0, x: -12 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                       className={`relative overflow-hidden rounded-2xl border border-gray-700/60 bg-gradient-to-br ${active.panelGradient} p-6 md:p-8`}
                     >
                       <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
                         <div className="flex justify-center md:justify-start">
-                          <motion.div
-                            initial={{ rotate: -6, scale: 0.92 }}
-                            animate={{ rotate: 0, scale: 1 }}
-                            transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+                          <div
                             className={`relative flex h-28 w-28 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br ${active.iconRing} p-[3px] shadow-2xl`}
                           >
                             <div className="flex h-full w-full items-center justify-center rounded-[22px] bg-gray-950/95">
                               <ActiveIcon className="h-14 w-14 text-white" strokeWidth={1.25} />
                             </div>
                             <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-white/20 to-transparent opacity-30 blur-md pointer-events-none" />
-                          </motion.div>
+                          </div>
                         </div>
                         <div className="flex-1 text-center md:text-left">
                           <p className="text-yellow-400/90 text-xs font-bold uppercase tracking-widest mb-2">
@@ -562,12 +536,9 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={itemVariants}
-          className="max-w-4xl mx-auto mb-12 rounded-2xl border border-gray-700/50 bg-gray-800/30 p-6 sm:p-8 backdrop-blur-xl space-y-6"
-        >
+        <div className="max-w-4xl mx-auto mb-12 rounded-2xl border border-gray-700/50 bg-gray-800/30 p-6 sm:p-8 backdrop-blur-xl space-y-6">
           <p className="text-gray-400 text-sm sm:text-base leading-relaxed text-center sm:text-left">
             Na vitrine, a assinatura avulsa da plataforma costuma aparecer por volta de{' '}
             <span className="text-gray-200 font-medium">
@@ -601,26 +572,17 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={itemVariants}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto"
-        >
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-3 rounded-2xl border border-gray-700/50 bg-gray-800/30 px-4 py-4 backdrop-blur-sm"
-          >
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 rounded-2xl border border-gray-700/50 bg-gray-800/30 px-4 py-4 backdrop-blur-sm transition-transform hover:scale-[1.02]">
             <Key className="w-8 h-8 text-green-400 shrink-0" />
             <div>
               <p className="text-white font-bold text-sm">Acesso imediato</p>
               <p className="text-gray-500 text-xs">Após a compra</p>
             </div>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-3 rounded-2xl border border-gray-700/50 bg-gray-800/30 px-4 py-4 backdrop-blur-sm"
-          >
+          </div>
+          <div className="flex items-center gap-3 rounded-2xl border border-gray-700/50 bg-gray-800/30 px-4 py-4 backdrop-blur-sm transition-transform hover:scale-[1.02]">
             <Calendar className="w-8 h-8 text-yellow-400 shrink-0" />
             <div>
               <p className="text-white font-bold text-sm">
@@ -630,11 +592,8 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                 {WORKSHOP_PLATFORM_RULES.includedAccessEndsDetail}
               </p>
             </div>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-3 rounded-2xl border border-gray-700/50 bg-gray-800/30 px-4 py-4 backdrop-blur-sm"
-          >
+          </div>
+          <div className="flex items-center gap-3 rounded-2xl border border-gray-700/50 bg-gray-800/30 px-4 py-4 backdrop-blur-sm transition-transform hover:scale-[1.02]">
             <Gift className="w-8 h-8 text-purple-400 shrink-0" />
             <div>
               <p className="text-white font-bold text-sm">Continuidade</p>
@@ -643,9 +602,9 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                 participou
               </p>
             </div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

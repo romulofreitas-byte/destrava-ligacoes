@@ -2,7 +2,7 @@
 
 import React, { useCallback, useRef, useState } from 'react';
 import Image from 'next/image';
-import { ExternalLink, Maximize, Play } from 'lucide-react';
+import { Maximize, Play } from 'lucide-react';
 
 /** Depoimento hospedado no YouTube: https://youtu.be/FyR0wVqGXKY */
 const DEFAULT_YOUTUBE_ID = 'FyR0wVqGXKY';
@@ -22,7 +22,6 @@ function resolveYouTubeId(): string {
 
 const YOUTUBE_ID = resolveYouTubeId();
 const POSTER_SRC = `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`;
-const WATCH_URL = `https://www.youtube.com/watch?v=${YOUTUBE_ID}`;
 
 type WorkshopDepoimentoVideoPlayerProps = {
   /** Estilo mais impactante: bordas maiores, play central maior */
@@ -50,27 +49,26 @@ export const WorkshopDepoimentoVideoPlayer: React.FC<
   }, []);
 
   const frameClass = isHero
-    ? 'rounded-3xl border-[3px] border-yellow-400/40 shadow-2xl shadow-yellow-400/25 ring-1 ring-yellow-400/20'
-    : 'rounded-2xl border-2 border-yellow-400/30 shadow-2xl shadow-yellow-400/10';
+    ? 'rounded-2xl sm:rounded-3xl border-2 sm:border-[3px] border-yellow-400/40 shadow-2xl shadow-yellow-400/20 ring-1 ring-yellow-400/15'
+    : 'rounded-xl sm:rounded-2xl border-2 border-yellow-400/30 shadow-xl shadow-yellow-400/10';
 
   const playBtnClass = isHero
-    ? 'h-24 w-24 sm:h-28 sm:w-28 ring-[6px] ring-yellow-400/35 shadow-2xl shadow-yellow-500/40'
-    : 'h-16 w-16 sm:h-20 sm:w-20 ring-4 ring-yellow-400/30 shadow-lg shadow-yellow-400/40';
+    ? 'h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 ring-4 sm:ring-[6px] ring-yellow-400/35 shadow-xl sm:shadow-2xl shadow-yellow-500/35'
+    : 'h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 ring-4 ring-yellow-400/30 shadow-lg shadow-yellow-400/40';
 
   const playIconClass = isHero
-    ? 'h-12 w-12 sm:h-14 sm:w-14 ml-1'
-    : 'h-8 w-8 sm:h-10 sm:w-10 ml-1';
+    ? 'h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 ml-0.5 sm:ml-1'
+    : 'h-7 w-7 sm:h-8 sm:w-8 ml-0.5';
 
-  const aspectBoxClass = isHero
-    ? 'aspect-video min-h-[200px] sm:min-h-[280px] md:min-h-[360px]'
-    : 'aspect-video';
+  /** Mobile: só proporção 16:9 pela largura (sem min-height que estica o bloco). */
+  const aspectBoxClass = 'relative w-full aspect-video bg-gray-950';
 
   return (
     <div
       ref={containerRef}
       className={`relative overflow-hidden bg-black group ${frameClass} ${className}`}
     >
-      <div className={`relative w-full bg-gray-950 ${aspectBoxClass}`}>
+      <div className={aspectBoxClass}>
         {iframeLoaded ? (
           <iframe
             title="Depoimento de Maycon Ferraz sobre o Workshop Destrava Ligações"
@@ -84,56 +82,40 @@ export const WorkshopDepoimentoVideoPlayer: React.FC<
           <>
             <Image
               src={POSTER_SRC}
-              alt="Miniatura do depoimento em vídeo no YouTube"
+              alt="Miniatura do depoimento em vídeo"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1152px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1152px"
               priority={isHero}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25 pointer-events-none" />
             <button
               type="button"
               onClick={() => setIframeLoaded(true)}
-              className="absolute inset-0 z-10 flex items-center justify-center bg-black/35 hover:bg-black/25 transition-colors"
-              aria-label="Carregar e reproduzir vídeo do depoimento no YouTube"
+              className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 active:bg-black/25 transition-colors"
+              aria-label="Reproduzir vídeo do depoimento nesta página"
             >
               <span
-                className={`flex items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 scale-100 group-hover:scale-105 transition-transform ${playBtnClass}`}
+                className={`flex items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 scale-100 active:scale-95 sm:group-hover:scale-105 transition-transform ${playBtnClass}`}
               >
-                <span
-                  className={`absolute rounded-full border-2 border-yellow-300/40 animate-pulse ${isHero ? 'inset-0' : 'inset-0'}`}
-                />
+                <span className="absolute inset-0 rounded-full border-2 border-yellow-300/40 animate-pulse" />
                 <Play className={`relative z-10 ${playIconClass}`} fill="currentColor" />
               </span>
             </button>
           </>
         )}
-      </div>
 
-      <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/95 via-black/75 to-transparent pt-10 sm:pt-12 pb-3 px-3 sm:px-5 pointer-events-none">
-        <div className="flex items-center justify-center gap-3 sm:gap-4 pointer-events-auto">
-          <a
-            href={WATCH_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2 rounded-xl bg-gray-800/95 text-white hover:bg-gray-700 border border-gray-600/80 transition-colors ${
-              isHero ? 'px-4 py-3.5 text-sm' : 'px-3 py-2.5 text-sm'
-            }`}
-          >
-            <ExternalLink className={isHero ? 'w-5 h-5' : 'w-4 h-4'} />
-            YouTube
-          </a>
-          <button
-            type="button"
-            onClick={enterFullscreen}
-            className={`rounded-xl bg-gray-800/95 text-white hover:bg-gray-700 border border-gray-600/80 transition-colors ${
-              isHero ? 'p-3.5' : 'p-2.5'
-            }`}
-            aria-label="Tela cheia"
-          >
-            <Maximize className={isHero ? 'w-6 h-6' : 'w-5 h-5'} />
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            enterFullscreen();
+          }}
+          className="absolute top-2 right-2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg border border-white/15 bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/70 active:bg-black/80"
+          aria-label="Tela cheia"
+        >
+          <Maximize className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+        </button>
       </div>
     </div>
   );
