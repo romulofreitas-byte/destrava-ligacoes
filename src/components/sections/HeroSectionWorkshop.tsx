@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
 import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
 import { PainPointsMarquee } from './PainPointsMarquee';
-import { WORKSHOP_INFO } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
 
 export const HeroSectionWorkshop: React.FC = () => {
   const [progressWidth, setProgressWidth] = useState(0);
@@ -100,7 +100,10 @@ export const HeroSectionWorkshop: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span className="text-[10px] sm:text-sm font-bold relative z-[100]" style={{fontFamily: 'var(--font-ubuntu), sans-serif'}}>
-                  13h
+                  <span className="hidden sm:inline">
+                    {WORKSHOP_INFO.timeStartBadge} · {WORKSHOP_MODULE_2_INFO.timeStartBadge}
+                  </span>
+                  <span className="sm:hidden">{WORKSHOP_INFO.timeStartBadge}/{WORKSHOP_MODULE_2_INFO.timeStartBadge}</span>
                 </span>
               </div>
             </div>

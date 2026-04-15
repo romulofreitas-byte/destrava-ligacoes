@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { HelpCircle } from 'lucide-react';
+import { WORKSHOP_PLATFORM_RULES } from '@/lib/constants';
 
 export const WorkshopFAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -29,12 +30,12 @@ export const WorkshopFAQSection: React.FC = () => {
     },
     {
       question: 'Como funciona o acesso à plataforma Mundo Pódium?',
-      answer: 'Após a compra, você recebe acesso imediato à plataforma Mundo Pódium com seções específicas do workshop. O workshop será realizado diretamente na plataforma, onde você terá acesso a materiais, ferramentas e conteúdo exclusivo. Você mantém acesso desde a compra até 7 dias após o workshop para explorar tudo. Após o workshop, você receberá um cupom promocional para continuar na comunidade com um valor especial.'
+      answer: WORKSHOP_PLATFORM_RULES.faqHowPlatformWorks,
     },
     {
       question: 'Tenho acesso à plataforma por quanto tempo?',
-      answer: 'Você tem acesso à plataforma desde o momento da compra até 7 dias após o workshop. Durante esse período, você pode explorar todas as seções específicas do workshop, materiais, ferramentas e conteúdo disponível. Após o workshop, você receberá um cupom promocional caso queira continuar na comunidade com acesso completo e permanente.'
-    }
+      answer: WORKSHOP_PLATFORM_RULES.faqHowLongAccess,
+    },
   ];
 
   const toggleItem = (index: number) => {

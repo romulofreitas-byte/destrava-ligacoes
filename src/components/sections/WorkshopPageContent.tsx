@@ -7,7 +7,7 @@ import { WorkshopModuleDatesSection } from '@/components/sections/WorkshopModule
 import { WorkshopTestimonialBanner } from '@/components/sections/WorkshopTestimonialBanner';
 import { EventDetailsSection } from '@/components/sections/EventDetailsSection';
 import { WhoIsItForWorkshopSection } from '@/components/sections/WhoIsItForWorkshopSection';
-import { ColdCallQuizSection } from '@/components/sections/ColdCallQuizSection';
+import { PlataformaMundoPodiumSection } from '@/components/sections/PlataformaMundoPodiumSection';
 import { WhyYouStuckSection } from '@/components/sections/WhyYouStuckSection';
 import { TestimonialsVideoSection } from '@/components/sections/TestimonialsVideoSection';
 import { WhatYouWillLearnSection } from '@/components/sections/WhatYouWillLearnSection';
@@ -35,7 +35,7 @@ export const WorkshopPageContent: React.FC = () => {
         <LiveCallsSection />
         <EventDetailsSection />
         <WhoIsItForWorkshopSection />
-        <ColdCallQuizSection />
+        <PlataformaMundoPodiumSection />
         <WhyYouStuckSection />
         <TestimonialsVideoSection />
         <WhatYouWillLearnSection />

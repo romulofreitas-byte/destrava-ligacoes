@@ -76,8 +76,13 @@ export const EventDetailsSection: React.FC = () => {
                     <MapPin className="w-6 h-6 text-yellow-400" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg mb-1">Horário</h3>
-                    <p className="text-gray-300 text-sm">13h</p>
+                    <h3 className="text-white font-bold text-lg mb-1">Horários</h3>
+                    <p className="text-gray-300 text-sm">
+                      Módulo 1: {WORKSHOP_INFO.time}
+                    </p>
+                    <p className="text-gray-300 text-sm mt-1">
+                      Módulo 2: {WORKSHOP_MODULE_2_INFO.time}
+                    </p>
                   </div>
                 </div>
 

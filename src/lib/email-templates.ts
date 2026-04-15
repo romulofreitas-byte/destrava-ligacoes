@@ -55,7 +55,10 @@ export function getWorkshopEmailTemplate(data: WorkshopEmailData): string {
                   <strong style="color: #78350f;">Módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.dateEmailLine}
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
+                  <strong style="color: #78350f;">Horário módulo 1:</strong> ${WORKSHOP_INFO.time} (Fuso horário: America/Sao_Paulo)
+                </p>
+                <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
+                  <strong style="color: #78350f;">Horário módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.time} (Fuso horário: America/Sao_Paulo)
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Formato:</strong> Online • Ao vivo
@@ -194,7 +197,10 @@ export function getOneDayBeforeEmailTemplate(data: WorkshopEmailData): string {
                   <strong style="color: #78350f;">Módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.dateEmailLine}
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
+                  <strong style="color: #78350f;">Horário módulo 1:</strong> ${WORKSHOP_INFO.time} (Fuso horário: America/Sao_Paulo)
+                </p>
+                <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
+                  <strong style="color: #78350f;">Horário módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.time} (Fuso horário: America/Sao_Paulo)
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Formato:</strong> Online • Ao vivo • 100% prático
@@ -349,7 +355,10 @@ export function getOneHourBeforeEmailTemplate(data: WorkshopEmailData): string {
                   <strong style="color: #78350f;">Módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.dateEmailLine}
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Horário:</strong> <span style="color: #dc2626; font-weight: bold;">13:00 – 17:00</span> (Fuso horário: America/Sao_Paulo)
+                  <strong style="color: #78350f;">Horário do módulo 1 (hoje):</strong> <span style="color: #dc2626; font-weight: bold;">${WORKSHOP_INFO.time}</span> (Fuso horário: America/Sao_Paulo)
+                </p>
+                <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
+                  <strong style="color: #78350f;">Horário do módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.time} (Fuso horário: America/Sao_Paulo)
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Formato:</strong> Online • Ao vivo • 100% prático
@@ -491,7 +500,7 @@ export function getInvitationEmailTemplate(
                   🎯 Este é um convite exclusivo para você, como parte da nossa comunidade.
                 </p>
                 <p style="margin: 15px 0 0; color: #78350f; font-size: 16px; line-height: 1.6;">
-                  Você terá <strong>acesso gratuito</strong> a este workshop em 2 módulos (6 horas no total), nos dias <strong>15 e 22 de abril de 2026</strong>, das 13:00 às 17:00 em cada encontro.
+                  Você terá <strong>acesso gratuito</strong> a este workshop em 2 módulos (6 horas no total), nos dias <strong>15 e 22 de abril de 2026</strong>: módulo 1 em <strong>${WORKSHOP_INFO.time}</strong> e módulo 2 em <strong>${WORKSHOP_MODULE_2_INFO.time}</strong> (horário de Brasília).
                 </p>
               </div>
               
@@ -506,7 +515,10 @@ export function getInvitationEmailTemplate(
                   <strong style="color: #78350f;">Módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.dateEmailLine}
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Horário:</strong> 13:00 – 17:00 (Fuso horário: America/Sao_Paulo)
+                  <strong style="color: #78350f;">Horário módulo 1:</strong> ${WORKSHOP_INFO.time} (Fuso horário: America/Sao_Paulo)
+                </p>
+                <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
+                  <strong style="color: #78350f;">Horário módulo 2:</strong> ${WORKSHOP_MODULE_2_INFO.time} (Fuso horário: America/Sao_Paulo)
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
                   <strong style="color: #78350f;">Formato:</strong> Online • Ao vivo • 100% prático

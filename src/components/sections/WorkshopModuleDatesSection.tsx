@@ -31,7 +31,7 @@ export const WorkshopModuleDatesSection: React.FC = () => {
             </span>
           </h2>
           <p className="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            O workshop é em dois encontros ao vivo, em dias diferentes, sempre no mesmo horário.
+            Dois encontros ao vivo em dias diferentes: módulo 1 à tarde e módulo 2 pela manhã (horário de Brasília).
           </p>
         </div>
 

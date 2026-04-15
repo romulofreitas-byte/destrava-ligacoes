@@ -5,7 +5,7 @@ import { CheckCircle, Users, Calendar, ArrowRight, CreditCard, Mail, Clock, Vide
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES } from '@/lib/constants';
 
 const Footer = dynamic(() => import('@/components/sections/Footer').then(mod => ({ default: mod.Footer })), { ssr: false });
 
@@ -373,8 +373,9 @@ function ObrigadoContent() {
                           <Clock className="w-4 h-4 text-yellow-400" />
                         </div>
                         <div>
-                          <p className="text-gray-400 text-xs mb-1">Horário</p>
-                          <p className="text-white font-semibold text-sm">13:00 - 17:00</p>
+                          <p className="text-gray-400 text-xs mb-1">Horários</p>
+                          <p className="text-white font-semibold text-sm">Módulo 1: {WORKSHOP_INFO.time}</p>
+                          <p className="text-white font-semibold text-sm mt-1">Módulo 2: {WORKSHOP_MODULE_2_INFO.time}</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
@@ -450,7 +451,9 @@ function ObrigadoContent() {
                     <div className="mb-6 p-4 bg-blue-400/10 border border-blue-400/30 rounded-xl">
                       <p className="text-white font-semibold mb-2">🎉 Acesso Imediato à Plataforma Mundo Pódium</p>
                       <p className="text-gray-300 text-sm leading-relaxed">
-                        Parabéns! Você adquiriu o Workshop por R$ 347,99 e já tem acesso imediato à Plataforma Mundo Pódium.
+                        Parabéns! Você adquiriu o Workshop por R$ 347,99 e já tem acesso
+                        imediato à Plataforma Mundo Pódium.{' '}
+                        {WORKSHOP_PLATFORM_RULES.obrigadoPlatformAccessNote}
                       </p>
                     </div>
 
@@ -516,7 +519,8 @@ function ObrigadoContent() {
                         <p className="text-gray-300 text-sm">
                           <strong>Módulo 1:</strong> {WORKSHOP_INFO.dateEmailLine}<br />
                           <strong>Módulo 2:</strong> {WORKSHOP_MODULE_2_INFO.dateEmailLine}<br />
-                          <strong>Horário:</strong> {WORKSHOP_INFO.time} (Fuso horário: {WORKSHOP_INFO.timezone})
+                          <strong>Horário módulo 1:</strong> {WORKSHOP_INFO.time} ({WORKSHOP_INFO.timezone})<br />
+                          <strong>Horário módulo 2:</strong> {WORKSHOP_MODULE_2_INFO.time} ({WORKSHOP_INFO.timezone})
                         </p>
                       </div>
                     </div>

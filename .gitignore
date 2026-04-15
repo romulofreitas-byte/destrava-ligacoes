@@ -34,6 +34,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Depoimento em vídeo (~1 GB): manter local; em produção use NEXT_PUBLIC_DEPOIMENTO_MAYCON_VIDEO_URL
+/public/Depoimento Maycon.mp4
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

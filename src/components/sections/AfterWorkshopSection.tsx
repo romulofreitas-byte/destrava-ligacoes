@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Rocket, Calendar, Gift } from 'lucide-react';
 import { SubtleCTA } from '@/components/ui/SubtleCTA';
+import { WORKSHOP_PLATFORM_RULES } from '@/lib/constants';
 
 export const AfterWorkshopSection: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
@@ -124,7 +125,13 @@ export const AfterWorkshopSection: React.FC = () => {
                 </div>
                 <div className="text-left">
                   <h3 className="text-white font-bold text-base sm:text-lg mb-1">Acesso à Plataforma + Gravação</h3>
-                  <p className="text-gray-300 text-xs sm:text-sm">Acesso imediato à plataforma Mundo Pódium até 7 dias após o workshop</p>
+                  <p className="text-gray-300 text-xs sm:text-sm">
+                    Acesso imediato à Mundo Pódium com o workshop; o acesso incluso no
+                    ingresso segue até {WORKSHOP_PLATFORM_RULES.includedAccessEndsDetail}.
+                    Continuidade na plataforma a partir de{' '}
+                    {WORKSHOP_PLATFORM_RULES.alumniMonthlyPriceLabel}/mês para quem
+                    participou.
+                  </p>
                 </div>
               </div>
               
