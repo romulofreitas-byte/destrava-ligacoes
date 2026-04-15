@@ -34,7 +34,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-# Depoimento em vídeo (~1 GB): manter local; em produção use NEXT_PUBLIC_DEPOIMENTO_MAYCON_VIDEO_URL
+# Depoimento em vídeo local legado (~1 GB); o site usa YouTube (FyR0wVqGXKY). Opcional: manter arquivo fora do Git.
 /public/Depoimento Maycon.mp4
 
 # typescript
