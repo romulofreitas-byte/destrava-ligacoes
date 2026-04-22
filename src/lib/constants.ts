@@ -18,13 +18,13 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 // Informações do Workshop
 export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVE SUAS LIGAÇÕES | MUNDO PÓDIUM',
-  date: '15 de abril de 2026',
-  dateObj: new Date('2026-04-15T13:00:00-03:00'),
+  date: '6 de maio de 2026',
+  dateObj: new Date('2026-05-06T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '15 de Abril',
-  dateDisplayShort: '15/04',
+  dateDisplayLong: '06 de Maio',
+  dateDisplayShort: '06/05',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Quarta-feira, 15 de abril de 2026',
+  dateEmailLine: 'Quarta-feira, 6 de maio de 2026',
   time: '13:00 – 17:00',
   /** Início do módulo 1 (atalho para UI compacta, ex.: hero) */
   timeStartBadge: '13h',
@@ -35,11 +35,11 @@ export const WORKSHOP_INFO = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '22 de abril de 2026',
-  dateObj: new Date('2026-04-22T08:00:00-03:00'),
-  dateDisplayLong: '22 de Abril',
-  dateDisplayShort: '22/04',
-  dateEmailLine: 'Quarta-feira, 22 de abril de 2026',
+  date: '12 de maio de 2026',
+  dateObj: new Date('2026-05-12T08:00:00-03:00'),
+  dateDisplayLong: '12 de Maio',
+  dateDisplayShort: '12/05',
+  dateEmailLine: 'Terça-feira, 12 de maio de 2026',
   time: '08:00 – 11:00',
   timeStartBadge: '8h',
 } as const;

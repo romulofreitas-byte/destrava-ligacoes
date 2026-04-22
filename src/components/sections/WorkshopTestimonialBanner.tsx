@@ -155,7 +155,7 @@ export const WorkshopTestimonialBanner: React.FC = () => {
               <div className="text-center">
                 <p className="text-gray-300 text-sm sm:text-base mb-4">
                   <span className="text-yellow-400 font-semibold">
-                    8ª Edição aberta!
+                    9ª Edição aberta!
                   </span>{' '}
                   Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
                   {WORKSHOP_MODULE_2_INFO.dateDisplayShort} — garanta sua vaga

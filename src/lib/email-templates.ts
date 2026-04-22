@@ -500,7 +500,7 @@ export function getInvitationEmailTemplate(
                   🎯 Este é um convite exclusivo para você, como parte da nossa comunidade.
                 </p>
                 <p style="margin: 15px 0 0; color: #78350f; font-size: 16px; line-height: 1.6;">
-                  Você terá <strong>acesso gratuito</strong> a este workshop em 2 módulos (6 horas no total), nos dias <strong>15 e 22 de abril de 2026</strong>: módulo 1 em <strong>${WORKSHOP_INFO.time}</strong> e módulo 2 em <strong>${WORKSHOP_MODULE_2_INFO.time}</strong> (horário de Brasília).
+                  Você terá <strong>acesso gratuito</strong> a este workshop em 2 módulos (6 horas no total), nos dias <strong>${WORKSHOP_INFO.dateDisplayShort} e ${WORKSHOP_MODULE_2_INFO.dateDisplayShort}</strong>: módulo 1 em <strong>${WORKSHOP_INFO.time}</strong> e módulo 2 em <strong>${WORKSHOP_MODULE_2_INFO.time}</strong> (horário de Brasília).
                 </p>
               </div>
               
