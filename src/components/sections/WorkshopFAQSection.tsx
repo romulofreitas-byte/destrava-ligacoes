@@ -9,8 +9,8 @@ export const WorkshopFAQSection: React.FC = () => {
 
   const faqs = [
     {
-      question: 'O workshop tem replay?',
-      answer: 'Não. O workshop é 100% ao vivo, sem replay. Isso garante que apenas pessoas comprometidas participem e eleva a qualidade do evento.'
+      question: 'O workshop e a Sala de Ligação ficam gravados?',
+      answer: 'Sim. O Workshop e a Sala de Ligação ficam gravados na plataforma Mundo Pódium para acesso posterior dentro do período de acesso incluso.'
     },
     {
       question: 'Preciso ter experiência em vendas?',
@@ -25,7 +25,7 @@ export const WorkshopFAQSection: React.FC = () => {
       answer: 'Sim. Você vai praticar ao vivo, construir seu script e fazer suas primeiras ligações com suporte e análise em tempo real.'
     },
     {
-      question: 'Por que custa R$ 347,99?',
+      question: 'Por que custa R$ 497,00?',
       answer: 'É um investimento simbólico que garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático em 2 módulos (6 horas no total) com demonstração real.'
     },
     {

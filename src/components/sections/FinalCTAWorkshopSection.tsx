@@ -15,7 +15,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setProgressWidth(75); // 75% preenchido
+      setProgressWidth(25); // 25% preenchido
     }, 100);
 
     return () => clearTimeout(timer);
@@ -81,14 +81,13 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </h2>
 
               <p className="text-sm text-green-400 font-medium mb-4 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento Simbólico: R$ 347,99 • 2 módulos • Entrega real
+                Investimento: R$ 497,00 • 2 módulos • Entrega real
               </p>
 
               {/* Pricing Info */}
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
-                  <span className="text-gray-400 text-sm line-through">De R$ 497</span>
-                  <span className="text-yellow-400 font-bold text-lg">R$ 347,99</span>
+                  <span className="text-yellow-400 font-bold text-lg">R$ 497,00</span>
                 </div>
               </div>
 
@@ -141,7 +140,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               <div className="space-y-2 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300">Vagas preenchidas</span>
-                  <span className="text-green-400 font-semibold animate-pulse">75%</span>
+                  <span className="text-green-400 font-semibold animate-pulse">25%</span>
                 </div>
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                   {/* Filled portion */}

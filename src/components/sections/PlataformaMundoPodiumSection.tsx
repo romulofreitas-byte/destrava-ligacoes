@@ -292,6 +292,16 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
             <div className="relative z-10 -mx-1 px-0 sm:mx-0 sm:px-0">
               <WorkshopDepoimentoVideoPlayer variant="hero" />
             </div>
+            <div className="relative z-10 mt-4 sm:mt-6">
+              <div className="rounded-xl sm:rounded-2xl border border-emerald-400/35 bg-emerald-500/10 px-4 py-3 sm:px-5 sm:py-4 text-left shadow-lg shadow-emerald-500/10">
+                <p className="text-emerald-200 text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-1">
+                  Observação importante
+                </p>
+                <p className="text-white text-sm sm:text-base leading-relaxed">
+                  {WORKSHOP_PLATFORM_RULES.recordingsHighlight}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
