@@ -80,14 +80,24 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 <span className="bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">9ª edição</span>
               </h2>
 
-              <p className="text-sm text-green-400 font-medium mb-4 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
-                Investimento: R$ 497,00 • 2 módulos • Entrega real
+              <p className="text-sm text-gray-300 font-medium mb-4 animate-fade-in-up" style={{animationDelay: '0.25s'}}>
+                <span className="text-gray-500 line-through">De R$ 997,00</span>
+                {' '}
+                <span className="text-green-400">por R$ 497,00</span>
+                {' '}
+                <span className="text-gray-400">• 2 módulos • Entrega real</span>
               </p>
 
-              {/* Pricing Info */}
+              {/* Pricing Info — ancoragem: preço de referência + investimento atual */}
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-                <div className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
-                  <span className="text-yellow-400 font-bold text-lg">R$ 497,00</span>
+                <div className="inline-flex flex-col sm:flex-row sm:items-baseline sm:justify-center gap-1 sm:gap-4 px-5 py-3 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
+                  <div className="flex items-baseline justify-center gap-3">
+                    <span className="text-gray-500 line-through text-lg sm:text-xl font-semibold">R$ 997,00</span>
+                    <span className="text-yellow-400 font-black text-2xl sm:text-3xl">R$ 497,00</span>
+                  </div>
+                  <span className="text-center text-green-400 text-xs sm:text-sm font-semibold sm:self-center sm:pl-2 sm:border-l sm:border-gray-600">
+                    Economia de R$ 500 nesta edição
+                  </span>
                 </div>
               </div>
 
@@ -106,7 +116,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               {/* CTA Button */}
               <div className="mb-6 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
                 <a
-                  href="https://pag.ae/81CXHs2nH"
+                  href="https://pag.ae/81MRtAvM5"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleCTAClick}
