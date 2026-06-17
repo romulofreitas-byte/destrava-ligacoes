@@ -15,16 +15,30 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
   };
 }
 
+export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
+export const WORKSHOP_SALES = { isOpen: false } as const;
+
+/** Copy quando vendas fechadas (CTAs, badges) */
+export const WORKSHOP_CLOSED_COPY = {
+  heroCta: 'Entrar na Plataforma Mundo Pódium',
+  finalCta: 'Entrar na Plataforma — R$ 89,90/mês',
+  finalHeadline: 'Treine cold call na Plataforma Mundo Pódium',
+  finalSubheadline:
+    'Sala de Ligação ao vivo, mentorias 2x por semana e gravações para rever quando quiser.',
+  statusLine: 'Vagas encerradas • Próxima turma em julho',
+  badgeEdition: 'Vagas encerradas — próxima turma em julho',
+} as const;
+
 // Informações do Workshop
 export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVE SUAS LIGAÇÕES | MUNDO PÓDIUM',
-  date: '8 de junho de 2026',
-  dateObj: new Date('2026-06-08T13:00:00-03:00'),
+  date: '8 de julho de 2026',
+  dateObj: new Date('2026-07-08T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '08 de Junho',
-  dateDisplayShort: '08/06',
+  dateDisplayLong: '08 de Julho',
+  dateDisplayShort: '08/07',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Segunda-feira, 8 de junho de 2026',
+  dateEmailLine: 'Quarta-feira, 8 de julho de 2026',
   time: '13:00 – 17:00',
   /** Início do módulo 1 (atalho para UI compacta, ex.: hero) */
   timeStartBadge: '13h',
@@ -35,11 +49,11 @@ export const WORKSHOP_INFO = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '9 de junho de 2026',
-  dateObj: new Date('2026-06-09T08:00:00-03:00'),
-  dateDisplayLong: '09 de Junho',
-  dateDisplayShort: '09/06',
-  dateEmailLine: 'Terça-feira, 9 de junho de 2026',
+  date: '9 de julho de 2026',
+  dateObj: new Date('2026-07-09T08:00:00-03:00'),
+  dateDisplayLong: '09 de Julho',
+  dateDisplayShort: '09/07',
+  dateEmailLine: 'Quinta-feira, 9 de julho de 2026',
   time: '08:00 – 12:00',
   timeStartBadge: '8h',
 } as const;
@@ -53,20 +67,20 @@ export const WORKSHOP_PLATFORM_RULES = {
   alumniMonthlyPriceLabel: ALUMNI_MONTHLY_PRICE,
 
   /** Cards / strip — título curto + detalhe */
-  includedAccessEndsTitle: 'Acesso incluso até',
-  includedAccessEndsDetail: `1 dia após o módulo 2 (${WORKSHOP_MODULE_2_INFO.dateDisplayShort})`,
+  includedAccessEndsTitle: 'Acesso incluso',
+  includedAccessEndsDetail: '60 dias após a compra',
 
   /** Destaque de gravação: workshop + sala ficam na plataforma */
   recordingsHighlight: `Workshop + Sala de Ligação ficam gravados na Mundo Pódium para você rever depois, dentro do período de acesso incluso.`,
 
   /** FAQ: como funciona o acesso */
-  faqHowPlatformWorks: `Após a compra, você recebe acesso imediato à plataforma Mundo Pódium no Circle, onde acontecem os dois módulos ao vivo e ficam materiais e ferramentas do workshop. O Workshop e a Sala de Ligação também ficam gravados na própria plataforma para acesso posterior durante o período incluso. O acesso incluso no pacote do workshop permanece até 1 dia após o término do segundo módulo (Sala de Ligação, ${WORKSHOP_MODULE_2_INFO.date}). Quem quiser seguir na plataforma com acesso completo pode utilizar a oferta de continuidade a partir de ${ALUMNI_MONTHLY_PRICE} por mês (detalhes após o evento).`,
+  faqHowPlatformWorks: `Após a compra, você recebe acesso imediato à plataforma Mundo Pódium no Circle, onde acontecem os dois módulos ao vivo e ficam materiais e ferramentas do workshop. O Workshop e a Sala de Ligação também ficam gravados na própria plataforma para acesso posterior durante o período incluso. O acesso incluso no pacote do workshop permanece por 60 dias a partir da data da compra. Quem quiser seguir na plataforma com acesso completo pode utilizar a oferta de continuidade a partir de ${ALUMNI_MONTHLY_PRICE} por mês (detalhes após o evento).`,
 
   /** FAQ: por quanto tempo */
-  faqHowLongAccess: `Da compra até 1 dia após o término do módulo 2 (${WORKSHOP_MODULE_2_INFO.date}). Nesse período, você mantém acesso aos conteúdos e às gravações do Workshop + Sala de Ligação dentro da plataforma. Depois desse prazo, o acesso incluso encerra; para continuar na comunidade, há condição especial para participantes a partir de ${ALUMNI_MONTHLY_PRICE} por mês.`,
+  faqHowLongAccess: `60 dias a partir da compra. Nesse período, você mantém acesso aos conteúdos e às gravações do Workshop + Sala de Ligação dentro da plataforma. Depois desse prazo, o acesso incluso encerra; para continuar na comunidade, há condição especial para participantes a partir de ${ALUMNI_MONTHLY_PRICE} por mês.`,
 
   /** Página obrigado — complemento ao bloco de acesso */
-  obrigadoPlatformAccessNote: `O acesso incluso no ingresso permanece até 1 dia após o término do segundo módulo (${WORKSHOP_MODULE_2_INFO.date}). Para continuar na plataforma, há condição para participantes a partir de ${ALUMNI_MONTHLY_PRICE} por mês.`,
+  obrigadoPlatformAccessNote: `O acesso incluso no ingresso é de 60 dias a partir da compra. Para continuar na plataforma, há condição para participantes a partir de ${ALUMNI_MONTHLY_PRICE} por mês.`,
 } as const;
 
 /** Copy da seção Plataforma Mundo Pódium (uma fonte → SSR e cliente sempre alinhados) */

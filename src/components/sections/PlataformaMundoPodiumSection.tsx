@@ -26,10 +26,9 @@ import {
 } from 'lucide-react';
 import { WorkshopDepoimentoVideoPlayer } from '@/components/ui/WorkshopDepoimentoVideoPlayer';
 import { trackViewContent } from '@/lib/metaPixel';
-import { PLATAFORMA_MUNDO_PODIUM_COPY, WORKSHOP_PLATFORM_RULES } from '@/lib/constants';
+import { PLATAFORMA_MUNDO_PODIUM_COPY, WORKSHOP_PLATFORM_RULES, PLATAFORMA_CASA_URL } from '@/lib/constants';
 
-const CHECKOUT_URL =
-  'https://plataforma.mundopodium.com.br/checkout/plataforma-mundo-podium';
+const CHECKOUT_URL = PLATAFORMA_CASA_URL;
 
 const highlights = [
   { k: '~80', unit: '/sem.', label: 'contatos na prática', glow: 'from-yellow-400/20 to-amber-600/10' },

@@ -2,16 +2,18 @@
 
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
+import { WORKSHOP_SALES } from '@/lib/constants';
 
 interface SubtleCTAProps {
   text?: string;
   className?: string;
 }
 
-export const SubtleCTA: React.FC<SubtleCTAProps> = ({ 
-  text = 'Garantir vaga',
-  className = ''
+export const SubtleCTA: React.FC<SubtleCTAProps> = ({
+  text,
+  className = '',
 }) => {
+  const label = text ?? (WORKSHOP_SALES.isOpen ? 'Garantir vaga' : 'Conhecer a Plataforma');
   const handleClick = () => {
     const element = document.getElementById('inscricao');
     if (element) {
@@ -25,7 +27,7 @@ export const SubtleCTA: React.FC<SubtleCTAProps> = ({
         onClick={handleClick}
         className="group inline-flex items-center gap-2 px-6 py-3 bg-gray-800/40 border border-yellow-400/30 text-yellow-400 text-sm font-medium rounded-full hover:bg-yellow-400/10 hover:border-yellow-400/50 transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-yellow-400/20 button-shine-effect"
       >
-        <span>{text}</span>
+        <span>{label}</span>
         <ArrowDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
       </button>
     </div>

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Youtube, MessageCircle } from 'lucide-react';
 import { trackWhatsAppClick, trackCustomEvent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
+import { WORKSHOP_SALES } from '@/lib/constants';
 
 export const SubtleHelpModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,6 +23,8 @@ export const SubtleHelpModal: React.FC = () => {
   }, [ctaButtonClicked]);
 
   useEffect(() => {
+    if (!WORKSHOP_SALES.isOpen) return;
+
     setIsMounted(true);
 
     // Encontrar a seção CTA pelo ID
@@ -133,7 +136,7 @@ export const SubtleHelpModal: React.FC = () => {
     trackWhatsAppClick('Subtle Help Modal - WhatsApp', 'help-modal');
   };
 
-  if (!isMounted || !isVisible) return null;
+  if (!WORKSHOP_SALES.isOpen || !isMounted || !isVisible) return null;
 
   return (
     <div 
