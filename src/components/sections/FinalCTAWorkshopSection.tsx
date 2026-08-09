@@ -24,7 +24,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
     if (!salesOpen) return;
 
     const timer = setTimeout(() => {
-      setProgressWidth(85);
+      setProgressWidth(WORKSHOP_SALES.progressPercent);
     }, 100);
 
     return () => clearTimeout(timer);
@@ -109,7 +109,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
                   <p className="text-sm text-gray-300 font-medium mb-4 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
                     <span className="text-gray-500 line-through">De R$ 997,00</span>{' '}
-                    <span className="text-green-400">por R$ 497,00</span>{' '}
+                    <span className="text-green-400">por R$ 897,00</span>{' '}
                     <span className="text-gray-400">• 2 módulos • Entrega real</span>
                   </p>
 
@@ -117,10 +117,10 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                     <div className="inline-flex flex-col sm:flex-row sm:items-baseline sm:justify-center gap-1 sm:gap-4 px-5 py-3 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
                       <div className="flex items-baseline justify-center gap-3">
                         <span className="text-gray-500 line-through text-lg sm:text-xl font-semibold">R$ 997,00</span>
-                        <span className="text-yellow-400 font-black text-2xl sm:text-3xl">R$ 497,00</span>
+                        <span className="text-yellow-400 font-black text-2xl sm:text-3xl">R$ 897,00</span>
                       </div>
                       <span className="text-center text-green-400 text-xs sm:text-sm font-semibold sm:self-center sm:pl-2 sm:border-l sm:border-gray-600">
-                        Economia de R$ 500 nesta edição
+                        Economia de R$ 100 nesta edição
                       </span>
                     </div>
                   </div>
@@ -128,7 +128,9 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
                     <div className="flex items-center justify-center space-x-2 p-3 bg-green-400/10 border border-green-400/30 rounded-xl">
                       <Users className="w-5 h-5 text-green-400" />
-                      <span className="text-green-400 font-semibold text-sm">Vagas Limitadas</span>
+                      <span className="text-green-400 font-semibold text-sm">
+                        Apenas {WORKSHOP_SALES.maxSpots} vagas
+                      </span>
                     </div>
                     <div className="flex items-center justify-center space-x-2 p-3 bg-purple-400/10 border border-purple-400/30 rounded-xl">
                       <Video className="w-5 h-5 text-purple-400" />
@@ -210,8 +212,12 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
                   <div className="space-y-2 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
                     <div className="flex items-center justify-between text-xs sm:text-sm">
-                      <span className="text-gray-300">Vagas preenchidas</span>
-                      <span className="text-green-400 font-semibold animate-pulse">85%</span>
+                      <span className="text-gray-300">
+                        Vagas preenchidas · limitado a {WORKSHOP_SALES.maxSpots}
+                      </span>
+                      <span className="text-green-400 font-semibold animate-pulse">
+                        {WORKSHOP_SALES.progressPercent}%
+                      </span>
                     </div>
                     <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
                       <div
@@ -220,6 +226,9 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                       />
                       <div className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-green-300/40 to-transparent animate-progress-flow" />
                     </div>
+                    <p className="text-yellow-400/90 text-xs font-semibold">
+                      Turma limitada a {WORKSHOP_SALES.maxSpots} participantes
+                    </p>
                   </div>
                 </>
               )}
@@ -233,7 +242,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      O workshop volta em julho. Enquanto isso,{' '}
+                      O workshop volta em breve. Enquanto isso,{' '}
                       <span className="text-yellow-400 font-semibold">
                         você pode treinar ligações reais na Plataforma Mundo Pódium.
                       </span>

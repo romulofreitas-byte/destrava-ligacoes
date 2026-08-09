@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { MessageCircle, Star } from 'lucide-react';
 import Image from 'next/image';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_SALES } from '@/lib/constants';
 
 type FeaturedWorkshopTestimonial = {
   id: string;
@@ -158,7 +158,8 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                     10ª Edição aberta!
                   </span>{' '}
                   Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
-                  {WORKSHOP_MODULE_2_INFO.dateDisplayShort} — garanta sua vaga
+                  {WORKSHOP_MODULE_2_INFO.dateDisplayShort} — apenas{' '}
+                  {WORKSHOP_SALES.maxSpots} vagas
                 </p>
                 <p className="text-gray-400 text-xs sm:text-sm">
                   Transforme suas ligações como centenas de participantes já

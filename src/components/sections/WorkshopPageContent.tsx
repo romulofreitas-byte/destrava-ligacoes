@@ -21,8 +21,6 @@ import { FinalCTAWorkshopSection } from '@/components/sections/FinalCTAWorkshopS
 import { WorkshopFAQSection } from '@/components/sections/WorkshopFAQSection';
 import { Footer } from '@/components/sections/Footer';
 import { SubtleHelpModal } from '@/components/ui/SubtleHelpModal';
-import { WorkshopClosedModal } from '@/components/ui/WorkshopClosedModal';
-import { SoldOutBanner } from '@/components/sections/SoldOutBanner';
 import { ModalProvider } from '@/contexts/ModalContext';
 import { FloatingWhatsAppButton } from '@/components/FloatingWhatsAppButton';
 
@@ -30,7 +28,6 @@ export const WorkshopPageContent: React.FC = () => {
   return (
     <ModalProvider>
       <main className="min-h-screen bg-gray-900">
-        <SoldOutBanner />
         <HeroSectionWorkshop />
         <WorkshopTestimonialBanner />
         <WorkshopModulesSection />
@@ -51,7 +48,6 @@ export const WorkshopPageContent: React.FC = () => {
         <FinalCTAWorkshopSection />
         <Footer />
         <SubtleHelpModal />
-        <WorkshopClosedModal />
         <FloatingWhatsAppButton />
       </main>
     </ModalProvider>

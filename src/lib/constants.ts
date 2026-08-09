@@ -16,7 +16,13 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 }
 
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
-export const WORKSHOP_SALES = { isOpen: false } as const;
+export const WORKSHOP_SALES = {
+  isOpen: true,
+  /** Percentual da barra de vagas (hero + CTA final) */
+  progressPercent: 27,
+  /** Capacidade máxima da turma — evidenciar na UI */
+  maxSpots: 20,
+} as const;
 
 /** Copy quando vendas fechadas (CTAs, badges) */
 export const WORKSHOP_CLOSED_COPY = {
@@ -25,20 +31,20 @@ export const WORKSHOP_CLOSED_COPY = {
   finalHeadline: 'Treine cold call na Plataforma Mundo Pódium',
   finalSubheadline:
     'Sala de Ligação ao vivo, mentorias 2x por semana e gravações para rever quando quiser.',
-  statusLine: 'Vagas encerradas • Próxima turma em julho',
-  badgeEdition: 'Vagas encerradas — próxima turma em julho',
+  statusLine: 'Vagas encerradas • Próxima turma em breve',
+  badgeEdition: 'Vagas encerradas — próxima turma em breve',
 } as const;
 
 // Informações do Workshop
 export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVE SUAS LIGAÇÕES | MUNDO PÓDIUM',
-  date: '8 de julho de 2026',
-  dateObj: new Date('2026-07-08T13:00:00-03:00'),
+  date: '19 de agosto de 2026',
+  dateObj: new Date('2026-08-19T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '08 de Julho',
-  dateDisplayShort: '08/07',
+  dateDisplayLong: '19 de Agosto',
+  dateDisplayShort: '19/08',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Quarta-feira, 8 de julho de 2026',
+  dateEmailLine: 'Quarta-feira, 19 de agosto de 2026',
   time: '13:00 – 17:00',
   /** Início do módulo 1 (atalho para UI compacta, ex.: hero) */
   timeStartBadge: '13h',
@@ -49,11 +55,11 @@ export const WORKSHOP_INFO = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '9 de julho de 2026',
-  dateObj: new Date('2026-07-09T08:00:00-03:00'),
-  dateDisplayLong: '09 de Julho',
-  dateDisplayShort: '09/07',
-  dateEmailLine: 'Quinta-feira, 9 de julho de 2026',
+  date: '25 de agosto de 2026',
+  dateObj: new Date('2026-08-25T08:00:00-03:00'),
+  dateDisplayLong: '25 de Agosto',
+  dateDisplayShort: '25/08',
+  dateEmailLine: 'Terça-feira, 25 de agosto de 2026',
   time: '08:00 – 12:00',
   timeStartBadge: '8h',
 } as const;

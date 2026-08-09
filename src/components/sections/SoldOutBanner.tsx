@@ -15,7 +15,7 @@ export const SoldOutBanner: React.FC = () => {
         <div className="flex items-center gap-2 min-w-0">
           <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400 flex-shrink-0" />
           <span className="text-[10px] sm:text-xs text-red-300 sm:max-w-none">
-            <span className="sm:hidden">Vagas encerradas — próxima turma em julho</span>
+            <span className="sm:hidden">Vagas encerradas — próxima turma em breve</span>
             <span className="hidden sm:inline">
               Vagas encerradas — próxima turma: módulo 1 em {WORKSHOP_INFO.dateDisplayLong},{' '}
               módulo 2 em {WORKSHOP_MODULE_2_INFO.dateDisplayLong}

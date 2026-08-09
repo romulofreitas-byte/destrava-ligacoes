@@ -53,9 +53,6 @@ export default function TermosPage() {
                 <strong className="text-white">Empresa:</strong> Escuderia Pódium
               </p>
               <p className="text-gray-300 mb-2">
-                <strong className="text-white">CNPJ:</strong> 43.393.622/0001-30
-              </p>
-              <p className="text-gray-300 mb-2">
                 <strong className="text-white">Responsável:</strong> Rômulo Freitas
               </p>
               <p className="text-gray-300 mb-2">

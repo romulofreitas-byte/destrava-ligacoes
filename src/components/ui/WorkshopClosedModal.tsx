@@ -56,7 +56,7 @@ export const WorkshopClosedModal: React.FC = () => {
           </h3>
 
           <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-            A próxima turma será em julho — módulo 1 em {WORKSHOP_INFO.dateDisplayLong},
+            A próxima turma será em breve — módulo 1 em {WORKSHOP_INFO.dateDisplayLong},
             módulo 2 em {WORKSHOP_MODULE_2_INFO.dateDisplayLong}. Enquanto isso, treine cold
             call ao vivo na Plataforma Mundo Pódium: Sala de Ligação, mentorias 2x por semana
             e comunidade no Circle.

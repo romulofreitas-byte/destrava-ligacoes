@@ -24,7 +24,7 @@ export const HeroSectionWorkshop: React.FC = () => {
     if (!salesOpen) return;
 
     const timer = setTimeout(() => {
-      setProgressWidth(85);
+      setProgressWidth(WORKSHOP_SALES.progressPercent);
     }, 100);
 
     return () => clearTimeout(timer);
@@ -53,7 +53,7 @@ export const HeroSectionWorkshop: React.FC = () => {
   const ctaHref = salesOpen ? '#inscricao' : PLATAFORMA_CASA_URL;
   const ctaExternal = !salesOpen;
   const ctaLabel = salesOpen
-    ? 'Garantir vaga por R$ 497,00'
+    ? 'Garantir vaga por R$ 897,00'
     : WORKSHOP_CLOSED_COPY.heroCta;
   const ctaClassName = salesOpen
     ? 'group relative inline-flex items-center justify-center px-4 py-2.5 sm:px-5 sm:px-8 sm:py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black text-xs sm:text-sm sm:text-base rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-2xl hover:shadow-green-500/40 hover:scale-105 button-shine-effect cursor-pointer pointer-events-auto z-10'
@@ -70,7 +70,7 @@ export const HeroSectionWorkshop: React.FC = () => {
   const priceBlock = salesOpen ? (
     <>
       <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
-        <span className="text-yellow-400 font-bold text-sm sm:text-xl">R$ 497,00</span>
+        <span className="text-yellow-400 font-bold text-sm sm:text-xl">R$ 897,00</span>
       </div>
       <div className="mt-1.5 sm:mt-2 flex flex-col items-center sm:items-start gap-1.5 sm:gap-2">
         <div className="flex items-center gap-1.5 sm:gap-2">
@@ -81,7 +81,7 @@ export const HeroSectionWorkshop: React.FC = () => {
         </div>
         <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 bg-purple-400/10 border border-purple-400/30 rounded-lg">
           <span className="text-purple-400 text-[9px] sm:text-xs font-semibold">
-            🎁 Bônus: Plataforma + Gravação
+            🎁 Bônus: 60 dias na Plataforma + Gravação
           </span>
         </div>
       </div>
@@ -105,8 +105,12 @@ export const HeroSectionWorkshop: React.FC = () => {
   const progressBar = salesOpen ? (
     <div className="space-y-2 w-full mb-8 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
       <div className="flex items-center justify-between text-xs sm:text-sm">
-        <span className="text-gray-300 drop-shadow-sm">Vagas preenchidas</span>
-        <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">85%</span>
+        <span className="text-gray-300 drop-shadow-sm">
+          Vagas preenchidas · limitado a {WORKSHOP_SALES.maxSpots}
+        </span>
+        <span className="text-green-400 font-semibold drop-shadow-sm animate-pulse">
+          {WORKSHOP_SALES.progressPercent}%
+        </span>
       </div>
       <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
         <div
@@ -116,6 +120,9 @@ export const HeroSectionWorkshop: React.FC = () => {
         />
         <div className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-green-300/40 to-transparent animate-progress-flow" />
       </div>
+      <p className="text-yellow-400/90 text-[10px] sm:text-xs font-semibold text-center sm:text-left">
+        Apenas {WORKSHOP_SALES.maxSpots} vagas nesta turma
+      </p>
     </div>
   ) : null;
 
