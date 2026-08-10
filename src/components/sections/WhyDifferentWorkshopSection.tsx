@@ -15,7 +15,7 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
     {
       icon: Zap,
       title: '8h Práticas + Demonstração + Construção',
-      description: 'Você constrói seu script, pratica ao vivo e sai com material implementável no dia seguinte.'
+      description: 'Você constrói sua Anatomia da Ligação, pratica ao vivo e sai com material implementável no dia seguinte.'
     },
     {
       icon: Shield,
@@ -25,7 +25,7 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
     {
       icon: Sparkles,
       title: 'Entrega Completa por R$ 897,00',
-      description: '2 módulos práticos, ligações ao vivo, script pronto e 60 dias na Plataforma Mundo Pódium. Não é funil isca — é treinamento com profundidade.'
+      description: '2 módulos práticos, ligações ao vivo, Anatomia da Ligação e 60 dias na Plataforma Mundo Pódium. Não é funil isca — é treinamento com profundidade.'
     }
   ];
 

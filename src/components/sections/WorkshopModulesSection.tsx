@@ -32,7 +32,7 @@ export const WorkshopModulesSection: React.FC = () => {
       title: 'Módulo 1',
       subtitle: 'Preparação e Fundação',
       duration: WORKSHOP_DURATION.perModuleLabel,
-      theme: 'Análise de metas pessoais, controle de ansiedade, estudo de mercado e construção do Script de Cold Call',
+      theme: 'Análise de metas pessoais, controle de ansiedade, estudo de mercado e construção da Anatomia da Ligação',
       colorScheme: {
         bg: 'from-green-400/20 to-yellow-400/10',
         border: 'border-green-400/50',
@@ -48,13 +48,13 @@ export const WorkshopModulesSection: React.FC = () => {
         'Análise de metas pessoais e objetivos comerciais',
         'Controle de ansiedade e técnicas de destravamento',
         'Estudo de mercado e identificação do ICP',
-        'Construção do Script de Cold Call personalizado',
+        'Construção da Anatomia da Ligação (etapas, objeções e contexto de mercado)',
         'Preparação psicológica para ligações',
         'Ferramentas de cálculo de ligações e precificação'
       ],
       benefits: [
         'Base sólida para fazer ligações',
-        'Script pronto para usar',
+        'Anatomia da Ligação pronta para aplicar',
         'Mentalidade preparada',
         'Clareza sobre seu mercado'
       ]

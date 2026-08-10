@@ -27,11 +27,11 @@ export const WorkshopFAQSection: React.FC = () => {
     },
     {
       question: 'Vou realmente fazer ligações durante o workshop?',
-      answer: 'Sim. Você vai praticar ao vivo, construir seu script e fazer suas primeiras ligações com suporte e análise em tempo real.'
+      answer: 'Sim. Você vai praticar ao vivo, construir sua Anatomia da Ligação e fazer suas primeiras ligações com suporte e análise em tempo real.'
     },
     {
       question: 'Por que custa R$ 897,00?',
-      answer: `Porque é treinamento prático de verdade: 2 módulos (${WORKSHOP_DURATION.detailLine}), demonstração com ligações reais ao vivo, construção do seu script e prática supervisionada — mais 60 dias de acesso à Plataforma Mundo Pódium com gravações. O preço reflete a profundidade da entrega, não um funil isca gratuito.`,
+      answer: `Porque é treinamento prático de verdade: 2 módulos (${WORKSHOP_DURATION.detailLine}), demonstração com ligações reais ao vivo, construção da Anatomia da Ligação e prática supervisionada — mais 60 dias de acesso à Plataforma Mundo Pódium com gravações. O preço reflete a profundidade da entrega, não um funil isca gratuito.`,
     },
     {
       question: 'Há garantia?',

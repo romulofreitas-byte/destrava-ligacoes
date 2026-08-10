@@ -27,7 +27,7 @@ export const WhatYouWillLearnSection: React.FC = () => {
       isExclusive: false
     },
     {
-      text: 'Script de Ligação: Estrutura adaptável que funciona em qualquer nicho',
+      text: 'Anatomia da Ligação: Etapas para engajar, quebrar objeções e marcar reunião — em qualquer nicho',
       isExclusive: false
     },
     {
@@ -43,11 +43,11 @@ export const WhatYouWillLearnSection: React.FC = () => {
       isExclusive: false
     },
     {
-      text: 'Script para investimentos: Versão segura para mercados regulados',
+      text: 'Anatomia para mercados regulados: Versão segura focada em educação, sem promessa financeira',
       isExclusive: false
     },
     {
-      text: 'Construção de discurso: Monte sua fala do zero',
+      text: 'Estrutura da conversa: Monte do zero uma fala que soa natural, não decorada',
       isExclusive: false
     },
     {

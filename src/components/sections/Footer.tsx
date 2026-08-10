@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
                 </span>
               </div>
               <p className="text-gray-300">
-                Treinamento prático de cold call em 2 módulos — script pronto, ligações ao vivo e
+                Treinamento prático de cold call em 2 módulos — Anatomia da Ligação, ligações ao vivo e
                 60 dias na Plataforma Mundo Pódium.
               </p>
               <p className="text-gray-400 text-sm mt-2">

@@ -215,7 +215,7 @@ export const HeroSectionWorkshop: React.FC = () => {
           </h1>
           <p className="text-[11px] text-gray-300 font-light leading-relaxed max-w-md">
             Para quem depende do telefone para fechar negócios. Aprenda a ciência que transforma ligações em
-            reuniões. Assista ligações reais ao vivo e saia com seu script pronto.
+            reuniões. Assista ligações reais ao vivo e saia dominando a Anatomia da Ligação.
           </p>
         </div>
         {conversionBlock('center')}
@@ -236,7 +236,7 @@ export const HeroSectionWorkshop: React.FC = () => {
               </h1>
               <p className="text-[13px] sm:text-sm text-gray-300 font-light leading-relaxed max-w-lg">
                 Para quem depende do telefone para fechar negócios. Aprenda a ciência que transforma ligações em
-                reuniões. Assista ligações reais ao vivo e saia com seu script pronto.
+                reuniões. Assista ligações reais ao vivo e saia dominando a Anatomia da Ligação.
               </p>
             </div>
 

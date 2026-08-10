@@ -250,7 +250,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                   {salesOpen ? (
                     <>
-                      Você sai do Workshop com <span className="text-yellow-400 font-semibold">script pronto</span>,{' '}
+                      Você sai do Workshop com a <span className="text-yellow-400 font-semibold">Anatomia da Ligação</span>,{' '}
                       <span className="text-yellow-400 font-semibold">primeiras ligações feitas</span> e{' '}
                       <span className="text-yellow-400 font-semibold">60 dias na Plataforma</span> pra continuar.{' '}
                       Restam{' '}

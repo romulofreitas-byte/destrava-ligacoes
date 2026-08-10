@@ -21,12 +21,12 @@ const montserrat = Montserrat({
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://destrava-ligacoes.vercel.app'
 
 const workshopMetaDescription =
-  'Workshop em 2 módulos (8 horas no total — 4h cada) onde você aprende a destravar ligações, construir discurso de cold call e faz ligações reais na Sala de Ligação com acompanhamento direto. Transforme medo em coragem e travas em resultados.';
+  'Workshop em 2 módulos (8 horas no total — 4h cada) onde você aprende a destravar ligações, a Anatomia da Ligação e faz ligações reais na Sala de Ligação com acompanhamento direto. Transforme medo em coragem e travas em resultados.';
 
 export const metadata: Metadata = {
   title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',
   description: workshopMetaDescription,
-  keywords: 'workshop cold call, destravar ligações, como fazer cold call, discurso de vendas, marcar reunião, reuniões de vendas, vendas por telefone',
+  keywords: 'workshop cold call, destravar ligações, como fazer cold call, anatomia da ligação, marcar reunião, reuniões de vendas, vendas por telefone',
   authors: [{ name: 'Rômulo Freitas' }],
   icons: {
     icon: [

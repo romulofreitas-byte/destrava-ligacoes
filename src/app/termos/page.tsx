@@ -89,7 +89,7 @@ export default function TermosPage() {
                     Módulo 2 — Sala de Ligação ({WORKSHOP_MODULE_2_INFO.dateDisplayLong},{' '}
                     {WORKSHOP_MODULE_2_INFO.time} BRT)
                   </li>
-                  <li>Construção de script de cold call e prática supervisionada</li>
+                  <li>Construção da Anatomia da Ligação e prática supervisionada</li>
                   <li>Gravações do Workshop e da Sala de Ligação na plataforma Mundo Pódium</li>
                   <li>
                     Acesso incluso à plataforma Mundo Pódium por{' '}

@@ -46,7 +46,7 @@ const niches: NicheCard[] = [
     ],
     objections: [
       { quote: 'Já tenho um gestor de tráfego', turn: 'Como criar diferencial sem atacar o atual' },
-      { quote: 'Não sei se vale o investimento', turn: 'Como conectar o script a resultado, não a preço' },
+      { quote: 'Não sei se vale o investimento', turn: 'Como conectar a estrutura a resultado, não a preço' },
       { quote: 'Me manda uma proposta', turn: 'Como qualificar antes de gerar orçamento' },
     ],
   },
@@ -66,7 +66,7 @@ const niches: NicheCard[] = [
       },
       {
         label: 'ICP',
-        text: 'Roteiro adaptável para diferentes verticais atendidas pela agência ou time.',
+        text: 'Anatomia adaptável para diferentes verticais atendidas pela agência ou time.',
       },
     ],
     objections: [
@@ -141,7 +141,7 @@ const niches: NicheCard[] = [
       },
       {
         label: 'ICP',
-        text: 'Roteiro adaptável para MEI, PME e empresas em crescimento com dores distintas.',
+        text: 'Anatomia adaptável para MEI, PME e empresas em crescimento com dores distintas.',
       },
     ],
     objections: [
@@ -158,7 +158,7 @@ const niches: NicheCard[] = [
     bullets: [
       {
         label: 'Gera curiosidade sem promessas',
-        text: 'O script evita promessas financeiras e foca em educação',
+        text: 'A Anatomia evita promessas financeiras e foca em educação',
       },
       {
         label: 'Respeita regulações',

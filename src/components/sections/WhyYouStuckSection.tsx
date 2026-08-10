@@ -18,8 +18,8 @@ export const WhyYouStuckSection: React.FC = () => {
     {
       icon: MessageSquare,
       title: 'Falta de Protocolo',
-      description: 'Não sabe como começar, o que dizer. Não existe um roteiro claro e testado.',
-      solution: 'Script de ligação adaptável que funciona em qualquer nicho.',
+      description: 'Não sabe como começar, o que dizer. Falta uma estrutura clara — não um texto decorado.',
+      solution: 'Anatomia da Ligação adaptável que funciona em qualquer nicho.',
     },
     {
       icon: Shield,

@@ -18,13 +18,16 @@ const curatedProofs = [
       'Desde que começamos a colocar em prática os conceitos do Rômulo Freitas, aplicando no inbound e no follow-up, triplicamos nosso faturamento já no mês seguinte.',
   },
   {
-    id: 'izabela',
-    imageSrc: '/depoimentos-2026-ready/hero/hero_metricas_izabela-4-reunioes-na-semana_parte-2.png',
-    imageAlt: 'Depoimento de Izabela: 4 reuniões agendadas na mesma semana após live de cold call',
-    highlight: 'Essa semana foram 4 reuniões agendadas por ligação',
-    name: 'Izabela',
+    id: 'douglas-anatomia',
+    imageSrc:
+      '/depoimentos-2026-ready/gallery/gallery_metricas_douglas-diz-que-a-anatomia-da-ligacao-o.png',
+    imageAlt:
+      'Depoimento de Douglas: a Anatomia da Ligação ajuda a trazer o lead à objetividade (R1) de forma suave',
+    highlight: 'A Anatomia da Ligação trouxe o lead à R1 sem papo bobo',
+    name: 'Douglas',
+    company: 'Mentorado',
     bodyQuote:
-      'Romulo, acompanhei a tua última Live de ligação que teve essa semana e você conseguiu me destravar.',
+      'A anatomia me ajudou a principalmente não deixar virar papo bobo e saber trazer o lead para a objetividade (que é a R1), sem ficar tangenciando demais… de forma suave.',
   },
   {
     id: 'lucas',
@@ -46,19 +49,27 @@ const curatedProofs = [
   },
   {
     id: 'alanis',
-    imageSrc: '/depoimentos-2026-ready/hero/hero_metricas_alanis-marcou-reuniao.png',
-    imageAlt: 'Depoimento de Alanis: marcou reunião após aplicar o método',
-    highlight: 'Marcou reunião aplicando o método',
-    name: 'Alanis',
-    company: 'Participante',
+    imageSrc:
+      '/depoimentos-2026-ready/gallery/gallery_metricas_alanis-almeida-diz-que-o-workshop-de-lig_comp-a.png',
+    imageAlt:
+      'Depoimento de Alanis Almeida: o Workshop de ligações realmente funciona e gera destravamento',
+    highlight: 'Workshop de ligações REALMENTE funciona',
+    name: 'Alanis Almeida',
+    company: 'Participante do Workshop',
+    bodyQuote:
+      'Terminou agora o Workshop de ligações e eu venho com propriedade dizer que REALMENTE funciona. Teve choro, teve risada, teve ligação e acima de tudo teve destravamento.',
   },
   {
-    id: 'ciclo',
-    imageSrc: '/depoimentos-2026-ready/hero/hero_metricas_ciclo-vendas-15-21-para-1-7-dias.png',
-    imageAlt: 'Depoimento: ciclo de vendas reduzido de 15–21 dias para 1–7 dias',
-    highlight: 'Ciclo de 15–21 dias → 1–7 dias',
-    name: 'Resultado na comunidade',
-    company: 'Métricas reais',
+    id: 'maycon-workshop',
+    imageSrc:
+      '/depoimentos-2026-ready/gallery/gallery_metricas_maycon-ferraz-diz-que-so-aplicou-o-works.png',
+    imageAlt:
+      'Depoimento de Maycon Ferraz: aplicou o workshop e diz que foi um divisor de águas',
+    highlight: 'Só apliquei o workshop — foi um divisor de águas',
+    name: 'Maycon Ferraz',
+    company: 'Participante do Workshop',
+    bodyQuote:
+      'Eu simplesmente só fiz o que aprendi no workshop e com os vídeos. 10% eu adaptei pro meu nicho. Sem sombra de dúvidas, isso foi um divisor de águas pra mim.',
   },
 ];
 
