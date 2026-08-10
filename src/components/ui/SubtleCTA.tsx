@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
-import { WORKSHOP_SALES } from '@/lib/constants';
+import { WORKSHOP_SALES, WORKSHOP_CLOSED_COPY } from '@/lib/constants';
 
 interface SubtleCTAProps {
   text?: string;
@@ -13,7 +13,7 @@ export const SubtleCTA: React.FC<SubtleCTAProps> = ({
   text,
   className = '',
 }) => {
-  const label = text ?? (WORKSHOP_SALES.isOpen ? 'Garantir vaga' : 'Conhecer a Plataforma');
+  const label = text ?? (WORKSHOP_SALES.isOpen ? 'Garantir vaga' : WORKSHOP_CLOSED_COPY.finalCta);
   const handleClick = () => {
     const element = document.getElementById('inscricao');
     if (element) {

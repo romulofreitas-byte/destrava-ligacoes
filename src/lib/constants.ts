@@ -17,7 +17,9 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
 export const WORKSHOP_SALES = {
-  isOpen: true,
+  isOpen: false,
+  /** Abertura das vendas (exibição em CTAs) */
+  opensOnDisplay: '11/08',
   /** Número da edição atual (ex.: 11 → "11ª") */
   edition: 11,
   /** Vagas já preenchidas (hero + CTA final — números absolutos) */
@@ -36,15 +38,15 @@ export const WORKSHOP_PRICING = {
   savingsLabel: 'Economia de R$ 600 nesta edição',
 } as const;
 
-/** Copy quando vendas fechadas (CTAs, badges) */
+/** Copy quando vendas fechadas (CTAs, badges) — pré-abertura 11/08 */
 export const WORKSHOP_CLOSED_COPY = {
-  heroCta: 'Entrar na Plataforma Mundo Pódium',
-  finalCta: 'Entrar na Plataforma — R$ 89,90/mês',
-  finalHeadline: 'Treine cold call na Plataforma Mundo Pódium',
+  heroCta: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
+  finalCta: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
+  finalHeadline: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
   finalSubheadline:
-    'Sala de Ligação ao vivo, mentorias 2x por semana e gravações para rever quando quiser.',
-  statusLine: 'Vagas encerradas • Próxima turma em breve',
-  badgeEdition: 'Vagas encerradas — próxima turma em breve',
+    'Garanta sua vaga na 11ª edição assim que as vendas forem liberadas. Turma limitada.',
+  statusLine: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
+  badgeEdition: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
 } as const;
 
 // Informações do Workshop

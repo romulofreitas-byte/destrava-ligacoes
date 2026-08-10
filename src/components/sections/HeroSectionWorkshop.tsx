@@ -11,7 +11,6 @@ import {
   WORKSHOP_INFO,
   WORKSHOP_MODULE_2_INFO,
   WORKSHOP_DURATION,
-  PLATAFORMA_CASA_URL,
   WORKSHOP_SALES,
   WORKSHOP_PRICING,
   WORKSHOP_CLOSED_COPY,
@@ -50,8 +49,7 @@ export const HeroSectionWorkshop: React.FC = () => {
     );
   };
 
-  const ctaHref = salesOpen ? '#inscricao' : PLATAFORMA_CASA_URL;
-  const ctaExternal = !salesOpen;
+  const ctaHref = '#inscricao';
   const ctaLabel = salesOpen
     ? `Garantir vaga por ${WORKSHOP_PRICING.current}`
     : WORKSHOP_CLOSED_COPY.heroCta;
@@ -60,10 +58,8 @@ export const HeroSectionWorkshop: React.FC = () => {
 
   const handleCtaClickWithScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     handleCTAClick();
-    if (salesOpen) {
-      e.preventDefault();
-      document.getElementById('inscricao')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    e.preventDefault();
+    document.getElementById('inscricao')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const priceBlock = salesOpen ? (
@@ -78,10 +74,12 @@ export const HeroSectionWorkshop: React.FC = () => {
   ) : (
     <div className="flex flex-col items-center sm:items-start gap-1.5">
       <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
-        <span className="text-yellow-400 font-bold text-sm sm:text-base">Vagas encerradas</span>
+        <span className="text-yellow-400 font-bold text-sm sm:text-base">
+          Vendas abrem em {WORKSHOP_SALES.opensOnDisplay}
+        </span>
       </div>
       <span className="text-gray-400 text-[9px] sm:text-xs text-center sm:text-left">
-        Próxima turma: {WORKSHOP_INFO.dateDisplayLong} e {WORKSHOP_MODULE_2_INFO.dateDisplayLong}
+        Turma: {WORKSHOP_INFO.dateDisplayLong} e {WORKSHOP_MODULE_2_INFO.dateDisplayLong}
       </span>
     </div>
   );
@@ -101,8 +99,6 @@ export const HeroSectionWorkshop: React.FC = () => {
         {priceBlock}
         <a
           href={ctaHref}
-          target={ctaExternal ? '_blank' : undefined}
-          rel={ctaExternal ? 'noopener noreferrer' : undefined}
           onClick={handleCtaClickWithScroll}
           className={ctaClassName}
         >

@@ -6,14 +6,11 @@ import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
 import {
   WORKSHOP_INFO,
-  PLATAFORMA_CASA_URL,
   WORKSHOP_SALES,
   WORKSHOP_PRICING,
   WORKSHOP_CLOSED_COPY,
 } from '@/lib/constants';
 import { WorkshopCountdown } from '@/components/ui/WorkshopCountdown';
-
-const CHECKOUT_URL = 'https://pag.ae/81MRtAvM5';
 
 export const FinalCTAWorkshopSection: React.FC = () => {
   const [progressWidth, setProgressWidth] = useState(0);
@@ -52,7 +49,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   const handleCTAClick = () => {
     trackCTAClick(
-      salesOpen ? 'Final CTA Workshop - Garantir Vaga' : 'Final CTA Workshop - Plataforma',
+      salesOpen ? 'Final CTA Workshop - Garantir Vaga' : 'Final CTA Workshop - Vendas em breve',
       'final-cta'
     );
     setCtaButtonClicked(true);
@@ -155,31 +152,43 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div className="flex items-center justify-center space-x-2 p-3 bg-gray-700/40 border border-gray-500/40 rounded-xl">
-                      <Video className="w-5 h-5 text-gray-300" />
-                      <span className="text-gray-300 font-semibold text-sm">Gravações disponíveis</span>
-                    </div>
                     <div className="flex items-center justify-center space-x-2 p-3 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
                       <Clock className="w-5 h-5 text-yellow-400" />
-                      <span className="text-yellow-400 font-semibold text-sm">Mentorias 2x por semana</span>
+                      <span className="text-yellow-400 font-semibold text-sm">
+                        Abertura em {WORKSHOP_SALES.opensOnDisplay}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-center space-x-2 p-3 bg-gray-700/40 border border-gray-500/40 rounded-xl">
+                      <Users className="w-5 h-5 text-gray-300" />
+                      <span className="text-gray-300 font-semibold text-sm">
+                        Turma limitada a {WORKSHOP_SALES.maxSpots} vagas
+                      </span>
                     </div>
                   </div>
                 </>
               )}
 
               <div className="mb-6">
-                <a
-                  href={salesOpen ? CHECKOUT_URL : PLATAFORMA_CASA_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleCTAClick}
-                  className={ctaButtonClass}
-                  title={salesOpen ? 'Pagar com PagBank' : 'Plataforma Mundo Pódium'}
+                <button
+                  type="button"
+                  disabled={!salesOpen}
+                  aria-disabled={!salesOpen}
+                  onClick={salesOpen ? handleCTAClick : undefined}
+                  className={`${ctaButtonClass}${
+                    salesOpen
+                      ? ''
+                      : ' cursor-not-allowed opacity-90 hover:scale-100 hover:from-yellow-500 hover:to-yellow-600'
+                  }`}
+                  title={
+                    salesOpen
+                      ? 'Garantir minha vaga'
+                      : `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`
+                  }
                 >
                   <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
                     {salesOpen ? 'Garantir Minha Vaga Agora' : WORKSHOP_CLOSED_COPY.finalCta}
                   </span>
-                </a>
+                </button>
               </div>
 
               {salesOpen && (
@@ -261,10 +270,11 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      O workshop volta em breve. Enquanto isso,{' '}
+                      As vendas da {WORKSHOP_SALES.edition}ª edição abrem em{' '}
                       <span className="text-yellow-400 font-semibold">
-                        você pode treinar ligações reais na Plataforma Mundo Pódium.
+                        {WORKSHOP_SALES.opensOnDisplay}
                       </span>
+                      . Volte neste dia para garantir sua vaga.
                     </>
                   )}
                 </p>
