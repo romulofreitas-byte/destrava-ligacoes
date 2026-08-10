@@ -22,13 +22,12 @@ export const HeroSectionWorkshop: React.FC = () => {
   const salesOpen = WORKSHOP_SALES.isOpen;
 
   useEffect(() => {
-    if (!salesOpen) return;
     setProgressWidth(0);
     const timer = setTimeout(() => {
       setProgressWidth(WORKSHOP_SALES.progressPercent);
     }, 120);
     return () => clearTimeout(timer);
-  }, [salesOpen]);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -62,24 +61,13 @@ export const HeroSectionWorkshop: React.FC = () => {
     document.getElementById('inscricao')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const priceBlock = salesOpen ? (
+  const priceBlock = (
     <div className="inline-flex items-baseline gap-2.5 sm:gap-3">
       <span className="text-gray-500 line-through text-sm sm:text-base font-semibold tabular-nums">
         {WORKSHOP_PRICING.anchor}
       </span>
       <span className="text-yellow-400 font-black text-2xl sm:text-3xl tabular-nums leading-none">
         {WORKSHOP_PRICING.current}
-      </span>
-    </div>
-  ) : (
-    <div className="flex flex-col items-center sm:items-start gap-1.5">
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
-        <span className="text-yellow-400 font-bold text-sm sm:text-base">
-          Vendas abrem em {WORKSHOP_SALES.opensOnDisplay}
-        </span>
-      </div>
-      <span className="text-gray-400 text-[9px] sm:text-xs text-center sm:text-left">
-        Turma: {WORKSHOP_INFO.dateDisplayLong} e {WORKSHOP_MODULE_2_INFO.dateDisplayLong}
       </span>
     </div>
   );
@@ -104,36 +92,32 @@ export const HeroSectionWorkshop: React.FC = () => {
         >
           <span className="relative drop-shadow-sm">{ctaLabel}</span>
         </a>
-        {salesOpen && (
-          <p
-            className={`text-gray-500 text-[9px] sm:text-[10px] leading-relaxed ${
-              align === 'center' ? 'text-center' : 'text-center sm:text-left'
-            }`}
-          >
-            Inclui 60 dias na Plataforma + gravação dos módulos
-          </p>
-        )}
+        <p
+          className={`text-gray-500 text-[9px] sm:text-[10px] leading-relaxed ${
+            align === 'center' ? 'text-center' : 'text-center sm:text-left'
+          }`}
+        >
+          Inclui 60 dias na Plataforma + gravação dos módulos
+        </p>
       </div>
 
-      {salesOpen && (
-        <div className="mt-5 flex items-end gap-2.5 sm:gap-3 w-full">
-          <WorkshopCountdown inlineBoxes />
-          <div className="flex-1 min-w-0 pb-0.5 space-y-1.5">
-            <p className="text-[10px] sm:text-xs leading-none">
-              <span className="text-gray-400">Vagas: </span>
-              <span className="text-yellow-400 font-semibold tabular-nums">
-                {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
-              </span>
-            </p>
-            <div className="w-full h-[3px] bg-gray-700/80 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-yellow-400 rounded-full transition-all duration-1000 ease-out"
-                style={{ width: `${progressWidth}%` }}
-              />
-            </div>
+      <div className="mt-5 flex items-end gap-2.5 sm:gap-3 w-full">
+        <WorkshopCountdown inlineBoxes />
+        <div className="flex-1 min-w-0 pb-0.5 space-y-1.5">
+          <p className="text-[10px] sm:text-xs leading-none">
+            <span className="text-gray-400">Vagas: </span>
+            <span className="text-yellow-400 font-semibold tabular-nums">
+              {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
+            </span>
+          </p>
+          <div className="w-full h-[3px] bg-gray-700/80 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-yellow-400 rounded-full transition-all duration-1000 ease-out"
+              style={{ width: `${progressWidth}%` }}
+            />
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 

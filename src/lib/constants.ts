@@ -38,15 +38,10 @@ export const WORKSHOP_PRICING = {
   savingsLabel: 'Economia de R$ 600 nesta edição',
 } as const;
 
-/** Copy quando vendas fechadas (CTAs, badges) — pré-abertura 11/08 */
+/** Copy do botão quando vendas ainda não abriram */
 export const WORKSHOP_CLOSED_COPY = {
   heroCta: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
   finalCta: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
-  finalHeadline: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
-  finalSubheadline:
-    'Garanta sua vaga na 11ª edição assim que as vendas forem liberadas. Turma limitada.',
-  statusLine: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
-  badgeEdition: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
 } as const;
 
 // Informações do Workshop

@@ -61,6 +61,10 @@ const curatedProofs = [
   },
   {
     id: 'maycon-quote',
+    imageSrc:
+      '/depoimentos-2026-ready/gallery/gallery_metricas_maycon-ferraz-diz-que-so-aplicou-o-works.png',
+    imageAlt:
+      'Depoimento de Maycon Ferraz: aplicou o workshop e virou divisor de águas',
     highlight: 'Foi um divisor de águas pra mim',
     name: 'Maycon Ferraz',
     company: 'Participante do Workshop',
