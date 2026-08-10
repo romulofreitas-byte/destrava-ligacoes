@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { AlertTriangle, Heart, Shield, MessageSquare } from 'lucide-react';
-import { SubtleCTA } from '@/components/ui/SubtleCTA';
 
 export const WhyYouStuckSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -12,26 +11,26 @@ export const WhyYouStuckSection: React.FC = () => {
     {
       icon: Heart,
       title: 'Vergonha e Medo',
-      description: 'Medo de parecer invasivo ou ser rejeitado paralisa você.',
-      solution: 'Transforme rejeição em qualificação. Cada "não" vira informação valiosa.',
+      description: 'Medo de parecer invasivo ou ser rejeitado.',
+      solution: 'Cada "não" vira qualificação — não paralisia.',
     },
     {
       icon: MessageSquare,
       title: 'Falta de Protocolo',
-      description: 'Não sabe como começar, o que dizer. Falta uma estrutura clara — não um texto decorado.',
-      solution: 'Anatomia da Ligação adaptável que funciona em qualquer nicho.',
+      description: 'Não sabe como começar nem o que dizer.',
+      solution: 'Anatomia da Ligação adaptável a qualquer nicho.',
     },
     {
       icon: Shield,
       title: 'Falta de Previsibilidade',
-      description: 'Cada ligação é uma aposta. Não há processo ou estrutura.',
-      solution: 'Métricas e ferramentas para transformar faturamento em missão diária previsível.',
+      description: 'Cada ligação vira aposta sem processo.',
+      solution: 'Ferramentas para transformar meta em missão diária.',
     },
     {
       icon: AlertTriangle,
       title: 'Perda de Oportunidades',
-      description: 'Enquanto você trava, clientes fecham com concorrentes.',
-      solution: 'Em 48h após o workshop, você estará marcando reuniões de alto valor.',
+      description: 'Enquanto você trava, o concorrente fecha.',
+      solution: 'Protocolo para marcar reuniões de alto valor.',
     },
   ];
 
@@ -115,17 +114,6 @@ export const WhyYouStuckSection: React.FC = () => {
               </div>
             );
           })}
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Todas essas travas têm solução prática. Em 2 módulos complementares, você terá o protocolo para
-            transformar medo em reuniões qualificadas.
-          </p>
-        </div>
-
-        <div className="mt-8">
-          <SubtleCTA />
         </div>
       </div>
     </section>

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Rocket, Calendar, Gift } from 'lucide-react';
-import { SubtleCTA } from '@/components/ui/SubtleCTA';
 import { WORKSHOP_PLATFORM_RULES } from '@/lib/constants';
 
 export const AfterWorkshopSection: React.FC = () => {
@@ -11,12 +10,10 @@ export const AfterWorkshopSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const transformations = [
-    'Fazer sua primeira (ou próxima) cold call sem travar',
-    'Marcar suas primeiras Reuniões de Vendas em até 48h',
-    'Ter segurança para abordar decisores',
-    'Saber exatamente o que dizer em cada momento',
-    'Começar um pipeline previsível',
-    'Superar a vergonha e o medo de ligar'
+    'Fazer cold call sem travar',
+    'Marcar reuniões em até 48h',
+    'Abordar decisores com segurança',
+    'Saber o que dizer em cada momento',
   ];
 
   useEffect(() => {
@@ -37,62 +34,60 @@ export const AfterWorkshopSection: React.FC = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="apos-workshop" 
+      id="apos-workshop"
       className="relative overflow-hidden py-20 md:py-[75px] bg-gray-900"
     >
-      {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-        <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-green-400/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+        <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-float" />
+        <div
+          className="absolute bottom-20 right-10 w-80 h-80 bg-green-400/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: '2s' }}
+        />
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20 hover:shadow-yellow-400/40 transition-all duration-300 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20">
             <Rocket className="w-4 h-4 text-yellow-400 mr-2" />
-            <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">O Que Você Sai Capaz de Fazer</span>
+            <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">
+              O Que Você Sai Capaz de Fazer
+            </span>
           </div>
-          
-          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            Transformações reais{' '}
-            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">após os 2 módulos</span>
-          </h2>
 
-          <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            Não são promessas vazias. São resultados concretos que você pode alcançar imediatamente após o workshop.
-          </p>
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
+            Depois dos{' '}
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">
+              2 módulos
+            </span>
+          </h2>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             {transformations.map((item, index) => {
               const isHovered = hoveredItem === index;
-              
+
               return (
                 <div
-                  key={index}
-                  className={`bg-gray-800/40 border border-gray-700/50 rounded-2xl p-5 sm:p-6 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-yellow-400/50 hover:shadow-yellow-400/20 ${
-                    isHovered ? 'scale-[1.02] -translate-y-1' : 'hover:scale-[1.01]'
-                  } ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
-                  style={{transitionDelay: `${300 + index * 100}ms`}}
+                  key={item}
+                  className={`bg-gray-800/40 border border-gray-700/50 rounded-2xl p-5 sm:p-6 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-yellow-400/50 ${
+                    isHovered ? 'scale-[1.02]' : ''
+                  } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: `${200 + index * 80}ms` }}
                   onMouseEnter={() => setHoveredItem(index)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`w-10 h-10 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                      isHovered ? 'scale-125 bg-green-400/20' : ''
-                    }`}>
-                      <CheckCircle2 className={`w-5 h-5 text-green-400 transition-all duration-300 ${
-                        isHovered ? 'scale-110' : ''
-                      }`} />
+                    <div className="w-10 h-10 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-green-400" />
                     </div>
-                    <p className="text-gray-300 leading-relaxed text-sm sm:text-base flex-1">{item}</p>
+                    <p className="text-gray-300 leading-relaxed text-sm sm:text-base flex-1">
+                      {item}
+                    </p>
                   </div>
                 </div>
               );
@@ -100,61 +95,48 @@ export const AfterWorkshopSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-12 text-center animate-fade-in-up" style={{animationDelay: '0.9s'}}>
-          <div className="inline-block bg-gradient-to-r from-green-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl p-6 backdrop-blur-sm max-w-2xl">
-            <p className="text-white font-bold text-base sm:text-lg">
-              <span className="text-yellow-400">2 módulos</span> que mudam tudo. <span className="text-green-400">Resultados</span> que começam imediatamente.
-            </p>
-          </div>
-        </div>
-
-        {/* Bônus Inclusos */}
-        <div className="mt-8 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.95s'}}>
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full backdrop-blur-md shadow-lg shadow-yellow-400/20">
-              <Gift className="w-4 h-4 text-yellow-400 mr-2" />
-              <span className="text-yellow-400 font-semibold text-xs tracking-wide">Bônus Inclusos</span>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-green-400/10 to-yellow-400/10 border-2 border-green-400/30 rounded-3xl p-6 sm:p-8 backdrop-blur-sm">
+        <div className="mt-10 max-w-3xl mx-auto">
+          <div className="bg-gradient-to-r from-green-400/10 to-yellow-400/10 border border-green-400/30 rounded-2xl p-5 sm:p-6 backdrop-blur-sm">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-6 h-6 text-green-400" />
+                <div className="w-10 h-10 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-5 h-5 text-green-400" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-white font-bold text-base sm:text-lg mb-1">Acesso à Plataforma + Gravação</h3>
+                  <h3 className="text-white font-bold text-sm sm:text-base mb-0.5">
+                    Plataforma + gravação
+                  </h3>
                   <p className="text-gray-300 text-xs sm:text-sm">
-                    Acesso imediato à Mundo Pódium com o workshop; o acesso incluso no
-                    ingresso segue até {WORKSHOP_PLATFORM_RULES.includedAccessEndsDetail}.
-                    Continuidade na plataforma a partir de{' '}
-                    {WORKSHOP_PLATFORM_RULES.alumniMonthlyPriceLabel}/mês para quem
-                    participou.
+                    {WORKSHOP_PLATFORM_RULES.includedAccessEndsDetail}.{' '}
+                    <a
+                      href="#plataforma-mundo-podium"
+                      className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2"
+                    >
+                      Ver Mundo Pódium
+                    </a>
                   </p>
                 </div>
               </div>
-              
-              <div className="hidden sm:block w-px h-12 bg-gray-700/50"></div>
-              
+
+              <div className="hidden sm:block w-px h-10 bg-gray-700/50" />
+
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-yellow-400/10 border border-yellow-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Gift className="w-6 h-6 text-yellow-400" />
+                <div className="w-10 h-10 bg-yellow-400/10 border border-yellow-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Gift className="w-5 h-5 text-yellow-400" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-white font-bold text-base sm:text-lg mb-1">Cupom Promocional</h3>
-                  <p className="text-gray-300 text-xs sm:text-sm">Continue na comunidade com valor especial</p>
+                  <h3 className="text-white font-bold text-sm sm:text-base mb-0.5">
+                    Cupom promocional
+                  </h3>
+                  <p className="text-gray-300 text-xs sm:text-sm">
+                    Continuidade na comunidade com valor especial
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="mt-8 animate-fade-in-up" style={{animationDelay: '1s'}}>
-          <SubtleCTA />
         </div>
       </div>
     </section>
   );
 };
-

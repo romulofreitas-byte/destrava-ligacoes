@@ -118,35 +118,21 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <a
-                href="https://www.mundopodium.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-40 h-12 sm:w-48 sm:h-14 relative flex items-center"
-              >
-                <ProtectedImage
-                  src="/logos-mundo-podium/logo_horizontal_claro.png"
-                  alt="Mundo Pódium"
-                  width={192}
-                  height={56}
-                  className="object-contain opacity-100 hover:opacity-70 transition-opacity duration-300 cursor-pointer"
-                />
-              </a>
-              <div className="hidden sm:block w-px h-14 bg-gray-600"></div>
-              <div className="w-24 h-12 relative">
-                <ProtectedImage
-                  src="/logos/logo-metodo.png"
-                  alt="Método Pódium"
-                  width={96}
-                  height={48}
-                  className="object-contain opacity-100 hover:opacity-70 transition-opacity duration-300"
-                />
-              </div>
-            </div>
-          </div>
+        <div className="flex justify-center py-2">
+          <a
+            href="https://www.mundopodium.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative flex h-8 w-[140px] items-center sm:h-9 sm:w-[160px]"
+          >
+            <ProtectedImage
+              src="/logos-mundo-podium/logo_horizontal_claro.png"
+              alt="Mundo Pódium"
+              width={160}
+              height={36}
+              className="object-contain opacity-90 hover:opacity-70 transition-opacity duration-300 cursor-pointer"
+            />
+          </a>
         </div>
 
         <div className="pt-8">
@@ -156,7 +142,7 @@ export const Footer: React.FC = () => {
               <p>CNPJ: 68.349.974/0001-19 — Mundo Pódium LTDA</p>
             </div>
 
-            <div className="flex space-x-6 text-sm">
+            <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-sm pb-2">
               <a href="/privacidade" className="text-gray-400 hover:text-yellow-400 transition-colors">
                 Política de Privacidade
               </a>

@@ -6,16 +6,16 @@ import { WorkshopProofCard } from '@/components/ui/WorkshopProofCard';
 
 const curatedProofs = [
   {
-    id: 'regularize',
-    imageSrc: '/depoimentos-2026-ready/hero/hero_metricas_regularize-triplicou-faturamento.png',
+    id: 'gilson',
+    imageSrc:
+      '/depoimentos-2026-ready/hero/hero_workshop_participantes-exaltam-o-workshop-como-o_parte-3.png',
     imageAlt:
-      'Depoimento do cliente Regularize Health: faturamento triplicado após aplicar o método',
-    highlight: 'Triplicamos o faturamento no mês seguinte',
-    name: 'Robson Vieira',
-    company: 'Regularize Health',
-    companyUrl: 'https://www.regularizehealth.com.br',
+      'Depoimento de Gilson Cas: o workshop é o melhor conteúdo visto — a maioria é só 3 CPLs com pitch no final',
+    highlight: 'A maioria é só 3 CPLs com pitch no final',
+    name: 'Gilson Cas',
+    company: 'Participante do Workshop',
     bodyQuote:
-      'Desde que começamos a colocar em prática os conceitos do Rômulo Freitas, aplicando no inbound e no follow-up, triplicamos nosso faturamento já no mês seguinte.',
+      'Já vi muita coisa por aí, mas o teu foi o melhor. A maioria é só 3 CPLs com pitch no final.',
   },
   {
     id: 'douglas-anatomia',
@@ -60,16 +60,12 @@ const curatedProofs = [
       'Terminou agora o Workshop de ligações e eu venho com propriedade dizer que REALMENTE funciona. Teve choro, teve risada, teve ligação e acima de tudo teve destravamento.',
   },
   {
-    id: 'maycon-workshop',
-    imageSrc:
-      '/depoimentos-2026-ready/gallery/gallery_metricas_maycon-ferraz-diz-que-so-aplicou-o-works.png',
-    imageAlt:
-      'Depoimento de Maycon Ferraz: aplicou o workshop e diz que foi um divisor de águas',
-    highlight: 'Só apliquei o workshop — foi um divisor de águas',
+    id: 'maycon-quote',
+    highlight: 'Foi um divisor de águas pra mim',
     name: 'Maycon Ferraz',
     company: 'Participante do Workshop',
     bodyQuote:
-      'Eu simplesmente só fiz o que aprendi no workshop e com os vídeos. 10% eu adaptei pro meu nicho. Sem sombra de dúvidas, isso foi um divisor de águas pra mim.',
+      'Eu simplesmente só fiz o que aprendi no workshop e com os vídeos. 10% eu adaptei pro meu nicho. Foi um divisor de águas pra mim.',
   },
 ];
 
@@ -105,7 +101,7 @@ export const TestimonialsScrollSection: React.FC = () => {
           </h2>
 
           <p className="text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
-            Resultados legíveis, com nome e contexto — não uma grade de prints minúsculos.
+            Resultados com nome e contexto.
           </p>
         </div>
 
@@ -118,7 +114,6 @@ export const TestimonialsScrollSection: React.FC = () => {
               highlight={t.highlight}
               name={t.name}
               company={t.company}
-              companyUrl={t.companyUrl}
               bodyQuote={t.bodyQuote}
             />
           ))}

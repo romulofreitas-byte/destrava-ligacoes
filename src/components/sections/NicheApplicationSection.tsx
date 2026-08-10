@@ -29,24 +29,19 @@ const niches: NicheCard[] = [
     icon: Megaphone,
     chipLabel: 'Tráfego',
     title: 'Marketing e Tráfego Pago',
-    audience: 'Gestores de tráfego, social media e agências de performance que vendem serviço recorrente.',
+    audience: 'Gestores de tráfego, social media e agências de performance.',
     bullets: [
       {
         label: 'Linguagem',
-        text: 'Fala de resultado do cliente (leads, CAC, ROI) — não de "postagem" ou "criativo".',
+        text: 'Fala de resultado (leads, CAC, ROI) — não de "postagem".',
       },
       {
         label: 'Oferta',
-        text: 'Abre com diagnóstico rápido da conta/perfil do lead, não com pacote de serviço fechado.',
-      },
-      {
-        label: 'ICP',
-        text: 'Adapta para dono de e-commerce, clínica, loja física ou infoprodutor — quem contrata tráfego.',
+        text: 'Abre com diagnóstico da conta, não com pacote fechado.',
       },
     ],
     objections: [
       { quote: 'Já tenho um gestor de tráfego', turn: 'Como criar diferencial sem atacar o atual' },
-      { quote: 'Não sei se vale o investimento', turn: 'Como conectar a estrutura a resultado, não a preço' },
       { quote: 'Me manda uma proposta', turn: 'Como qualificar antes de gerar orçamento' },
     ],
   },
@@ -54,24 +49,19 @@ const niches: NicheCard[] = [
     icon: Users,
     chipLabel: 'SDR',
     title: 'Agências e Times Comerciais / SDR',
-    audience: 'Times comerciais estruturados, SDRs e closers que ligam em volume dentro de uma operação.',
+    audience: 'SDRs e closers que ligam em volume dentro de uma operação.',
     bullets: [
       {
         label: 'Linguagem',
-        text: 'Direta e objetiva — foco em qualificação rápida, não em relacionamento longo.',
+        text: 'Direta — qualificação rápida, não relacionamento longo.',
       },
       {
         label: 'Processo',
-        text: 'Ligação como etapa de um funil com meta e métrica, não conversa isolada.',
-      },
-      {
-        label: 'ICP',
-        text: 'Anatomia adaptável para diferentes verticais atendidas pela agência ou time.',
+        text: 'Ligação como etapa de funil com meta, não conversa isolada.',
       },
     ],
     objections: [
       { quote: 'Não é hora, me liga depois', turn: 'Como manter o controle do follow-up' },
-      { quote: 'Isso já foi decidido por outra área', turn: 'Como identificar o decisor real' },
       { quote: 'Manda um e-mail', turn: 'Como manter a ligação como canal principal' },
     ],
   },
@@ -83,20 +73,15 @@ const niches: NicheCard[] = [
     bullets: [
       {
         label: 'Linguagem',
-        text: 'Foco em proteção, clareza e confiança — sem pressão de “fechar agora” que gera desconfiança.',
+        text: 'Proteção e confiança — sem pressão de “fechar agora”.',
       },
       {
         label: 'Abordagem',
-        text: 'Diagnóstico rápido da carteira atual e da lacuna de cobertura antes de falar de produto.',
-      },
-      {
-        label: 'Virada',
-        text: 'Transforma “manda a cotação” em conversa de valor com o decisor no telefone.',
+        text: 'Diagnóstico da carteira antes de falar de produto.',
       },
     ],
     objections: [
       { quote: 'Já tenho corretor', turn: 'Como criar diferencial sem atacar o concorrente' },
-      { quote: 'Isso é golpe?', turn: 'Como estabelecer credibilidade em segundos' },
       { quote: 'Me manda a cotação por WhatsApp', turn: 'Como manter a conversa no telefone' },
     ],
   },
@@ -108,20 +93,15 @@ const niches: NicheCard[] = [
     bullets: [
       {
         label: 'Linguagem',
-        text: 'Tom profissional e ético — sem “vendedor agressivo”, com foco em orientação e encaixe.',
+        text: 'Tom profissional e ético — foco em orientação e encaixe.',
       },
       {
         label: 'Abordagem',
-        text: 'Qualificação de urgência e tipo de demanda antes de propor reunião.',
-      },
-      {
-        label: 'Posicionamento',
-        text: 'Prospecção ativa como extensão do atendimento, não como “empurrar processo”.',
+        text: 'Qualifica urgência e demanda antes de propor reunião.',
       },
     ],
     objections: [
       { quote: 'Isso é permitido pela OAB?', turn: 'Como enquadrar a abordagem dentro do ético' },
-      { quote: 'Advogado bom não precisa ligar', turn: 'Como reframear prospecção como serviço' },
       { quote: 'Já tenho advogado', turn: 'Como abrir espaço sem desqualificar o atual' },
     ],
   },
@@ -129,24 +109,19 @@ const niches: NicheCard[] = [
     icon: Calculator,
     chipLabel: 'Contabilidade',
     title: 'Contabilidade',
-    audience: 'Contadores e escritórios que precisam gerar agenda de reuniões.',
+    audience: 'Contadores e escritórios que precisam gerar agenda.',
     bullets: [
       {
         label: 'Linguagem',
-        text: 'Consultiva e técnica — fala a língua do empresário sem soar “vendedor de pacote”.',
+        text: 'Consultiva — fala a língua do empresário sem soar vendedor.',
       },
       {
         label: 'Oferta',
-        text: 'Abre conversa por dor fiscal/operacional concreta, não por “venha conhecer o escritório”.',
-      },
-      {
-        label: 'ICP',
-        text: 'Anatomia adaptável para MEI, PME e empresas em crescimento com dores distintas.',
+        text: 'Abre por dor fiscal/operacional, não por “conheça o escritório”.',
       },
     ],
     objections: [
       { quote: 'Meu contador atual já resolve', turn: 'Como gerar curiosidade sem atacar' },
-      { quote: 'Isso é coisa de vendedor, não de contador', turn: 'Como reposicionar a ligação' },
       { quote: 'Me manda no WhatsApp', turn: 'Como manter o telefone como canal principal' },
     ],
   },
@@ -154,24 +129,19 @@ const niches: NicheCard[] = [
     icon: TrendingUp,
     chipLabel: 'Investimentos',
     title: 'Investimentos',
-    audience: 'Assessores, agentes autônomos, AAIs...',
+    audience: 'Assessores, agentes autônomos, AAIs.',
     bullets: [
       {
-        label: 'Gera curiosidade sem promessas',
-        text: 'A Anatomia evita promessas financeiras e foca em educação',
+        label: 'Sem promessas',
+        text: 'Anatomia focada em educação, sem promessa financeira.',
       },
       {
-        label: 'Respeita regulações',
-        text: 'Linguagem adequada para mercados regulamentados',
-      },
-      {
-        label: 'ICP',
-        text: 'Abordagem adaptável a decisores com agenda apertada e já assessorados.',
+        label: 'Regulado',
+        text: 'Linguagem adequada para mercados regulamentados.',
       },
     ],
     objections: [
       { quote: 'Já tenho assessor', turn: 'Como criar valor diferencial' },
-      { quote: 'Não tenho tempo', turn: 'Como gerar urgência e interesse' },
       { quote: 'Me manda no WhatsApp', turn: 'Como manter a conversa no telefone' },
     ],
   },

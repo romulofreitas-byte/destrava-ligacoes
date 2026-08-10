@@ -4,14 +4,12 @@ import React from 'react';
 import { HeroSectionWorkshop } from '@/components/sections/HeroSectionWorkshop';
 import { RomuloTeaserSection } from '@/components/sections/RomuloTeaserSection';
 import { WorkshopModulesSection } from '@/components/sections/WorkshopModulesSection';
-import { WorkshopModuleDatesSection } from '@/components/sections/WorkshopModuleDatesSection';
 import { WorkshopTestimonialBanner } from '@/components/sections/WorkshopTestimonialBanner';
 import { EventDetailsSection } from '@/components/sections/EventDetailsSection';
 import { WhoIsItForWorkshopSection } from '@/components/sections/WhoIsItForWorkshopSection';
 import { PlataformaMundoPodiumSection } from '@/components/sections/PlataformaMundoPodiumSection';
 import { WhyYouStuckSection } from '@/components/sections/WhyYouStuckSection';
 import { TestimonialsVideoSection } from '@/components/sections/TestimonialsVideoSection';
-import { WhatYouWillLearnSection } from '@/components/sections/WhatYouWillLearnSection';
 import { WhyDifferentWorkshopSection } from '@/components/sections/WhyDifferentWorkshopSection';
 import { NicheApplicationSection } from '@/components/sections/NicheApplicationSection';
 import { LiveCallsSection } from '@/components/sections/LiveCallsSection';
@@ -34,14 +32,12 @@ export const WorkshopPageContent: React.FC = () => {
         <RomuloTeaserSection />
         <WorkshopTestimonialBanner />
         <WorkshopModulesSection />
-        <WorkshopModuleDatesSection />
         <LiveCallsSection />
         <EventDetailsSection />
         <WhoIsItForWorkshopSection />
-        <PlataformaMundoPodiumSection />
         <WhyYouStuckSection />
+        <PlataformaMundoPodiumSection />
         <TestimonialsVideoSection />
-        <WhatYouWillLearnSection />
         <AboutRomuloWorkshopSection />
         <WhyDifferentWorkshopSection />
         <NicheApplicationSection />

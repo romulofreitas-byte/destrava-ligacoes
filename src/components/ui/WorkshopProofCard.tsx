@@ -5,8 +5,9 @@ import { Star } from 'lucide-react';
 import Image from 'next/image';
 
 export type WorkshopProofCardProps = {
-  imageSrc: string;
-  imageAlt: string;
+  /** Omit for quote-only cards (e.g. Maycon — already on video elsewhere) */
+  imageSrc?: string;
+  imageAlt?: string;
   highlight: string;
   name: string;
   company?: string;
@@ -20,7 +21,7 @@ export type WorkshopProofCardProps = {
 
 export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
   imageSrc,
-  imageAlt,
+  imageAlt = '',
   highlight,
   name,
   company,
@@ -31,6 +32,7 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
   className = '',
 }) => {
   const [imgError, setImgError] = useState(false);
+  const showImage = Boolean(imageSrc) && !imgError;
 
   return (
     <div
@@ -42,13 +44,13 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
         className,
       ].join(' ')}
     >
-      <div
-        className={[
-          'relative w-full rounded-xl bg-gray-900/40 overflow-hidden',
-          compact ? 'aspect-[16/11]' : 'aspect-[16/10]',
-        ].join(' ')}
-      >
-        {!imgError ? (
+      {imageSrc && showImage && (
+        <div
+          className={[
+            'relative w-full rounded-xl bg-gray-900/40 overflow-hidden',
+            compact ? 'aspect-[16/11]' : 'aspect-[16/10]',
+          ].join(' ')}
+        >
           <Image
             src={imageSrc}
             alt={imageAlt}
@@ -60,20 +62,29 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
             sizes="(max-width: 768px) 100vw, 768px"
             onError={() => setImgError(true)}
           />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element -- fallback when next/image fails
+        </div>
+      )}
+      {imageSrc && imgError && (
+        <div
+          className={[
+            'relative w-full rounded-xl bg-gray-900/40 overflow-hidden',
+            compact ? 'aspect-[16/11]' : 'aspect-[16/10]',
+          ].join(' ')}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element -- fallback when next/image fails */}
           <img
             src={imageSrc}
             alt={imageAlt}
             className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-2 sm:p-3"
           />
-        )}
-      </div>
+        </div>
+      )}
 
       <div
         className={[
-          'mt-3 sm:mt-4 p-3 bg-gradient-to-r from-yellow-400/20 to-green-400/20 border border-yellow-400/30 rounded-xl',
-          compact ? 'mt-3' : '',
+          'p-3 bg-gradient-to-r from-yellow-400/20 to-green-400/20 border border-yellow-400/30 rounded-xl',
+          imageSrc ? 'mt-3 sm:mt-4' : '',
+          compact && imageSrc ? 'mt-3' : '',
         ].join(' ')}
       >
         <div className="flex items-start gap-2">

@@ -9,24 +9,24 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
   const differences = [
     {
       icon: Target,
-      title: 'Demonstração Real, Não Teoria',
-      description: 'Você assiste ligações reais ao vivo, não promessas vazias. Construção prática, resultados reais.'
+      title: 'Demonstração real',
+      description: 'Ligações ao vivo — não teoria.',
     },
     {
       icon: Zap,
-      title: '8h Práticas + Demonstração + Construção',
-      description: 'Você constrói sua Anatomia da Ligação, pratica ao vivo e sai com material implementável no dia seguinte.'
+      title: '8h práticas',
+      description: 'Anatomia da Ligação + prática no mesmo dia seguinte.',
     },
     {
       icon: Shield,
-      title: 'Aplicável a Qualquer Nicho',
-      description: 'Funciona para seguros, jurídico, contabilidade, serviços, agências e mercados regulados. Você adapta para seu contexto.'
+      title: 'Qualquer nicho',
+      description: 'Seguros, jurídico, contabilidade, agências e mercados regulados.',
     },
     {
       icon: Sparkles,
-      title: 'Entrega Completa por R$ 897,00',
-      description: '2 módulos práticos, ligações ao vivo, Anatomia da Ligação e 60 dias na Plataforma Mundo Pódium. Não é funil isca — é treinamento com profundidade.'
-    }
+      title: 'Entrega completa',
+      description: '2 módulos, prática ao vivo e 60 dias na Mundo Pódium.',
+    },
   ];
 
   return (
@@ -55,11 +55,11 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
-            Entrega real, prática real, resultados reais. Investimento de R$ 897,00 pela qualidade do treinamento — não por um filtro simbólico.
+            Prática real. Entrega completa. Sem funil isca.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {differences.map((item, index) => {
             const Icon = item.icon;
             
@@ -78,14 +78,6 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
               </div>
             );
           })}
-        </div>
-
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-800/40 border border-yellow-400/25 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
-            <p className="text-white text-center text-sm sm:text-base leading-relaxed">
-              <span className="text-yellow-400 font-semibold">Para investimentos:</span> Técnicas de rapport, autoridade e convite para reunião que funcionam com decisores, respeitando regulações do mercado.
-            </p>
-          </div>
         </div>
       </div>
     </section>

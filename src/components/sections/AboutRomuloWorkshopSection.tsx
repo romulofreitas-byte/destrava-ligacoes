@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Award, Users, TrendingUp, Video, Briefcase } from 'lucide-react';
+import { Award, TrendingUp, Video, Briefcase } from 'lucide-react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
 import { trackViewContent } from '@/lib/metaPixel';
 
@@ -79,11 +79,11 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
             {/* Content */}
             <div className="space-y-6 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
               <div className="bg-gray-800/40 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-xl">
-                <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-4">
-                  <span className="text-white font-bold">Rômulo Freitas</span> é criador do <span className="text-yellow-400 font-semibold">Método Pódium</span> e autoridade em vendas com mais de 12 anos de experiência. CEO da <span className="text-yellow-400 font-semibold">Mundo Pódium LTDA</span>, passou 5 anos na operação à frente da Gestão e Vendas antes de ensinar.
-                </p>
                 <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                  Faz lives e ligações ao vivo no YouTube — é &quot;skin in the game&quot;. Diferente dos experts que só vendem teoria, Rômulo Freitas faz <span className="text-yellow-400 font-semibold">ligações reais ao vivo</span> com clientes potenciais. Você aprende com quem faz.
+                  <span className="text-white font-bold">Rômulo Freitas</span> — criador do{' '}
+                  <span className="text-yellow-400 font-semibold">Método Pódium</span>, CEO da
+                  Mundo Pódium e 12+ anos em vendas. Faz ligações ao vivo: você aprende com quem
+                  executa.
                 </p>
               </div>
 

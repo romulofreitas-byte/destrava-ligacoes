@@ -107,13 +107,13 @@ export const WORKSHOP_PLATFORM_RULES = {
   includedAccessEndsDetail: '60 dias após a compra',
 
   /** Destaque de gravação: workshop + sala ficam na plataforma */
-  recordingsHighlight: `Workshop + Sala de Ligação ficam gravados na Mundo Pódium para você rever depois, dentro do período de acesso incluso.`,
+  recordingsHighlight: `Workshop + Sala ficam gravados na Mundo Pódium durante o acesso incluso.`,
 
-  /** FAQ: como funciona o acesso */
-  faqHowPlatformWorks: `Após a compra, você recebe acesso imediato à plataforma Mundo Pódium no Circle, onde acontecem os dois módulos ao vivo e ficam materiais e ferramentas do workshop. O Workshop e a Sala de Ligação também ficam gravados na própria plataforma para acesso posterior durante o período incluso. O acesso incluso no pacote do workshop permanece por 60 dias a partir da data da compra. Quem quiser seguir na plataforma com acesso completo pode utilizar a oferta de continuidade a partir de ${ALUMNI_MONTHLY_PRICE} por mês (detalhes após o evento).`,
+  /** FAQ: acesso + prazo (fundido) */
+  faqHowPlatformWorks: `Acesso imediato à Mundo Pódium no Circle (módulos ao vivo, materiais e gravações). Incluso por 60 dias a partir da compra; depois, continuidade a partir de ${ALUMNI_MONTHLY_PRICE}/mês para participantes.`,
 
-  /** FAQ: por quanto tempo */
-  faqHowLongAccess: `60 dias a partir da compra. Nesse período, você mantém acesso aos conteúdos e às gravações do Workshop + Sala de Ligação dentro da plataforma. Depois desse prazo, o acesso incluso encerra; para continuar na comunidade, há condição especial para participantes a partir de ${ALUMNI_MONTHLY_PRICE} por mês.`,
+  /** @deprecated Prefer faqHowPlatformWorks — mantido por compatibilidade */
+  faqHowLongAccess: `60 dias a partir da compra, com gravações na plataforma. Continuidade a partir de ${ALUMNI_MONTHLY_PRICE}/mês para participantes.`,
 
   /** Página obrigado — complemento ao bloco de acesso */
   obrigadoPlatformAccessNote: `O acesso incluso no ingresso é de 60 dias a partir da compra. Para continuar na plataforma, há condição para participantes a partir de ${ALUMNI_MONTHLY_PRICE} por mês.`,
@@ -121,16 +121,28 @@ export const WORKSHOP_PLATFORM_RULES = {
 
 /** Copy da seção Plataforma Mundo Pódium (uma fonte → SSR e cliente sempre alinhados) */
 export const PLATAFORMA_MUNDO_PODIUM_COPY = {
+  eyebrow: 'Plataforma Mundo Pódium · a casa no Circle',
+  headlineBefore: 'Não é mais um curso.',
+  headlineAccent: 'É a casa',
+  headlineAfter: 'que sustenta o destravamento.',
+  subhead:
+    'Workshop na ligação. Na casa você treina ao vivo, acompanha mentorias e mantém o ritmo com outros Pilotos.',
   mayconVideoSubtitle:
-    'Mentalidade, preparação e volume na prática com Maycon — no mesmo vídeo, Rômulo conduz um tour pela interface da Mundo Pódium no Circle.',
+    'Relato do Maycon + tour da Mundo Pódium no Circle com o Rômulo.',
   videoHighlightSupporting:
-    'Rômulo mostra na prática o ambiente onde rodam os módulos, materiais e o acervo; Maycon traz o relato e os resultados na ligação.',
-  circleScreenshotsNote:
-    'É o mesmo tipo de interface que Rômulo demonstra nesse vídeo — hospedada no Circle.',
-  tourInsightLine:
-    'No mesmo vídeo do depoimento, Rômulo abre a interface no Circle e mostra o ambiente em ação.',
-  /** Uma linha no mobile (evita caixa roxa + título longo empilhados) */
+    'Sala, módulos, materiais e acervo — no mesmo vídeo do depoimento.',
+  circleScreenshotsNote: 'O mesmo ambiente no Circle onde você treina depois do workshop.',
+  tourInsightLine: 'Rômulo mostra a interface no Circle no mesmo vídeo.',
   mayconVideoMobileCompactLine:
-    'No vídeo abaixo: relato do Maycon e tour da Mundo Pódium no Circle com o Rômulo.',
+    'Relato do Maycon e tour da Mundo Pódium no Circle.',
+  arsenalEyebrow: 'Dentro da casa',
+  arsenalTitleBefore: 'Tudo que entra no seu',
+  arsenalTitleAccent: 'arsenal',
+  arsenalTitleAfter: 'com o ingresso',
+  arsenalHelper: 'Toque em cada frente. Tudo hospedado no Circle.',
+  accessCta: 'Ver a casa por dentro',
+  accessBlurbLead: 'No ingresso: acesso incluso por',
+  accessBlurbMid: 'Continuidade a partir de',
+  accessBlurbTail: 'para participantes — detalhes após o evento.',
 } as const;
 

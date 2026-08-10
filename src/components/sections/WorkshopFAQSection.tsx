@@ -10,41 +10,41 @@ export const WorkshopFAQSection: React.FC = () => {
   const faqs = [
     {
       question: 'O workshop e a Sala de Ligação ficam gravados?',
-      answer: 'Sim. O Workshop e a Sala de Ligação ficam gravados na plataforma Mundo Pódium para acesso posterior dentro do período de acesso incluso.'
+      answer:
+        'Sim. Ficam gravados na Mundo Pódium durante o período de acesso incluso (60 dias).',
     },
     {
       question: 'E se eu não puder participar no horário ao vivo?',
       answer:
-        'O horário é no fuso de Brasília (America/Sao_Paulo). Se não conseguir assistir ao vivo, as gravações do Workshop e da Sala de Ligação ficam disponíveis na plataforma Mundo Pódium durante o período de acesso incluso (60 dias a partir da compra). Muitos participantes aproveitam a gravação e avançam no mesmo ritmo.',
+        'Horário de Brasília. As gravações ficam disponíveis na plataforma pelos 60 dias inclusos.',
     },
     {
       question: 'Preciso ter experiência em vendas?',
-      answer: 'Não. O workshop é para qualquer profissional que depende de ligações para gerar negócios, independente do nível de experiência.'
+      answer:
+        'Não. Serve para quem depende de ligações para gerar negócios, em qualquer nível.',
     },
     {
       question: 'Funciona para meu nicho?',
-      answer: 'Sim. O método se adapta a nichos como seguros, planos de saúde, jurídico, contabilidade, serviços, agências e mercados regulados como investimentos.'
+      answer:
+        'Sim. O método se adapta a seguros, saúde, jurídico, contabilidade, serviços, agências e mercados regulados.',
     },
     {
       question: 'Vou realmente fazer ligações durante o workshop?',
-      answer: 'Sim. Você vai praticar ao vivo, construir sua Anatomia da Ligação e fazer suas primeiras ligações com suporte e análise em tempo real.'
+      answer:
+        'Sim. Você pratica ao vivo, monta a Anatomia da Ligação e liga com suporte em tempo real.',
     },
     {
       question: 'Por que custa R$ 897,00?',
-      answer: `Porque é treinamento prático de verdade: 2 módulos (${WORKSHOP_DURATION.detailLine}), demonstração com ligações reais ao vivo, construção da Anatomia da Ligação e prática supervisionada — mais 60 dias de acesso à Plataforma Mundo Pódium com gravações. O preço reflete a profundidade da entrega, não um funil isca gratuito.`,
+      answer: `Porque é prática de verdade: ${WORKSHOP_DURATION.detailLine}, ligações ao vivo, Anatomia da Ligação e 60 dias na Mundo Pódium — não funil isca.`,
     },
     {
       question: 'Há garantia?',
       answer:
-        'Sim — uma garantia condicionada à execução (não é “garantia de resultado” vaga). Os termos são explicados pelo Rômulo no vídeo da seção Garantia desta página. Assista antes de comprar se essa for uma dúvida importante para você.',
+        'Sim — condicionada à execução. Os termos estão no vídeo da seção Garantia desta página.',
     },
     {
-      question: 'Como funciona o acesso à plataforma Mundo Pódium?',
+      question: 'Como funciona o acesso à plataforma?',
       answer: WORKSHOP_PLATFORM_RULES.faqHowPlatformWorks,
-    },
-    {
-      question: 'Tenho acesso à plataforma por quanto tempo?',
-      answer: WORKSHOP_PLATFORM_RULES.faqHowLongAccess,
     },
   ];
 
@@ -53,26 +53,29 @@ export const WorkshopFAQSection: React.FC = () => {
   };
 
   return (
-    <section 
-      id="faq-workshop" 
+    <section
+      id="faq-workshop"
       className="relative overflow-hidden py-16 md:py-20 bg-gray-900"
     >
-      {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
       <div className="container-custom relative z-10">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20">
             <HelpCircle className="w-4 h-4 text-yellow-400 mr-2" />
-            <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">Perguntas Frequentes</span>
+            <span className="text-yellow-400 font-semibold text-xs tracking-wide drop-shadow-sm">
+              Perguntas Frequentes
+            </span>
           </div>
-          
-          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
             Dúvidas{' '}
-            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">Frequentes</span>
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">
+              Frequentes
+            </span>
           </h2>
         </div>
 
@@ -80,51 +83,36 @@ export const WorkshopFAQSection: React.FC = () => {
           <div className="space-y-4">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
-              
               return (
                 <div
-                  key={index}
-                  className="bg-gray-800/40 border border-gray-700/50 rounded-2xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 shadow-lg backdrop-blur-xl animate-fade-in-up"
-                  style={{transitionDelay: `${300 + index * 100}ms`}}
+                  key={faq.question}
+                  className="bg-gray-800/40 border border-gray-700/50 rounded-2xl overflow-hidden backdrop-blur-xl transition-colors hover:border-yellow-400/40"
                 >
                   <button
+                    type="button"
                     onClick={() => toggleItem(index)}
-                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-900/20 transition-colors duration-200"
+                    className="w-full text-left px-5 sm:px-6 py-4 flex items-center justify-between gap-4"
+                    aria-expanded={isOpen}
                   >
-                    <h3 className="text-base sm:text-lg font-semibold text-white pr-4">
+                    <span className="text-white font-semibold text-sm sm:text-base">
                       {faq.question}
-                    </h3>
-                    <div
-                      className={`w-6 h-6 flex items-center justify-center transition-transform duration-200 ${
-                        isOpen ? 'rotate-180' : ''
+                    </span>
+                    <span
+                      className={`text-yellow-400 text-xl leading-none transition-transform ${
+                        isOpen ? 'rotate-45' : ''
                       }`}
                     >
-                      <svg
-                        className="w-5 h-5 text-yellow-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>
+                      +
+                    </span>
                   </button>
-                  
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
+                      isOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="px-6 pb-4">
-                      <p className="text-sm text-gray-300 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
+                    <p className="px-5 sm:px-6 pb-5 text-gray-300 text-sm leading-relaxed">
+                      {faq.answer}
+                    </p>
                   </div>
                 </div>
               );
@@ -135,15 +123,3 @@ export const WorkshopFAQSection: React.FC = () => {
     </section>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-

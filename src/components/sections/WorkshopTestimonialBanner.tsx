@@ -7,6 +7,19 @@ import { WorkshopProofCard } from '@/components/ui/WorkshopProofCard';
 
 const featuredWorkshopTestimonials = [
   {
+    id: 'gleice',
+    imageSrc:
+      '/depoimentos-2026-ready/gallery/gallery_workshop_gleice-souza-agradece-o-workshop-elogian.png',
+    imageAlt:
+      'Depoimento de Gleice Souza: workshop cobriu cada nicho com exemplos práticos e aumentou a confiança',
+    highlight: 'Não teve um nicho sequer que você não soubesse explicar',
+    name: 'Gleice Souza',
+    company: 'Participante do Workshop',
+    bodyQuote:
+      'Você é um cara extremamente inteligente e dinâmico. Não teve um nicho sequer que você não soubesse explicar como abordar; sempre trazendo exemplos práticos e reais que facilitam muito o entendimento. Saí do workshop muito mais confiante, com a mente mais aberta e cheia de novas estratégias para aplicar no dia a dia.',
+    priority: true,
+  },
+  {
     id: 'regularize',
     imageSrc:
       '/depoimentos-2026-ready/hero/hero_metricas_regularize-triplicou-faturamento.png',
@@ -18,7 +31,6 @@ const featuredWorkshopTestimonials = [
     companyUrl: 'https://www.regularizehealth.com.br',
     bodyQuote:
       'Desde que começamos a colocar em prática os conceitos do Rômulo Freitas, aplicando no inbound e no follow-up, triplicamos nosso faturamento já no mês seguinte.',
-    priority: true,
   },
   {
     id: 'igor',
@@ -51,17 +63,12 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-6 leading-tight">
                   O que dizem os participantes das{' '}
                   <span className="bg-gradient-to-r from-yellow-400 via-green-400 to-yellow-400 bg-clip-text text-transparent">
                     edições anteriores
                   </span>
                 </h3>
-
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-                  Depoimentos reais de quem aplicou o método nas edições anteriores
-                  do Workshop Destrava Ligações.
-                </p>
               </div>
 
               <div className="flex flex-col gap-8 max-w-3xl mx-auto mb-6">
@@ -81,17 +88,13 @@ export const WorkshopTestimonialBanner: React.FC = () => {
               </div>
 
               <div className="text-center">
-                <p className="text-gray-300 text-sm sm:text-base mb-4">
+                <p className="text-gray-300 text-sm sm:text-base">
                   <span className="text-yellow-400 font-semibold">
                     {WORKSHOP_SALES.edition}ª Edição aberta!
                   </span>{' '}
                   Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
                   {WORKSHOP_MODULE_2_INFO.dateDisplayShort} —{' '}
-                  {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas preenchidas
-                </p>
-                <p className="text-gray-400 text-xs sm:text-sm">
-                  Transforme suas ligações como centenas de participantes já
-                  fizeram
+                  {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas
                 </p>
               </div>
             </div>

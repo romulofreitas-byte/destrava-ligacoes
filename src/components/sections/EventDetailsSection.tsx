@@ -44,7 +44,6 @@ export const EventDetailsSection: React.FC = () => {
                     <p className="text-gray-300 text-sm mt-1">
                       Módulo 2: {WORKSHOP_MODULE_2_INFO.dateDisplayLong} ({WORKSHOP_MODULE_2_INFO.dateDisplayShort})
                     </p>
-                    <p className="text-yellow-400 text-xs mt-2 font-medium">2 módulos em dias diferentes</p>
                   </div>
                 </div>
 
@@ -78,10 +77,10 @@ export const EventDetailsSection: React.FC = () => {
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Horários</h3>
                     <p className="text-gray-300 text-sm">
-                      Módulo 1: {WORKSHOP_INFO.time}
+                      Módulo 1: {WORKSHOP_INFO.time} (tarde)
                     </p>
                     <p className="text-gray-300 text-sm mt-1">
-                      Módulo 2: {WORKSHOP_MODULE_2_INFO.time}
+                      Módulo 2: {WORKSHOP_MODULE_2_INFO.time} (manhã)
                     </p>
                   </div>
                 </div>
@@ -93,8 +92,7 @@ export const EventDetailsSection: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Plataforma</h3>
-                    <p className="text-gray-300 text-sm">Mundo Pódium • Ecossistema oficial do Método Pódium</p>
-                    <p className="text-green-400 text-xs mt-1 font-medium">Acesso imediato após compra</p>
+                    <p className="text-gray-300 text-sm">Mundo Pódium no Circle</p>
                   </div>
                 </div>
               </div>
