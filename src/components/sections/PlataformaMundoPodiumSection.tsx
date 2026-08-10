@@ -31,9 +31,9 @@ import { PLATAFORMA_MUNDO_PODIUM_COPY, WORKSHOP_PLATFORM_RULES, PLATAFORMA_CASA_
 const CHECKOUT_URL = PLATAFORMA_CASA_URL;
 
 const highlights = [
-  { k: '~80', unit: '/sem.', label: 'contatos na prática', glow: 'from-yellow-400/20 to-amber-600/10' },
-  { k: 'Nicho', unit: '', label: 'marmoraria + discurso técnico', glow: 'from-purple-400/20 to-pink-500/10' },
-  { k: 'R1', unit: '', label: 'foco no ganho do cliente', glow: 'from-blue-400/20 to-cyan-500/10' },
+  { k: '~80', unit: '/sem.', label: 'contatos na prática', glow: 'from-green-400/20 to-emerald-600/10' },
+  { k: 'Nicho', unit: '', label: 'marmoraria + discurso técnico', glow: 'from-gray-500/20 to-gray-700/10' },
+  { k: 'R1', unit: '', label: 'foco no ganho do cliente', glow: 'from-green-400/20 to-emerald-600/10' },
 ];
 
 const mayconInsights = [
@@ -41,33 +41,33 @@ const mayconInsights = [
     Icon: Brain,
     title: 'Mentalidade',
     line: 'Quem precisa da solução é o cliente — reduz medo da rejeição.',
-    accent: 'group-hover:shadow-amber-500/25 border-amber-500/30',
-    iconBg: 'from-amber-400/25 to-orange-500/15',
-    iconColor: 'text-amber-300',
+    accent: 'group-hover:shadow-gray-400/20 border-gray-500/35',
+    iconBg: 'from-gray-500/25 to-gray-700/15',
+    iconColor: 'text-gray-300',
   },
   {
     Icon: BookOpen,
     title: 'Preparação',
     line: 'Módulo 1 como base: o discurso na ligação é a conclusão do trabalho prévio.',
-    accent: 'group-hover:shadow-yellow-400/20 border-yellow-500/30',
-    iconBg: 'from-yellow-400/25 to-yellow-600/10',
-    iconColor: 'text-yellow-300',
+    accent: 'group-hover:shadow-gray-400/20 border-gray-500/35',
+    iconBg: 'from-gray-500/25 to-gray-700/15',
+    iconColor: 'text-gray-300',
   },
   {
     Icon: Gem,
     title: 'Especialização',
     line: 'De generalista a linguagem do cliente: pedras, margens, parcerias.',
-    accent: 'group-hover:shadow-purple-400/25 border-purple-400/35',
-    iconBg: 'from-purple-400/25 to-violet-600/15',
-    iconColor: 'text-purple-300',
+    accent: 'group-hover:shadow-gray-400/20 border-gray-500/35',
+    iconBg: 'from-gray-500/25 to-gray-700/15',
+    iconColor: 'text-gray-300',
   },
   {
     Icon: Laptop,
     title: 'Playbook',
     line: 'NotebookLM com áudios de reunião para dores e argumentos do setor.',
-    accent: 'group-hover:shadow-blue-400/25 border-blue-400/35',
-    iconBg: 'from-blue-400/25 to-indigo-600/15',
-    iconColor: 'text-blue-300',
+    accent: 'group-hover:shadow-gray-400/20 border-gray-500/35',
+    iconBg: 'from-gray-500/25 to-gray-700/15',
+    iconColor: 'text-gray-300',
   },
   {
     Icon: Target,
@@ -81,25 +81,25 @@ const mayconInsights = [
     Icon: TrendingUp,
     title: 'Volume',
     line: 'Pico de contatos em uma semana que antes não batia em um mês.',
-    accent: 'group-hover:shadow-orange-400/20 border-orange-400/30',
-    iconBg: 'from-orange-400/20 to-red-500/10',
-    iconColor: 'text-orange-300',
+    accent: 'group-hover:shadow-green-400/20 border-green-400/30',
+    iconBg: 'from-green-400/20 to-emerald-600/15',
+    iconColor: 'text-green-300',
   },
   {
     Icon: Zap,
     title: 'Método',
     line: 'Prático e profissional — metas, mercado e ICP, sem “pitch de coach”.',
-    accent: 'group-hover:shadow-yellow-400/30 border-yellow-400/40',
-    iconBg: 'from-yellow-400/30 to-amber-500/15',
-    iconColor: 'text-yellow-200',
+    accent: 'group-hover:shadow-gray-400/20 border-gray-500/35',
+    iconBg: 'from-gray-500/25 to-gray-700/15',
+    iconColor: 'text-gray-300',
   },
   {
     Icon: MonitorPlay,
     title: 'Tour na Mundo Pódium',
     line: PLATAFORMA_MUNDO_PODIUM_COPY.tourInsightLine,
-    accent: 'group-hover:shadow-fuchsia-500/30 border-fuchsia-400/40',
-    iconBg: 'from-fuchsia-500/25 to-purple-700/20',
-    iconColor: 'text-fuchsia-200',
+    accent: 'group-hover:shadow-yellow-400/20 border-yellow-400/35',
+    iconBg: 'from-yellow-400/20 to-yellow-600/10',
+    iconColor: 'text-yellow-300',
   },
 ];
 
@@ -112,8 +112,8 @@ const platformBenefits = [
     tagline: 'Seu catálogo estratégico',
     description:
       'Aulas e trilhas no funil inteiro: recuperação de clientes, multi-canal (e-mail, LinkedIn, WhatsApp, DM), objeções e fechamento — quando a ligação não é o canal certo.',
-    panelGradient: 'from-purple-600/20 via-gray-900/40 to-yellow-500/10',
-    iconRing: 'from-purple-400 to-yellow-400',
+    panelGradient: 'from-yellow-600/20 via-gray-900/40 to-yellow-500/10',
+    iconRing: 'from-yellow-400 to-yellow-500',
   },
   {
     id: 'reais',
@@ -123,8 +123,8 @@ const platformBenefits = [
     tagline: 'Sala de guerra em vídeo',
     description:
       'Decisores de grandes contas na tela: pergunta, silêncio, objeção e fechamento — para perder o medo do “big player”.',
-    panelGradient: 'from-blue-600/20 via-gray-900/40 to-cyan-500/10',
-    iconRing: 'from-blue-400 to-cyan-400',
+    panelGradient: 'from-green-600/20 via-gray-900/40 to-emerald-500/10',
+    iconRing: 'from-green-400 to-emerald-400',
   },
   {
     id: 'mentorias',
@@ -134,8 +134,8 @@ const platformBenefits = [
     tagline: 'Ritmo de piloto',
     description:
       'Segunda, 11h, ao vivo + Apresente-se Piloto: novos membros expõem contexto e a comunidade responde.',
-    panelGradient: 'from-amber-600/15 via-gray-900/40 to-orange-500/10',
-    iconRing: 'from-amber-400 to-orange-400',
+    panelGradient: 'from-gray-600/15 via-gray-900/40 to-gray-700/10',
+    iconRing: 'from-gray-400 to-gray-500',
   },
   {
     id: 'circle',
@@ -145,8 +145,8 @@ const platformBenefits = [
     tagline: 'Ecossistema sério',
     description:
       'Área de membros profissional: método, materiais e rituais — não substituto de grupo solto de WhatsApp.',
-    panelGradient: 'from-emerald-600/15 via-gray-900/40 to-teal-500/10',
-    iconRing: 'from-emerald-400 to-teal-400',
+    panelGradient: 'from-yellow-600/15 via-gray-900/40 to-amber-500/10',
+    iconRing: 'from-yellow-400 to-amber-400',
   },
 ];
 
@@ -200,9 +200,9 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
         <div className="absolute top-20 left-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-yellow-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(90vw,640px)] h-[min(90vw,640px)] bg-gradient-to-r from-yellow-400/6 to-purple-500/8 rounded-full blur-3xl animate-float pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(90vw,640px)] h-[min(90vw,640px)] bg-gradient-to-r from-yellow-400/6 to-yellow-500/8 rounded-full blur-3xl animate-float pointer-events-none"
           style={{ animationDelay: '4s' }}
         />
       </div>
@@ -210,7 +210,7 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
       <div className="container-custom relative z-10 max-w-6xl mx-auto">
         <div className="text-center max-w-4xl mx-auto">
           <div className="mb-8">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-yellow-400/20 to-purple-500/15 border border-yellow-400/35 rounded-full backdrop-blur-md shadow-lg shadow-yellow-400/15">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-yellow-400/20 to-yellow-500/15 border border-yellow-400/35 rounded-full backdrop-blur-md shadow-lg shadow-yellow-400/15">
               <Crown className="w-5 h-5 text-yellow-400 mr-2" />
               <span className="text-yellow-400 font-bold text-sm tracking-wide">
                 Mundo Pódium
@@ -220,7 +220,7 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.08] drop-shadow-lg">
             O ecossistema que{' '}
-            <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-purple-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">
+            <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">
               sustenta
             </span>{' '}
             o destravamento
@@ -234,7 +234,7 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
 
         <div className="mb-12 sm:mb-14 md:mb-20">
           <div className="relative bg-gray-800/30 border-2 border-yellow-400/35 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl backdrop-blur-xl max-w-6xl mx-auto overflow-hidden hover:border-yellow-400/50 hover:shadow-yellow-400/15 transition-all duration-500">
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.06] via-transparent to-purple-500/[0.07] pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.06] via-transparent to-yellow-500/[0.07] pointer-events-none" />
             <div className="relative z-10 text-center mb-5 sm:mb-6 md:mb-8">
               <div className="flex flex-col items-center gap-3 sm:gap-4">
                 <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
@@ -242,8 +242,8 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                     <Mic2 className="w-4 h-4 shrink-0" />
                     Depoimento
                   </div>
-                  <div className="flex items-center gap-1.5 rounded-full border border-purple-400/60 bg-purple-950/80 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wide text-purple-200 shadow-md shadow-purple-500/25 backdrop-blur-md">
-                    <MonitorPlay className="h-3.5 w-3.5 text-purple-300 shrink-0" />
+                  <div className="flex items-center gap-1.5 rounded-full border border-yellow-400/60 bg-yellow-950/80 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wide text-yellow-200 shadow-md shadow-yellow-500/25 backdrop-blur-md">
+                    <MonitorPlay className="h-3.5 w-3.5 text-yellow-300 shrink-0" />
                     <span className="hidden sm:inline">Com demo da plataforma</span>
                     <span className="sm:hidden">Tour no Circle</span>
                   </div>
@@ -263,19 +263,19 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
               </div>
 
               <div className="mx-auto mt-6 max-w-2xl hidden md:block">
-                <div className="relative overflow-hidden rounded-2xl border-2 border-purple-400/55 bg-gradient-to-br from-purple-500/20 via-purple-900/30 to-gray-900/80 p-4 sm:p-5 shadow-xl shadow-purple-500/25 ring-1 ring-purple-400/20">
+                <div className="relative overflow-hidden rounded-2xl border-2 border-yellow-400/55 bg-gradient-to-br from-yellow-500/20 via-gray-900/30 to-gray-900/80 p-4 sm:p-5 shadow-xl shadow-yellow-500/25 ring-1 ring-yellow-400/20">
                   <div className="absolute inset-0 bg-[linear-gradient(110deg,transparent_40%,rgba(250,204,21,0.08)_50%,transparent_60%)] animate-shimmer bg-[length:200%_100%] pointer-events-none" />
                   <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-400 to-fuchsia-600 shadow-lg shadow-purple-500/40">
-                      <MonitorPlay className="h-8 w-8 text-white" strokeWidth={1.5} />
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-lg shadow-yellow-500/40">
+                      <MonitorPlay className="h-8 w-8 text-gray-900" strokeWidth={1.5} />
                     </div>
                     <div className="text-center sm:text-left">
-                      <p className="text-purple-200 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-1">
+                      <p className="text-yellow-200 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-1">
                         Destaque neste vídeo
                       </p>
                       <p className="text-white text-base sm:text-lg font-bold leading-snug">
                         Demonstração da{' '}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-purple-200">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-100">
                           plataforma Mundo Pódium
                         </span>{' '}
                         no Circle
@@ -364,23 +364,23 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
         </div>
 
         <div className="max-w-6xl mx-auto mb-14 md:mb-16">
-          <div className="relative rounded-[28px] p-[1px] bg-gradient-to-br from-purple-500/60 via-yellow-500/35 to-amber-600/40 shadow-2xl shadow-purple-500/10">
+          <div className="relative rounded-[28px] p-[1px] bg-gradient-to-br from-yellow-500/60 via-yellow-500/35 to-amber-600/40 shadow-2xl shadow-yellow-500/10">
             <div className="relative overflow-hidden rounded-[27px] bg-gray-950/90 backdrop-blur-2xl">
-              <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
+              <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-yellow-500/20 blur-3xl pointer-events-none" />
               <div className="absolute -bottom-20 -left-16 h-40 w-40 rounded-full bg-yellow-500/15 blur-3xl pointer-events-none" />
 
               <div className="relative z-10 px-4 pt-6 pb-5 sm:px-6 sm:pt-8 md:px-10 md:pt-10 md:pb-6">
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6 mb-6 md:mb-8 text-center md:text-left">
                   <div className="mx-auto md:mx-0 max-w-xl md:max-w-none">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/35 bg-purple-500/10 px-3 py-1.5 mb-3 md:mb-4">
-                      <Sparkles className="h-4 w-4 text-purple-300 shrink-0" />
-                      <span className="text-[11px] font-bold uppercase tracking-widest text-purple-200/90">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-yellow-400/35 bg-yellow-500/10 px-3 py-1.5 mb-3 md:mb-4">
+                      <Sparkles className="h-4 w-4 text-yellow-300 shrink-0" />
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-yellow-200/90">
                         Plataforma Mundo Pódium
                       </span>
                     </div>
                     <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
                       O que entra no seu{' '}
-                      <span className="bg-gradient-to-r from-purple-300 to-yellow-300 bg-clip-text text-transparent">
+                      <span className="bg-gradient-to-r from-yellow-300 to-yellow-100 bg-clip-text text-transparent">
                         arsenal
                       </span>{' '}
                       depois do workshop
@@ -441,7 +441,7 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                         className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
                           isOn
                             ? 'border-yellow-400/60 bg-yellow-400/15 text-white shadow-lg shadow-yellow-500/15 scale-[1.02]'
-                            : 'border-gray-600/60 bg-gray-800/40 text-gray-400 hover:border-purple-400/35 hover:text-gray-200'
+                            : 'border-gray-600/60 bg-gray-800/40 text-gray-400 hover:border-yellow-400/35 hover:text-gray-200'
                         }`}
                       >
                         <TabIcon className={`h-4 w-4 ${isOn ? 'text-yellow-400' : 'text-gray-500'}`} />
@@ -603,7 +603,7 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center gap-3 rounded-2xl border border-gray-700/50 bg-gray-800/30 px-4 py-4 backdrop-blur-sm transition-transform hover:scale-[1.02]">
-            <Gift className="w-8 h-8 text-purple-400 shrink-0" />
+            <Gift className="w-8 h-8 text-yellow-400 shrink-0" />
             <div>
               <p className="text-white font-bold text-sm">Continuidade</p>
               <p className="text-gray-500 text-xs leading-snug">

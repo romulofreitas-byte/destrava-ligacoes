@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Calendar, Clock } from 'lucide-react';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_DURATION } from '@/lib/constants';
 
 export const WorkshopModuleDatesSection: React.FC = () => {
   return (
@@ -31,7 +31,8 @@ export const WorkshopModuleDatesSection: React.FC = () => {
             </span>
           </h2>
           <p className="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Dois encontros ao vivo em dias diferentes: módulo 1 à tarde e módulo 2 pela manhã (horário de Brasília).
+            Dois encontros ao vivo em dias diferentes — {WORKSHOP_DURATION.detailLine}. Módulo 1 à tarde e
+            módulo 2 pela manhã (horário de Brasília).
           </p>
         </div>
 
@@ -52,7 +53,7 @@ export const WorkshopModuleDatesSection: React.FC = () => {
             <p className="text-gray-300 text-sm mb-4">{WORKSHOP_INFO.date}</p>
             <div className="flex items-center gap-2 text-gray-400 text-sm">
               <Clock className="w-4 h-4 text-green-400/80 flex-shrink-0" />
-              <span>{WORKSHOP_INFO.time} (BRT)</span>
+              <span>{WORKSHOP_INFO.time} (BRT) · {WORKSHOP_DURATION.perModuleLabel}</span>
             </div>
           </div>
 
@@ -72,7 +73,7 @@ export const WorkshopModuleDatesSection: React.FC = () => {
             <p className="text-gray-300 text-sm mb-4">{WORKSHOP_MODULE_2_INFO.date}</p>
             <div className="flex items-center gap-2 text-gray-400 text-sm">
               <Clock className="w-4 h-4 text-yellow-400/80 flex-shrink-0" />
-              <span>{WORKSHOP_MODULE_2_INFO.time} (BRT)</span>
+              <span>{WORKSHOP_MODULE_2_INFO.time} (BRT) · {WORKSHOP_DURATION.perModuleLabel}</span>
             </div>
           </div>
         </div>

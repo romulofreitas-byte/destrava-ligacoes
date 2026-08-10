@@ -114,13 +114,22 @@
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-  opacity: 0;
+  animation: fade-in-up 0.8s ease-out both;
 }
 
 .animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-  opacity: 0;
+  animation: fade-in 0.5s ease-out both;
+}
+
+/* Above-the-fold: never stay invisible if animation fails / is disabled */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-mentor-fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 @keyframes fade-in {
@@ -328,8 +337,7 @@ img {
 }
 
 .animate-mentor-fade-in {
-  animation: mentor-image-fade 1.2s ease-out forwards;
-  opacity: 0;
+  animation: mentor-image-fade 1.2s ease-out both;
 }
 
 /* Float Animation - For floating orbs */

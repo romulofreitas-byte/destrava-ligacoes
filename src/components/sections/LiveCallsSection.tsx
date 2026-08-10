@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Phone, Eye, TrendingUp, Award } from 'lucide-react';
+import { Phone, Eye, TrendingUp, Award, MessageCircle } from 'lucide-react';
 import { trackViewContent } from '@/lib/metaPixel';
+import { WorkshopProofCard } from '@/components/ui/WorkshopProofCard';
 
 export const LiveCallsSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -88,6 +89,29 @@ export const LiveCallsSection: React.FC = () => {
                 </p>
               </div>
             </div>
+          </div>
+
+          {/* Prova contextual — resultado após live de ligação */}
+          <div className="mb-12 max-w-3xl mx-auto">
+            <div className="text-center mb-5">
+              <div className="inline-flex items-center px-4 py-2 bg-yellow-400/15 border border-yellow-400/30 rounded-full mb-3 backdrop-blur-md">
+                <MessageCircle className="w-4 h-4 text-yellow-400 mr-2" />
+                <span className="text-yellow-400 font-semibold text-xs tracking-wide">
+                  Resultado após live de ligação
+                </span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-xl mx-auto">
+                Quem acompanha a prática ao vivo aplica na mesma semana.
+              </p>
+            </div>
+            <WorkshopProofCard
+              compact
+              imageSrc="/depoimentos-2026-ready/hero/hero_metricas_izabela-4-reunioes-na-semana_parte-2.png"
+              imageAlt="Depoimento de aluna: 4 reuniões agendadas na mesma semana após assistir a live de cold call ao vivo do Rômulo Freitas"
+              highlight="Essa semana foram 4 reuniões agendadas por ligação"
+              name="Izabela"
+              bodyQuote="Romulo, acompanhei a tua última Live de ligação que teve essa semana e você conseguiu me destravar."
+            />
           </div>
 
           {/* Benefits Grid */}

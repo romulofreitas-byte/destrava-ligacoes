@@ -25,7 +25,7 @@ export const SubtleCTA: React.FC<SubtleCTAProps> = ({
     <div className={`flex justify-center mt-8 ${className}`}>
       <button
         onClick={handleClick}
-        className="group inline-flex items-center gap-2 px-6 py-3 bg-gray-800/40 border border-yellow-400/30 text-yellow-400 text-sm font-medium rounded-full hover:bg-yellow-400/10 hover:border-yellow-400/50 transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-yellow-400/20 button-shine-effect"
+        className="group inline-flex items-center gap-2 px-6 py-3 bg-yellow-400/15 border-2 border-yellow-400/60 text-yellow-300 text-sm font-semibold rounded-full hover:bg-yellow-400/25 hover:border-yellow-400 hover:text-yellow-200 transition-all duration-300 backdrop-blur-sm shadow-lg shadow-yellow-400/15 hover:shadow-yellow-400/30 button-shine-effect"
       >
         <span>{label}</span>
         <ArrowDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />

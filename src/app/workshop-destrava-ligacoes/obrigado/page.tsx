@@ -5,7 +5,7 @@ import { CheckCircle, Users, Calendar, ArrowRight, CreditCard, Mail, Clock, Vide
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION } from '@/lib/constants';
 
 const Footer = dynamic(() => import('@/components/sections/Footer').then(mod => ({ default: mod.Footer })), { ssr: false });
 
@@ -384,7 +384,7 @@ function ObrigadoContent() {
                         </div>
                         <div>
                           <p className="text-gray-400 text-xs mb-1">Duração</p>
-                          <p className="text-white font-semibold text-sm">6 horas (3h por módulo)</p>
+                          <p className="text-white font-semibold text-sm">{WORKSHOP_DURATION.detailLine}</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">

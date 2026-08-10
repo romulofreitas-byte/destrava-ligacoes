@@ -1,23 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
-import { MessageCircle, Star } from 'lucide-react';
-import Image from 'next/image';
+import React from 'react';
+import { MessageCircle } from 'lucide-react';
 import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_SALES } from '@/lib/constants';
+import { WorkshopProofCard } from '@/components/ui/WorkshopProofCard';
 
-type FeaturedWorkshopTestimonial = {
-  id: string;
-  imageSrc: string;
-  imageAlt: string;
-  highlight: string;
-  name: string;
-  company?: string;
-  companyUrl?: string;
-  bodyQuote?: string;
-  imagePriority?: boolean;
-};
-
-const featuredWorkshopTestimonials: FeaturedWorkshopTestimonial[] = [
+const featuredWorkshopTestimonials = [
+  {
+    id: 'regularize',
+    imageSrc:
+      '/depoimentos-2026-ready/hero/hero_metricas_regularize-triplicou-faturamento.png',
+    imageAlt:
+      'Depoimento do cliente Regularize Health: faturamento triplicado após aplicar o método de follow-up do Workshop Destrava Ligações',
+    highlight: 'Triplicamos o faturamento no mês seguinte',
+    name: 'Robson Vieira',
+    company: 'Regularize Health',
+    companyUrl: 'https://www.regularizehealth.com.br',
+    bodyQuote:
+      'Desde que começamos a colocar em prática os conceitos do Rômulo Freitas, aplicando no inbound e no follow-up, triplicamos nosso faturamento já no mês seguinte.',
+    priority: true,
+  },
   {
     id: 'igor',
     imageSrc: '/depoimentos/depoimento-igor-carvalhosa.png',
@@ -25,92 +27,8 @@ const featuredWorkshopTestimonials: FeaturedWorkshopTestimonial[] = [
       'Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações — mais de 9h de conteúdo ao vivo, superou expectativas',
     highlight: 'Vale mais de 2 mil reais fácil',
     name: 'Igor Carvalhosa',
-    imagePriority: true,
-  },
-  {
-    id: 'robson',
-    imageSrc: '/depoimentos/depoimento-regularize-health-crm.png',
-    imageAlt:
-      'Print do CRM enviado por Robson Vieira (Regularize Health): gráfico de barras por mês em 2026 com série Recebidas e salto de faturamento recebido',
-    highlight: 'Triplicamos o faturamento no mês seguinte',
-    name: 'Robson Vieira',
-    company: 'Regularize Health',
-    companyUrl: 'https://www.regularizehealth.com.br',
-    bodyQuote:
-      'Desde que começamos a colocar em prática os conceitos do Rômulo Freitas, aplicando no inbound e no follow-up, triplicamos nosso faturamento já no mês seguinte.',
   },
 ];
-
-function FeaturedWorkshopCard({
-  testimonial,
-}: {
-  testimonial: FeaturedWorkshopTestimonial;
-}) {
-  const [imgError, setImgError] = useState(false);
-
-  return (
-    <div className="relative w-full bg-gray-800/30 rounded-2xl p-4 sm:p-5 border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 group/card">
-      <div className="relative w-full aspect-[16/10] rounded-xl bg-gray-900/40 overflow-hidden">
-        {!imgError ? (
-          <Image
-            src={testimonial.imageSrc}
-            alt={testimonial.imageAlt}
-            fill
-            className="object-contain p-2 sm:p-3"
-            quality={90}
-            priority={testimonial.imagePriority ?? false}
-            unoptimized
-            sizes="(max-width: 768px) 100vw, 768px"
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element -- fallback when next/image fails
-          <img
-            src={testimonial.imageSrc}
-            alt={testimonial.imageAlt}
-            className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-2 sm:p-3"
-          />
-        )}
-      </div>
-
-      <div className="mt-4 p-3 bg-gradient-to-r from-yellow-400/20 to-green-400/20 border border-yellow-400/30 rounded-xl">
-        <div className="flex items-start gap-2">
-          <Star
-            className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5"
-            fill="currentColor"
-          />
-          <p className="text-white text-sm sm:text-base font-semibold leading-relaxed">
-            <span className="text-yellow-400">
-              &ldquo;{testimonial.highlight}&rdquo;
-            </span>
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-4 text-center sm:text-left">
-        <p className="text-white font-semibold text-sm sm:text-base">
-          {testimonial.name}
-        </p>
-        {testimonial.company && testimonial.companyUrl && (
-          <a
-            href={testimonial.companyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-green-400/90 hover:text-green-400 text-sm underline-offset-2 hover:underline inline-block mt-0.5"
-          >
-            {testimonial.company}
-          </a>
-        )}
-      </div>
-
-      {testimonial.bodyQuote && (
-        <blockquote className="mt-4 text-left text-sm text-gray-400 leading-relaxed border-l-2 border-yellow-400/30 pl-3">
-          &ldquo;{testimonial.bodyQuote}&rdquo;
-        </blockquote>
-      )}
-    </div>
-  );
-}
 
 export const WorkshopTestimonialBanner: React.FC = () => {
   return (
@@ -148,18 +66,28 @@ export const WorkshopTestimonialBanner: React.FC = () => {
 
               <div className="flex flex-col gap-8 max-w-3xl mx-auto mb-6">
                 {featuredWorkshopTestimonials.map((t) => (
-                  <FeaturedWorkshopCard key={t.id} testimonial={t} />
+                  <WorkshopProofCard
+                    key={t.id}
+                    imageSrc={t.imageSrc}
+                    imageAlt={t.imageAlt}
+                    highlight={t.highlight}
+                    name={t.name}
+                    company={t.company}
+                    companyUrl={t.companyUrl}
+                    bodyQuote={t.bodyQuote}
+                    priority={t.priority}
+                  />
                 ))}
               </div>
 
               <div className="text-center">
                 <p className="text-gray-300 text-sm sm:text-base mb-4">
                   <span className="text-yellow-400 font-semibold">
-                    10ª Edição aberta!
+                    {WORKSHOP_SALES.edition}ª Edição aberta!
                   </span>{' '}
                   Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
-                  {WORKSHOP_MODULE_2_INFO.dateDisplayShort} — apenas{' '}
-                  {WORKSHOP_SALES.maxSpots} vagas
+                  {WORKSHOP_MODULE_2_INFO.dateDisplayShort} —{' '}
+                  {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas preenchidas
                 </p>
                 <p className="text-gray-400 text-xs sm:text-sm">
                   Transforme suas ligações como centenas de participantes já

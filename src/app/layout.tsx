@@ -20,22 +20,25 @@ const montserrat = Montserrat({
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://destrava-ligacoes.vercel.app'
 
+const workshopMetaDescription =
+  'Workshop em 2 módulos (8 horas no total — 4h cada) onde você aprende a destravar ligações, construir discurso de cold call e faz ligações reais na Sala de Ligação com acompanhamento direto. Transforme medo em coragem e travas em resultados.';
+
 export const metadata: Metadata = {
   title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',
-  description: 'Workshop de 3 horas onde você aprende a destravar ligações, construir discurso de cold call e assiste ligações reais feitas ao vivo. Transforme medo em coragem e travas em resultados.',
+  description: workshopMetaDescription,
   keywords: 'workshop cold call, destravar ligações, como fazer cold call, discurso de vendas, marcar reunião, reuniões de vendas, vendas por telefone',
   authors: [{ name: 'Rômulo Freitas' }],
   icons: {
     icon: [
-      { url: '/icon-escuderia.png', type: 'image/png' },
-      { url: '/icon-escuderia.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logos-mundo-podium/favicon_256.png', type: 'image/png' },
+      { url: '/logos-mundo-podium/favicon_256.png', sizes: '256x256', type: 'image/png' },
     ],
-    shortcut: '/icon-escuderia.png',
-    apple: '/icon-escuderia.png',
+    shortcut: '/logos-mundo-podium/favicon_256.png',
+    apple: '/logos-mundo-podium/favicon_256.png',
   },
   openGraph: {
     title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',
-    description: 'Workshop de 3 horas onde você aprende a destravar ligações, construir discurso de cold call e assiste ligações reais feitas ao vivo. Transforme medo em coragem e travas em resultados.',
+    description: workshopMetaDescription,
     type: 'website',
     locale: 'pt_BR',
     url: baseUrl,
@@ -53,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',
-    description: 'Workshop de 3 horas onde você aprende a destravar ligações, construir discurso de cold call e assiste ligações reais feitas ao vivo. Transforme medo em coragem e travas em resultados.',
+    description: workshopMetaDescription,
     images: [
       {
         url: `${baseUrl}/workshop-metodo.png`,

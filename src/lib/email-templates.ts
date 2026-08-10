@@ -1,4 +1,4 @@
-import { getGoogleMeetInfo, WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from './constants';
+import { getGoogleMeetInfo, WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_DURATION } from './constants';
 
 export interface WorkshopEmailData {
   nome: string;
@@ -500,7 +500,7 @@ export function getInvitationEmailTemplate(
                   🎯 Este é um convite exclusivo para você, como parte da nossa comunidade.
                 </p>
                 <p style="margin: 15px 0 0; color: #78350f; font-size: 16px; line-height: 1.6;">
-                  Você terá <strong>acesso gratuito</strong> a este workshop em 2 módulos (6 horas no total), nos dias <strong>${WORKSHOP_INFO.dateDisplayShort} e ${WORKSHOP_MODULE_2_INFO.dateDisplayShort}</strong>: módulo 1 em <strong>${WORKSHOP_INFO.time}</strong> e módulo 2 em <strong>${WORKSHOP_MODULE_2_INFO.time}</strong> (horário de Brasília).
+                  Você terá <strong>acesso gratuito</strong> a este workshop em 2 módulos (${WORKSHOP_DURATION.detailLine}), nos dias <strong>${WORKSHOP_INFO.dateDisplayShort} e ${WORKSHOP_MODULE_2_INFO.dateDisplayShort}</strong>: módulo 1 em <strong>${WORKSHOP_INFO.time}</strong> e módulo 2 em <strong>${WORKSHOP_MODULE_2_INFO.time}</strong> (horário de Brasília).
                 </p>
               </div>
               
@@ -524,7 +524,7 @@ export function getInvitationEmailTemplate(
                   <strong style="color: #78350f;">Formato:</strong> Online • Ao vivo • 100% prático
                 </p>
                 <p style="margin: 8px 0; color: #1f2937; font-size: 15px;">
-                  <strong style="color: #78350f;">Duração:</strong> 6 horas no total (3h por módulo)
+                  <strong style="color: #78350f;">Duração:</strong> ${WORKSHOP_DURATION.detailLine}
                 </p>
               </div>
               

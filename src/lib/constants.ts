@@ -18,10 +18,22 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
 export const WORKSHOP_SALES = {
   isOpen: true,
-  /** Percentual da barra de vagas (hero + CTA final) */
-  progressPercent: 27,
-  /** Capacidade máxima da turma — evidenciar na UI */
+  /** Número da edição atual (ex.: 11 → "11ª") */
+  edition: 11,
+  /** Vagas já preenchidas (hero + CTA final — números absolutos) */
+  filledSpots: 6,
+  /** Capacidade máxima da turma */
   maxSpots: 20,
+  /** Percentual da barra (filledSpots / maxSpots) */
+  progressPercent: 30,
+} as const;
+
+/** Preço de venda + ancoragem (hero e CTA final devem usar a mesma fonte) */
+export const WORKSHOP_PRICING = {
+  current: 'R$ 897,00',
+  /** Preço “de” riscado — ancoragem visual */
+  anchor: 'R$ 1.497,00',
+  savingsLabel: 'Economia de R$ 600 nesta edição',
 } as const;
 
 /** Copy quando vendas fechadas (CTAs, badges) */
@@ -46,7 +58,7 @@ export const WORKSHOP_INFO = {
   /** Texto completo para e-mails (com dia da semana) */
   dateEmailLine: 'Quarta-feira, 19 de agosto de 2026',
   time: '13:00 – 17:00',
-  /** Início do módulo 1 (atalho para UI compacta, ex.: hero) */
+  /** Início do módulo 1 (atalho para UI compacta) */
   timeStartBadge: '13h',
   timezone: 'America/Sao_Paulo',
   duration: '4 horas',
@@ -61,7 +73,25 @@ export const WORKSHOP_MODULE_2_INFO = {
   dateDisplayShort: '25/08',
   dateEmailLine: 'Terça-feira, 25 de agosto de 2026',
   time: '08:00 – 12:00',
-  timeStartBadge: '8h',
+  /** Zero à esquerda: evita ler como “8h de duração” */
+  timeStartBadge: '08h',
+} as const;
+
+/**
+ * Duração do workshop (não confundir com horário de início do módulo 2 às 08h).
+ * Total: 8 horas · 2 módulos de 4h em dias diferentes.
+ */
+export const WORKSHOP_DURATION = {
+  hoursPerModule: 4,
+  totalHours: 8,
+  perModuleLabel: '4 horas',
+  totalLabel: '8 horas',
+  /** Badge do hero */
+  badgeLine: '2 módulos • 4h cada • Dias diferentes',
+  /** Relógio no header (duração total, não horário) */
+  headerLine: '8h no total · 2×4h',
+  /** Cards / FAQ / e-mail */
+  detailLine: '8 horas no total (2 módulos de 4h)',
 } as const;
 
 const PLATFORM_PUBLIC_PRICE = 'R$ 89,90';

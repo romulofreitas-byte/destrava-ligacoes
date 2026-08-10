@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { HelpCircle } from 'lucide-react';
-import { WORKSHOP_PLATFORM_RULES } from '@/lib/constants';
+import { WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION } from '@/lib/constants';
 
 export const WorkshopFAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -13,12 +13,17 @@ export const WorkshopFAQSection: React.FC = () => {
       answer: 'Sim. O Workshop e a Sala de Ligação ficam gravados na plataforma Mundo Pódium para acesso posterior dentro do período de acesso incluso.'
     },
     {
+      question: 'E se eu não puder participar no horário ao vivo?',
+      answer:
+        'O horário é no fuso de Brasília (America/Sao_Paulo). Se não conseguir assistir ao vivo, as gravações do Workshop e da Sala de Ligação ficam disponíveis na plataforma Mundo Pódium durante o período de acesso incluso (60 dias a partir da compra). Muitos participantes aproveitam a gravação e avançam no mesmo ritmo.',
+    },
+    {
       question: 'Preciso ter experiência em vendas?',
       answer: 'Não. O workshop é para qualquer profissional que depende de ligações para gerar negócios, independente do nível de experiência.'
     },
     {
       question: 'Funciona para meu nicho?',
-      answer: 'Sim. O método é universal e se adapta a qualquer nicho: serviços, produtos, agências, consultorias e até mercados regulados como investimentos.'
+      answer: 'Sim. O método se adapta a nichos como seguros, planos de saúde, jurídico, contabilidade, serviços, agências e mercados regulados como investimentos.'
     },
     {
       question: 'Vou realmente fazer ligações durante o workshop?',
@@ -26,7 +31,12 @@ export const WorkshopFAQSection: React.FC = () => {
     },
     {
       question: 'Por que custa R$ 897,00?',
-      answer: 'É um investimento simbólico que garante comprometimento e entrega real. Não é funil isca gratuito — é treinamento prático em 2 módulos (6 horas no total) com demonstração real.'
+      answer: `Porque é treinamento prático de verdade: 2 módulos (${WORKSHOP_DURATION.detailLine}), demonstração com ligações reais ao vivo, construção do seu script e prática supervisionada — mais 60 dias de acesso à Plataforma Mundo Pódium com gravações. O preço reflete a profundidade da entrega, não um funil isca gratuito.`,
+    },
+    {
+      question: 'Há garantia?',
+      answer:
+        'Sim — uma garantia condicionada à execução (não é “garantia de resultado” vaga). Os termos são explicados pelo Rômulo no vídeo da seção Garantia desta página. Assista antes de comprar se essa for uma dúvida importante para você.',
     },
     {
       question: 'Como funciona o acesso à plataforma Mundo Pódium?',
@@ -107,7 +117,7 @@ export const WorkshopFAQSection: React.FC = () => {
                   
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      isOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
                     <div className="px-6 pb-4">

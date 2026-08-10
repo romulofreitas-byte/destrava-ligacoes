@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { HeroSectionWorkshop } from '@/components/sections/HeroSectionWorkshop';
+import { RomuloTeaserSection } from '@/components/sections/RomuloTeaserSection';
 import { WorkshopModulesSection } from '@/components/sections/WorkshopModulesSection';
 import { WorkshopModuleDatesSection } from '@/components/sections/WorkshopModuleDatesSection';
 import { WorkshopTestimonialBanner } from '@/components/sections/WorkshopTestimonialBanner';
@@ -19,6 +20,7 @@ import { AfterWorkshopSection } from '@/components/sections/AfterWorkshopSection
 import { TestimonialsScrollSection } from '@/components/sections/TestimonialsScrollSection';
 import { FinalCTAWorkshopSection } from '@/components/sections/FinalCTAWorkshopSection';
 import { WorkshopFAQSection } from '@/components/sections/WorkshopFAQSection';
+import { WorkshopGuaranteeSection } from '@/components/sections/WorkshopGuaranteeSection';
 import { Footer } from '@/components/sections/Footer';
 import { SubtleHelpModal } from '@/components/ui/SubtleHelpModal';
 import { ModalProvider } from '@/contexts/ModalContext';
@@ -29,6 +31,7 @@ export const WorkshopPageContent: React.FC = () => {
     <ModalProvider>
       <main className="min-h-screen bg-gray-900">
         <HeroSectionWorkshop />
+        <RomuloTeaserSection />
         <WorkshopTestimonialBanner />
         <WorkshopModulesSection />
         <WorkshopModuleDatesSection />
@@ -45,6 +48,7 @@ export const WorkshopPageContent: React.FC = () => {
         <AfterWorkshopSection />
         <TestimonialsScrollSection />
         <WorkshopFAQSection />
+        <WorkshopGuaranteeSection />
         <FinalCTAWorkshopSection />
         <Footer />
         <SubtleHelpModal />

@@ -1,37 +1,49 @@
 import React from 'react';
-import { Linkedin, Instagram, Youtube, Mail, Phone, MapPin, Users } from 'lucide-react';
+import { Linkedin, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
+import { WORKSHOP_SALES } from '@/lib/constants';
+
+const WHATSAPP_WORKSHOP_TEXT = encodeURIComponent(
+  `Rômulo, quero saber mais sobre o Workshop Destrava Ligações (${WORKSHOP_SALES.edition}ª edição)!`
+);
 
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 border-t border-yellow-400/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand */}
           <div className="lg:col-span-2">
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-2 flex-wrap">
                 <h3 className="text-2xl font-bold text-white">
-                  <a href="https://www.mundopodium.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition-colors">
-                    Escuderia Pódium
+                  <a href="/" className="hover:text-yellow-400 transition-colors">
+                    Workshop Destrava Ligações
                   </a>
                 </h3>
-                <a 
-                  href="https://www.mundopodium.com.br" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-400/20 to-green-500/10 border border-green-400/30 rounded-full backdrop-blur-md shadow-lg shadow-green-400/20 animate-fade-in-up hover:shadow-green-400/40 transition-all duration-300"
-                  style={{animationDelay: '0.1s'}}
-                >
-                  <Users className="w-4 h-4 text-green-400 mr-2" />
-                  <span className="text-green-400 font-semibold text-xs tracking-wide">conheça a mentoria em grupo</span>
-                </a>
+                <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full backdrop-blur-md shadow-lg shadow-yellow-400/20">
+                  <span className="text-yellow-400 font-semibold text-xs tracking-wide">
+                    {WORKSHOP_SALES.edition}ª edição
+                  </span>
+                </span>
               </div>
               <p className="text-gray-300">
-                Mentoria em grupo para transformar seu processo comercial e fechar seu primeiro contrato.
+                Treinamento prático de cold call em 2 módulos — script pronto, ligações ao vivo e
+                60 dias na Plataforma Mundo Pódium.
+              </p>
+              <p className="text-gray-400 text-sm mt-2">
+                Um produto da{' '}
+                <a
+                  href="https://www.mundopodium.com.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-yellow-400 hover:text-yellow-300 transition-colors"
+                >
+                  Mundo Pódium
+                </a>
+                .
               </p>
             </div>
-            
+
             <div className="space-y-2 text-gray-300">
               <p className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
@@ -48,17 +60,13 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Empty space where Links Rápidos was */}
           <div></div>
 
-          {/* Social & Contact */}
           <div className="hidden md:block">
-            <h4 className="text-lg font-semibold text-white mb-4">
-              Redes Sociais
-            </h4>
+            <h4 className="text-lg font-semibold text-white mb-4">Redes Sociais</h4>
             <div className="space-y-3">
-              <a 
-                href="https://linkedin.com/in/romulocsfreitas" 
+              <a
+                href="https://linkedin.com/in/romulocsfreitas"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-300 hover:text-yellow-400 transition-colors"
@@ -66,8 +74,8 @@ export const Footer: React.FC = () => {
                 <Linkedin className="w-5 h-5" />
                 <span>LinkedIn</span>
               </a>
-              <a 
-                href="https://instagram.com/romulocsfreitas" 
+              <a
+                href="https://instagram.com/romulocsfreitas"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-300 hover:text-yellow-400 transition-colors"
@@ -75,8 +83,8 @@ export const Footer: React.FC = () => {
                 <Instagram className="w-5 h-5" />
                 <span>Instagram</span>
               </a>
-              <a 
-                href="https://youtube.com/@combustivelmv" 
+              <a
+                href="https://youtube.com/@combustivelmv"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-300 hover:text-yellow-400 transition-colors"
@@ -87,19 +95,17 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="mt-6">
-              <h4 className="text-lg font-semibold text-white mb-4">
-                Contato Direto
-              </h4>
+              <h4 className="text-lg font-semibold text-white mb-4">Contato Direto</h4>
               <div className="space-y-2">
-                <a 
-                  href="https://wa.me/5531994293099?text=Rômulo,%20quero%20saber%20mais%20sobre%20a%20Escuderia%20Pódium!" 
+                <a
+                  href={`https://wa.me/5531994293099?text=${WHATSAPP_WORKSHOP_TEXT}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block bg-green-500 text-white px-4 py-2 rounded-lg text-center hover:bg-green-600 transition-colors"
                 >
                   WhatsApp
                 </a>
-                <a 
+                <a
                   href="mailto:romulo.freitas@combustivelmv.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -112,22 +118,26 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Logos Section */}
         <div>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <a href="https://www.mundopodium.com.br" target="_blank" rel="noopener noreferrer" className="w-24 h-24 sm:w-28 sm:h-28 relative flex items-center">
-                <ProtectedImage 
-                  src="/logos/Escuderia Branco.png"
-                  alt="Escuderia Pódium"
-                  width={112}
-                  height={112}
+              <a
+                href="https://www.mundopodium.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-40 h-12 sm:w-48 sm:h-14 relative flex items-center"
+              >
+                <ProtectedImage
+                  src="/logos-mundo-podium/logo_horizontal_claro.png"
+                  alt="Mundo Pódium"
+                  width={192}
+                  height={56}
                   className="object-contain opacity-100 hover:opacity-70 transition-opacity duration-300 cursor-pointer"
                 />
               </a>
-              <div className="hidden sm:block w-px h-20 bg-gray-600"></div>
+              <div className="hidden sm:block w-px h-14 bg-gray-600"></div>
               <div className="w-24 h-12 relative">
-                <ProtectedImage 
+                <ProtectedImage
                   src="/logos/logo-metodo.png"
                   alt="Método Pódium"
                   width={96}
@@ -139,13 +149,13 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom */}
         <div className="pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
-              © 2025 Mundo Pódium. Todos os direitos reservados.
+            <div className="text-gray-400 text-sm text-center md:text-left space-y-1">
+              <p>© {new Date().getFullYear()} Mundo Pódium. Todos os direitos reservados.</p>
+              <p>CNPJ: 68.349.974/0001-19 — Mundo Pódium LTDA</p>
             </div>
-            
+
             <div className="flex space-x-6 text-sm">
               <a href="/privacidade" className="text-gray-400 hover:text-yellow-400 transition-colors">
                 Política de Privacidade
@@ -153,7 +163,10 @@ export const Footer: React.FC = () => {
               <a href="/termos" className="text-gray-400 hover:text-yellow-400 transition-colors">
                 Termos de Uso
               </a>
-              <a href="mailto:romulo.freitas@combustivelmv.com" className="text-gray-400 hover:text-yellow-400 transition-colors">
+              <a
+                href="mailto:romulo.freitas@combustivelmv.com"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
+              >
                 Contato
               </a>
             </div>

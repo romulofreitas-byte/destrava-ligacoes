@@ -29,7 +29,7 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
 
   const stats = [
     { icon: TrendingUp, label: 'Anos de Experiência', value: '12+' },
-    { icon: Briefcase, label: 'CEO da Combustível', value: 'Marketing e Vendas' },
+    { icon: Briefcase, label: 'CEO', value: 'Mundo Pódium' },
     { icon: Award, label: 'Criador do Método', value: 'Pódium' },
     { icon: Video, label: 'Execução Comprovada', value: 'Ligações ao Vivo' }
   ];
@@ -45,7 +45,7 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90"></div>
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-yellow-400/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
       </div>
 
       <div className="container-custom relative z-10">
@@ -80,7 +80,7 @@ export const AboutRomuloWorkshopSection: React.FC = () => {
             <div className="space-y-6 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
               <div className="bg-gray-800/40 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-xl">
                 <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-4">
-                  <span className="text-white font-bold">Rômulo Freitas</span> é criador do <span className="text-yellow-400 font-semibold">Método Pódium</span> e autoridade em vendas com mais de 12 anos de experiência. CEO da <span className="text-yellow-400 font-semibold">Combustível Marketing e Vendas</span>, passou 5 anos na operação à frente da Gestão e Vendas antes de ensinar.
+                  <span className="text-white font-bold">Rômulo Freitas</span> é criador do <span className="text-yellow-400 font-semibold">Método Pódium</span> e autoridade em vendas com mais de 12 anos de experiência. CEO da <span className="text-yellow-400 font-semibold">Mundo Pódium LTDA</span>, passou 5 anos na operação à frente da Gestão e Vendas antes de ensinar.
                 </p>
                 <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
                   Faz lives e ligações ao vivo no YouTube — é &quot;skin in the game&quot;. Diferente dos experts que só vendem teoria, Rômulo Freitas faz <span className="text-yellow-400 font-semibold">ligações reais ao vivo</span> com clientes potenciais. Você aprende com quem faz.

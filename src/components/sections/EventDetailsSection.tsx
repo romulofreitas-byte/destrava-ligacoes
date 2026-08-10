@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Calendar, Clock, Video, MapPin, Monitor } from 'lucide-react';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_DURATION } from '@/lib/constants';
 
 export const EventDetailsSection: React.FC = () => {
   return (
@@ -55,7 +55,7 @@ export const EventDetailsSection: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Duração Total</h3>
-                    <p className="text-gray-300 text-sm">6 horas (3h por módulo)</p>
+                    <p className="text-gray-300 text-sm">{WORKSHOP_DURATION.detailLine}</p>
                   </div>
                 </div>
 

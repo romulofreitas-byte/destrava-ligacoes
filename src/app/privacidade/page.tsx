@@ -15,7 +15,7 @@ export default function PrivacidadePage() {
             Política de Privacidade
           </h1>
           <p className="text-gray-300 text-lg">
-            Escuderia Pódium - Mentoria em Grupo
+            Workshop Destrava Ligações — Mundo Pódium
           </p>
           <p className="text-gray-400 text-sm mt-2">
             Última atualização: {new Date().toLocaleDateString('pt-BR')}
@@ -28,7 +28,10 @@ export default function PrivacidadePage() {
             <h2 className="text-2xl font-bold text-yellow-400 mb-4">1. Identificação do Responsável</h2>
             <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
               <p className="text-gray-300 mb-2">
-                <strong className="text-white">Empresa:</strong> Escuderia Pódium
+                <strong className="text-white">Empresa:</strong> Mundo Pódium LTDA
+              </p>
+              <p className="text-gray-300 mb-2">
+                <strong className="text-white">CNPJ:</strong> 68.349.974/0001-19
               </p>
               <p className="text-gray-300 mb-2">
                 <strong className="text-white">Responsável:</strong> Rômulo Freitas
@@ -70,7 +73,7 @@ export default function PrivacidadePage() {
                 <li>Funcionamento técnico do site</li>
                 <li>Análise de performance e segurança</li>
                 <li>Melhoria da experiência do usuário</li>
-                <li>Comunicação através dos canais externos (WhatsApp, Hotmart)</li>
+                <li>Comunicação através dos canais externos (WhatsApp, e-mail, PagBank)</li>
               </ul>
             </div>
           </section>
@@ -122,7 +125,7 @@ export default function PrivacidadePage() {
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
                   <li><strong>Meta (Facebook/Instagram):</strong> Através do Meta Pixel para medição e personalização de anúncios (apenas com consentimento de marketing)</li>
                   <li><strong>Vercel Analytics:</strong> Para análise de performance do site (apenas com consentimento de análise)</li>
-                  <li><strong>Hotmart:</strong> Plataforma de pagamento (quando você realiza uma compra)</li>
+                  <li><strong>PagBank:</strong> Processamento de pagamento (quando você realiza uma compra)</li>
                   <li><strong>WhatsApp:</strong> Comunicação direta (quando você clica nos links de contato)</li>
                   <li><strong>YouTube:</strong> Visualização de vídeos incorporados (política própria do YouTube)</li>
                 </ul>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Target, Brain, Book, FileText, Phone, Users, Radio, Zap, Clock, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { WORKSHOP_DURATION } from '@/lib/constants';
 
 export const WorkshopModulesSection: React.FC = () => {
   const [hoveredModule, setHoveredModule] = useState<number | null>(null);
@@ -30,7 +31,7 @@ export const WorkshopModulesSection: React.FC = () => {
       id: 1,
       title: 'Módulo 1',
       subtitle: 'Preparação e Fundação',
-      duration: '3 horas',
+      duration: WORKSHOP_DURATION.perModuleLabel,
       theme: 'Análise de metas pessoais, controle de ansiedade, estudo de mercado e construção do Script de Cold Call',
       colorScheme: {
         bg: 'from-green-400/20 to-yellow-400/10',
@@ -62,7 +63,7 @@ export const WorkshopModulesSection: React.FC = () => {
       id: 2,
       title: 'Módulo 2',
       subtitle: 'Sala de Ligação',
-      duration: '3 horas',
+      duration: WORKSHOP_DURATION.perModuleLabel,
       theme: 'Ligações ao vivo com acompanhamento direto, feedback em tempo real e simulações',
       colorScheme: {
         bg: 'from-yellow-400/20 to-red-400/10',
