@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPaymentStatus } from '@/lib/pagbank';
 import { sendImmediateEmail } from '@/lib/email-cadence';
+import { requireAdminAuth } from '@/lib/api-security';
 
 /**
  * Rota para testar envio de email após pagamento
- * 
- * Pode ser usado de duas formas:
- * 1. Com chargeId real: GET /api/pagamento/test-email?charge_id=CHARGE_ID
- * 2. Com dados de teste: POST /api/pagamento/test-email com { email, nome, chargeId?, referenceId? }
+ * Requer: Authorization: Bearer <ADMIN_API_SECRET>
  */
 export async function GET(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   try {
     const searchParams = request.nextUrl.searchParams;
     const chargeId = searchParams.get('charge_id');
@@ -108,6 +109,9 @@ export async function GET(request: NextRequest) {
  * POST para testar com dados customizados (sem precisar de chargeId real)
  */
 export async function POST(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     const { email, nome, chargeId, referenceId } = body;

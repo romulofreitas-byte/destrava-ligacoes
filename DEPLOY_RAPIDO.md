@@ -14,7 +14,7 @@ Antes de fazer deploy, adicione estas variáveis em **Vercel Dashboard > Setting
    - Environments: Production, Preview, Development
 
 2. **SUPABASE_SERVICE_ROLE_KEY**
-   - Valor: `sb_secret_vwvqpLQjJc9emNES5-JZYw_YFBrLnrO`
+   - Valor: `YOUR_SUPABASE_SERVICE_ROLE_KEY`
    - Environments: Production, Preview, Development
 
 3. **PAGBANK_TOKEN**

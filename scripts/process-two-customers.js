@@ -48,7 +48,7 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
 
 if (!RESEND_API_KEY) {
   console.error('❌ Erro: RESEND_API_KEY deve estar configurado');
-  console.error('   Configure RESEND_API_KEY=re_YvGf7VWV_K9DgWEdAoPjxtHzMYFqPvKjz no .env.local');
+  console.error('   Configure RESEND_API_KEY=re_xxxxx no .env.local');
   process.exit(1);
 }
 

@@ -3,12 +3,17 @@ import { sendRetroactiveEmails, EmailCadenceData } from '@/lib/email-cadence';
 import { getWorkshopRegistration, updateEmailStatus } from '@/lib/supabase';
 import { getPaymentStatus } from '@/lib/pagbank';
 import { WORKSHOP_INFO } from '@/lib/constants';
+import { requireAdminAuth } from '@/lib/api-security';
 
 /**
  * Endpoint para disparar e-mails retroativos para alunos que compraram antes do sistema de e-mails
  * Aceita chargeId ou email como parâmetro
+ * Requer: Authorization: Bearer <ADMIN_API_SECRET>
  */
 export async function POST(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     const { chargeId, email, nome } = body;

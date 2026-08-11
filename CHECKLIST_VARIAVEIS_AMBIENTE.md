@@ -186,6 +186,34 @@ openssl rand -base64 32
 
 ---
 
+### 12. ADMIN_PASSWORD
+
+**Descrição:** Senha de acesso ao painel `/admin/acessos` (mínimo 8 caracteres)
+
+**Quando configurar:** Obrigatória para usar o relatório de acessos
+
+**Status:**
+- [ ] Configurada no Vercel
+- [ ] Testada em `/admin/login`
+
+---
+
+### 13. VERCEL_TOKEN / VERCEL_PROJECT_ID / VERCEL_TEAM_ID (opcional)
+
+**Descrição:** Credenciais para exibir totais oficiais do Vercel Web Analytics em `/admin/acessos`
+
+**Status:**
+- [ ] Configurada no Vercel (opcional)
+
+---
+
+## 📊 Setup do relatório de acessos (`/admin/acessos`)
+
+1. Execute `supabase-site-pageviews-schema.sql` no SQL Editor do Supabase
+2. Configure `ADMIN_PASSWORD` no Vercel (e localmente em `.env.local`)
+3. Acesse `/admin/acessos` e faça login
+4. Pageviews só são gravados após o visitante aceitar cookies de analytics
+
 ## 🧪 Teste de Configuração
 
 Após configurar todas as variáveis obrigatórias, execute este teste:

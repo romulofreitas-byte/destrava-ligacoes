@@ -5,7 +5,7 @@ import { CheckCircle, Users, Calendar, ArrowRight, CreditCard, Mail, Clock, Vide
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION, WORKSHOP_PRICING, WORKSHOP_WHATSAPP, getGoogleMeetInfo } from '@/lib/constants';
 
 const Footer = dynamic(() => import('@/components/sections/Footer').then(mod => ({ default: mod.Footer })), { ssr: false });
 
@@ -228,7 +228,7 @@ function ObrigadoContent() {
                       Junte-se à comunidade &quot;Construindo Empresários&quot; e comece a interagir com outros profissionais.
                     </p>
                     <a
-                      href="https://chat.whatsapp.com/L4camOPOJMxDb8et6M80oN"
+                      href={WORKSHOP_WHATSAPP.communityUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-green-500/40 hover:scale-105"
@@ -255,7 +255,7 @@ function ObrigadoContent() {
                               <span className="text-gray-300 text-sm">Verifique seu e-mail</span>
                             </div>
                             <a
-                              href="https://chat.whatsapp.com/L4camOPOJMxDb8et6M80oN"
+                              href={WORKSHOP_WHATSAPP.communityUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center px-4 py-2 bg-green-400/10 border border-green-400/30 rounded-full hover:bg-green-400/20 hover:border-green-400/50 transition-all duration-300"
@@ -451,7 +451,7 @@ function ObrigadoContent() {
                     <div className="mb-6 p-4 bg-blue-400/10 border border-blue-400/30 rounded-xl">
                       <p className="text-white font-semibold mb-2">🎉 Acesso Imediato à Plataforma Mundo Pódium</p>
                       <p className="text-gray-300 text-sm leading-relaxed">
-                        Parabéns! Você adquiriu o Workshop por R$ 897,00 e já tem acesso
+                        Parabéns! Você adquiriu o Workshop por {WORKSHOP_PRICING.current} e já tem acesso
                         imediato à Plataforma Mundo Pódium.{' '}
                         {WORKSHOP_PLATFORM_RULES.obrigadoPlatformAccessNote}
                       </p>
@@ -470,7 +470,7 @@ function ObrigadoContent() {
                               Clique no botão abaixo para acessar o Google Meet no dia do workshop
                             </p>
                             <a
-                              href="https://meet.google.com/wnd-obfb-mha"
+                              href={getGoogleMeetInfo().link || '#'}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/40 hover:scale-105"

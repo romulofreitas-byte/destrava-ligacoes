@@ -77,3 +77,13 @@ COMMENT ON COLUMN workshop_registrations.amount IS 'Valor do pagamento em centav
 COMMENT ON COLUMN workshop_registrations.amount_brl IS 'Valor do pagamento em reais';
 COMMENT ON COLUMN workshop_registrations.status IS 'Status do pagamento: PAID, CANCELLED, DECLINED, PENDING, etc.';
 
+-- Row Level Security: app uses service role on server only.
+-- Deny anon/authenticated direct table access from the client.
+ALTER TABLE workshop_registrations ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "deny_all_anon" ON workshop_registrations;
+DROP POLICY IF EXISTS "deny_all_authenticated" ON workshop_registrations;
+
+-- No policies for anon/authenticated = no access via public API key.
+-- Service role bypasses RLS.
+

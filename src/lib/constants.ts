@@ -8,10 +8,10 @@ export interface GoogleMeetInfo {
 
 export function getGoogleMeetInfo(): GoogleMeetInfo {
   return {
-    link: process.env.GOOGLE_MEET_LINK || 'https://meet.google.com/awb-vxqu-xnm',
-    phone: process.env.GOOGLE_MEET_PHONE || '(BR) +55 21 4560-7556',
-    pin: process.env.GOOGLE_MEET_PIN || '523 187 755#',
-    phoneLink: process.env.GOOGLE_MEET_PHONE_LINK || 'https://tel.meet/awb-vxqu-xnm?pin=4122161251082',
+    link: process.env.GOOGLE_MEET_LINK?.trim() || '',
+    phone: process.env.GOOGLE_MEET_PHONE?.trim() || '',
+    pin: process.env.GOOGLE_MEET_PIN?.trim() || '',
+    phoneLink: process.env.GOOGLE_MEET_PHONE_LINK?.trim() || '',
   };
 }
 
@@ -35,6 +35,9 @@ export const WORKSHOP_SALES = {
 /** Preço de venda + ancoragem (hero e CTA final devem usar a mesma fonte) */
 export const WORKSHOP_PRICING = {
   current: 'R$ 897,00',
+  /** Valor numérico em reais (APIs de pagamento — nunca confiar no client) */
+  amountBRL: 897,
+  amountCents: 89700,
   /** Preço “de” riscado — ancoragem visual */
   anchor: 'R$ 1.497,00',
   savingsLabel: 'Economia de R$ 600 nesta edição',
@@ -48,7 +51,9 @@ export const WORKSHOP_CLOSED_COPY = {
 
 // Informações do Workshop
 export const WORKSHOP_INFO = {
-  title: 'WORKSHOP DESTRAVE SUAS LIGAÇÕES | MUNDO PÓDIUM',
+  title: 'WORKSHOP DESTRAVA LIGAÇÕES | MUNDO PÓDIUM',
+  /** Nome curto do produto (site, SEO, e-mails) */
+  productName: 'Workshop Destrava Ligações',
   date: '19 de agosto de 2026',
   dateObj: new Date('2026-08-19T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
@@ -63,6 +68,17 @@ export const WORKSHOP_INFO = {
   duration: '4 horas',
   format: 'Online • Ao vivo',
 };
+
+/** WhatsApp — fonte única para CTAs do funil */
+export const WORKSHOP_WHATSAPP = {
+  phoneE164: '5531994293099',
+  /** DM comercial (footer / floating na landing) */
+  dmUrl: `https://wa.me/5531994293099?text=${encodeURIComponent(
+    `Rômulo, quero saber mais sobre o Workshop Destrava Ligações (${WORKSHOP_SALES.edition}ª edição)!`
+  )}`,
+  /** Grupo da comunidade (página obrigado / pós-compra) */
+  communityUrl: 'https://chat.whatsapp.com/L4camOPOJMxDb8et6M80oN',
+} as const;
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {

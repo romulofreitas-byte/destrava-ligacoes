@@ -1,0 +1,22 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        heading: ['var(--font-ubuntu)', 'sans-serif'],
+        body: ['var(--font-montserrat)', 'sans-serif'],
+      },
+      colors: {
+        'proobra-blue-dark': '#0477bf',
+        'proobra-blue-light': '#049dd9',
+        'proobra-orange': '#f29829',
+      },
+    },
+  },
+  plugins: [],
+}

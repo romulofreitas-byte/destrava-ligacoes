@@ -7,7 +7,7 @@
 const { Resend } = require('resend');
 
 // API Key do Resend
-const RESEND_API_KEY = 're_YvGf7VWV_K9DgWEdAoPjxtHzMYFqPvKjz';
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 // Dados do participante
 const dadosParticipante = {
@@ -15,12 +15,12 @@ const dadosParticipante = {
   email: 'azimutegestao@gmail.com',
 };
 
-// Informações do Google Meet
+// Informações do Google Meet (via env — sem defaults sensíveis no repo)
 const meetInfo = {
-  link: 'https://meet.google.com/awb-vxqu-xnm',
-  phone: '(BR) +55 21 4560-7556',
-  pin: '523 187 755#',
-  phoneLink: 'https://tel.meet/awb-vxqu-xnm?pin=4122161251082',
+  link: process.env.GOOGLE_MEET_LINK || '',
+  phone: process.env.GOOGLE_MEET_PHONE || '',
+  pin: process.env.GOOGLE_MEET_PIN || '',
+  phoneLink: process.env.GOOGLE_MEET_PHONE_LINK || '',
 };
 
 function getWorkshopEmailTemplate(data) {

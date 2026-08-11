@@ -1,27 +1,21 @@
 'use client';
 
 import React, { useCallback, useRef, useState } from 'react';
-import Image from 'next/image';
 import { Maximize, Play } from 'lucide-react';
+import { YouTubeThumbnail } from '@/components/ui/YouTubeThumbnail';
+import { extractYouTubeId } from '@/lib/youtube';
 
 /** Depoimento hospedado no YouTube: https://youtu.be/FyR0wVqGXKY */
 const DEFAULT_YOUTUBE_ID = 'FyR0wVqGXKY';
 
 function resolveYouTubeId(): string {
-  const raw = process.env.NEXT_PUBLIC_DEPOIMENTO_MAYCON_YOUTUBE_URL?.trim();
-  if (!raw) return DEFAULT_YOUTUBE_ID;
-  const fromWatch = raw.match(/[?&]v=([\w-]{11})/);
-  if (fromWatch) return fromWatch[1];
-  const fromShort = raw.match(/youtu\.be\/([\w-]{11})/);
-  if (fromShort) return fromShort[1];
-  const fromEmbed = raw.match(/youtube\.com\/embed\/([\w-]{11})/);
-  if (fromEmbed) return fromEmbed[1];
-  if (/^[\w-]{11}$/.test(raw)) return raw;
-  return DEFAULT_YOUTUBE_ID;
+  const fromEnv = extractYouTubeId(
+    process.env.NEXT_PUBLIC_DEPOIMENTO_MAYCON_YOUTUBE_URL
+  );
+  return fromEnv || DEFAULT_YOUTUBE_ID;
 }
 
 const YOUTUBE_ID = resolveYouTubeId();
-const POSTER_SRC = `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`;
 
 type WorkshopDepoimentoVideoPlayerProps = {
   /** Estilo mais impactante: bordas maiores, play central maior */
@@ -80,8 +74,8 @@ export const WorkshopDepoimentoVideoPlayer: React.FC<
           />
         ) : (
           <>
-            <Image
-              src={POSTER_SRC}
+            <YouTubeThumbnail
+              videoId={YOUTUBE_ID}
               alt="Miniatura do depoimento em vídeo"
               fill
               className="object-cover"

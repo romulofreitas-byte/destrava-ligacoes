@@ -1,26 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkAndSendScheduledEmails } from '@/lib/email-cadence';
+import { requireCronAuth } from '@/lib/api-security';
 
 // Endpoint para verificar e enviar emails agendados
-// Pode ser chamado por um cron job ou agendador
+// Requer: Authorization: Bearer <EMAIL_CRON_SECRET|CRON_SECRET|ADMIN_API_SECRET>
 export async function POST(request: NextRequest) {
-  try {
-    // Verificar se há uma chave de autenticação (opcional, mas recomendado)
-    // Vercel Cron não envia headers customizados, então a autenticação é opcional
-    const authHeader = request.headers.get('authorization');
-    const expectedToken = process.env.EMAIL_CRON_SECRET;
-    
-    // Se EMAIL_CRON_SECRET estiver configurado, exigir autenticação
-    // Caso contrário, permitir acesso (útil para Vercel Cron que não envia headers)
-    if (expectedToken) {
-      if (!authHeader || authHeader !== `Bearer ${expectedToken}`) {
-        return NextResponse.json(
-          { error: 'Não autorizado' },
-          { status: 401 }
-        );
-      }
-    }
+  const authError = requireCronAuth(request);
+  if (authError) return authError;
 
+  try {
     await checkAndSendScheduledEmails();
 
     return NextResponse.json({
@@ -36,8 +24,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET para verificar manualmente (útil para testes)
 export async function GET(request: NextRequest) {
+  const authError = requireCronAuth(request);
+  if (authError) return authError;
+
   try {
     await checkAndSendScheduledEmails();
 
@@ -53,4 +43,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-

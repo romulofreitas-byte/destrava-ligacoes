@@ -1,28 +1,16 @@
 'use client';
 
 import React, { useCallback, useRef, useState } from 'react';
-import Image from 'next/image';
 import { Maximize, Play, ShieldCheck, Video } from 'lucide-react';
+import { YouTubeThumbnail } from '@/components/ui/YouTubeThumbnail';
+import { extractYouTubeId } from '@/lib/youtube';
 
 /**
  * ID do vídeo de garantia/termos.
  * Defina NEXT_PUBLIC_GARANTIA_YOUTUBE_URL (URL completa ou ID de 11 chars).
  * Enquanto vazio, exibe o slot placeholder.
  */
-function resolveGuaranteeYouTubeId(): string | null {
-  const raw = process.env.NEXT_PUBLIC_GARANTIA_YOUTUBE_URL?.trim();
-  if (!raw) return null;
-  const fromWatch = raw.match(/[?&]v=([\w-]{11})/);
-  if (fromWatch) return fromWatch[1];
-  const fromShort = raw.match(/youtu\.be\/([\w-]{11})/);
-  if (fromShort) return fromShort[1];
-  const fromEmbed = raw.match(/youtube\.com\/embed\/([\w-]{11})/);
-  if (fromEmbed) return fromEmbed[1];
-  if (/^[\w-]{11}$/.test(raw)) return raw;
-  return null;
-}
-
-const YOUTUBE_ID = resolveGuaranteeYouTubeId();
+const YOUTUBE_ID = extractYouTubeId(process.env.NEXT_PUBLIC_GARANTIA_YOUTUBE_URL);
 
 export const WorkshopGuaranteeSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -88,13 +76,12 @@ export const WorkshopGuaranteeSection: React.FC = () => {
                 />
               ) : YOUTUBE_ID ? (
                 <>
-                  <Image
-                    src={`https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`}
+                  <YouTubeThumbnail
+                    videoId={YOUTUBE_ID}
                     alt="Vídeo da garantia e termos"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 672px"
-                    unoptimized
                   />
                   <div className="absolute inset-0 bg-gray-950/40" />
                   <button

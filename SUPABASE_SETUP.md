@@ -17,7 +17,7 @@ Adicione as seguintes variáveis ao arquivo `.env.local` na raiz do projeto:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://wmsxiuxscmogbechxlty.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=sb_secret_vwvqpLQjJc9emNES5-JZYw_YFBrLnrO
+SUPABASE_SERVICE_ROLE_KEY=YOUR_SUPABASE_SERVICE_ROLE_KEY
 ```
 
 ⚠️ **Importante**: Nunca commite o arquivo `.env.local` no Git!

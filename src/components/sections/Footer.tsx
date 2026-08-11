@@ -1,11 +1,7 @@
 import React from 'react';
 import { Linkedin, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
-import { WORKSHOP_SALES } from '@/lib/constants';
-
-const WHATSAPP_WORKSHOP_TEXT = encodeURIComponent(
-  `Rômulo, quero saber mais sobre o Workshop Destrava Ligações (${WORKSHOP_SALES.edition}ª edição)!`
-);
+import { WORKSHOP_SALES, WORKSHOP_WHATSAPP } from '@/lib/constants';
 
 export const Footer: React.FC = () => {
   return (
@@ -98,7 +94,7 @@ export const Footer: React.FC = () => {
               <h4 className="text-lg font-semibold text-white mb-4">Contato Direto</h4>
               <div className="space-y-2">
                 <a
-                  href={`https://wa.me/5531994293099?text=${WHATSAPP_WORKSHOP_TEXT}`}
+                  href={WORKSHOP_WHATSAPP.dmUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block bg-green-500 text-white px-4 py-2 rounded-lg text-center hover:bg-green-600 transition-colors"

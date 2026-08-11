@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendWorkshopEmailManual, sendOneDayBeforeEmailManual, sendOneHourBeforeEmailManual } from '@/lib/email-cadence';
+import { requireAdminAuth } from '@/lib/api-security';
 
 // Endpoint para enviar manualmente emails do workshop
 // Aceita type: 'payment' (padrão), 'oneDayBefore' ou 'oneHourBefore'
+// Requer: Authorization: Bearer <ADMIN_API_SECRET>
 export async function POST(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     const { email, nome, type = 'payment' } = body;

@@ -24,7 +24,7 @@ Vá em **Settings > Environment Variables** e adicione:
 
 **2. Supabase Service Role Key**
 - **Name**: `SUPABASE_SERVICE_ROLE_KEY`
-- **Value**: `sb_secret_vwvqpLQjJc9emNES5-JZYw_YFBrLnrO`
+- **Value**: `YOUR_SUPABASE_SERVICE_ROLE_KEY`
 - **Environments**: ✅ Production, ✅ Preview, ✅ Development
 
 **3. PagBank Token**
@@ -102,7 +102,7 @@ vercel env add NEXT_PUBLIC_SUPABASE_URL
 # Selecione: Production, Preview, Development
 
 vercel env add SUPABASE_SERVICE_ROLE_KEY
-# Digite: sb_secret_vwvqpLQjJc9emNES5-JZYw_YFBrLnrO
+# Digite: YOUR_SUPABASE_SERVICE_ROLE_KEY
 # Selecione: Production, Preview, Development
 
 # PagBank

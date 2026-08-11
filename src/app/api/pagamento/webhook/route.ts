@@ -2,8 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getPaymentStatus } from '@/lib/pagbank';
 import { sendImmediateEmail } from '@/lib/email-cadence';
 import { upsertWorkshopRegistration, updateEmailStatus, getWorkshopRegistration } from '@/lib/supabase';
+import { checkRateLimit, getClientIp, requirePagBankWebhookAuth, requireAdminAuth } from '@/lib/api-security';
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request);
+  const limited = checkRateLimit(`pagbank-webhook:${ip}`, 60, 60_000);
+  if (limited) return limited;
+
+  const authError = requirePagBankWebhookAuth(request);
+  if (authError) return authError;
+
   try {
     console.log('🔔 ===== WEBHOOK RECEBIDO =====');
     console.log('⏰ Timestamp:', new Date().toISOString());
@@ -243,6 +251,15 @@ export async function POST(request: NextRequest) {
 
 // GET para verificar status (útil para testes)
 export async function GET(request: NextRequest) {
+  // GET enumeration locked: webhook secret OR admin
+  if (process.env.PAGBANK_WEBHOOK_SECRET?.trim()) {
+    const authError = requirePagBankWebhookAuth(request);
+    if (authError) return authError;
+  } else {
+    const adminErr = requireAdminAuth(request);
+    if (adminErr) return adminErr;
+  }
+
   const searchParams = request.nextUrl.searchParams;
   const chargeId = searchParams.get('charge_id');
 

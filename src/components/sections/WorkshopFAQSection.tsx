@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { HelpCircle } from 'lucide-react';
-import { WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION } from '@/lib/constants';
+import { WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION, WORKSHOP_PRICING } from '@/lib/constants';
 
 export const WorkshopFAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -34,7 +34,7 @@ export const WorkshopFAQSection: React.FC = () => {
         'Sim. Você pratica ao vivo, monta a Anatomia da Ligação e liga com suporte em tempo real.',
     },
     {
-      question: 'Por que custa R$ 897,00?',
+      question: `Por que custa ${WORKSHOP_PRICING.current}?`,
       answer: `Porque é prática de verdade: ${WORKSHOP_DURATION.detailLine}, ligações ao vivo, Anatomia da Ligação e 60 dias na Mundo Pódium — não funil isca.`,
     },
     {

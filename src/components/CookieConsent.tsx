@@ -250,7 +250,7 @@ export const CookieConsent: React.FC = () => {
                       <h4 className="font-semibold text-gray-200 text-sm">Cookies de Análise</h4>
                     </div>
                     <p className="text-xs text-gray-400 leading-relaxed">
-                      Nos ajudam a entender como você usa o site para melhorá-lo (Vercel Analytics).
+                      Nos ajudam a entender como você usa o site para melhorá-lo (Vercel Analytics e relatório interno de acessos).
                     </p>
                   </div>
                   <button

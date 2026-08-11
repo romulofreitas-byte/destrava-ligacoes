@@ -41,3 +41,17 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+
+# Raw depoimento dumps (pipeline source only — UI uses depoimentos-2026-ready)
+/public/Depoimentos - 2026/
+/public/depoimentos-2026-ready/gallery/*
+!/public/depoimentos-2026-ready/gallery/gallery_workshop_gleice-souza-agradece-o-workshop-elogian.png
+!/public/depoimentos-2026-ready/gallery/gallery_metricas_douglas-diz-que-a-anatomia-da-ligacao-o.png
+!/public/depoimentos-2026-ready/gallery/gallery_metricas_alanis-almeida-diz-que-o-workshop-de-lig_comp-a.png
+!/public/depoimentos-2026-ready/gallery/gallery_metricas_maycon-ferraz-diz-que-so-aplicou-o-works.png
+/public/depoimentos-2026-ready/hero/*
+!/public/depoimentos-2026-ready/hero/hero_metricas_regularize-triplicou-faturamento.png
+!/public/depoimentos-2026-ready/hero/hero_workshop_participantes-exaltam-o-workshop-como-o_parte-3.png
+!/public/depoimentos-2026-ready/hero/hero_metricas_lucas-30-ligacoes-3-reunioes-1-venda.png
+!/public/depoimentos-2026-ready/hero/hero_metricas_joao-8-ligacoes-2-compras-1-upsell.png
+!/public/depoimentos-2026-ready/hero/hero_metricas_izabela-4-reunioes-na-semana_parte-2.png

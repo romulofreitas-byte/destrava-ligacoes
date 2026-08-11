@@ -1,3 +1,5 @@
+import { WORKSHOP_PRICING, WORKSHOP_INFO } from '@/lib/constants';
+
 declare global {
   interface Window {
     fbq?: (...args: any[]) => void;
@@ -10,43 +12,16 @@ declare global {
  */
 function isPixelAvailable(): boolean {
   if (typeof window === 'undefined') return false;
-  
-  // Check if in development/test mode
-  const isDevelopment = 
-    window.location.hostname === 'localhost' ||
-    window.location.hostname.includes('vercel.app') ||
-    window.location.search.includes('test_pixel=true');
+  if (typeof window.fbq !== 'function') return false;
 
-  // In development, only check if fbq exists
-  if (isDevelopment) {
-    return typeof window.fbq === 'function';
-  }
-
-  // In production, check consent
-  let consent: string | null = null;
   try {
-    consent = localStorage.getItem('cookie-consent');
-  } catch (error) {
-    // localStorage might not be available (e.g., in private browsing)
+    const consent = localStorage.getItem('cookie-consent');
+    if (!consent) return false;
+    const parsedConsent = JSON.parse(consent) as { marketing?: boolean };
+    return parsedConsent?.marketing === true;
+  } catch {
     return false;
   }
-  
-  if (!consent) return false;
-  
-  let parsedConsent: { marketing?: boolean } | null = null;
-  try {
-    parsedConsent = JSON.parse(consent);
-  } catch (error) {
-    // Invalid JSON in localStorage
-    return false;
-  }
-  
-  // Validate consent structure
-  if (!parsedConsent || typeof parsedConsent !== 'object' || typeof parsedConsent.marketing !== 'boolean') {
-    return false;
-  }
-  
-  return parsedConsent.marketing === true && typeof window.fbq === 'function';
 }
 
 /**
@@ -125,17 +100,19 @@ export function trackCTAClick(ctaName?: string, contentCategory?: string): void 
 /**
  * Track pricing CTA clicks (InitiateCheckout event)
  */
-export function trackInitiateCheckout(value?: number, currency: string = 'BRL'): void {
+export function trackInitiateCheckout(
+  value: number = WORKSHOP_PRICING.amountBRL,
+  currency: string = 'BRL'
+): void {
   if (!isPixelAvailable()) return;
   
   const params: Record<string, any> = {
-    content_name: 'Escuderia Podium',
+    content_name: WORKSHOP_INFO.productName,
     content_type: 'product',
     num_items: 1,
-    currency: currency
+    value,
+    currency,
   };
-  
-  if (value) params.value = value;
   
   const fbq = (window as any).fbq as (...args: any[]) => void;
   if (fbq) {

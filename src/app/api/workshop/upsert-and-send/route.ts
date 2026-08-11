@@ -2,8 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { upsertWorkshopRegistration } from '@/lib/supabase';
 import { sendImmediateEmail } from '@/lib/email-cadence';
 import { updateEmailStatus } from '@/lib/supabase';
+import { requireAdminAuth } from '@/lib/api-security';
 
+// Requer: Authorization: Bearer <ADMIN_API_SECRET>
 export async function POST(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     

@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/email';
 import { getWorkshopEmailTemplate } from '@/lib/email-templates';
+import { requireAdminAuth } from '@/lib/api-security';
 
 // Endpoint para enviar email de teste
+// Requer: Authorization: Bearer <ADMIN_API_SECRET>
 export async function POST(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     const { email, nome } = body;
@@ -18,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     const result = await sendEmail({
       to: testEmail,
-      subject: '🧪 Email de Teste - Workshop Destrave Suas Ligações',
+      subject: '🧪 Email de Teste - Workshop Destrava Ligações',
       html,
     });
 
@@ -47,7 +52,11 @@ export async function POST(request: NextRequest) {
 }
 
 // GET para enviar email de teste rápido
+// Requer: Authorization: Bearer <ADMIN_API_SECRET>
 export async function GET(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   try {
     const searchParams = request.nextUrl.searchParams;
     const email = searchParams.get('email') || 'romulocsfreitas@gmail.com';
@@ -60,7 +69,7 @@ export async function GET(request: NextRequest) {
 
     const result = await sendEmail({
       to: email,
-      subject: '🧪 Email de Teste - Workshop Destrave Suas Ligações',
+      subject: '🧪 Email de Teste - Workshop Destrava Ligações',
       html,
     });
 

@@ -48,7 +48,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
 
   const handleCTAClick = () => {
     if (salesOpen) {
-      trackInitiateCheckout(897, 'BRL');
+      trackInitiateCheckout(WORKSHOP_PRICING.amountBRL, 'BRL');
     }
     trackCTAClick(
       salesOpen ? 'Final CTA Workshop - Garantir Vaga' : 'Final CTA Workshop - Vendas em breve',

@@ -2,9 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { addInvitedGuest } from '@/lib/supabase';
 import { sendEmail } from '@/lib/email';
 import { getInvitationEmailTemplate } from '@/lib/email-templates';
+import { requireAdminAuth } from '@/lib/api-security';
 
 // Endpoint para adicionar convidado especial ao Supabase e enviar e-mail de convite
+// Requer: Authorization: Bearer <ADMIN_API_SECRET>
 export async function POST(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     const { nome, email, tipo } = body;
@@ -50,7 +55,7 @@ export async function POST(request: NextRequest) {
     // Enviar e-mail de convite
     console.log(`📧 Enviando e-mail de convite para: ${email}`);
     const html = getInvitationEmailTemplate({ nome, email }, tipo);
-    const subject = '🎁 Convite Especial - Workshop Destrave Suas Ligações';
+    const subject = '🎁 Convite Especial - Workshop Destrava Ligações';
 
     const emailResult = await sendEmail({
       to: email,

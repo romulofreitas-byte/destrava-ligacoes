@@ -35,7 +35,7 @@ Adicione estas linhas no arquivo `.env.local`:
 ```env
 # Supabase Configuration
 NEXT_PUBLIC_SUPABASE_URL=https://wmsxiuxscmogbechxlty.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=sb_secret_vwvqpLQjJc9emNES5-JZYw_YFBrLnrO
+SUPABASE_SERVICE_ROLE_KEY=YOUR_SUPABASE_SERVICE_ROLE_KEY
 ```
 
 ⚠️ **IMPORTANTE**: 

@@ -12,6 +12,17 @@ declare global {
 // Get Meta Pixel ID from environment variable
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '687023637552068';
 
+function hasMarketingConsent(): boolean {
+  try {
+    const consent = localStorage.getItem('cookie-consent');
+    if (!consent) return false;
+    const parsed = JSON.parse(consent) as { marketing?: boolean };
+    return parsed?.marketing === true;
+  } catch {
+    return false;
+  }
+}
+
 export const MetaPixel: React.FC = () => {
   useEffect(() => {
     // Don't initialize if Pixel ID is not configured
@@ -28,47 +39,12 @@ export const MetaPixel: React.FC = () => {
         window.location.hostname.includes('vercel.app') ||
         window.location.search.includes('test_pixel=true');
 
-      let consent: string | null = null;
-      try {
-        consent = localStorage.getItem('cookie-consent');
-      } catch (error) {
-        // localStorage might not be available (e.g., in private browsing)
+      // Always require marketing consent (banner already promises Meta Pixel only after accept)
+      if (!hasMarketingConsent()) {
         if (isDevelopment) {
-          console.warn('⚠️ Meta Pixel: localStorage not available', error);
+          console.log('⏳ Meta Pixel: waiting for marketing cookie consent');
         }
         return;
-      }
-      
-      // In production, require consent. In development, skip consent check.
-      if (!isDevelopment) {
-        if (!consent) {
-          // If no consent yet, wait for it
-          return;
-        }
-
-        let parsedConsent: { marketing?: boolean } | null = null;
-        try {
-          parsedConsent = JSON.parse(consent);
-        } catch (error) {
-          // Invalid JSON in localStorage, treat as no consent
-          if (isDevelopment) {
-            console.warn('⚠️ Meta Pixel: Invalid consent data in localStorage', error);
-          }
-          return;
-        }
-        
-        // Validate consent structure
-        if (!parsedConsent || typeof parsedConsent !== 'object' || typeof parsedConsent.marketing !== 'boolean') {
-          if (isDevelopment) {
-            console.warn('⚠️ Meta Pixel: Invalid consent structure');
-          }
-          return;
-        }
-        
-        // Only initialize if marketing consent is granted
-        if (!parsedConsent.marketing) {
-          return;
-        }
       }
 
       // Check if already initialized
@@ -78,7 +54,7 @@ export const MetaPixel: React.FC = () => {
 
       // Log debug info in development
       if (isDevelopment) {
-        console.log('🔥 Meta Pixel: Initializing in TEST MODE');
+        console.log('🔥 Meta Pixel: Initializing');
         console.log('📍 Pixel ID:', META_PIXEL_ID);
       }
 
@@ -108,12 +84,7 @@ export const MetaPixel: React.FC = () => {
         fbq('init', META_PIXEL_ID);
         fbq('track', 'PageView');
         
-        // Debug logging
-        const isDev = window.location.hostname === 'localhost' || 
-                      window.location.hostname.includes('vercel.app') ||
-                      window.location.search.includes('test_pixel=true');
-        
-        if (isDev) {
+        if (isDevelopment) {
           console.log('✅ Meta Pixel: Initialized successfully');
           console.log('✅ PageView event tracked');
           console.log('💡 Tip: Open Meta Pixel Helper to verify events');
@@ -143,20 +114,7 @@ export const MetaPixel: React.FC = () => {
     };
   }, []);
 
-  return (
-    <>
-      {/* Noscript tracking image */}
-      <noscript>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          height="1"
-          width="1"
-          style={{ display: 'none' }}
-          src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-          alt=""
-        />
-      </noscript>
-    </>
-  );
+  // Noscript fallback only after marketing consent (SSR-safe: no pixel without JS consent path)
+  return null;
 };
 

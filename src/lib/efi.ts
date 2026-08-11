@@ -2,6 +2,7 @@
 import * as fs from 'fs';
 import * as https from 'https';
 import { Agent } from 'https';
+import { createHmac, timingSafeEqual } from 'crypto';
 
 // Configuração da API Efí
 const EFI_API_BASE = process.env.EFI_API_BASE || 'https://pix.api.efipay.com.br';
@@ -359,21 +360,36 @@ export async function getReceivedPix(
  */
 export function validateWebhookSignature(
   body: any,
-  signature?: string
+  signature?: string,
+  rawBody?: string
 ): boolean {
-  // Validação básica - verificar se há dados de PIX
   if (!body || typeof body !== 'object') {
     return false;
   }
 
-  // Se houver signature, validar (implementar validação completa conforme documentação)
-  if (signature && process.env.EFI_WEBHOOK_SECRET) {
-    // TODO: Implementar validação de assinatura HMAC se necessário
-    // Por enquanto, apenas verificar se a signature está presente
-    return signature.length > 0;
+  const secret = process.env.EFI_WEBHOOK_SECRET?.trim();
+
+  // Production: require HMAC when secret is configured
+  if (secret) {
+    if (!signature || !rawBody) return false;
+    const expected = createHmac('sha256', secret).update(rawBody).digest('hex');
+    const provided = signature.replace(/^sha256=/i, '');
+    try {
+      const a = Buffer.from(provided);
+      const b = Buffer.from(expected);
+      if (a.length !== b.length) return false;
+      return timingSafeEqual(a, b);
+    } catch {
+      return false;
+    }
   }
 
-  // Validação básica: verificar se tem estrutura de webhook
+  // Fail closed in production without secret
+  if (process.env.NODE_ENV === 'production') {
+    return false;
+  }
+
+  // Dev: basic structure check only
   return body.pix !== undefined || body.txid !== undefined;
 }
 

@@ -80,7 +80,7 @@ export async function sendImmediateEmail(data: EmailCadenceData): Promise<{ succ
 
     console.log('📧 [CADENCE] Gerando template de email...');
     const html = getWorkshopEmailTemplate({ nome: data.nome, email: data.email });
-    const subject = '🎉 Pagamento Confirmado - Workshop Destrave Suas Ligações';
+    const subject = '🎉 Pagamento Confirmado - Workshop Destrava Ligações';
     console.log('📧 [CADENCE] Template gerado, assunto:', subject);
 
     console.log('📧 [CADENCE] Chamando sendEmail...');
@@ -132,7 +132,7 @@ export async function sendOneDayBeforeEmail(data: EmailCadenceData): Promise<{ s
     }
 
     const html = getOneDayBeforeEmailTemplate({ nome: data.nome, email: data.email });
-    const subject = '⏰ Falta apenas 1 dia! Workshop Destrave Suas Ligações é amanhã!';
+    const subject = '⏰ Falta apenas 1 dia! Workshop Destrava Ligações é amanhã!';
 
     const result = await sendEmail({
       to: data.email,
@@ -176,7 +176,7 @@ export async function sendDayOfEmail(data: EmailCadenceData): Promise<{ success:
     }
 
     const html = getOneHourBeforeEmailTemplate({ nome: data.nome, email: data.email });
-    const subject = '⏰ Falta apenas 1 hora! Workshop Destrave Suas Ligações começa às 13:00';
+    const subject = '⏰ Falta apenas 1 hora! Workshop Destrava Ligações começa às 13:00';
 
     const result = await sendEmail({
       to: data.email,
@@ -307,7 +307,7 @@ export async function sendWorkshopEmailManual(email: string, nome?: string): Pro
   try {
     const customerName = nome || 'Participante';
     const html = getWorkshopEmailTemplate({ nome: customerName, email });
-    const subject = '🎉 Pagamento Confirmado - Workshop Destrave Suas Ligações';
+    const subject = '🎉 Pagamento Confirmado - Workshop Destrava Ligações';
 
     const result = await sendEmail({
       to: email,
@@ -331,7 +331,7 @@ export async function sendOneDayBeforeEmailManual(email: string, nome?: string):
   try {
     const customerName = nome || 'Participante';
     const html = getOneDayBeforeEmailTemplate({ nome: customerName, email });
-    const subject = '⏰ Falta apenas 1 dia! Workshop Destrave Suas Ligações é amanhã!';
+    const subject = '⏰ Falta apenas 1 dia! Workshop Destrava Ligações é amanhã!';
 
     const result = await sendEmail({
       to: email,
@@ -355,7 +355,7 @@ export async function sendOneHourBeforeEmailManual(email: string, nome?: string)
   try {
     const customerName = nome || 'Participante';
     const html = getOneHourBeforeEmailTemplate({ nome: customerName, email });
-    const subject = '⏰ Falta apenas 1 hora! Workshop Destrave Suas Ligações começa às 13:00';
+    const subject = '⏰ Falta apenas 1 hora! Workshop Destrava Ligações começa às 13:00';
 
     const result = await sendEmail({
       to: email,

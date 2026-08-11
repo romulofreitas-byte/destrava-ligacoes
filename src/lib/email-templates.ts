@@ -1,8 +1,13 @@
 import { getGoogleMeetInfo, WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_DURATION } from './constants';
+import { escapeHtml } from './escape-html';
 
 export interface WorkshopEmailData {
   nome: string;
   email: string;
+}
+
+function safeName(nome?: string): string {
+  return escapeHtml((nome || 'Participante').trim() || 'Participante');
 }
 
 export function getWorkshopEmailTemplate(data: WorkshopEmailData): string {
@@ -14,7 +19,7 @@ export function getWorkshopEmailTemplate(data: WorkshopEmailData): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Workshop Destrave Suas Ligações</title>
+  <title>Workshop Destrava Ligações</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
   <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;">
@@ -25,7 +30,7 @@ export function getWorkshopEmailTemplate(data: WorkshopEmailData): string {
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #1f2937 0%, #111827 100%); border-radius: 8px 8px 0 0;">
               <h1 style="margin: 0; color: #fbbf24; font-size: 24px; font-weight: bold;">
-                WORKSHOP DESTRAVE SUAS LIGAÇÕES
+                WORKSHOP DESTRAVA LIGAÇÕES
               </h1>
               <p style="margin: 10px 0 0; color: #ffffff; font-size: 16px;">
                 MUNDO PÓDIUM
@@ -37,11 +42,11 @@ export function getWorkshopEmailTemplate(data: WorkshopEmailData): string {
           <tr>
             <td style="padding: 40px;">
               <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
-                Olá <strong>${data.nome || 'Participante'}</strong>,
+                Olá <strong>${safeName(data.nome)}</strong>,
               </p>
               
               <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
-                Parabéns! Seu pagamento foi confirmado e sua vaga no <strong>Workshop Destrave Suas Ligações</strong> está garantida!
+                Parabéns! Seu pagamento foi confirmado e sua vaga no <strong>Workshop Destrava Ligações</strong> está garantida!
               </p>
               
               <div style="background-color: #fef3c7; border-left: 4px solid #fbbf24; padding: 20px; margin: 30px 0; border-radius: 4px;">
@@ -141,7 +146,7 @@ export function getOneDayBeforeEmailTemplate(data: WorkshopEmailData): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lembrete: Workshop Destrave Suas Ligações</title>
+  <title>Lembrete: Workshop Destrava Ligações</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
   <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;">
@@ -155,7 +160,7 @@ export function getOneDayBeforeEmailTemplate(data: WorkshopEmailData): string {
                 ⏰ FALTA APENAS 1 DIA!
               </h1>
               <p style="margin: 10px 0 0; color: #ffffff; font-size: 16px;">
-                Workshop Destrave Suas Ligações
+                Workshop Destrava Ligações
               </p>
             </td>
           </tr>
@@ -164,11 +169,11 @@ export function getOneDayBeforeEmailTemplate(data: WorkshopEmailData): string {
           <tr>
             <td style="padding: 40px;">
               <p style="margin: 0 0 20px; color: #374151; font-size: 18px; line-height: 1.6; font-weight: bold;">
-                Olá <strong>${data.nome || 'Participante'}</strong>! 👋
+                Olá <strong>${safeName(data.nome)}</strong>! 👋
               </p>
               
               <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
-                <strong>Falta apenas 1 dia para o Workshop Destrave Suas Ligações!</strong> Estamos muito animados para te ajudar a transformar seu medo em coragem e suas travas em resultados.
+                <strong>Falta apenas 1 dia para o Workshop Destrava Ligações!</strong> Estamos muito animados para te ajudar a transformar seu medo em coragem e suas travas em resultados.
               </p>
               
               <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); border: 2px solid #3b82f6; padding: 30px; margin: 30px 0; border-radius: 8px; text-align: center;">
@@ -316,7 +321,7 @@ export function getOneHourBeforeEmailTemplate(data: WorkshopEmailData): string {
                 ⏰ FALTA APENAS 1 HORA!
               </h1>
               <p style="margin: 10px 0 0; color: #ffffff; font-size: 16px;">
-                Workshop Destrave Suas Ligações começa às 13:00
+                Workshop Destrava Ligações começa às 13:00
               </p>
             </td>
           </tr>
@@ -325,11 +330,11 @@ export function getOneHourBeforeEmailTemplate(data: WorkshopEmailData): string {
           <tr>
             <td style="padding: 40px;">
               <p style="margin: 0 0 20px; color: #374151; font-size: 18px; line-height: 1.6; font-weight: bold;">
-                Olá <strong>${data.nome || 'Participante'}</strong>! 🚀
+                Olá <strong>${safeName(data.nome)}</strong>! 🚀
               </p>
               
               <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
-                <strong>O Workshop Destrave Suas Ligações começa em apenas 1 hora!</strong> Está tudo pronto para transformar seu medo em coragem e suas travas em resultados reais.
+                <strong>O Workshop Destrava Ligações começa em apenas 1 hora!</strong> Está tudo pronto para transformar seu medo em coragem e suas travas em resultados reais.
               </p>
               
               <div style="background-color: #ffffff; border: 2px solid #e5e7eb; padding: 25px; margin: 30px 0; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -465,7 +470,7 @@ export function getInvitationEmailTemplate(
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convite Especial - Workshop Destrave Suas Ligações</title>
+  <title>Convite Especial - Workshop Destrava Ligações</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
   <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f5f5f5;">
@@ -479,7 +484,7 @@ export function getInvitationEmailTemplate(
                 🎁 CONVITE ESPECIAL
               </h1>
               <p style="margin: 10px 0 0; color: #ffffff; font-size: 16px;">
-                WORKSHOP DESTRAVE SUAS LIGAÇÕES
+                WORKSHOP DESTRAVA LIGAÇÕES
               </p>
             </td>
           </tr>
@@ -488,11 +493,11 @@ export function getInvitationEmailTemplate(
           <tr>
             <td style="padding: 40px;">
               <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
-                Olá <strong>${data.nome || 'Participante'}</strong>,
+                Olá <strong>${safeName(data.nome)}</strong>,
               </p>
               
               <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
-                Como você já faz parte da <strong>${comunidadeText}</strong>, quero te convidar especialmente para participar do <strong>Workshop Destrave Suas Ligações</strong>.
+                Como você já faz parte da <strong>${comunidadeText}</strong>, quero te convidar especialmente para participar do <strong>Workshop Destrava Ligações</strong>.
               </p>
               
               <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border: 2px solid #fbbf24; padding: 25px; margin: 30px 0; border-radius: 8px; text-align: center;">

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { trackWhatsAppClick } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
+import { WORKSHOP_WHATSAPP } from '@/lib/constants';
 
 export const FloatingWhatsAppButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,14 +34,14 @@ export const FloatingWhatsAppButton: React.FC = () => {
   }, []);
 
   const handleClick = () => {
-    trackWhatsAppClick('Floating WhatsApp Button', 'Community CTA');
+    trackWhatsAppClick('Floating WhatsApp Button', 'Workshop DM CTA');
   };
 
   const shouldShow = isVisible && !isModalOpen && !footerInView;
 
   return (
     <a
-      href="https://chat.whatsapp.com/L4camOPOJMxDb8et6M80oN"
+      href={WORKSHOP_WHATSAPP.dmUrl}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}

@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPaymentStatus } from '@/lib/pagbank';
+import { requireAdminAuth } from '@/lib/api-security';
 
 export async function GET(request: NextRequest) {
+  const authError = requireAdminAuth(request);
+  if (authError) return authError;
+
   const searchParams = request.nextUrl.searchParams;
   const chargeId = searchParams.get('charge_id');
 
@@ -23,5 +27,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-
-

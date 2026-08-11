@@ -7,7 +7,7 @@ Este documento explica como configurar a integração com a API do PagBank e con
 Adicione as seguintes variáveis no arquivo `.env.local`:
 
 ```env
-PAGBANK_TOKEN=3e894315-932b-4358-ba90-597029a6861ae9164ade4d2d94de527175089a067acc3826-7c89-4cdd-8805-8e79d24bfd86
+PAGBANK_TOKEN=YOUR_PAGBANK_TOKEN
 PAGBANK_ENVIRONMENT=sandbox
 NEXT_PUBLIC_BASE_URL=http://localhost:3002
 ```

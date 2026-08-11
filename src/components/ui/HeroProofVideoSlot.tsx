@@ -3,29 +3,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Play } from 'lucide-react';
+import { YouTubeThumbnail } from '@/components/ui/YouTubeThumbnail';
+import { extractYouTubeId } from '@/lib/youtube';
 
 /**
  * Hero proof video slot.
  * Set NEXT_PUBLIC_HERO_PROOF_YOUTUBE_URL (or VIDEO_URL for mp4) when ready.
  */
-function resolveYouTubeId(): string | null {
-  const raw = process.env.NEXT_PUBLIC_HERO_PROOF_YOUTUBE_URL?.trim();
-  if (!raw) return null;
-  const fromWatch = raw.match(/[?&]v=([\w-]{11})/);
-  if (fromWatch) return fromWatch[1];
-  const fromShort = raw.match(/youtu\.be\/([\w-]{11})/);
-  if (fromShort) return fromShort[1];
-  const fromEmbed = raw.match(/youtube\.com\/embed\/([\w-]{11})/);
-  if (fromEmbed) return fromEmbed[1];
-  if (/^[\w-]{11}$/.test(raw)) return raw;
-  return null;
-}
-
-const YOUTUBE_ID = resolveYouTubeId();
+const YOUTUBE_ID = extractYouTubeId(process.env.NEXT_PUBLIC_HERO_PROOF_YOUTUBE_URL);
 const MP4_SRC = process.env.NEXT_PUBLIC_HERO_PROOF_VIDEO_URL?.trim() || null;
-const YOUTUBE_POSTER = YOUTUBE_ID
-  ? `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`
-  : null;
 const YOUTUBE_EMBED = YOUTUBE_ID
   ? `https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`
   : null;
@@ -82,15 +68,14 @@ export const HeroProofVideoSlot: React.FC<HeroProofVideoSlotProps> = ({
 
   return (
     <div className={frameClass}>
-      {YOUTUBE_POSTER ? (
+      {YOUTUBE_ID ? (
         <>
-          <Image
-            src={YOUTUBE_POSTER}
+          <YouTubeThumbnail
+            videoId={YOUTUBE_ID}
             alt="Miniatura do vídeo de prova — ligação real ao vivo"
             fill
             className="object-cover"
             sizes={compact ? '(max-width: 768px) 90vw, 420px' : '(max-width: 1024px) 90vw, 560px'}
-            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/25" />
         </>

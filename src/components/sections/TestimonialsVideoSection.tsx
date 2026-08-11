@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { Play, Users } from 'lucide-react';
 import { VideoModal } from '@/components/ui/VideoModal';
+import { YouTubeThumbnail } from '@/components/ui/YouTubeThumbnail';
+import { extractYouTubeId } from '@/lib/youtube';
 import { trackVideoOpen } from '@/lib/metaPixel';
 
 export const TestimonialsVideoSection: React.FC = () => {
@@ -19,20 +20,6 @@ export const TestimonialsVideoSection: React.FC = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedVideo(null);
-  };
-
-  // Extract video ID from YouTube URL for thumbnail
-  const getVideoId = (url: string): string => {
-    const patterns = [
-      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
-      /youtube\.com\/live\/([^&\n?#]+)/,
-    ];
-    
-    for (const pattern of patterns) {
-      const match = url.match(pattern);
-      if (match) return match[1];
-    }
-    return '';
   };
 
   const videos = [
@@ -92,8 +79,7 @@ export const TestimonialsVideoSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-8 max-w-5xl mx-auto">
           {videos.map((video, index) => {
             const IconComponent = video.icon;
-            const videoId = getVideoId(video.url);
-            const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '';
+            const videoId = extractYouTubeId(video.url);
             
             return (
               <button
@@ -112,15 +98,14 @@ export const TestimonialsVideoSection: React.FC = () => {
                   {/* Video Thumbnail */}
                   <div className="relative flex-shrink-0">
                     <div className="relative w-full lg:w-48 h-32 sm:h-48 bg-gray-700/50 rounded-xl overflow-hidden border-2 border-yellow-400/20 group-hover:border-yellow-400/50 transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:shadow-yellow-400/30">
-                      {thumbnailUrl ? (
-                        <Image
-                          src={thumbnailUrl}
+                      {videoId ? (
+                        <YouTubeThumbnail
+                          videoId={videoId}
                           alt={video.title}
                           width={192}
                           height={192}
                           className="w-full h-full object-cover object-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
                           loading="lazy"
-                          unoptimized
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">

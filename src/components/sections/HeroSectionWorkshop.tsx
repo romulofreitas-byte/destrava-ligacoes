@@ -41,7 +41,7 @@ export const HeroSectionWorkshop: React.FC = () => {
 
   const handleCTAClick = () => {
     if (salesOpen) {
-      trackInitiateCheckout(897, 'BRL');
+      trackInitiateCheckout(WORKSHOP_PRICING.amountBRL, 'BRL');
     }
     trackCTAClick(
       salesOpen

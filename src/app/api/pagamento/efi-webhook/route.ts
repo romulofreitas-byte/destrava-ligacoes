@@ -18,15 +18,24 @@ export async function POST(request: NextRequest) {
   try {
     console.log('🔔 ===== WEBHOOK BANCO EFÍ RECEBIDO =====');
     console.log('⏰ Timestamp:', new Date().toISOString());
-    
-    const body = await request.json();
+
+    const rawBody = await request.text();
+    let body: any;
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return NextResponse.json({ error: 'JSON inválido' }, { status: 400 });
+    }
+
     console.log('📦 Body recebido:', JSON.stringify(body, null, 2));
-    
-    // Validar assinatura do webhook (se configurada)
-    const signature = request.headers.get('x-efi-signature') || request.headers.get('signature');
-    if (!validateWebhookSignature(body, signature || undefined)) {
-      console.warn('⚠️ Webhook com assinatura inválida ou formato incorreto');
-      // Continuar processamento mesmo assim (validação básica passou)
+
+    const signature =
+      request.headers.get('x-efi-signature') ||
+      request.headers.get('signature');
+
+    if (!validateWebhookSignature(body, signature || undefined, rawBody)) {
+      console.warn('⚠️ Webhook Efí rejeitado: assinatura inválida ou secret ausente');
+      return NextResponse.json({ error: 'Não autorizado' }, { status: 401 });
     }
 
     // Extrair informações do webhook

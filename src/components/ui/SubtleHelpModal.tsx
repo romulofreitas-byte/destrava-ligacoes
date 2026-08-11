@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Youtube, MessageCircle } from 'lucide-react';
 import { trackWhatsAppClick, trackCustomEvent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
-import { WORKSHOP_SALES } from '@/lib/constants';
+import { WORKSHOP_SALES, WORKSHOP_WHATSAPP } from '@/lib/constants';
 
 export const SubtleHelpModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -180,7 +180,7 @@ export const SubtleHelpModal: React.FC = () => {
 
             {/* WhatsApp Button with FREE badge */}
             <a
-              href="https://chat.whatsapp.com/L4camOPOJMxDb8et6M80oN"
+              href={WORKSHOP_WHATSAPP.communityUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleWhatsAppClick}

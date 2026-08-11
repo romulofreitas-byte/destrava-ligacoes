@@ -60,26 +60,24 @@ const nextConfig = {
       });
     }
 
-    // Content Security Policy - temporarily commented out to debug 404 issue
-    // Uncomment and adjust after confirming site works
-    /*
+    // Content Security Policy
     securityHeaders.push({
       key: 'Content-Security-Policy',
       value: [
-        "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:",
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://www.facebook.com https://va.vercel-scripts.com https://vercel.live https://*.vercel.app",
+        "default-src 'self'",
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://www.facebook.com https://va.vercel-scripts.com https://vercel.live",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "font-src 'self' https://fonts.gstatic.com data:",
         "img-src 'self' data: https: blob:",
-        "connect-src 'self' https://www.facebook.com https://connect.facebook.net https://vitals.vercel-insights.com https://*.vercel-analytics.com https://*.vercel.app wss://*.vercel.app ws://localhost:*",
+        "connect-src 'self' https://www.facebook.com https://connect.facebook.net https://vitals.vercel-insights.com https://*.vercel-analytics.com https://*.vercel.app wss://*.vercel.app",
         "frame-src 'self' https://www.facebook.com https://www.youtube-nocookie.com https://www.youtube.com",
+        "media-src 'self' https: blob:",
         "object-src 'none'",
         "base-uri 'self'",
-        "form-action 'self'",
-        "frame-ancestors 'none'",
+        "form-action 'self' https://pag.ae https://*.pagseguro.com.br https://*.pagbank.com.br",
+        "frame-ancestors 'self'",
       ].join('; '),
     });
-    */
 
     return [
       {
