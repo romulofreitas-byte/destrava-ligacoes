@@ -16,8 +16,10 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 }
 
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
+/** Checkout PagBank do Workshop (CTA final) */
+export const WORKSHOP_CHECKOUT_URL = 'https://pag.ae/823tVC3zv';
 export const WORKSHOP_SALES = {
-  isOpen: false,
+  isOpen: true,
   /** Abertura das vendas (exibição em CTAs) */
   opensOnDisplay: '11/08',
   /** Número da edição atual (ex.: 11 → "11ª") */

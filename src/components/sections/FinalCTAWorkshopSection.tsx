@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Zap, Users, Video, Mail, MessageCircle, Calendar } from 'lucide-react';
-import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
+import { trackCTAClick, trackInitiateCheckout, trackViewContent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
 import {
   WORKSHOP_INFO,
   WORKSHOP_SALES,
   WORKSHOP_PRICING,
   WORKSHOP_CLOSED_COPY,
+  WORKSHOP_CHECKOUT_URL,
 } from '@/lib/constants';
 import { WorkshopCountdown } from '@/components/ui/WorkshopCountdown';
 
@@ -46,6 +47,9 @@ export const FinalCTAWorkshopSection: React.FC = () => {
   }, []);
 
   const handleCTAClick = () => {
+    if (salesOpen) {
+      trackInitiateCheckout(897, 'BRL');
+    }
     trackCTAClick(
       salesOpen ? 'Final CTA Workshop - Garantir Vaga' : 'Final CTA Workshop - Vendas em breve',
       'final-cta'
@@ -129,26 +133,32 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               </div>
 
               <div className="mb-6">
-                <button
-                  type="button"
-                  disabled={!salesOpen}
-                  aria-disabled={!salesOpen}
-                  onClick={salesOpen ? handleCTAClick : undefined}
-                  className={`${ctaButtonClass}${
-                    salesOpen
-                      ? ''
-                      : ' cursor-not-allowed opacity-90 hover:scale-100 hover:from-yellow-500 hover:to-yellow-600'
-                  }`}
-                  title={
-                    salesOpen
-                      ? 'Garantir minha vaga'
-                      : `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`
-                  }
-                >
-                  <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
-                    {salesOpen ? 'Garantir Minha Vaga Agora' : WORKSHOP_CLOSED_COPY.finalCta}
-                  </span>
-                </button>
+                {salesOpen ? (
+                  <a
+                    href={WORKSHOP_CHECKOUT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleCTAClick}
+                    className={ctaButtonClass}
+                    title="Pagar com PagBank"
+                  >
+                    <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
+                      Garantir Minha Vaga Agora
+                    </span>
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    aria-disabled="true"
+                    className={`${ctaButtonClass} cursor-not-allowed opacity-90 hover:scale-100 hover:from-yellow-500 hover:to-yellow-600`}
+                    title={`Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`}
+                  >
+                    <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
+                      {WORKSHOP_CLOSED_COPY.finalCta}
+                    </span>
+                  </button>
+                )}
               </div>
 
               <div className="mb-6">
