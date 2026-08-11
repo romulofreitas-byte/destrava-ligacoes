@@ -89,7 +89,7 @@ export const WorkshopGuaranteeSection: React.FC = () => {
               ) : YOUTUBE_ID ? (
                 <>
                   <Image
-                    src={`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`}
+                    src={`https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`}
                     alt="Vídeo da garantia e termos"
                     fill
                     className="object-cover"

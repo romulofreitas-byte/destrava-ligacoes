@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
-import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
+import { trackCTAClick, trackInitiateCheckout, trackViewContent } from '@/lib/metaPixel';
 import { PainPointsMarquee } from './PainPointsMarquee';
 import { HeroFeaturesBadge } from '@/components/ui/HeroFeaturesBadge';
 import { HeroProofVideoSlot } from '@/components/ui/HeroProofVideoSlot';
@@ -40,6 +40,9 @@ export const HeroSectionWorkshop: React.FC = () => {
   }, []);
 
   const handleCTAClick = () => {
+    if (salesOpen) {
+      trackInitiateCheckout(897, 'BRL');
+    }
     trackCTAClick(
       salesOpen
         ? 'Hero Section Workshop - CTA Button'
@@ -186,7 +189,7 @@ export const HeroSectionWorkshop: React.FC = () => {
       <div className="lg:hidden relative flex flex-col px-4 pt-8 pb-28">
         <div className="flex flex-col items-center text-center gap-5 mb-8">
           <HeroFeaturesBadge />
-          <div className="w-full max-w-[200px]">
+          <div className="w-full max-w-lg">
             <HeroProofVideoSlot compact />
           </div>
           <h1 className="text-[17px] sm:text-xl font-bold text-white leading-snug drop-shadow-lg max-w-md">
@@ -223,9 +226,9 @@ export const HeroSectionWorkshop: React.FC = () => {
             <div className="mt-8">{conversionBlock('start')}</div>
           </div>
 
-          {/* Coluna vídeo */}
+          {/* Coluna vídeo — 16:9 full HD, centralizado, um pouco maior */}
           <div className="flex justify-end items-center">
-            <div className="w-full max-w-sm xl:max-w-md">
+            <div className="w-full max-w-2xl xl:max-w-3xl">
               <HeroProofVideoSlot />
             </div>
           </div>

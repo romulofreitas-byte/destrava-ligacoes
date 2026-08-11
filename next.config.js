@@ -72,7 +72,7 @@ const nextConfig = {
         "font-src 'self' https://fonts.gstatic.com data:",
         "img-src 'self' data: https: blob:",
         "connect-src 'self' https://www.facebook.com https://connect.facebook.net https://vitals.vercel-insights.com https://*.vercel-analytics.com https://*.vercel.app wss://*.vercel.app ws://localhost:*",
-        "frame-src 'self' https://www.facebook.com",
+        "frame-src 'self' https://www.facebook.com https://www.youtube-nocookie.com https://www.youtube.com",
         "object-src 'none'",
         "base-uri 'self'",
         "form-action 'self'",
