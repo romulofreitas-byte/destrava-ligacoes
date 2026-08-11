@@ -10,6 +10,7 @@ import { WhoIsItForWorkshopSection } from '@/components/sections/WhoIsItForWorks
 import { PlataformaMundoPodiumSection } from '@/components/sections/PlataformaMundoPodiumSection';
 import { WhyYouStuckSection } from '@/components/sections/WhyYouStuckSection';
 import { TestimonialsVideoSection } from '@/components/sections/TestimonialsVideoSection';
+import { WorkshopFullTestimonialsSection } from '@/components/sections/WorkshopFullTestimonialsSection';
 import { WhyDifferentWorkshopSection } from '@/components/sections/WhyDifferentWorkshopSection';
 import { NicheApplicationSection } from '@/components/sections/NicheApplicationSection';
 import { LiveCallsSection } from '@/components/sections/LiveCallsSection';
@@ -38,6 +39,7 @@ export const WorkshopPageContent: React.FC = () => {
         <WhyYouStuckSection />
         <PlataformaMundoPodiumSection />
         <TestimonialsVideoSection />
+        <WorkshopFullTestimonialsSection />
         <AboutRomuloWorkshopSection />
         <WhyDifferentWorkshopSection />
         <NicheApplicationSection />
