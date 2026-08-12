@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import { useModalContext } from '@/contexts/ModalContext';
 
@@ -18,6 +19,11 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
   alt = '',
 }) => {
   const { setIsModalOpen } = useModalContext();
+  const [mounted, setMounted] = React.useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -26,22 +32,27 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
       if (e.key === 'Escape') onClose();
     };
 
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevBodyOverflow = document.body.style.overflow;
+
     document.addEventListener('keydown', handleEscape);
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     setIsModalOpen(true);
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.overflow = prevBodyOverflow;
       setIsModalOpen(false);
     };
   }, [isOpen, onClose, setIsModalOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[60] flex flex-col bg-black/92 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] flex h-[100dvh] w-screen flex-col overflow-hidden bg-black/92 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -50,13 +61,12 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
       <button
         type="button"
         onClick={onClose}
-        className="absolute top-3 right-3 sm:top-5 sm:right-5 z-10 p-2.5 rounded-full bg-gray-800/90 hover:bg-gray-700 text-white transition-colors"
+        className="absolute top-3 right-3 z-10 rounded-full bg-gray-800/90 p-2.5 text-white transition-colors hover:bg-gray-700 sm:top-5 sm:right-5"
         aria-label="Fechar"
       >
-        <X className="w-6 h-6" />
+        <X className="h-6 w-6" />
       </button>
 
-      {/* min-h-0 + max bounds so tall WhatsApp prints fit the viewport without scroll */}
       <div
         className="flex min-h-0 flex-1 items-center justify-center px-3 pb-10 pt-14 sm:px-6"
         onClick={(e) => e.stopPropagation()}
@@ -65,7 +75,8 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
         <img
           src={src}
           alt={alt}
-          className="max-h-full max-w-full h-auto w-auto object-contain select-none rounded-lg shadow-2xl"
+          className="h-auto w-auto select-none rounded-lg object-contain shadow-2xl"
+          style={{ maxHeight: '85dvh', maxWidth: '100vw' }}
           draggable={false}
         />
       </div>
@@ -73,6 +84,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
       <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-xs text-gray-400 sm:bottom-4 sm:text-sm">
         Toque fora ou Esc para fechar
       </p>
-    </div>
+    </div>,
+    document.body
   );
 };
