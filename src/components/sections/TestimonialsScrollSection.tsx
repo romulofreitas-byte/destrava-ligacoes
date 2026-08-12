@@ -4,7 +4,18 @@ import React from 'react';
 import { MessageSquare } from 'lucide-react';
 import { WorkshopProofCard } from '@/components/ui/WorkshopProofCard';
 
-const curatedProofs = [
+type CuratedProof = {
+  id: string;
+  imageSrc: string;
+  imageAlt: string;
+  highlight: string;
+  name: string;
+  company?: string;
+  bodyQuote?: string;
+  fitToImage?: boolean;
+};
+
+const curatedProofs: CuratedProof[] = [
   {
     id: 'gilson',
     imageSrc:
@@ -18,16 +29,16 @@ const curatedProofs = [
       'Já vi muita coisa por aí, mas o teu foi o melhor. A maioria é só 3 CPLs com pitch no final.',
   },
   {
-    id: 'douglas-anatomia',
+    id: 'otavio',
     imageSrc:
-      '/depoimentos-2026-ready/gallery/gallery_metricas_douglas-diz-que-a-anatomia-da-ligacao-o.png',
-    imageAlt:
-      'Depoimento de Douglas: a Anatomia da Ligação ajuda a trazer o lead à objetividade (R1) de forma suave',
-    highlight: 'A Anatomia da Ligação trouxe o lead à R1 sem papo bobo',
-    name: 'Douglas',
-    company: 'Mentorado',
+      '/depoimentos-2026-ready/hero/hero_workshop_otavio-lopes-freelancer-sai-empresario.png',
+    imageAlt: 'Depoimento de Otavio Lopes sobre o workshop e a comunidade',
+    highlight: 'Entra freelancer e sai empresário',
+    name: 'Otavio Lopes',
+    company: 'Participante do Workshop',
     bodyQuote:
-      'A anatomia me ajudou a principalmente não deixar virar papo bobo e saber trazer o lead para a objetividade (que é a R1), sem ficar tangenciando demais… de forma suave.',
+      'Workshop não é apenas um produto pra te monetizar, é um braço estendido pra quem está travado. Preço comparado ao valor que se gera é praticamente insignificante.',
+    fitToImage: true,
   },
   {
     id: 'lucas',
@@ -119,6 +130,7 @@ export const TestimonialsScrollSection: React.FC = () => {
               name={t.name}
               company={t.company}
               bodyQuote={t.bodyQuote}
+              fitToImage={t.fitToImage}
             />
           ))}
         </div>
