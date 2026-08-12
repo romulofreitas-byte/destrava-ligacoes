@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
-import { ImageLightbox } from '@/components/ui/ImageLightbox';
 
 export type WorkshopProofCardProps = {
   /** Omit for quote-only cards (e.g. Maycon — already on video elsewhere) */
@@ -36,25 +35,17 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
   className = '',
 }) => {
   const [imgError, setImgError] = useState(false);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
   const showImage = Boolean(imageSrc) && !imgError;
 
-  const openLightbox = () => {
-    if (imageSrc) setLightboxOpen(true);
-  };
-
-  const framedButtonClass = [
-    'relative w-full rounded-xl bg-gray-900/40 overflow-hidden cursor-zoom-in',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/70',
+  const framedFrameClass = [
+    'relative w-full rounded-xl bg-gray-900/40 overflow-hidden',
     compact
       ? 'aspect-[4/5] sm:aspect-[16/11]'
       : 'aspect-[4/5] sm:aspect-[16/10]',
   ].join(' ');
 
-  const fitButtonClass = [
-    'relative block w-full rounded-xl bg-gray-900/40 overflow-hidden cursor-zoom-in',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/70',
-  ].join(' ');
+  const fitFrameClass =
+    'relative block w-full rounded-xl bg-gray-900/40 overflow-hidden';
 
   return (
     <div
@@ -67,12 +58,7 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
       ].join(' ')}
     >
       {imageSrc && showImage && fitToImage && (
-        <button
-          type="button"
-          onClick={openLightbox}
-          className={fitButtonClass}
-          aria-label={`Ver print ampliado: ${imageAlt || name}`}
-        >
+        <div className={fitFrameClass}>
           <Image
             src={imageSrc}
             alt={imageAlt}
@@ -85,16 +71,11 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
             sizes="(max-width: 768px) 100vw, 768px"
             onError={() => setImgError(true)}
           />
-        </button>
+        </div>
       )}
 
       {imageSrc && showImage && !fitToImage && (
-        <button
-          type="button"
-          onClick={openLightbox}
-          className={framedButtonClass}
-          aria-label={`Ver print ampliado: ${imageAlt || name}`}
-        >
+        <div className={framedFrameClass}>
           <Image
             src={imageSrc}
             alt={imageAlt}
@@ -106,16 +87,11 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
             sizes="(max-width: 768px) 100vw, 768px"
             onError={() => setImgError(true)}
           />
-        </button>
+        </div>
       )}
 
       {imageSrc && imgError && (
-        <button
-          type="button"
-          onClick={openLightbox}
-          className={fitToImage ? fitButtonClass : framedButtonClass}
-          aria-label={`Ver print ampliado: ${imageAlt || name}`}
-        >
+        <div className={fitToImage ? fitFrameClass : framedFrameClass}>
           {/* eslint-disable-next-line @next/next/no-img-element -- fallback when next/image fails */}
           <img
             src={imageSrc}
@@ -126,16 +102,7 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
                 : 'absolute inset-0 m-auto max-h-full max-w-full object-contain object-top p-1 sm:p-3'
             }
           />
-        </button>
-      )}
-
-      {imageSrc && (
-        <ImageLightbox
-          isOpen={lightboxOpen}
-          onClose={() => setLightboxOpen(false)}
-          src={imageSrc}
-          alt={imageAlt}
-        />
+        </div>
       )}
 
       <div
