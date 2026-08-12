@@ -39,7 +39,6 @@ const featuredWorkshopTestimonials = [
       'Depoimento real de Igor Carvalhosa sobre o Workshop Destrava Ligações — mais de 9h de conteúdo ao vivo, superou expectativas',
     highlight: 'Vale mais de 2 mil reais fácil',
     name: 'Igor Carvalhosa',
-    fitToImage: true,
   },
 ];
 
@@ -84,7 +83,6 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                     companyUrl={t.companyUrl}
                     bodyQuote={t.bodyQuote}
                     priority={t.priority}
-                    fitToImage={t.fitToImage}
                   />
                 ))}
               </div>

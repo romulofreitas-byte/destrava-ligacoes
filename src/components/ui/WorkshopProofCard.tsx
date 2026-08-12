@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
-import Image from 'next/image';
 
 export type WorkshopProofCardProps = {
   /** Omit for quote-only cards (e.g. Maycon — already on video elsewhere) */
@@ -16,11 +15,13 @@ export type WorkshopProofCardProps = {
   priority?: boolean;
   /** Lighter chrome for embedding inside another section card */
   compact?: boolean;
-  /** Frame height follows the print (no fixed aspect / letterboxing) */
-  fitToImage?: boolean;
   className?: string;
 };
 
+/**
+ * Proof cards always size to the print's intrinsic aspect ratio —
+ * no fixed aspect box, no letterboxing empty space.
+ */
 export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
   imageSrc,
   imageAlt = '',
@@ -31,21 +32,10 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
   bodyQuote,
   priority = false,
   compact = false,
-  fitToImage = false,
   className = '',
 }) => {
   const [imgError, setImgError] = useState(false);
   const showImage = Boolean(imageSrc) && !imgError;
-
-  const framedFrameClass = [
-    'relative w-full rounded-xl bg-gray-900/40 overflow-hidden',
-    compact
-      ? 'aspect-[4/5] sm:aspect-[16/11]'
-      : 'aspect-[4/5] sm:aspect-[16/10]',
-  ].join(' ');
-
-  const fitFrameClass =
-    'relative block w-full rounded-xl bg-gray-900/40 overflow-hidden';
 
   return (
     <div
@@ -57,51 +47,23 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
         className,
       ].join(' ')}
     >
-      {imageSrc && showImage && fitToImage && (
-        <div className={fitFrameClass}>
-          <Image
+      {imageSrc && showImage && (
+        <div className="relative w-full overflow-hidden rounded-xl">
+          {/* eslint-disable-next-line @next/next/no-img-element -- intrinsic sizing so each print sets its own card height */}
+          <img
             src={imageSrc}
             alt={imageAlt}
-            width={1200}
-            height={900}
-            className="h-auto w-full object-contain"
-            quality={compact ? 80 : 90}
-            priority={priority}
-            unoptimized
-            sizes="(max-width: 768px) 100vw, 768px"
-            onError={() => setImgError(true)}
-          />
-        </div>
-      )}
-
-      {imageSrc && showImage && !fitToImage && (
-        <div className={framedFrameClass}>
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            className="object-contain object-top p-1 sm:p-3"
-            quality={compact ? 80 : 90}
-            priority={priority}
-            unoptimized
-            sizes="(max-width: 768px) 100vw, 768px"
+            className="block h-auto w-full"
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
             onError={() => setImgError(true)}
           />
         </div>
       )}
 
       {imageSrc && imgError && (
-        <div className={fitToImage ? fitFrameClass : framedFrameClass}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- fallback when next/image fails */}
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className={
-              fitToImage
-                ? 'block h-auto w-full object-contain'
-                : 'absolute inset-0 m-auto max-h-full max-w-full object-contain object-top p-1 sm:p-3'
-            }
-          />
+        <div className="relative w-full overflow-hidden rounded-xl bg-gray-900/40 px-3 py-6 text-center text-sm text-gray-500">
+          Print indisponível
         </div>
       )}
 

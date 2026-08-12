@@ -12,7 +12,6 @@ type CuratedProof = {
   name: string;
   company?: string;
   bodyQuote?: string;
-  fitToImage?: boolean;
 };
 
 const curatedProofs: CuratedProof[] = [
@@ -38,7 +37,6 @@ const curatedProofs: CuratedProof[] = [
     company: 'Participante do Workshop',
     bodyQuote:
       'Workshop não é apenas um produto pra te monetizar, é um braço estendido pra quem está travado. Preço comparado ao valor que se gera é praticamente insignificante.',
-    fitToImage: true,
   },
   {
     id: 'lucas',
@@ -130,7 +128,6 @@ export const TestimonialsScrollSection: React.FC = () => {
               name={t.name}
               company={t.company}
               bodyQuote={t.bodyQuote}
-              fitToImage={t.fitToImage}
             />
           ))}
         </div>
