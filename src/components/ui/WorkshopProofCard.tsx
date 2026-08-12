@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
+import { ImageLightbox } from '@/components/ui/ImageLightbox';
 
 export type WorkshopProofCardProps = {
   /** Omit for quote-only cards (e.g. Maycon — already on video elsewhere) */
@@ -16,6 +17,8 @@ export type WorkshopProofCardProps = {
   priority?: boolean;
   /** Lighter chrome for embedding inside another section card */
   compact?: boolean;
+  /** Frame height follows the print (no fixed aspect / letterboxing) */
+  fitToImage?: boolean;
   className?: string;
 };
 
@@ -29,10 +32,29 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
   bodyQuote,
   priority = false,
   compact = false,
+  fitToImage = false,
   className = '',
 }) => {
   const [imgError, setImgError] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const showImage = Boolean(imageSrc) && !imgError;
+
+  const openLightbox = () => {
+    if (imageSrc) setLightboxOpen(true);
+  };
+
+  const framedButtonClass = [
+    'relative w-full rounded-xl bg-gray-900/40 overflow-hidden cursor-zoom-in',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/70',
+    compact
+      ? 'aspect-[4/5] sm:aspect-[16/11]'
+      : 'aspect-[4/5] sm:aspect-[16/10]',
+  ].join(' ');
+
+  const fitButtonClass = [
+    'relative block w-full rounded-xl bg-gray-900/40 overflow-hidden cursor-zoom-in',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/70',
+  ].join(' ');
 
   return (
     <div
@@ -44,40 +66,76 @@ export const WorkshopProofCard: React.FC<WorkshopProofCardProps> = ({
         className,
       ].join(' ')}
     >
-      {imageSrc && showImage && (
-        <div
-          className={[
-            'relative w-full rounded-xl bg-gray-900/40 overflow-hidden',
-            compact ? 'aspect-[16/11]' : 'aspect-[16/10]',
-          ].join(' ')}
+      {imageSrc && showImage && fitToImage && (
+        <button
+          type="button"
+          onClick={openLightbox}
+          className={fitButtonClass}
+          aria-label={`Ver print ampliado: ${imageAlt || name}`}
         >
           <Image
             src={imageSrc}
             alt={imageAlt}
-            fill
-            className="object-contain p-2 sm:p-3"
+            width={1200}
+            height={900}
+            className="h-auto w-full object-contain"
             quality={compact ? 80 : 90}
             priority={priority}
             unoptimized
             sizes="(max-width: 768px) 100vw, 768px"
             onError={() => setImgError(true)}
           />
-        </div>
+        </button>
       )}
+
+      {imageSrc && showImage && !fitToImage && (
+        <button
+          type="button"
+          onClick={openLightbox}
+          className={framedButtonClass}
+          aria-label={`Ver print ampliado: ${imageAlt || name}`}
+        >
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-contain object-top p-1 sm:p-3"
+            quality={compact ? 80 : 90}
+            priority={priority}
+            unoptimized
+            sizes="(max-width: 768px) 100vw, 768px"
+            onError={() => setImgError(true)}
+          />
+        </button>
+      )}
+
       {imageSrc && imgError && (
-        <div
-          className={[
-            'relative w-full rounded-xl bg-gray-900/40 overflow-hidden',
-            compact ? 'aspect-[16/11]' : 'aspect-[16/10]',
-          ].join(' ')}
+        <button
+          type="button"
+          onClick={openLightbox}
+          className={fitToImage ? fitButtonClass : framedButtonClass}
+          aria-label={`Ver print ampliado: ${imageAlt || name}`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element -- fallback when next/image fails */}
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="absolute inset-0 m-auto max-h-full max-w-full object-contain p-2 sm:p-3"
+            className={
+              fitToImage
+                ? 'block h-auto w-full object-contain'
+                : 'absolute inset-0 m-auto max-h-full max-w-full object-contain object-top p-1 sm:p-3'
+            }
           />
-        </div>
+        </button>
+      )}
+
+      {imageSrc && (
+        <ImageLightbox
+          isOpen={lightboxOpen}
+          onClose={() => setLightboxOpen(false)}
+          src={imageSrc}
+          alt={imageAlt}
+        />
       )}
 
       <div

@@ -19,6 +19,7 @@ import {
   Trophy,
 } from 'lucide-react';
 import { WorkshopDepoimentoVideoPlayer } from '@/components/ui/WorkshopDepoimentoVideoPlayer';
+import { ImageLightbox } from '@/components/ui/ImageLightbox';
 import { trackViewContent } from '@/lib/metaPixel';
 import {
   PLATAFORMA_MUNDO_PODIUM_COPY,
@@ -106,6 +107,10 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const hasTrackedView = useRef(false);
   const [activeBenefit, setActiveBenefit] = useState(0);
+  const [lightboxShot, setLightboxShot] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -373,7 +378,14 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                         key={shot.src}
                         className="group relative overflow-hidden rounded-2xl border border-gray-700/60 bg-gray-900/80 shadow-lg shadow-black/30 ring-1 ring-white/5 transition-all duration-300 hover:border-yellow-400/25 hover:ring-yellow-400/10"
                       >
-                        <div className="relative aspect-[16/10] w-full bg-gray-950">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setLightboxShot({ src: shot.src, alt: shot.alt })
+                          }
+                          className="relative aspect-[16/10] w-full bg-gray-950 cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/70"
+                          aria-label={`Ver print ampliado: ${shot.alt}`}
+                        >
                           <Image
                             src={shot.src}
                             alt={shot.alt}
@@ -381,10 +393,17 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                             className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 560px"
                           />
-                        </div>
+                        </button>
                       </figure>
                     ))}
                   </div>
+
+                  <ImageLightbox
+                    isOpen={Boolean(lightboxShot)}
+                    onClose={() => setLightboxShot(null)}
+                    src={lightboxShot?.src ?? ''}
+                    alt={lightboxShot?.alt}
+                  />
                 </div>
               </div>
             </div>
