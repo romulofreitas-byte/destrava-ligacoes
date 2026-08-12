@@ -45,10 +45,10 @@ export const metadata: Metadata = {
     siteName: 'Workshop Destrava Ligações',
     images: [
       {
-        url: `${baseUrl}/workshop-metodo.png`,
-        width: 1200,
-        height: 630,
-        alt: 'Workshop Destrava Ligações - Rômulo Freitas',
+        url: `${baseUrl}/og-mundo-podium.png`,
+        width: 1080,
+        height: 1080,
+        alt: 'Mundo Pódium',
         type: 'image/png',
       },
     ],
@@ -59,10 +59,10 @@ export const metadata: Metadata = {
     description: workshopMetaDescription,
     images: [
       {
-        url: `${baseUrl}/workshop-metodo.png`,
-        width: 1200,
-        height: 630,
-        alt: 'Workshop Destrava Ligações - Rômulo Freitas',
+        url: `${baseUrl}/og-mundo-podium.png`,
+        width: 1080,
+        height: 1080,
+        alt: 'Mundo Pódium',
       },
     ],
   },

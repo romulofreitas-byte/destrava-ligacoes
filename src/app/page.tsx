@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     images: [
       {
-        url: '/workshop-metodo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Workshop Destrava Ligações - Rômulo Freitas',
+        url: '/og-mundo-podium.png',
+        width: 1080,
+        height: 1080,
+        alt: 'Mundo Pódium',
       },
     ],
   },
@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     description: 'Workshop em 2 módulos (8 horas no total — 4h cada) onde você aprende a destravar ligações, a Anatomia da Ligação e faz ligações reais na Sala de Ligação com acompanhamento direto.',
     images: [
       {
-        url: '/workshop-metodo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Workshop Destrava Ligações - Rômulo Freitas',
+        url: '/og-mundo-podium.png',
+        width: 1080,
+        height: 1080,
+        alt: 'Mundo Pódium',
       },
     ],
   },
