@@ -41,7 +41,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-sm p-3 sm:p-6"
+      className="fixed inset-0 z-[60] flex flex-col bg-black/92 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -56,20 +56,21 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
         <X className="w-6 h-6" />
       </button>
 
+      {/* min-h-0 + max bounds so tall WhatsApp prints fit the viewport without scroll */}
       <div
-        className="relative w-full max-w-3xl max-h-[92vh] overflow-auto rounded-xl"
+        className="flex min-h-0 flex-1 items-center justify-center px-3 pb-10 pt-14 sm:px-6"
         onClick={(e) => e.stopPropagation()}
       >
         {/* eslint-disable-next-line @next/next/no-img-element -- full-res lightbox for readable prints */}
         <img
           src={src}
           alt={alt}
-          className="mx-auto block h-auto w-full max-h-[92vh] object-contain select-none"
+          className="max-h-full max-w-full h-auto w-auto object-contain select-none rounded-lg shadow-2xl"
           draggable={false}
         />
       </div>
 
-      <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-gray-400 pointer-events-none sm:text-sm">
+      <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-xs text-gray-400 sm:bottom-4 sm:text-sm">
         Toque fora ou Esc para fechar
       </p>
     </div>
