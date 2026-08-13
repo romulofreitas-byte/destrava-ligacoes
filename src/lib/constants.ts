@@ -25,11 +25,11 @@ export const WORKSHOP_SALES = {
   /** Número da edição atual (ex.: 11 → "11ª") */
   edition: 11,
   /** Vagas já preenchidas (hero + CTA final — números absolutos) */
-  filledSpots: 6,
+  filledSpots: 7,
   /** Capacidade máxima da turma */
   maxSpots: 20,
   /** Percentual da barra (filledSpots / maxSpots) */
-  progressPercent: 30,
+  progressPercent: 35,
 } as const;
 
 /** Preço de venda + ancoragem (hero e CTA final devem usar a mesma fonte) */
