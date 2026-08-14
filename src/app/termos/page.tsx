@@ -2,6 +2,7 @@ import React from 'react';
 import { FileText, Mail, Phone, MapPin, AlertTriangle, CheckCircle } from 'lucide-react';
 import {
   WORKSHOP_DURATION,
+  WORKSHOP_GRID_BONUS,
   WORKSHOP_INFO,
   WORKSHOP_MODULE_2_INFO,
   WORKSHOP_PLATFORM_RULES,
@@ -96,6 +97,7 @@ export default function TermosPage() {
                     {WORKSHOP_PLATFORM_RULES.includedAccessEndsDetail}
                   </li>
                   <li>Comunidade da turma (WhatsApp) e materiais do Método Pódium</li>
+                  <li>{WORKSHOP_GRID_BONUS.termosLine}</li>
                 </ul>
               </div>
             </div>

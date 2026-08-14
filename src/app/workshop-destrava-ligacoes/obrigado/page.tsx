@@ -5,7 +5,7 @@ import { CheckCircle, Users, Calendar, ArrowRight, CreditCard, Mail, Clock, Vide
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION, WORKSHOP_PRICING, WORKSHOP_WHATSAPP, getGoogleMeetInfo } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION, WORKSHOP_PRICING, WORKSHOP_WHATSAPP, WORKSHOP_GRID_BONUS, getGoogleMeetInfo } from '@/lib/constants';
 
 const Footer = dynamic(() => import('@/components/sections/Footer').then(mod => ({ default: mod.Footer })), { ssr: false });
 
@@ -454,6 +454,17 @@ function ObrigadoContent() {
                         Parabéns! Você adquiriu o Workshop por {WORKSHOP_PRICING.current} e já tem acesso
                         imediato à Plataforma Mundo Pódium.{' '}
                         {WORKSHOP_PLATFORM_RULES.obrigadoPlatformAccessNote}
+                      </p>
+                    </div>
+
+                    <div className="mb-6 p-4 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
+                      <p className="text-white font-semibold mb-2">🏁 Acesso de fundador ao GRID</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        Nesta edição você entra na primeira turma de fundadores do GRID: lista, decisor e
+                        filtro de contabilidade em {WORKSHOP_GRID_BONUS.stage1DateDisplay}; auditoria
+                        digital, telefone conferido no site e Minuto de Ouro em{' '}
+                        {WORKSHOP_GRID_BONUS.stage2DateDisplay}. {WORKSHOP_GRID_BONUS.accessDuration} O
+                        GRID monta a lista — não liga por você.
                       </p>
                     </div>
 

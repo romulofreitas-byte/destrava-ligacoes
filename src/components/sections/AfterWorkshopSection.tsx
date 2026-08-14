@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { CheckCircle2, Rocket, Calendar, Gift } from 'lucide-react';
-import { WORKSHOP_PLATFORM_RULES } from '@/lib/constants';
+import { CheckCircle2, Rocket, Calendar, Gift, Flag } from 'lucide-react';
+import { WORKSHOP_PLATFORM_RULES, WORKSHOP_GRID_BONUS } from '@/lib/constants';
 
 export const AfterWorkshopSection: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
@@ -95,16 +95,16 @@ export const AfterWorkshopSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-10 max-w-3xl mx-auto">
+        <div className="mt-10 max-w-5xl mx-auto">
           <div className="bg-gradient-to-r from-green-400/10 to-yellow-400/10 border border-green-400/30 rounded-2xl p-5 sm:p-6 backdrop-blur-sm">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-4 sm:gap-6">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Calendar className="w-5 h-5 text-green-400" />
                 </div>
                 <div className="text-left">
                   <h3 className="text-white font-bold text-sm sm:text-base mb-0.5">
-                    Plataforma + gravação
+                    Bônus 1 · Plataforma + gravação
                   </h3>
                   <p className="text-gray-300 text-xs sm:text-sm">
                     {WORKSHOP_PLATFORM_RULES.includedAccessEndsDetail}.{' '}
@@ -118,7 +118,29 @@ export const AfterWorkshopSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="hidden sm:block w-px h-10 bg-gray-700/50" />
+              <div className="hidden lg:block w-px h-10 bg-gray-700/50" />
+
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-yellow-400/10 border border-yellow-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Flag className="w-5 h-5 text-yellow-400" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-white font-bold text-sm sm:text-base mb-0.5">
+                    {WORKSHOP_GRID_BONUS.afterWorkshopTitle}
+                  </h3>
+                  <p className="text-gray-300 text-xs sm:text-sm">
+                    {WORKSHOP_GRID_BONUS.afterWorkshopDetail}.{' '}
+                    <a
+                      href="#grid-bonus"
+                      className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2"
+                    >
+                      Ver GRID
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div className="hidden lg:block w-px h-10 bg-gray-700/50" />
 
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-yellow-400/10 border border-yellow-400/30 rounded-xl flex items-center justify-center flex-shrink-0">

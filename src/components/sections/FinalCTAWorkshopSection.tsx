@@ -225,7 +225,11 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   Você sai do Workshop com a <span className="text-yellow-400 font-semibold">Anatomia da Ligação</span>,{' '}
                   <span className="text-yellow-400 font-semibold">primeiras ligações feitas</span> e{' '}
                   <span className="text-yellow-400 font-semibold">60 dias na Plataforma</span> pra continuar.{' '}
-                  Restam{' '}
+                  Nesta edição, quem entra leva também{' '}
+                  <a href="#grid-bonus" className="text-yellow-400 font-semibold hover:text-yellow-300 underline underline-offset-2">
+                    acesso de fundador ao GRID
+                  </a>
+                  . Restam{' '}
                   <span className="text-white font-semibold">
                     {WORKSHOP_SALES.maxSpots - WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
                   </span>{' '}

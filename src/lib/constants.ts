@@ -161,3 +161,161 @@ export const PLATAFORMA_MUNDO_PODIUM_COPY = {
   accessBlurbTail: 'para participantes — detalhes após o evento.',
 } as const;
 
+/**
+ * GRID — bônus 2 da 11ª edição (depois dos 60 dias de Plataforma).
+ * Fonte única de datas, copy e FAQ. Não promover no hero.
+ */
+export const WORKSHOP_GRID_BONUS = {
+  badge: 'Bônus 2 · Acesso de Fundador',
+  headlineBefore: 'Você vai sair destravado.',
+  headlineAccent: 'Mas vai ligar pra quem?',
+  subheadline:
+    'Todo mundo que faz o Workshop trava no mesmo ponto na segunda-feira seguinte: não tem lista. O GRID resolve isso — e quem entra nesta edição recebe acesso antes de todo mundo.',
+
+  bodyLead: 'Segunda de manhã. Você está destravado, decidido, com o gatilho na mão.',
+  bodyEmpty: 'Aí abre o notebook e não tem pra quem ligar.',
+  bodyFriction:
+    'Vai no Google Maps. Copia um nome. Copia um telefone. Entra no site da Receita pra descobrir quem é o dono. Volta. Copia outro. Quarenta minutos depois você tem três leads — e já não tem mais a coragem que tinha às oito da manhã.',
+  bodyInsight: 'Não é falta de vontade. É atrito. E atrito mata mais prospecção que objeção.',
+  bodyPromise: 'O GRID existe pra isso não acontecer com você.',
+  bodyHow:
+    'Você escolhe o nicho e a região. Ele devolve a lista com o telefone da empresa, o nome do sócio que decide e a ordem de quem ligar primeiro — P1, P2, P3, como um grid de largada.',
+  bodyAccounting:
+    'E ele faz uma coisa que nenhuma ferramenta do mercado faz: avisa quando o telefone é do escritório de contabilidade. Aquele número que você liga e cai numa moça que não faz ideia de quem você é — porque o telefone do cadastro nunca foi da empresa, era do contador que abriu o CNPJ.',
+  bodyDefault: 'O GRID identifica esses números e tira eles da sua lista. Por padrão.',
+
+  screenshotSrc: '/grid/grid-lista-preview.png',
+  screenshotWidth: 1024,
+  screenshotHeight: 493,
+  screenshotAlt:
+    'Prévia do GRID: lista de resultados com posição de largada, empresa, telefone e nome do decisor.',
+  screenshotCaption: 'Uma lista gerada no GRID — ligar de cima para baixo.',
+  previewBadge: 'Prévia',
+  previewNote: 'Dados de demonstração',
+
+  highlights: [
+    'P1, P2, P3 — ordem de quem ligar primeiro',
+    'Telefone e nome do sócio-administrador na mesma linha',
+    'Filtro de telefone de contabilidade, ligado por padrão',
+    'Export pronto: Excel, CSV e PDF',
+  ],
+
+  deliverablesTitle: 'O que você recebe',
+  deliverablesNow: [
+    {
+      title: 'Lista pronta por nicho e região',
+      detail: '16 nichos abertos em segmentos específicos, Brasil inteiro',
+    },
+    {
+      title: 'Telefone e nome do sócio-administrador',
+      detail: 'Sem entrar na Receita, sem garimpar o QSA',
+    },
+    {
+      title: 'Ordem de largada',
+      detail: 'Cada lead numa posição, do mais quente pro mais frio. Você liga de cima pra baixo',
+    },
+    {
+      title: 'Filtro de telefone de contabilidade',
+      detail: 'Ligado por padrão, com o aviso de em quantas empresas aquele número aparece',
+    },
+    {
+      title: 'Contagem ao vivo do seu mercado',
+      detail: 'Antes de gastar qualquer coisa',
+    },
+    {
+      title: 'Export pronto pro CRM',
+      detail: 'Excel, CSV mapeado e PDF',
+    },
+  ],
+  deliverablesLater: [
+    {
+      title: 'Telefone conferido no site oficial',
+      detail: 'da empresa',
+    },
+    {
+      title: 'Auditoria digital',
+      detail: 'Se tem site, pixel, anúncio, Instagram, WhatsApp',
+    },
+    {
+      title: 'Minuto de Ouro montado',
+      detail: 'Com o contexto real do lead',
+    },
+  ],
+
+  /** Liberação em duas etapas — Acesso de Fundador */
+  stage1DateDisplay: '15 de setembro',
+  stage1DateShort: '15/09',
+  stage1Year: 2026,
+  stage1Detail:
+    'Você recebe o acesso com lista, decisor e filtro de contabilidade funcionando',
+  stage2DateDisplay: 'Outubro',
+  stage2Year: 2026,
+  stage2Detail:
+    'Libera a auditoria digital, o telefone conferido no site e o Minuto de Ouro montado',
+
+  accessDays: 60,
+  planLevel: 'Piloto',
+  leadsPerMonth: 500,
+  marketAnchorPrice: 'R$ 590 por mês',
+
+  anchorMarket:
+    'Ferramenta de prospecção equivalente no mercado brasileiro custa a partir de R$ 590 por mês, com venda por formulário e fidelidade de 12 meses.',
+  anchorOfferLead: 'Quem entra nesta edição do Workshop recebe',
+  anchorOfferMid: '60 dias de GRID no nível Piloto — 500 leads por mês',
+  anchorOfferTail: 'junto com os 60 dias de Plataforma. Sem custo adicional. Sem fidelidade.',
+
+  accessTitle: 'Como funciona o Acesso de Fundador',
+  accessIntro: 'O GRID está em construção. Não vou te vender print de tela e promessa vaga.',
+  accessFoundersLead: 'Quem entra na',
+  accessFoundersTail: 'edição do Workshop entra na primeira turma de fundadores:',
+  accessDuration: '60 dias de acesso no nível Piloto, contados a partir da liberação.',
+  accessCloser: 'Fundador entra antes, paga zero e ajuda a decidir o que vem depois.',
+
+  warningTitle: 'Uma coisa que precisa estar clara:',
+  warningLead: 'o GRID monta o grid de largada. Ele não liga por você.',
+  warningBody:
+    'Lista pronta não fecha contrato. Quem fecha é quem disca. O Workshop te dá o método, a Plataforma te dá a prática, o GRID tira o atrito do caminho.',
+  warningClose: 'A volta rápida é você que dá.',
+
+  cta: 'Quero minha vaga na 11ª edição',
+
+  afterWorkshopTitle: 'GRID — acesso de fundador',
+  afterWorkshopDetail: 'Lista, decisor e ordem de quem ligar primeiro',
+
+  termosLine:
+    'Acesso de fundador ao GRID (lista de prospecção): 60 dias no nível Piloto a partir da liberação. Etapa 1 em 15 de setembro de 2026 (lista, decisor e filtro de contabilidade); etapa 2 em outubro de 2026 (auditoria digital, telefone conferido no site e Minuto de Ouro). O GRID monta a lista — não realiza ligações.',
+
+  faq: [
+    {
+      question: 'O GRID é um robô que liga sozinho?',
+      answer:
+        'Não. Ele monta a lista e organiza a ordem. Discar é com você — e é isso que o Workshop te ensina a fazer.',
+    },
+    {
+      question: 'De onde vêm os dados do GRID?',
+      answer:
+        'Da base pública de CNPJ da Receita Federal, mais informações públicas do site das próprias empresas. Nada de lista comprada, nada de dado vazado.',
+    },
+    {
+      question: 'O GRID serve pro meu nicho?',
+      answer:
+        'São 16 nichos abertos em segmentos específicos, cobrindo de clínica de estética a indústria de alimentos. Se o seu nicho tem CNPJ, o GRID acha.',
+    },
+    {
+      question: 'Preciso pagar alguma coisa a mais pelo GRID?',
+      answer:
+        'Não. 60 dias no nível Piloto entram junto com o Workshop, sem custo adicional e sem fidelidade.',
+    },
+    {
+      question: 'E depois dos 60 dias do GRID?',
+      answer:
+        'Você decide se continua. Não tem cobrança automática surpresa e não tem contrato de 12 meses.',
+    },
+    {
+      question: 'Por que o GRID não está disponível hoje?',
+      answer:
+        'Porque está sendo construído e eu prefiro te dar data do que te dar promessa. Quem entra nesta edição entra como fundador — antes de estar aberto pra todo mundo.',
+    },
+  ],
+} as const;
+

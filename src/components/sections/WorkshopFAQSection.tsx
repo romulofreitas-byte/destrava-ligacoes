@@ -2,7 +2,12 @@
 
 import React, { useState } from 'react';
 import { HelpCircle } from 'lucide-react';
-import { WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION, WORKSHOP_PRICING } from '@/lib/constants';
+import {
+  WORKSHOP_PLATFORM_RULES,
+  WORKSHOP_DURATION,
+  WORKSHOP_PRICING,
+  WORKSHOP_GRID_BONUS,
+} from '@/lib/constants';
 
 export const WorkshopFAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -46,6 +51,7 @@ export const WorkshopFAQSection: React.FC = () => {
       question: 'Como funciona o acesso à plataforma?',
       answer: WORKSHOP_PLATFORM_RULES.faqHowPlatformWorks,
     },
+    ...WORKSHOP_GRID_BONUS.faq,
   ];
 
   const toggleItem = (index: number) => {
@@ -107,7 +113,7 @@ export const WorkshopFAQSection: React.FC = () => {
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                      isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
                     <p className="px-5 sm:px-6 pb-5 text-gray-300 text-sm leading-relaxed">

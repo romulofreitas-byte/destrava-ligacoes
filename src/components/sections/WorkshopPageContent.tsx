@@ -8,6 +8,7 @@ import { WorkshopTestimonialBanner } from '@/components/sections/WorkshopTestimo
 import { EventDetailsSection } from '@/components/sections/EventDetailsSection';
 import { WhoIsItForWorkshopSection } from '@/components/sections/WhoIsItForWorkshopSection';
 import { PlataformaMundoPodiumSection } from '@/components/sections/PlataformaMundoPodiumSection';
+import { GridBonusSection } from '@/components/sections/GridBonusSection';
 import { WhyYouStuckSection } from '@/components/sections/WhyYouStuckSection';
 import { TestimonialsVideoSection } from '@/components/sections/TestimonialsVideoSection';
 import { WorkshopFullTestimonialsSection } from '@/components/sections/WorkshopFullTestimonialsSection';
@@ -38,6 +39,7 @@ export const WorkshopPageContent: React.FC = () => {
         <WhoIsItForWorkshopSection />
         <WhyYouStuckSection />
         <PlataformaMundoPodiumSection />
+        <GridBonusSection />
         <TestimonialsVideoSection />
         <WorkshopFullTestimonialsSection />
         <AboutRomuloWorkshopSection />
