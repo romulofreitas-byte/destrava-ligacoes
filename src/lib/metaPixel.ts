@@ -97,6 +97,42 @@ export function trackCTAClick(ctaName?: string, contentCategory?: string): void 
   }
 }
 
+const CHECKOUT_INTENT_KEY = 'workshop_checkout_started';
+const PURCHASE_DEDUPE_KEY = 'meta_purchase_workshop_11';
+const PIXEL_READY_MAX_MS = 8000;
+
+export function markCheckoutStarted(): void {
+  try {
+    sessionStorage.setItem(CHECKOUT_INTENT_KEY, String(Date.now()));
+  } catch {
+    // sessionStorage may be unavailable
+  }
+}
+
+export function hasCheckoutIntent(): boolean {
+  try {
+    return Boolean(sessionStorage.getItem(CHECKOUT_INTENT_KEY));
+  } catch {
+    return false;
+  }
+}
+
+function whenPixelReady(callback: () => void): void {
+  if (typeof window === 'undefined') return;
+
+  const startedAt = Date.now();
+  const tick = () => {
+    if (isPixelAvailable()) {
+      callback();
+      return;
+    }
+    if (Date.now() - startedAt >= PIXEL_READY_MAX_MS) return;
+    window.setTimeout(tick, 200);
+  };
+
+  tick();
+}
+
 /**
  * Track pricing CTA clicks (InitiateCheckout event)
  */
@@ -104,21 +140,56 @@ export function trackInitiateCheckout(
   value: number = WORKSHOP_PRICING.amountBRL,
   currency: string = 'BRL'
 ): void {
-  if (!isPixelAvailable()) return;
-  
+  markCheckoutStarted();
+
   const params: Record<string, any> = {
     content_name: WORKSHOP_INFO.productName,
     content_type: 'product',
+    content_ids: ['workshop-destrava-ligacoes'],
     num_items: 1,
     value,
     currency,
   };
-  
-  const fbq = (window as any).fbq as (...args: any[]) => void;
-  if (fbq) {
+
+  whenPixelReady(() => {
+    const fbq = window.fbq;
+    if (!fbq) return;
     fbq('track', 'InitiateCheckout', params);
     logDebug('InitiateCheckout', params);
-  }
+  });
+}
+
+/**
+ * Track completed purchase on the thank-you page after Asaas redirect.
+ */
+export function trackPurchase(options?: {
+  eventId?: string;
+  value?: number;
+  currency?: string;
+}): void {
+  const eventId = options?.eventId || `purchase_${Date.now()}`;
+  const params: Record<string, any> = {
+    content_name: WORKSHOP_INFO.productName,
+    content_type: 'product',
+    content_ids: ['workshop-destrava-ligacoes'],
+    num_items: 1,
+    value: options?.value ?? WORKSHOP_PRICING.amountBRL,
+    currency: options?.currency ?? 'BRL',
+  };
+
+  whenPixelReady(() => {
+    try {
+      if (sessionStorage.getItem(PURCHASE_DEDUPE_KEY)) return;
+      sessionStorage.setItem(PURCHASE_DEDUPE_KEY, eventId);
+    } catch {
+      // continue without dedupe if storage is blocked
+    }
+
+    const fbq = window.fbq;
+    if (!fbq) return;
+    fbq('track', 'Purchase', params, { eventID: eventId });
+    logDebug('Purchase', { ...params, eventID: eventId });
+  });
 }
 
 /**

@@ -74,7 +74,7 @@ const nextConfig = {
         "media-src 'self' https: blob:",
         "object-src 'none'",
         "base-uri 'self'",
-        "form-action 'self' https://pag.ae https://*.pagseguro.com.br https://*.pagbank.com.br",
+        "form-action 'self' https://www.asaas.com https://*.asaas.com",
         "frame-ancestors 'self'",
       ].join('; '),
     });

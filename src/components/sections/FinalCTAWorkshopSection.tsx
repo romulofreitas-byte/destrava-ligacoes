@@ -140,7 +140,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                     rel="noopener noreferrer"
                     onClick={handleCTAClick}
                     className={ctaButtonClass}
-                    title="Pagar com PagBank"
+                    title="Pagar com Asaas"
                   >
                     <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
                       Garantir Minha Vaga Agora

@@ -73,7 +73,7 @@ export default function PrivacidadePage() {
                 <li>Funcionamento técnico do site</li>
                 <li>Análise de performance e segurança</li>
                 <li>Melhoria da experiência do usuário</li>
-                <li>Comunicação através dos canais externos (WhatsApp, e-mail, PagBank)</li>
+                <li>Comunicação através dos canais externos (WhatsApp, e-mail, Asaas)</li>
               </ul>
             </div>
           </section>
@@ -125,7 +125,7 @@ export default function PrivacidadePage() {
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
                   <li><strong>Meta (Facebook/Instagram):</strong> Através do Meta Pixel para medição e personalização de anúncios (apenas com consentimento de marketing)</li>
                   <li><strong>Vercel Analytics:</strong> Para análise de performance do site (apenas com consentimento de análise)</li>
-                  <li><strong>PagBank:</strong> Processamento de pagamento (quando você realiza uma compra)</li>
+                  <li><strong>Asaas:</strong> Processamento de pagamento (quando você realiza uma compra)</li>
                   <li><strong>WhatsApp:</strong> Comunicação direta (quando você clica nos links de contato)</li>
                   <li><strong>YouTube:</strong> Visualização de vídeos incorporados (política própria do YouTube)</li>
                 </ul>

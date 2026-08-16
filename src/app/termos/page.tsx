@@ -122,7 +122,7 @@ export default function TermosPage() {
                     <li>Cartão de crédito</li>
                   </ul>
                   <p className="text-gray-400 text-xs mt-3">
-                    O checkout é processado por provedor de pagamento parceiro (PagBank).
+                    O checkout é processado por provedor de pagamento parceiro (Asaas).
                   </p>
                 </div>
               </div>

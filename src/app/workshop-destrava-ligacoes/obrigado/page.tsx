@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION, WORKSHOP_PRICING, WORKSHOP_WHATSAPP, WORKSHOP_GRID_BONUS, getGoogleMeetInfo } from '@/lib/constants';
+import { trackPurchase } from '@/lib/metaPixel';
 
 const Footer = dynamic(() => import('@/components/sections/Footer').then(mod => ({ default: mod.Footer })), { ssr: false });
 
@@ -18,34 +19,46 @@ function ObrigadoContent() {
   const [resendMessage, setResendMessage] = useState('');
 
   useEffect(() => {
-    // Verificar parâmetros do PagBank na URL
     const chargeId = searchParams?.get('charge_id');
+    const asaasPaymentId = searchParams?.get('paymentId') || searchParams?.get('id');
     const paymentStatus = searchParams?.get('status');
     const referenceId = searchParams?.get('reference_id');
-    
-    // Verificar se há dados do lead no localStorage
+    const source = searchParams?.get('source');
+    const transactionId = searchParams?.get('transaction_id');
+
     const leadData = localStorage.getItem('leadData');
-    
-    // Permitir acesso direto em desenvolvimento (localhost)
-    const isDevelopment = typeof window !== 'undefined' && 
+    const isDevelopment =
+      typeof window !== 'undefined' &&
       (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-    
-    // Se veio do PagBank com charge_id ou status, confirmar pagamento
-    if (chargeId || paymentStatus === 'PAID' || paymentStatus === 'paid') {
+    const fromAsaas =
+      source === 'asaas' ||
+      (typeof document !== 'undefined' && document.referrer.includes('asaas.com'));
+    const isPaidStatus =
+      paymentStatus === 'PAID' ||
+      paymentStatus === 'paid' ||
+      paymentStatus === 'CONFIRMED' ||
+      paymentStatus === 'RECEIVED' ||
+      paymentStatus === '3';
+    const paymentSucceeded = Boolean(
+      chargeId || asaasPaymentId || isPaidStatus || fromAsaas || transactionId
+    );
+    const canStayOnPage =
+      paymentSucceeded || Boolean(leadData) || isDevelopment;
+
+    if (paymentSucceeded) {
       setPaymentConfirmed(true);
-      
-      // Salvar dados do pagamento no localStorage
+      trackPurchase({
+        eventId: chargeId || asaasPaymentId || `asaas_${Date.now()}`,
+      });
+
       if (chargeId) {
         localStorage.setItem('pagamentoChargeId', chargeId);
-        
-        // Verificar se email já foi enviado e, se não, tentar enviar (fallback)
-        // Aguardar um pouco para dar tempo do webhook processar
+
         setTimeout(() => {
           fetch(`/api/email/send?charge_id=${chargeId}`)
             .then(res => res.json())
             .then(data => {
               if (!data.found) {
-                // Se não encontrou registro, tentar enviar email imediato
                 console.log('📧 Email não encontrado no registro. Tentando enviar via fallback...');
                 setEmailSent(false);
                 fetch('/api/email/send', {
@@ -63,7 +76,6 @@ function ObrigadoContent() {
                     setEmailSent(true);
                   } else {
                     console.error('❌ Erro ao enviar email via fallback:', result.error);
-                    console.warn('⚠️ O email pode não ter sido enviado. Verifique os logs do servidor.');
                     setEmailSent(false);
                   }
                 })
@@ -79,7 +91,6 @@ function ObrigadoContent() {
             .catch(err => {
               console.error('❌ Erro ao verificar status do email:', err);
               setEmailSent(false);
-              // Tentar enviar mesmo assim
               fetch('/api/email/send', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -98,22 +109,16 @@ function ObrigadoContent() {
                 console.error('❌ Erro ao enviar email (fallback após erro):', fallbackErr);
               });
             });
-        }, 2000); // Aguardar 2 segundos para dar tempo do webhook processar
+        }, 2000);
+      } else {
+        setEmailSent(true);
       }
+
       if (referenceId) {
         localStorage.setItem('pagamentoReferenceId', referenceId);
       }
-    } else if (!leadData && !isDevelopment) {
-      // Se não houver dados e não estiver em desenvolvimento, redirecionar para a página principal
-      router.push('/workshop-destrava-ligacoes');
-    }
-
-    // Verificar se veio do PagSeguro (compatibilidade com sistema antigo)
-    // IMPORTANTE: Só confirmar se o status for PAID/paid ou se tiver transactionId (assumindo que transactionId só vem em pagamentos confirmados)
-    const transactionId = searchParams?.get('transaction_id');
-    const isValidPaymentStatus = paymentStatus === 'PAID' || paymentStatus === 'paid' || paymentStatus === '3'; // '3' é código de pagamento aprovado no PagSeguro
-    if (transactionId || isValidPaymentStatus) {
-      setPaymentConfirmed(true);
+    } else if (!canStayOnPage) {
+      router.push('/');
     }
   }, [router, searchParams]);
 
@@ -268,7 +273,7 @@ function ObrigadoContent() {
                       </div>
 
                       {/* Email Status & Resend */}
-                      {paymentConfirmed && (
+                      {paymentConfirmed && searchParams?.get('charge_id') && (
                         <div className="flex items-start space-x-4 p-4 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:border-blue-400/50 transition-all duration-300">
                           <div className="w-10 h-10 bg-blue-400/10 border border-blue-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
                             <Mail className="w-5 h-5 text-blue-400" />

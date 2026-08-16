@@ -1,35 +1,34 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { WORKSHOP_PUBLIC_SITE_URL, WORKSHOP_SUCCESS_PATH } from '@/lib/constants';
 
 /**
- * Rota de callback para redirecionamento após pagamento
- * Esta rota recebe os parâmetros do PagBank e redireciona para a página de obrigado
+ * Normaliza o retorno do Asaas (e provedores antigos) e envia o aluno
+ * para a página de obrigado, onde o Meta Pixel dispara Purchase.
  */
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  
-  // Parâmetros que podem vir do PagBank
-  const chargeId = searchParams.get('charge_id');
-  const status = searchParams.get('status');
-  const referenceId = searchParams.get('reference_id');
-  
-  // URL base do site
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3002';
-  
-  // Construir URL de redirecionamento com parâmetros
-  const redirectUrl = new URL('/workshop-destrava-ligacoes/obrigado', baseUrl);
-  
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || WORKSHOP_PUBLIC_SITE_URL;
+
+  const redirectUrl = new URL(WORKSHOP_SUCCESS_PATH, baseUrl);
+
+  const chargeId =
+    searchParams.get('charge_id') ||
+    searchParams.get('paymentId') ||
+    searchParams.get('id');
+  const status = searchParams.get('status') || 'PAID';
+  const referenceId =
+    searchParams.get('reference_id') ||
+    searchParams.get('externalReference');
+  const source = searchParams.get('source') || 'asaas';
+
   if (chargeId) {
     redirectUrl.searchParams.set('charge_id', chargeId);
   }
-  if (status) {
-    redirectUrl.searchParams.set('status', status);
-  }
+  redirectUrl.searchParams.set('status', status);
   if (referenceId) {
     redirectUrl.searchParams.set('reference_id', referenceId);
   }
-  
-  // Redirecionar para a página de obrigado
+  redirectUrl.searchParams.set('source', source);
+
   return NextResponse.redirect(redirectUrl.toString());
 }
-
-

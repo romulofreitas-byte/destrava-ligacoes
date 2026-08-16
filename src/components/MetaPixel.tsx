@@ -92,13 +92,16 @@ export const MetaPixel: React.FC = () => {
       }
     };
 
-    // Defer initialization to idle time to improve initial page load
-    if ('requestIdleCallback' in window) {
+    const isThankYouPage = window.location.pathname.includes('/obrigado');
+
+    // Thank-you page must init immediately so Purchase is not lost
+    if (isThankYouPage) {
+      initializePixel();
+    } else if ('requestIdleCallback' in window) {
       (window as any).requestIdleCallback(() => {
         initializePixel();
       }, { timeout: 2000 });
     } else {
-      // Fallback for browsers without requestIdleCallback
       setTimeout(initializePixel, 2000);
     }
 

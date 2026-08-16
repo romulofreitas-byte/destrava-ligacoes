@@ -16,8 +16,17 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 }
 
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
-/** Checkout PagBank do Workshop (CTA final) */
-export const WORKSHOP_CHECKOUT_URL = 'https://pag.ae/823tVC3zv';
+/** Checkout Asaas do Workshop (CTA final) */
+export const WORKSHOP_CHECKOUT_URL = 'https://www.asaas.com/c/uerfngbtl0fkdga1';
+/** Domínio público do workshop — precisa ser o mesmo cadastrado no Asaas */
+export const WORKSHOP_PUBLIC_SITE_URL = 'https://workshop.mundopodium.com.br';
+export const WORKSHOP_SUCCESS_PATH = '/workshop-destrava-ligacoes/obrigado';
+/**
+ * URL de retorno após pagamento aprovado no Asaas (PIX/cartão).
+ * Colar em: Link de pagamento → URL de redirecionamento / callback.successUrl
+ * com autoRedirect = true.
+ */
+export const WORKSHOP_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas`;
 export const WORKSHOP_SALES = {
   isOpen: true,
   /** Abertura das vendas (exibição em CTAs) */
