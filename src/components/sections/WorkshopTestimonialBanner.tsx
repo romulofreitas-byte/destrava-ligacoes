@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_SALES } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_SALES, WORKSHOP_LAST_CALL } from '@/lib/constants';
 import { WorkshopProofCard } from '@/components/ui/WorkshopProofCard';
 
 const featuredWorkshopTestimonials = [
@@ -92,9 +92,15 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                   <span className="text-yellow-400 font-semibold">
                     {WORKSHOP_SALES.edition}ª Edição aberta!
                   </span>{' '}
-                  Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
-                  {WORKSHOP_MODULE_2_INFO.dateDisplayShort} —{' '}
-                  {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas
+                  {WORKSHOP_SALES.showSpotsProgress ? (
+                    <>
+                      Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
+                      {WORKSHOP_MODULE_2_INFO.dateDisplayShort} —{' '}
+                      {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas
+                    </>
+                  ) : (
+                    WORKSHOP_LAST_CALL.bannerLine
+                  )}
                 </p>
               </div>
             </div>

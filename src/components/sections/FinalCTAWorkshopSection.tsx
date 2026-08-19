@@ -9,7 +9,9 @@ import {
   WORKSHOP_SALES,
   WORKSHOP_PRICING,
   WORKSHOP_CLOSED_COPY,
+  WORKSHOP_LAST_CALL,
   WORKSHOP_CHECKOUT_URL,
+  WORKSHOP_CHECKOUT_SECTION_ID,
 } from '@/lib/constants';
 import { WorkshopCountdown } from '@/components/ui/WorkshopCountdown';
 
@@ -65,8 +67,8 @@ export const FinalCTAWorkshopSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      id="inscricao"
-      className="relative overflow-hidden py-20 md:py-[75px] bg-gray-900"
+      id={WORKSHOP_CHECKOUT_SECTION_ID}
+      className="relative overflow-hidden py-20 md:py-[75px] bg-gray-900 scroll-mt-4"
     >
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90" />
@@ -86,7 +88,9 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20">
                 <Zap className="w-4 h-4 text-yellow-400 mr-2" />
                 <span className="text-yellow-400 font-semibold text-xs tracking-wide">
-                  {WORKSHOP_SALES.edition}ª Edição — {WORKSHOP_INFO.dateDisplayShort}
+                  {WORKSHOP_SALES.showSpotsProgress
+                    ? `${WORKSHOP_SALES.edition}ª Edição — ${WORKSHOP_INFO.dateDisplayShort}`
+                    : WORKSHOP_LAST_CALL.liveToday}
                 </span>
               </div>
 
@@ -123,7 +127,9 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 <div className="flex items-center justify-center space-x-2 p-3 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
                   <Users className="w-5 h-5 text-yellow-400" />
                   <span className="text-yellow-400 font-semibold text-sm">
-                    {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas preenchidas
+                    {WORKSHOP_SALES.showSpotsProgress
+                      ? `${WORKSHOP_SALES.filledSpots} de ${WORKSHOP_SALES.maxSpots} vagas preenchidas`
+                      : WORKSHOP_LAST_CALL.spotsLine}
                   </span>
                 </div>
                 <div className="flex items-center justify-center space-x-2 p-3 bg-gray-700/40 border border-gray-500/40 rounded-xl">
@@ -142,8 +148,10 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                     className={ctaButtonClass}
                     title="Pagar com Asaas"
                   >
-                    <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
-                      Garantir Minha Vaga Agora
+                      <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
+                      {WORKSHOP_SALES.showSpotsProgress
+                        ? 'Garantir Minha Vaga Agora'
+                        : WORKSHOP_LAST_CALL.finalCta}
                     </span>
                   </a>
                 ) : (
@@ -176,6 +184,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 </div>
               </div>
 
+              {WORKSHOP_SALES.showSpotsProgress ? (
               <div className="space-y-2 mb-8">
                 <div className="flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-300">Vagas preenchidas</span>
@@ -193,6 +202,11 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   Turma limitada a {WORKSHOP_SALES.maxSpots} participantes
                 </p>
               </div>
+              ) : (
+              <p className="text-yellow-400/90 text-xs sm:text-sm font-semibold mb-8">
+                {WORKSHOP_LAST_CALL.liveToday} · {WORKSHOP_LAST_CALL.spotsLine}
+              </p>
+              )}
 
               <div className="mb-8 text-left rounded-2xl border border-gray-600/50 bg-gray-900/40 p-5 sm:p-6">
                 <h3 className="text-white font-bold text-base sm:text-lg mb-3 text-center sm:text-left">
@@ -229,11 +243,17 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   <a href="#grid-bonus" className="text-yellow-400 font-semibold hover:text-yellow-300 underline underline-offset-2">
                     acesso de fundador ao GRID
                   </a>
-                  . Restam{' '}
-                  <span className="text-white font-semibold">
-                    {WORKSHOP_SALES.maxSpots - WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
-                  </span>{' '}
-                  vagas nesta turma.
+                  . {WORKSHOP_SALES.showSpotsProgress ? (
+                    <>
+                      Restam{' '}
+                      <span className="text-white font-semibold">
+                        {WORKSHOP_SALES.maxSpots - WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
+                      </span>{' '}
+                      vagas nesta turma.
+                    </>
+                  ) : (
+                    <span className="text-white font-semibold">{WORKSHOP_LAST_CALL.closingLine}</span>
+                  )}
                 </p>
               </div>
             </div>

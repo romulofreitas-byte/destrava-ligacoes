@@ -14,7 +14,10 @@ import {
   WORKSHOP_SALES,
   WORKSHOP_PRICING,
   WORKSHOP_CLOSED_COPY,
+  WORKSHOP_LAST_CALL,
+  WORKSHOP_CHECKOUT_SECTION_ID,
 } from '@/lib/constants';
+import { scrollToCheckoutCard } from '@/lib/scrollToSection';
 
 export const HeroSectionWorkshop: React.FC = () => {
   const [progressWidth, setProgressWidth] = useState<number>(WORKSHOP_SALES.progressPercent);
@@ -51,17 +54,18 @@ export const HeroSectionWorkshop: React.FC = () => {
     );
   };
 
-  const ctaHref = '#inscricao';
+  const ctaHref = `#${WORKSHOP_CHECKOUT_SECTION_ID}`;
   const ctaLabel = salesOpen
-    ? `Garantir vaga por ${WORKSHOP_PRICING.current}`
+    ? WORKSHOP_SALES.showSpotsProgress
+      ? `Garantir vaga por ${WORKSHOP_PRICING.current}`
+      : WORKSHOP_LAST_CALL.heroCta
     : WORKSHOP_CLOSED_COPY.heroCta;
   const ctaClassName =
     'group relative w-full inline-flex items-center justify-center px-5 py-3 sm:py-3.5 bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 font-black text-sm sm:text-base rounded-full hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 shadow-2xl hover:shadow-yellow-500/40 hover:scale-[1.02] button-shine-effect cursor-pointer pointer-events-auto z-10';
 
   const handleCtaClickWithScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     handleCTAClick();
-    e.preventDefault();
-    document.getElementById('inscricao')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToCheckoutCard(e);
   };
 
   const priceBlock = (
@@ -106,20 +110,26 @@ export const HeroSectionWorkshop: React.FC = () => {
 
       <div className="mt-5 flex items-end gap-2.5 sm:gap-3 w-full">
         <WorkshopCountdown inlineBoxes />
-        <div className="flex-1 min-w-0 pb-0.5 space-y-1.5">
-          <p className="text-[10px] sm:text-xs leading-none">
-            <span className="text-gray-400">Vagas: </span>
-            <span className="text-yellow-400 font-semibold tabular-nums">
-              {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
-            </span>
-          </p>
-          <div className="w-full h-[3px] bg-gray-700/80 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-yellow-400 rounded-full transition-all duration-1000 ease-out"
-              style={{ width: `${progressWidth}%` }}
-            />
+        {WORKSHOP_SALES.showSpotsProgress ? (
+          <div className="flex-1 min-w-0 pb-0.5 space-y-1.5">
+            <p className="text-[10px] sm:text-xs leading-none">
+              <span className="text-gray-400">Vagas: </span>
+              <span className="text-yellow-400 font-semibold tabular-nums">
+                {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
+              </span>
+            </p>
+            <div className="w-full h-[3px] bg-gray-700/80 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-yellow-400 rounded-full transition-all duration-1000 ease-out"
+                style={{ width: `${progressWidth}%` }}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <p className="flex-1 min-w-0 pb-0.5 text-[10px] sm:text-xs leading-snug text-yellow-400/90 font-semibold">
+            {WORKSHOP_LAST_CALL.spotsLine}
+          </p>
+        )}
       </div>
     </div>
   );

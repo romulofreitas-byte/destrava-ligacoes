@@ -18,6 +18,8 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
 /** Checkout Asaas do Workshop (CTA final) */
 export const WORKSHOP_CHECKOUT_URL = 'https://www.asaas.com/c/uerfngbtl0fkdga1';
+/** Âncora do card de compra no fim da landing */
+export const WORKSHOP_CHECKOUT_SECTION_ID = 'inscricao';
 /** Domínio público do workshop — precisa ser o mesmo cadastrado no Asaas */
 export const WORKSHOP_PUBLIC_SITE_URL = 'https://workshop.mundopodium.com.br';
 export const WORKSHOP_SUCCESS_PATH = '/workshop-destrava-ligacoes/obrigado';
@@ -39,6 +41,11 @@ export const WORKSHOP_SALES = {
   maxSpots: 20,
   /** Percentual da barra (filledSpots / maxSpots) */
   progressPercent: 60,
+  /**
+   * No dia do Módulo 1: esconde “X de 20” e a barra.
+   * Urgência passa a ser horário (ao vivo hoje), não capacidade restante.
+   */
+  showSpotsProgress: false,
 } as const;
 
 /** Preço de venda + ancoragem (hero e CTA final devem usar a mesma fonte) */
@@ -77,6 +84,18 @@ export const WORKSHOP_INFO = {
   duration: '4 horas',
   format: 'Online • Ao vivo',
 };
+
+/** Copy do dia D: urgência de horário, sem denominador de vagas */
+export const WORKSHOP_LAST_CALL = {
+  heroCta: 'Entrar na turma de hoje',
+  finalCta: `Garantir vaga antes das ${WORKSHOP_INFO.timeStartBadge}`,
+  subtleCta: 'Entrar na turma de hoje',
+  spotsLine: 'Últimas vagas para entrar hoje',
+  liveToday: `Ao vivo hoje às ${WORKSHOP_INFO.timeStartBadge}`,
+  countdownCaption: `Começa hoje às ${WORKSHOP_INFO.timeStartBadge}`,
+  bannerLine: `Módulo 1 hoje às ${WORKSHOP_INFO.timeStartBadge} — últimas entradas`,
+  closingLine: 'Últimas vagas para entrar no ao vivo de hoje.',
+} as const;
 
 /** WhatsApp — fonte única para CTAs do funil */
 export const WORKSHOP_WHATSAPP = {

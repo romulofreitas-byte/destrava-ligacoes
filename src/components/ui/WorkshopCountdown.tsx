@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { WORKSHOP_INFO, WORKSHOP_SALES } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_SALES, WORKSHOP_LAST_CALL } from '@/lib/constants';
 
 type TimeLeft = {
   days: number;
@@ -80,10 +80,16 @@ export const WorkshopCountdown: React.FC<WorkshopCountdownProps> = ({
       >
         <span className="text-yellow-400/90 font-semibold">{short}</span>
         <span className="mx-1.5 text-gray-600">·</span>
-        <span className="text-white font-semibold">
-          {WORKSHOP_SALES.filledSpots}/{WORKSHOP_SALES.maxSpots}
-        </span>
-        <span className="text-gray-500"> vagas</span>
+        {WORKSHOP_SALES.showSpotsProgress ? (
+          <>
+            <span className="text-white font-semibold">
+              {WORKSHOP_SALES.filledSpots}/{WORKSHOP_SALES.maxSpots}
+            </span>
+            <span className="text-gray-500"> vagas</span>
+          </>
+        ) : (
+          <span className="text-white font-semibold">{WORKSHOP_LAST_CALL.spotsLine}</span>
+        )}
       </p>
     );
   }
@@ -134,11 +140,15 @@ export const WorkshopCountdown: React.FC<WorkshopCountdownProps> = ({
               align === 'start' ? 'text-center sm:text-left' : 'text-center'
             }`}
           >
-            Módulo 1 — {WORKSHOP_INFO.dateDisplayLong}
+            {WORKSHOP_SALES.showSpotsProgress
+              ? `Módulo 1 — ${WORKSHOP_INFO.dateDisplayLong}`
+              : WORKSHOP_LAST_CALL.countdownCaption}
           </p>
         ) : (
           <p className="text-gray-400 text-[10px] sm:text-xs text-center sm:text-left">
-            Contagem para o Módulo 1 ({WORKSHOP_INFO.dateDisplayShort})
+            {WORKSHOP_SALES.showSpotsProgress
+              ? `Contagem para o Módulo 1 (${WORKSHOP_INFO.dateDisplayShort})`
+              : WORKSHOP_LAST_CALL.countdownCaption}
           </p>
         ))}
       <div className={`flex items-center gap-1 sm:gap-1.5 ${justifyClass}`}>

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
-import { WORKSHOP_SALES, WORKSHOP_CLOSED_COPY } from '@/lib/constants';
+import { WORKSHOP_SALES, WORKSHOP_CLOSED_COPY, WORKSHOP_LAST_CALL } from '@/lib/constants';
+import { scrollToCheckoutCard } from '@/lib/scrollToSection';
 
 interface SubtleCTAProps {
   text?: string;
@@ -13,12 +14,15 @@ export const SubtleCTA: React.FC<SubtleCTAProps> = ({
   text,
   className = '',
 }) => {
-  const label = text ?? (WORKSHOP_SALES.isOpen ? 'Garantir vaga' : WORKSHOP_CLOSED_COPY.finalCta);
+  const label =
+    text ??
+    (WORKSHOP_SALES.isOpen
+      ? WORKSHOP_SALES.showSpotsProgress
+        ? 'Garantir vaga'
+        : WORKSHOP_LAST_CALL.subtleCta
+      : WORKSHOP_CLOSED_COPY.finalCta);
   const handleClick = () => {
-    const element = document.getElementById('inscricao');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    scrollToCheckoutCard();
   };
 
   return (
