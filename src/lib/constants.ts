@@ -33,19 +33,19 @@ export const WORKSHOP_SALES = {
   isOpen: true,
   /** Abertura das vendas (exibição em CTAs) */
   opensOnDisplay: '11/08',
-  /** Número da edição atual (ex.: 11 → "11ª") */
-  edition: 11,
+  /** Número da edição atual (ex.: 12 → "12ª") */
+  edition: 12,
   /** Vagas já preenchidas (hero + CTA final — números absolutos) */
-  filledSpots: 12,
+  filledSpots: 0,
   /** Capacidade máxima da turma */
   maxSpots: 20,
   /** Percentual da barra (filledSpots / maxSpots) */
-  progressPercent: 60,
+  progressPercent: 0,
   /**
    * No dia do Módulo 1: esconde “X de 20” e a barra.
    * Urgência passa a ser horário (ao vivo hoje), não capacidade restante.
    */
-  showSpotsProgress: false,
+  showSpotsProgress: true,
 } as const;
 
 /** Preço de venda + ancoragem (hero e CTA final devem usar a mesma fonte) */
@@ -70,13 +70,13 @@ export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVA LIGAÇÕES | MUNDO PÓDIUM',
   /** Nome curto do produto (site, SEO, e-mails) */
   productName: 'Workshop Destrava Ligações',
-  date: '19 de agosto de 2026',
-  dateObj: new Date('2026-08-19T13:00:00-03:00'),
+  date: '2 de setembro de 2026',
+  dateObj: new Date('2026-09-02T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '19 de Agosto',
-  dateDisplayShort: '19/08',
+  dateDisplayLong: '2 de Setembro',
+  dateDisplayShort: '02/09',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Quarta-feira, 19 de agosto de 2026',
+  dateEmailLine: 'Quarta-feira, 2 de setembro de 2026',
   time: '13:00 – 17:00',
   /** Início do módulo 1 (atalho para UI compacta) */
   timeStartBadge: '13h',
@@ -110,11 +110,11 @@ export const WORKSHOP_WHATSAPP = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '25 de agosto de 2026',
-  dateObj: new Date('2026-08-25T08:00:00-03:00'),
-  dateDisplayLong: '25 de Agosto',
-  dateDisplayShort: '25/08',
-  dateEmailLine: 'Terça-feira, 25 de agosto de 2026',
+  date: '9 de setembro de 2026',
+  dateObj: new Date('2026-09-09T08:00:00-03:00'),
+  dateDisplayLong: '9 de Setembro',
+  dateDisplayShort: '09/09',
+  dateEmailLine: 'Quarta-feira, 9 de setembro de 2026',
   time: '08:00 – 12:00',
   /** Zero à esquerda: evita ler como “8h de duração” */
   timeStartBadge: '08h',
@@ -190,7 +190,7 @@ export const PLATAFORMA_MUNDO_PODIUM_COPY = {
 } as const;
 
 /**
- * GRID — bônus 2 da 11ª edição (depois dos 60 dias de Plataforma).
+ * GRID — bônus 2 desta edição (depois dos 60 dias de Plataforma).
  * Fonte única de datas, copy e FAQ. Não promover no hero.
  */
 export const WORKSHOP_GRID_BONUS = {
@@ -305,7 +305,7 @@ export const WORKSHOP_GRID_BONUS = {
     'Lista pronta não fecha contrato. Quem fecha é quem disca. O Workshop te dá o método, a Plataforma te dá a prática, o GRID tira o atrito do caminho.',
   warningClose: 'A volta rápida é você que dá.',
 
-  cta: 'Quero minha vaga na 11ª edição',
+  cta: `Quero minha vaga na ${WORKSHOP_SALES.edition}ª edição`,
 
   afterWorkshopTitle: 'GRID — acesso de fundador',
   afterWorkshopDetail: 'Lista, decisor e ordem de quem ligar primeiro',
