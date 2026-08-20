@@ -9,7 +9,8 @@
     "lint": "next lint",
     "check:ui-images": "node scripts/check-ui-images.mjs",
     "test:email-pagamento": "node scripts/test-email-pagamento.js",
-    "send:retroactive-email": "node scripts/send-retroactive-email.js"
+    "send:retroactive-email": "node scripts/send-retroactive-email.js",
+    "organize:depoimentos-2026": "node scripts/organize-depoimentos-2026.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.84.0",
