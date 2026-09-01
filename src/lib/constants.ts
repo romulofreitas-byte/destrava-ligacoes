@@ -17,7 +17,7 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
 /** Checkout Asaas do Workshop (CTA final) */
-export const WORKSHOP_CHECKOUT_URL = 'https://www.asaas.com/c/uerfngbtl0fkdga1';
+export const WORKSHOP_CHECKOUT_URL = 'https://www.asaas.com/c/9el40g7ep0i7voi7';
 /** Âncora do card de compra no fim da landing */
 export const WORKSHOP_CHECKOUT_SECTION_ID = 'inscricao';
 /** Domínio público do workshop — precisa ser o mesmo cadastrado no Asaas */
@@ -70,13 +70,13 @@ export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVA LIGAÇÕES | MUNDO PÓDIUM',
   /** Nome curto do produto (site, SEO, e-mails) */
   productName: 'Workshop Destrava Ligações',
-  date: '2 de setembro de 2026',
-  dateObj: new Date('2026-09-02T13:00:00-03:00'),
+  date: '9 de setembro de 2026',
+  dateObj: new Date('2026-09-09T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '2 de Setembro',
-  dateDisplayShort: '02/09',
+  dateDisplayLong: '9 de Setembro',
+  dateDisplayShort: '09/09',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Quarta-feira, 2 de setembro de 2026',
+  dateEmailLine: 'Quarta-feira, 9 de setembro de 2026',
   time: '13:00 – 17:00',
   /** Início do módulo 1 (atalho para UI compacta) */
   timeStartBadge: '13h',
@@ -110,11 +110,11 @@ export const WORKSHOP_WHATSAPP = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '9 de setembro de 2026',
-  dateObj: new Date('2026-09-09T08:00:00-03:00'),
-  dateDisplayLong: '9 de Setembro',
-  dateDisplayShort: '09/09',
-  dateEmailLine: 'Quarta-feira, 9 de setembro de 2026',
+  date: '16 de setembro de 2026',
+  dateObj: new Date('2026-09-16T08:00:00-03:00'),
+  dateDisplayLong: '16 de Setembro',
+  dateDisplayShort: '16/09',
+  dateEmailLine: 'Quarta-feira, 16 de setembro de 2026',
   time: '08:00 – 12:00',
   /** Zero à esquerda: evita ler como “8h de duração” */
   timeStartBadge: '08h',
