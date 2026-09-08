@@ -36,11 +36,11 @@ export const WORKSHOP_SALES = {
   /** Número da edição atual (ex.: 12 → "12ª") */
   edition: 12,
   /** Vagas já preenchidas (hero + CTA final — números absolutos) */
-  filledSpots: 0,
+  filledSpots: 5,
   /** Capacidade máxima da turma */
   maxSpots: 20,
   /** Percentual da barra (filledSpots / maxSpots) */
-  progressPercent: 0,
+  progressPercent: 25,
   /**
    * No dia do Módulo 1: esconde “X de 20” e a barra.
    * Urgência passa a ser horário (ao vivo hoje), não capacidade restante.
