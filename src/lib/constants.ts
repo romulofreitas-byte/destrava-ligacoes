@@ -33,14 +33,14 @@ export const WORKSHOP_SALES = {
   isOpen: true,
   /** Abertura das vendas (exibição em CTAs) */
   opensOnDisplay: '11/08',
-  /** Número da edição atual (ex.: 12 → "12ª") */
-  edition: 12,
+  /** Número da edição atual (ex.: 13 → "13ª") */
+  edition: 13,
   /** Vagas já preenchidas (hero + CTA final — números absolutos) */
-  filledSpots: 5,
+  filledSpots: 0,
   /** Capacidade máxima da turma */
   maxSpots: 20,
   /** Percentual da barra (filledSpots / maxSpots) */
-  progressPercent: 25,
+  progressPercent: 0,
   /**
    * No dia do Módulo 1: esconde “X de 20” e a barra.
    * Urgência passa a ser horário (ao vivo hoje), não capacidade restante.
@@ -70,13 +70,13 @@ export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVA LIGAÇÕES | MUNDO PÓDIUM',
   /** Nome curto do produto (site, SEO, e-mails) */
   productName: 'Workshop Destrava Ligações',
-  date: '9 de setembro de 2026',
-  dateObj: new Date('2026-09-09T13:00:00-03:00'),
+  date: '22 de setembro de 2026',
+  dateObj: new Date('2026-09-22T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '9 de Setembro',
-  dateDisplayShort: '09/09',
+  dateDisplayLong: '22 de Setembro',
+  dateDisplayShort: '22/09',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Quarta-feira, 9 de setembro de 2026',
+  dateEmailLine: 'Terça-feira, 22 de setembro de 2026',
   time: '13:00 – 17:00',
   /** Início do módulo 1 (atalho para UI compacta) */
   timeStartBadge: '13h',
@@ -110,11 +110,11 @@ export const WORKSHOP_WHATSAPP = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '16 de setembro de 2026',
-  dateObj: new Date('2026-09-16T08:00:00-03:00'),
-  dateDisplayLong: '16 de Setembro',
-  dateDisplayShort: '16/09',
-  dateEmailLine: 'Quarta-feira, 16 de setembro de 2026',
+  date: '29 de setembro de 2026',
+  dateObj: new Date('2026-09-29T08:00:00-03:00'),
+  dateDisplayLong: '29 de Setembro',
+  dateDisplayShort: '29/09',
+  dateEmailLine: 'Terça-feira, 29 de setembro de 2026',
   time: '08:00 – 12:00',
   /** Zero à esquerda: evita ler como “8h de duração” */
   timeStartBadge: '08h',
