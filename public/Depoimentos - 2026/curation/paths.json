@@ -1,0 +1,1512 @@
+{
+  "categoryLabels": {
+    "A": "Resultados com métricas",
+    "B": "Destravamento / transformação",
+    "C": "Validação do método / cold call",
+    "D": "Workshop / mentoria / conteúdo",
+    "E": "Comunidade / networking / soft proof",
+    "F": "Descartes / baixo valor"
+  },
+  "hero": [
+    {
+      "file": "IMG_0108.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_0108.PNG",
+      "category": "A",
+      "theme": "fechamento",
+      "needsBlur": true,
+      "summary": "Jonathan fecha venda de site após ligação fria + follow-up."
+    },
+    {
+      "file": "IMG_0580.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_0580.PNG",
+      "category": "A",
+      "theme": "resultado_financeiro",
+      "needsBlur": false,
+      "summary": "Regularize Health triplicou faturamento com inbound/follow-up + gráfico."
+    },
+    {
+      "file": "IMG_1743.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_1743.PNG",
+      "category": "A",
+      "theme": "metricas_de_vendas",
+      "needsBlur": false,
+      "summary": "Lucas: 30 ligações → 10 atenderam → 3 reuniões → 1 venda."
+    },
+    {
+      "file": "IMG_2323.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_2323.PNG",
+      "category": "A",
+      "theme": "resultado",
+      "needsBlur": false,
+      "summary": "Marcos Diniz: voltou à prospecção e fechou para incorporadora."
+    },
+    {
+      "file": "IMG_2865.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_2865.PNG",
+      "category": "A",
+      "theme": "resultado_rapido",
+      "needsBlur": false,
+      "summary": "André Neto: 1º contrato em menos de uma semana (R1→R2)."
+    },
+    {
+      "file": "IMG_2867.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_2867.PNG",
+      "category": "B",
+      "theme": "transformacao",
+      "needsBlur": false,
+      "summary": "Diogo: YouTube/comunidade foi virada de chave; confiança absurda."
+    },
+    {
+      "file": "IMG_3001.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_3001.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Maycon aplica reunião de alinhamento da mentoria com insight forte."
+    },
+    {
+      "file": "IMG_3378.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_3378.PNG",
+      "category": "D",
+      "theme": "autoridade",
+      "needsBlur": false,
+      "summary": "Leandro: aula de 2h entregou mais que cursos pagos."
+    },
+    {
+      "file": "IMG_3935.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_3935.PNG",
+      "category": "B",
+      "theme": "transformacao",
+      "needsBlur": true,
+      "summary": "Alanis: plataforma é divisor de águas; acesso ao Rômulo."
+    },
+    {
+      "file": "IMG_4176.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_4176.PNG",
+      "category": "B",
+      "theme": "destravamento",
+      "needsBlur": false,
+      "summary": "Maycon: medo de 2 anos → 10 ligações; melhores R$50."
+    },
+    {
+      "file": "IMG_4186.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_4186.PNG",
+      "category": "C",
+      "theme": "cold_call",
+      "needsBlur": false,
+      "summary": "Framework limpo: cold call → follow-up → social (sem PII)."
+    },
+    {
+      "file": "IMG_4416.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_4416.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": true,
+      "summary": "Gilson: workshop é o melhor conteúdo visto, muita entrega."
+    },
+    {
+      "file": "IMG_6129.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_6129.PNG",
+      "category": "A",
+      "theme": "metricas",
+      "needsBlur": true,
+      "summary": "5 agendamentos em 6 ligações (segurança eletrônica)."
+    },
+    {
+      "file": "IMG_6372.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_6372.PNG",
+      "category": "A",
+      "theme": "agendamento",
+      "needsBlur": false,
+      "summary": "Superou frio na barriga, agendou 3 reuniões, maratonou live #97."
+    },
+    {
+      "file": "IMG_6377.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_6377.PNG",
+      "category": "B",
+      "theme": "ligacao",
+      "needsBlur": false,
+      "summary": "Alanis aplica técnicas dos vídeos e marca reunião com postura."
+    },
+    {
+      "file": "IMG_6858.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_6858.PNG",
+      "category": "C",
+      "theme": "autoridade",
+      "needsBlur": false,
+      "summary": "“Você está revolucionando o sistema de prospecção ativa.”"
+    },
+    {
+      "file": "IMG_6862.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_6862.PNG",
+      "category": "A",
+      "theme": "metricas",
+      "needsBlur": false,
+      "summary": "Uma tarde de follow-up: 5 reuniões + 1 fechamento."
+    },
+    {
+      "file": "IMG_7002.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_7002.PNG",
+      "category": "A",
+      "theme": "B2B",
+      "needsBlur": false,
+      "summary": "Vendas B2B: abordagem do Rômulo gera muito resultado."
+    },
+    {
+      "file": "IMG_7202.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_7202.PNG",
+      "category": "A",
+      "theme": "superacao",
+      "needsBlur": false,
+      "summary": "Recomeço: após aula/YT agendou 3 reuniões e avançou R2."
+    },
+    {
+      "file": "IMG_7351.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_7351.PNG",
+      "category": "A",
+      "theme": "ciclo_vendas",
+      "needsBlur": false,
+      "summary": "Ciclo de vendas de 15–21 dias para 1–7 dias ao ligar."
+    },
+    {
+      "file": "IMG_7925.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_7925.PNG",
+      "category": "B",
+      "theme": "destravamento",
+      "needsBlur": false,
+      "summary": "Otavio: após 6–7 meses, “destravei o que havia travado”."
+    },
+    {
+      "file": "IMG_9672.PNG",
+      "path": "/Depoimentos - 2026/hero/IMG_9672.PNG",
+      "category": "A",
+      "theme": "metricas",
+      "needsBlur": false,
+      "summary": "Victor: 10 reuniões marcadas de ontem pra hoje com o método."
+    },
+    {
+      "file": "9E04BF3C-D337-428E-A510-2A7806A1C70F.PNG",
+      "path": "/Depoimentos - 2026/hero/9E04BF3C-D337-428E-A510-2A7806A1C70F.PNG",
+      "category": "B",
+      "theme": "destravamento",
+      "needsBlur": true,
+      "summary": "Douglas: estrutura cold call/R1/R2 o destravou."
+    },
+    {
+      "file": "FC7F3CB4-4ABE-4AE1-87F3-9E72DFC144EB.PNG",
+      "path": "/Depoimentos - 2026/hero/FC7F3CB4-4ABE-4AE1-87F3-9E72DFC144EB.PNG",
+      "category": "A",
+      "theme": "metricas",
+      "needsBlur": true,
+      "summary": "Izabela: live destravou; 4 reuniões agendadas por ligação na semana."
+    }
+  ],
+  "gallery": [
+    {
+      "file": "IMG_0099.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0099.PNG",
+      "category": "E",
+      "theme": "agradecimento",
+      "needsBlur": true,
+      "summary": "Apollo agradece atenção aos detalhes e superação de limites."
+    },
+    {
+      "file": "IMG_0100.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0100.PNG",
+      "category": "D",
+      "theme": "metodo_funcionou",
+      "needsBlur": true,
+      "summary": "Alanis: workshop de ligações realmente funciona; incentivo a participar."
+    },
+    {
+      "file": "IMG_0101.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0101.PNG",
+      "category": "D",
+      "theme": "agradecimento",
+      "needsBlur": false,
+      "summary": "Continuação Alanis: gratidão a Rômulo e à comunidade."
+    },
+    {
+      "file": "IMG_0107.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0107.PNG",
+      "category": "E",
+      "theme": "agradecimento",
+      "needsBlur": true,
+      "summary": "Jonathan agradece o conteúdo do Rômulo."
+    },
+    {
+      "file": "IMG_0570.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0570.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Yuri elogia call com Rômulo: valor e soluções assertivas."
+    },
+    {
+      "file": "IMG_0571.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0571.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Thierry e João Pedro reforçam excelência das mentorias em grupo."
+    },
+    {
+      "file": "IMG_0629.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0629.PNG",
+      "category": "E",
+      "theme": "mindset",
+      "needsBlur": false,
+      "summary": "DM parabeniza por comprar o ativo mais valioso: o tempo."
+    },
+    {
+      "file": "IMG_0682.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0682.PNG",
+      "category": "A",
+      "theme": "fechamento",
+      "needsBlur": true,
+      "summary": "Pablo analisa aula de fechamento de R$90k e posicionamento."
+    },
+    {
+      "file": "IMG_0849.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_0849.PNG",
+      "category": "B",
+      "theme": "destravamento",
+      "needsBlur": false,
+      "summary": "Bruna: de manhã travada; à tarde 7 leads e gatekeeper ok."
+    },
+    {
+      "file": "IMG_1069.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1069.PNG",
+      "category": "C",
+      "theme": "quebra_de_objecao",
+      "needsBlur": true,
+      "summary": "Lucas: lista + quebra de objeção mudaram o cenário das ligações."
+    },
+    {
+      "file": "IMG_1070.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1070.PNG",
+      "category": "E",
+      "theme": "comunidade",
+      "needsBlur": true,
+      "summary": "Clima de comunidade: resiliência de ligar na sexta."
+    },
+    {
+      "file": "IMG_1135.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1135.PNG",
+      "category": "D",
+      "theme": "prova_social",
+      "needsBlur": true,
+      "summary": "Vários alunos elogiam live/conteúdo; alguém corre pra comprar."
+    },
+    {
+      "file": "IMG_1136.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1136.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": true,
+      "summary": "Feedback coletivo pós-mentoria (~2h15)."
+    },
+    {
+      "file": "IMG_1718.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1718.PNG",
+      "category": "D",
+      "theme": "qualidade_conteudo",
+      "needsBlur": true,
+      "summary": "Felipe e Tiago: melhores 4h de aula; conteúdo de ouro."
+    },
+    {
+      "file": "IMG_1719.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1719.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": true,
+      "summary": "Fio pós-mentoria ~4h com vários elogios."
+    },
+    {
+      "file": "IMG_1720.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1720.PNG",
+      "category": "D",
+      "theme": "autoridade",
+      "needsBlur": true,
+      "summary": "Antonio compara aprendizado com Flávio Augusto."
+    },
+    {
+      "file": "IMG_1731.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1731.PNG",
+      "category": "A",
+      "theme": "resultado_financeiro",
+      "needsBlur": true,
+      "summary": "Carlos incentiva Alex a seguir método para 20k/mês."
+    },
+    {
+      "file": "IMG_1742.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_1742.PNG",
+      "category": "C",
+      "theme": "roteiro_vendas",
+      "needsBlur": false,
+      "summary": "Lucas: o script que uso é do próprio Rômulo."
+    },
+    {
+      "file": "IMG_2287.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2287.PNG",
+      "category": "E",
+      "theme": "advocacy",
+      "needsBlur": true,
+      "summary": "Mike: valorizem mentorias/plataforma — mais barato que pizza."
+    },
+    {
+      "file": "IMG_2345.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2345.PNG",
+      "category": "D",
+      "theme": "aula",
+      "needsBlur": true,
+      "summary": "Guilherme: aula sensacional; vai aplicar no mesmo dia."
+    },
+    {
+      "file": "IMG_2386.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2386.PNG",
+      "category": "E",
+      "theme": "humor",
+      "needsBlur": false,
+      "summary": "Esposa pegou aluno imitando bordão “aqui é Rômulo de BH”."
+    },
+    {
+      "file": "IMG_2427.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2427.PNG",
+      "category": "E",
+      "theme": "elogio",
+      "needsBlur": false,
+      "summary": "Elogio curto informal: “ce é bom demais bicho”."
+    },
+    {
+      "file": "IMG_2430.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2430.PNG",
+      "category": "E",
+      "theme": "humor",
+      "needsBlur": false,
+      "summary": "Figurinha “Rômulo da Empresa Combustível” — bastidores."
+    },
+    {
+      "file": "IMG_2431.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2431.PNG",
+      "category": "E",
+      "theme": "comunidade",
+      "needsBlur": true,
+      "summary": "Mayara (Curitiba) está adorando a comunidade."
+    },
+    {
+      "file": "IMG_2432.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2432.PNG",
+      "category": "A",
+      "theme": "metricas",
+      "needsBlur": false,
+      "summary": "Semana com 5 R1 e 1 R2; workshop ajudou demais."
+    },
+    {
+      "file": "IMG_2433.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2433.PNG",
+      "category": "C",
+      "theme": "follow_up",
+      "needsBlur": true,
+      "summary": "Davi: 3 das 5 reuniões vieram de follow-up."
+    },
+    {
+      "file": "IMG_2435.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2435.PNG",
+      "category": "B",
+      "theme": "transformacao",
+      "needsBlur": true,
+      "summary": "André: na 2ª semana ligando parece outra pessoa."
+    },
+    {
+      "file": "IMG_2436 (1).PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2436 (1).PNG",
+      "category": "B",
+      "theme": "mindset",
+      "needsBlur": true,
+      "summary": "André: mindset da primeira ligação (crop limpo)."
+    },
+    {
+      "file": "IMG_2564.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2564.PNG",
+      "category": "A",
+      "theme": "fechamento",
+      "needsBlur": true,
+      "summary": "Washington fechou trabalho após reunião presencial."
+    },
+    {
+      "file": "IMG_2854.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2854.PNG",
+      "category": "E",
+      "theme": "comunidade",
+      "needsBlur": false,
+      "summary": "Guilherme chama a comunidade de mina de ouro."
+    },
+    {
+      "file": "IMG_2865 (1).PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2865 (1).PNG",
+      "category": "E",
+      "theme": "networking",
+      "needsBlur": true,
+      "summary": "Alex oferece vaga de prospecção — prova de rede."
+    },
+    {
+      "file": "IMG_2868.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2868.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Brendha agradece conhecimento prático e evolução."
+    },
+    {
+      "file": "IMG_2868 (1).PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2868 (1).PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": true,
+      "summary": "Victor Hugo: cada mentoria melhora o processo comercial."
+    },
+    {
+      "file": "IMG_2869 (1).PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2869 (1).PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": true,
+      "summary": "Mayk: mentoria sensacional e ambiente de evolução."
+    },
+    {
+      "file": "IMG_2870.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2870.PNG",
+      "category": "B",
+      "theme": "transformacao_pessoal",
+      "needsBlur": false,
+      "summary": "Lawria: conselhos vão além dos negócios."
+    },
+    {
+      "file": "IMG_2872.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2872.PNG",
+      "category": "B",
+      "theme": "confianca",
+      "needsBlur": false,
+      "summary": "Nikolas: mentoria tirou da zona de conforto; vende com mais segurança."
+    },
+    {
+      "file": "IMG_2878.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2878.PNG",
+      "category": "A",
+      "theme": "validacao_mercado",
+      "needsBlur": false,
+      "summary": "André Neto: “só façam!” — empresários validam a abordagem."
+    },
+    {
+      "file": "IMG_2879.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2879.PNG",
+      "category": "A",
+      "theme": "fechamento",
+      "needsBlur": false,
+      "summary": "André detalha contrato 6 meses (R$1.000 + LP) e plano CRM."
+    },
+    {
+      "file": "IMG_2880.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2880.PNG",
+      "category": "A",
+      "theme": "resultado_rapido",
+      "needsBlur": false,
+      "summary": "André celebra 1º contrato &lt;1 semana com preview Pix."
+    },
+    {
+      "file": "IMG_2881.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2881.PNG",
+      "category": "D",
+      "theme": "validacao_produto",
+      "needsBlur": true,
+      "summary": "Mike: plataforma “só o ouro”, ajuda no dia a dia."
+    },
+    {
+      "file": "IMG_2904.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_2904.PNG",
+      "category": "E",
+      "theme": "comunidade",
+      "needsBlur": false,
+      "summary": "Aluno novo elogia sintonia e valor do grupo no 1º dia."
+    },
+    {
+      "file": "IMG_3430.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3430.PNG",
+      "category": "E",
+      "theme": "conexao",
+      "needsBlur": true,
+      "summary": "Pós-live emocional: conexão e jornada compartilhada."
+    },
+    {
+      "file": "IMG_3432.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3432.PNG",
+      "category": "B",
+      "theme": "destravamento",
+      "needsBlur": true,
+      "summary": "Leandro: nunca ligou tanto; mudou a vida da família."
+    },
+    {
+      "file": "IMG_3433.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3433.PNG",
+      "category": "C",
+      "theme": "recomendacao",
+      "needsBlur": true,
+      "summary": "Gideão recomenda conteúdo realista para destravar medo de ligar."
+    },
+    {
+      "file": "IMG_3437.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3437.PNG",
+      "category": "A",
+      "theme": "ROI",
+      "needsBlur": true,
+      "summary": "Maycon: R$529 investidos vs contrato R$6.900."
+    },
+    {
+      "file": "IMG_3438.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3438.PNG",
+      "category": "E",
+      "theme": "autoridade",
+      "needsBlur": true,
+      "summary": "Grupo reforça autoridade; gente da V4 presente."
+    },
+    {
+      "file": "IMG_3439.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3439.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": true,
+      "summary": "Victor Hugo: choque de realidade e mentalidade na mentoria."
+    },
+    {
+      "file": "IMG_3440.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3440.PNG",
+      "category": "E",
+      "theme": "atendimento",
+      "needsBlur": true,
+      "summary": "Membros falam de dedicação extrema no atendimento."
+    },
+    {
+      "file": "IMG_3628.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3628.PNG",
+      "category": "E",
+      "theme": "mentalidade",
+      "needsBlur": false,
+      "summary": "Concorda: no mercado emoção vira fraqueza; equilíbrio razão/instinto."
+    },
+    {
+      "file": "IMG_3937.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_3937.PNG",
+      "category": "A",
+      "theme": "R2",
+      "needsBlur": false,
+      "summary": "Procuração com dono de indústria e avanço para R2."
+    },
+    {
+      "file": "IMG_4182.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4182.PNG",
+      "category": "A",
+      "theme": "fechamento",
+      "needsBlur": true,
+      "summary": "Marcos fecha reestruturação financeira para indústria de oxigênio."
+    },
+    {
+      "file": "IMG_4185.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4185.PNG",
+      "category": "C",
+      "theme": "cold_call",
+      "needsBlur": false,
+      "summary": "Disparo/WhatsApp/e-mail fracos vs cold call que muda bem."
+    },
+    {
+      "file": "IMG_4187.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4187.PNG",
+      "category": "C",
+      "theme": "cold_call",
+      "needsBlur": true,
+      "summary": "Gilson: outros canais ajudam, mas cold call é o caminho."
+    },
+    {
+      "file": "IMG_4188.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4188.PNG",
+      "category": "C",
+      "theme": "cold_call",
+      "needsBlur": true,
+      "summary": "Otavio: fugiu de cold call, mas WhatsApp não gera autoridade."
+    },
+    {
+      "file": "IMG_4203.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4203.PNG",
+      "category": "D",
+      "theme": "impacto",
+      "needsBlur": true,
+      "summary": "Vitor: conteúdo impacta; precisa mudar “pra ontem”."
+    },
+    {
+      "file": "IMG_4204.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4204.PNG",
+      "category": "E",
+      "theme": "comunidade",
+      "needsBlur": true,
+      "summary": "Matheus elogia comunidade e fala “de verdades” do Rômulo."
+    },
+    {
+      "file": "IMG_4253.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4253.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": true,
+      "summary": "Print da mentoria em grupo + reflexão sobre preparação."
+    },
+    {
+      "file": "IMG_4254.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4254.PNG",
+      "category": "D",
+      "theme": "script",
+      "needsBlur": true,
+      "summary": "Celebra alinhamento de script ao vivo e agradece comunidade."
+    },
+    {
+      "file": "IMG_4255.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4255.PNG",
+      "category": "E",
+      "theme": "conexao",
+      "needsBlur": false,
+      "summary": "Mentor também é amigo e “psicólogo” do grupo."
+    },
+    {
+      "file": "IMG_4316.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_4316.PNG",
+      "category": "D",
+      "theme": "disciplina",
+      "needsBlur": false,
+      "summary": "Agradece disciplina de estudos e aulas que geram ideias."
+    },
+    {
+      "file": "IMG_5142.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_5142.PNG",
+      "category": "E",
+      "theme": "gratidao",
+      "needsBlur": false,
+      "summary": "Feliz Natal + agradecimento pelas lives e mentoria."
+    },
+    {
+      "file": "IMG_6017.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6017.PNG",
+      "category": "E",
+      "theme": "autoridade",
+      "needsBlur": false,
+      "summary": "Metaforando e outras 40 pessoas curtiram o reel."
+    },
+    {
+      "file": "IMG_6054.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6054.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": true,
+      "summary": "Elogia workshop; agora as ligações vão sair."
+    },
+    {
+      "file": "IMG_6055.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6055.PNG",
+      "category": "D",
+      "theme": "aula",
+      "needsBlur": true,
+      "summary": "Elogia aula e fala em implementar para alavancar resultados."
+    },
+    {
+      "file": "IMG_6167.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6167.PNG",
+      "category": "E",
+      "theme": "gatekeeper",
+      "needsBlur": false,
+      "summary": "Comentários de reel sobre confiança/gatekeeper."
+    },
+    {
+      "file": "IMG_6211.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6211.PNG",
+      "category": "C",
+      "theme": "prospeccao",
+      "needsBlur": true,
+      "summary": "Conteúdo free abriu a mente em 5 dias; quer aumentar prospecção."
+    },
+    {
+      "file": "IMG_6340.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6340.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": false,
+      "summary": "Workshop foi “foda”; terminou de assistir."
+    },
+    {
+      "file": "IMG_6362.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6362.PNG",
+      "category": "E",
+      "theme": "dor",
+      "needsBlur": false,
+      "summary": "Conteúdo fora da curva, mas ainda travado sem 1ª venda."
+    },
+    {
+      "file": "IMG_6363.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6363.PNG",
+      "category": "E",
+      "theme": "networking",
+      "needsBlur": false,
+      "summary": "Davi (CADIS) agradece conversa e aprendizado."
+    },
+    {
+      "file": "IMG_6416.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6416.PNG",
+      "category": "A",
+      "theme": "reuniao",
+      "needsBlur": false,
+      "summary": "R2 com pizzaria; “nem fiquei nervoso” graças aos insights."
+    },
+    {
+      "file": "IMG_6418.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6418.PNG",
+      "category": "D",
+      "theme": "youtube",
+      "needsBlur": false,
+      "summary": "Comentário YT: aprendizado que levaria meses sozinho."
+    },
+    {
+      "file": "IMG_6713.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6713.PNG",
+      "category": "D",
+      "theme": "valor",
+      "needsBlur": true,
+      "summary": "Elogia conteúdo de valor e diz que vai continuar acompanhando."
+    },
+    {
+      "file": "IMG_6738.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6738.PNG",
+      "category": "C",
+      "theme": "prospeccao",
+      "needsBlur": false,
+      "summary": "Elogia aula YT de prospecção e follow-ups 1–4."
+    },
+    {
+      "file": "IMG_6750.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6750.PNG",
+      "category": "A",
+      "theme": "metricas",
+      "needsBlur": true,
+      "summary": "8 ligações no dia: 2 vendas + 1 upsell via follow-up."
+    },
+    {
+      "file": "IMG_6761.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6761.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": false,
+      "summary": "Workshop valeu a pena; vontade do Rômulo de gerar resultados."
+    },
+    {
+      "file": "IMG_6762.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6762.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": false,
+      "summary": "Davi: workshop valeu o valor investido."
+    },
+    {
+      "file": "IMG_6843.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6843.PNG",
+      "category": "E",
+      "theme": "networking",
+      "needsBlur": false,
+      "summary": "“NETWORK ANTECIPA FATURAMENTO!” — clima da comunidade."
+    },
+    {
+      "file": "IMG_6863.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_6863.PNG",
+      "category": "E",
+      "theme": "humor",
+      "needsBlur": false,
+      "summary": "Brincadeira “pedir truco” — persona vendedor paulista."
+    },
+    {
+      "file": "IMG_7001.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7001.PNG",
+      "category": "E",
+      "theme": "dor",
+      "needsBlur": true,
+      "summary": "Michael elogia IG e admite estar apanhando na transição digital."
+    },
+    {
+      "file": "IMG_7076.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7076.PNG",
+      "category": "D",
+      "theme": "youtube",
+      "needsBlur": false,
+      "summary": "YouTube gratuito supera cursos pagos; refina outbound."
+    },
+    {
+      "file": "IMG_7097.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7097.PNG",
+      "category": "D",
+      "theme": "ligacoes",
+      "needsBlur": false,
+      "summary": "Vídeos de ligações “fenomenais” + dúvida técnica leve."
+    },
+    {
+      "file": "IMG_7172.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7172.PNG",
+      "category": "E",
+      "theme": "humildade",
+      "needsBlur": false,
+      "summary": "Agradece humildade do Rômulo vs “intocáveis” do digital."
+    },
+    {
+      "file": "IMG_7203.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7203.PNG",
+      "category": "D",
+      "theme": "valor_gratuito",
+      "needsBlur": false,
+      "summary": "Só YouTube/aula já mudou o ritmo da semana vs cursos ruins."
+    },
+    {
+      "file": "IMG_7215.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7215.PNG",
+      "category": "E",
+      "theme": "comunidade",
+      "needsBlur": true,
+      "summary": "Lucas incentiva grupo 500+ a engajar com o conteúdo."
+    },
+    {
+      "file": "IMG_7216 (1).PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7216 (1).PNG",
+      "category": "E",
+      "theme": "reciprocidade",
+      "needsBlur": false,
+      "summary": "John: Rômulo entrega muito; galera deve apoiar o conteúdo."
+    },
+    {
+      "file": "IMG_7217.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7217.PNG",
+      "category": "D",
+      "theme": "youtube",
+      "needsBlur": false,
+      "summary": "Comentário YT: carisma, comunicação e estratégias."
+    },
+    {
+      "file": "IMG_7223.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7223.PNG",
+      "category": "B",
+      "theme": "confianca",
+      "needsBlur": false,
+      "summary": "Mais segura em prospecções e reuniões após o conteúdo."
+    },
+    {
+      "file": "IMG_7225.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7225.PNG",
+      "category": "E",
+      "theme": "brand_recall",
+      "needsBlur": true,
+      "summary": "Bordão do Rômulo não sai da cabeça."
+    },
+    {
+      "file": "IMG_7234.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7234.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Comentário IG: mentoria gratuita — “Instalei o Instagram premium”."
+    },
+    {
+      "file": "IMG_7285.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7285.PNG",
+      "category": "A",
+      "theme": "primeira_venda",
+      "needsBlur": false,
+      "summary": "Michael celebra o primeiro fechamento no grupo."
+    },
+    {
+      "file": "IMG_7287.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7287.PNG",
+      "category": "A",
+      "theme": "fechamento",
+      "needsBlur": false,
+      "summary": "Regularize Health: negócio fechado na call após praticar ligações."
+    },
+    {
+      "file": "IMG_7308.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7308.PNG",
+      "category": "E",
+      "theme": "autoridade",
+      "needsBlur": false,
+      "summary": "Elogia resiliência: 670 vídeos, 120 lives, 5k seguidores."
+    },
+    {
+      "file": "IMG_7357.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7357.PNG",
+      "category": "B",
+      "theme": "clareza",
+      "needsBlur": true,
+      "summary": "Ruan: clareza sobre a empresa reduziu travamentos e ansiedade."
+    },
+    {
+      "file": "IMG_7358.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7358.PNG",
+      "category": "B",
+      "theme": "transformacao",
+      "needsBlur": true,
+      "summary": "Travado 2 anos; agora foca 1 canal e está funcionando."
+    },
+    {
+      "file": "IMG_7473.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7473.PNG",
+      "category": "C",
+      "theme": "prospeccao",
+      "needsBlur": false,
+      "summary": "Comentário IG: melhorou muito a prospecção após acompanhar."
+    },
+    {
+      "file": "IMG_7496.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7496.PNG",
+      "category": "E",
+      "theme": "conexao",
+      "needsBlur": false,
+      "summary": "Identificação pelos valores de família e “jeito mineiro”."
+    },
+    {
+      "file": "IMG_7565.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7565.PNG",
+      "category": "E",
+      "theme": "soft_proof",
+      "needsBlur": false,
+      "summary": "“Sempre bom conversar contigo” — soft proof baixo impacto."
+    },
+    {
+      "file": "IMG_7566.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7566.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": false,
+      "summary": "Mauro: “se tem uma coisa que funciona é esse workshop”."
+    },
+    {
+      "file": "IMG_7567.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7567.PNG",
+      "category": "C",
+      "theme": "cold_call",
+      "needsBlur": false,
+      "summary": "Conteúdo de cold call ajuda a montar repertório."
+    },
+    {
+      "file": "IMG_7618.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7618.PNG",
+      "category": "D",
+      "theme": "comunidade",
+      "needsBlur": false,
+      "summary": "Valor do conteúdo + comunidade/workshop/mentoria como diferencial."
+    },
+    {
+      "file": "IMG_7681 (1).PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7681 (1).PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Bruno Henrique: mentoria entregando ouro (crop limpo)."
+    },
+    {
+      "file": "IMG_7683 (1).PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7683 (1).PNG",
+      "category": "A",
+      "theme": "fechamento",
+      "needsBlur": true,
+      "summary": "Giulia: só com gratuito recebeu feedbacks e fechou contrato no dia."
+    },
+    {
+      "file": "IMG_7870.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7870.PNG",
+      "category": "C",
+      "theme": "pratica",
+      "needsBlur": false,
+      "summary": "Conteúdo ataca dor do mercado com foco em prática."
+    },
+    {
+      "file": "IMG_7875.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7875.PNG",
+      "category": "E",
+      "theme": "carater",
+      "needsBlur": false,
+      "summary": "Afonso elogia caráter e humildade do Rômulo."
+    },
+    {
+      "file": "IMG_7918.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7918.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": true,
+      "summary": "Maycon: workshop funciona de verdade."
+    },
+    {
+      "file": "IMG_7921.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7921.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": true,
+      "summary": "Murilo: decisão pelo workshop foi a certa."
+    },
+    {
+      "file": "IMG_7924.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7924.PNG",
+      "category": "B",
+      "theme": "transformacao",
+      "needsBlur": true,
+      "summary": "Otavio parte 1: frustração com metas e busca por quem entra em campo."
+    },
+    {
+      "file": "IMG_7926.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_7926.PNG",
+      "category": "B",
+      "theme": "perfeccionismo",
+      "needsBlur": true,
+      "summary": "Saiu do ciclo “fazia script e não ligava” graças aos conteúdos."
+    },
+    {
+      "file": "IMG_8001.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_8001.PNG",
+      "category": "B",
+      "theme": "superacao_medo",
+      "needsBlur": true,
+      "summary": "Maycon: lead elogiou a forma de ligar — “pega e liga”."
+    },
+    {
+      "file": "IMG_8004.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_8004.PNG",
+      "category": "C",
+      "theme": "follow_up",
+      "needsBlur": true,
+      "summary": "Regularize Health: “O OURO ESTÁ NO FOLLOW-UP”."
+    },
+    {
+      "file": "IMG_8049.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_8049.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": true,
+      "summary": "Michael: workshop acima da média e renovador para operação."
+    },
+    {
+      "file": "IMG_8583.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_8583.PNG",
+      "category": "E",
+      "theme": "gratidao",
+      "needsBlur": false,
+      "summary": "Agradece ensinamentos e parabeniza a missão."
+    },
+    {
+      "file": "IMG_8953.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_8953.PNG",
+      "category": "D",
+      "theme": "workshop",
+      "needsBlur": false,
+      "summary": "Gleice: workshop com inteligência, dinamismo e exemplos práticos."
+    },
+    {
+      "file": "IMG_8964.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_8964.PNG",
+      "category": "C",
+      "theme": "autoridade",
+      "needsBlur": false,
+      "summary": "Resultados creditados ao conteúdo de valor vs cold approach preguiçoso."
+    },
+    {
+      "file": "IMG_9207.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9207.PNG",
+      "category": "E",
+      "theme": "demanda",
+      "needsBlur": false,
+      "summary": "Victor: equipe adorou e pede link da comunidade."
+    },
+    {
+      "file": "IMG_9259.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9259.PNG",
+      "category": "B",
+      "theme": "divisor_de_aguas",
+      "needsBlur": true,
+      "summary": "Maycon: só aplicou workshop/vídeos — divisor de águas."
+    },
+    {
+      "file": "IMG_9298.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9298.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": true,
+      "summary": "Carlos elogia mentoria e visão estratégica de escopo."
+    },
+    {
+      "file": "IMG_9299.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9299.PNG",
+      "category": "D",
+      "theme": "conteudo",
+      "needsBlur": true,
+      "summary": "Wellison: conteúdos riquíssimos."
+    },
+    {
+      "file": "IMG_9667.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9667.PNG",
+      "category": "D",
+      "theme": "valor",
+      "needsBlur": false,
+      "summary": "Alisson: aula tem mais valor que muita mentoria do mercado."
+    },
+    {
+      "file": "IMG_9668.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9668.PNG",
+      "category": "D",
+      "theme": "entrega",
+      "needsBlur": false,
+      "summary": "Bruno: nota 1000; entrega absurda."
+    },
+    {
+      "file": "IMG_9669.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9669.PNG",
+      "category": "D",
+      "theme": "aula_gratuita",
+      "needsBlur": false,
+      "summary": "Victor Hugo: aula gratuita entrega muito e tira dúvidas."
+    },
+    {
+      "file": "IMG_9670.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9670.PNG",
+      "category": "D",
+      "theme": "conversao",
+      "needsBlur": false,
+      "summary": "Pablo aprendeu No-Show/Follow-Up na aula free e pegou workshop."
+    },
+    {
+      "file": "IMG_9671.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9671.PNG",
+      "category": "A",
+      "theme": "fechamento",
+      "needsBlur": false,
+      "summary": "R1 → R2 → link/contrato → assinatura e pagamento."
+    },
+    {
+      "file": "IMG_9675.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9675.PNG",
+      "category": "E",
+      "theme": "longo_prazo",
+      "needsBlur": false,
+      "summary": "Vinicius: 1 ano após mentoria, agradece suporte contínuo."
+    },
+    {
+      "file": "IMG_9919.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9919.PNG",
+      "category": "B",
+      "theme": "metodo",
+      "needsBlur": true,
+      "summary": "Pablo: método virou a chave nas abordagens."
+    },
+    {
+      "file": "IMG_9925.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9925.PNG",
+      "category": "D",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Michael: salas com Rômulo são terapia contra ansiedade."
+    },
+    {
+      "file": "IMG_9926.PNG",
+      "path": "/Depoimentos - 2026/gallery/IMG_9926.PNG",
+      "category": "D",
+      "theme": "prova_social",
+      "needsBlur": true,
+      "summary": "Thread com vários elogios à aula + texto longo do Michael."
+    },
+    {
+      "file": "0A5EC8A8-A263-490F-A364-4270DE853606.PNG",
+      "path": "/Depoimentos - 2026/gallery/0A5EC8A8-A263-490F-A364-4270DE853606.PNG",
+      "category": "A",
+      "theme": "resultado_ao_vivo",
+      "needsBlur": true,
+      "summary": "Brenda: lead entrou na call com Rômulo e marcou R2 ao vivo."
+    },
+    {
+      "file": "42159901-53B3-4E4A-9E2C-65DE109A03DB.PNG",
+      "path": "/Depoimentos - 2026/gallery/42159901-53B3-4E4A-9E2C-65DE109A03DB.PNG",
+      "category": "B",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Vinicius: sem o mentor não teria chegado onde está."
+    },
+    {
+      "file": "49E04A24-4A2A-4C61-A6E9-2A11D4950EDB.PNG",
+      "path": "/Depoimentos - 2026/gallery/49E04A24-4A2A-4C61-A6E9-2A11D4950EDB.PNG",
+      "category": "D",
+      "theme": "live",
+      "needsBlur": true,
+      "summary": "Vários membros: live/aula é conteúdo de ouro."
+    },
+    {
+      "file": "52A4F228-33F2-438C-BCBF-8513EFE55C07.PNG",
+      "path": "/Depoimentos - 2026/gallery/52A4F228-33F2-438C-BCBF-8513EFE55C07.PNG",
+      "category": "E",
+      "theme": "aniversario",
+      "needsBlur": true,
+      "summary": "Mensagens de aniversário com gratidão pelo conhecimento."
+    },
+    {
+      "file": "59857EAA-6FD2-401D-96FC-D641C9FF9931.JPG",
+      "path": "/Depoimentos - 2026/gallery/59857EAA-6FD2-401D-96FC-D641C9FF9931.JPG",
+      "category": "E",
+      "theme": "escassez",
+      "needsBlur": true,
+      "summary": "Pedro: Rômulo é diferenciado; lamenta vagas fechadas."
+    },
+    {
+      "file": "6CF239D7-AA3C-4550-B4DA-9CF4F04002A8.JPG",
+      "path": "/Depoimentos - 2026/gallery/6CF239D7-AA3C-4550-B4DA-9CF4F04002A8.JPG",
+      "category": "C",
+      "theme": "anatomia_ligacao",
+      "needsBlur": true,
+      "summary": "Douglas: anatomia da ligação trouxe objetividade na R1."
+    },
+    {
+      "file": "AE6A2CA6-A70E-4CD6-B7A2-EE36CABB7CD1.JPG",
+      "path": "/Depoimentos - 2026/gallery/AE6A2CA6-A70E-4CD6-B7A2-EE36CABB7CD1.JPG",
+      "category": "D",
+      "theme": "autoridade",
+      "needsBlur": false,
+      "summary": "Melhor conteúdo após décadas e alto investimento em cursos."
+    },
+    {
+      "file": "F5AA7ACC-AA9D-4341-9F58-00692A797466.PNG",
+      "path": "/Depoimentos - 2026/gallery/F5AA7ACC-AA9D-4341-9F58-00692A797466.PNG",
+      "category": "A",
+      "theme": "resultado_ao_vivo",
+      "needsBlur": true,
+      "summary": "Alanis anti-hype + Brenda confirma R2 marcado ao vivo."
+    }
+  ],
+  "archive": [
+    {
+      "file": "IMG_1226.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_1226.PNG",
+      "category": "F",
+      "theme": "sugestao_conteudo",
+      "needsBlur": true,
+      "summary": "Sugestão de conteúdo sobre nicho — não é prova de resultado."
+    },
+    {
+      "file": "IMG_1520.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_1520.PNG",
+      "category": "F",
+      "theme": "interesse",
+      "needsBlur": false,
+      "summary": "“Vou assistir seu ted” — sem resultado."
+    },
+    {
+      "file": "IMG_1720 (1).PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_1720 (1).PNG",
+      "category": "F",
+      "theme": "autoridade",
+      "needsBlur": false,
+      "summary": "Duplicata do trecho Antonio Vinicius em IMG_1720."
+    },
+    {
+      "file": "IMG_1747.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_1747.PNG",
+      "category": "F",
+      "theme": "duvida",
+      "needsBlur": false,
+      "summary": "Pedido de dicas sobre falar em público — fora de escopo."
+    },
+    {
+      "file": "IMG_2287 (1).PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_2287 (1).PNG",
+      "category": "F",
+      "theme": "advocacy",
+      "needsBlur": true,
+      "summary": "Mesma mensagem Mike em tela cheia — preferir IMG_2287."
+    },
+    {
+      "file": "IMG_2436.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_2436.PNG",
+      "category": "F",
+      "theme": "mindset",
+      "needsBlur": true,
+      "summary": "Tela cheia do mindset André — preferir crop (1)."
+    },
+    {
+      "file": "IMG_2869.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_2869.PNG",
+      "category": "F",
+      "theme": "transformacao",
+      "needsBlur": false,
+      "summary": "Quase idêntico a IMG_2867 (Diogo)."
+    },
+    {
+      "file": "IMG_3431.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_3431.PNG",
+      "category": "F",
+      "theme": "live",
+      "needsBlur": true,
+      "summary": "Continuação do fio da live — overlap com 3430/3432."
+    },
+    {
+      "file": "IMG_4343.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_4343.PNG",
+      "category": "F",
+      "theme": "motivacao",
+      "needsBlur": false,
+      "summary": "Frase motivacional genérica de broker — sem vínculo claro."
+    },
+    {
+      "file": "IMG_4627.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_4627.PNG",
+      "category": "F",
+      "theme": "confianca",
+      "needsBlur": false,
+      "summary": "Comentário IG — versão mais completa em IMG_6167."
+    },
+    {
+      "file": "IMG_6368.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_6368.PNG",
+      "category": "F",
+      "theme": "engajamento",
+      "needsBlur": false,
+      "summary": "Comentário “parece IA” — não prova resultado comercial."
+    },
+    {
+      "file": "IMG_6415.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_6415.PNG",
+      "category": "F",
+      "theme": "reuniao",
+      "needsBlur": true,
+      "summary": "Mesmo caso pizzaria — preferir IMG_6416 (sem telefone)."
+    },
+    {
+      "file": "IMG_6820.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_6820.PNG",
+      "category": "F",
+      "theme": "evento",
+      "needsBlur": false,
+      "summary": "Notificação Gmail confirmando evento — não é depoimento."
+    },
+    {
+      "file": "IMG_7173.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_7173.PNG",
+      "category": "F",
+      "theme": "duvida",
+      "needsBlur": false,
+      "summary": "Pergunta tática: o que falar quando dono não está."
+    },
+    {
+      "file": "IMG_7174.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_7174.PNG",
+      "category": "F",
+      "theme": "duvida",
+      "needsBlur": false,
+      "summary": "Pergunta: ligar pelo WhatsApp ou telefone normal?"
+    },
+    {
+      "file": "IMG_7175.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_7175.PNG",
+      "category": "F",
+      "theme": "duvida",
+      "needsBlur": true,
+      "summary": "Dúvida de gatekeeper — não é depoimento."
+    },
+    {
+      "file": "IMG_7245.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_7245.PNG",
+      "category": "F",
+      "theme": "critico",
+      "needsBlur": false,
+      "summary": "Comentário negativo sobre o nome da empresa."
+    },
+    {
+      "file": "IMG_7681.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_7681.PNG",
+      "category": "F",
+      "theme": "mentoria",
+      "needsBlur": true,
+      "summary": "Bruno “entregando ouro” — preferir crop (1) sem telefone."
+    },
+    {
+      "file": "IMG_8003.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_8003.PNG",
+      "category": "F",
+      "theme": "contrato",
+      "needsBlur": true,
+      "summary": "Contrato ZapSign com nome de terceiro (Goiamed) — não publicar."
+    },
+    {
+      "file": "IMG_8045.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_8045.PNG",
+      "category": "F",
+      "theme": "duvida",
+      "needsBlur": false,
+      "summary": "Pergunta sobre hub de SDR — não é depoimento."
+    },
+    {
+      "file": "IMG_8109.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_8109.PNG",
+      "category": "F",
+      "theme": "lock_screen",
+      "needsBlur": true,
+      "summary": "Lock screen iOS com notificações pessoais — descartar."
+    },
+    {
+      "file": "IMG_9676.PNG",
+      "path": "/Depoimentos - 2026/archive/IMG_9676.PNG",
+      "category": "F",
+      "theme": "gratidao",
+      "needsBlur": false,
+      "summary": "Crop duplicado do depoimento Vinicius (IMG_9675)."
+    },
+    {
+      "file": "12BB1F88-085C-4F09-B6D5-6B1DA6B80035.PNG",
+      "path": "/Depoimentos - 2026/archive/12BB1F88-085C-4F09-B6D5-6B1DA6B80035.PNG",
+      "category": "F",
+      "theme": "ferramentas",
+      "needsBlur": true,
+      "summary": "Parabéns + dúvida CNPJ — fraco e alto risco de PII."
+    },
+    {
+      "file": "6F0B3A9D-7532-4E24-AD8B-034A18999741.PNG",
+      "path": "/Depoimentos - 2026/archive/6F0B3A9D-7532-4E24-AD8B-034A18999741.PNG",
+      "category": "F",
+      "theme": "aniversario",
+      "needsBlur": true,
+      "summary": "Parabéns + pergunta CNPJ — alto risco PII."
+    },
+    {
+      "file": "9076D05F-4835-4D8B-BB81-7AF2DD449F69.PNG",
+      "path": "/Depoimentos - 2026/archive/9076D05F-4835-4D8B-BB81-7AF2DD449F69.PNG",
+      "category": "F",
+      "theme": "aniversario",
+      "needsBlur": true,
+      "summary": "Overlap do fio de aniversário com 52A4F228."
+    },
+    {
+      "file": "90ABC57F-EE69-4D5F-B78A-778148F2BB07.PNG",
+      "path": "/Depoimentos - 2026/archive/90ABC57F-EE69-4D5F-B78A-778148F2BB07.PNG",
+      "category": "F",
+      "theme": "mentoria",
+      "needsBlur": false,
+      "summary": "Mesmo depoimento Vinicius que 42159901."
+    },
+    {
+      "file": "9901C346-B4F2-46A1-ACB1-39DC8F8AC223.PNG",
+      "path": "/Depoimentos - 2026/archive/9901C346-B4F2-46A1-ACB1-39DC8F8AC223.PNG",
+      "category": "F",
+      "theme": "comunidade",
+      "needsBlur": true,
+      "summary": "Parabéns + sala de ligações + muitos PII."
+    },
+    {
+      "file": "EBE4820A-12A7-450A-830F-D14D569744C4.PNG",
+      "path": "/Depoimentos - 2026/archive/EBE4820A-12A7-450A-830F-D14D569744C4.PNG",
+      "category": "F",
+      "theme": "live",
+      "needsBlur": true,
+      "summary": "Mesmo fio live “conteúdo de ouro” — preferir 49E04A24/F5AA7ACC."
+    }
+  ]
+}
