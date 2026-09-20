@@ -8,7 +8,7 @@ export function AulaFaqSection({ aula }: { aula: Aula }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="px-4 py-16 sm:px-6 lg:px-8">
+    <section className="px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
       <div className="mx-auto max-w-3xl">
         <AulaReveal>
           <h2 className="aula-section-title text-2xl sm:text-4xl">{aula.faqTitulo}</h2>
@@ -29,7 +29,7 @@ export function AulaFaqSection({ aula }: { aula: Aula }) {
                     className="flex w-full items-center justify-between gap-4 py-4 text-left font-bold text-white transition-colors hover:text-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                     onClick={() => setOpenIndex(open ? null : index)}
                   >
-                    <span className="text-pretty">{item.pergunta}</span>
+                    <span>{item.pergunta}</span>
                     <span
                       aria-hidden="true"
                       className={`text-yellow-400 transition-transform duration-300 ${open ? 'rotate-45' : ''}`}

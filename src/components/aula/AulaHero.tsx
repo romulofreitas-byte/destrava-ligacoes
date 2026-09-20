@@ -26,50 +26,63 @@ export function AulaHero({ aula }: { aula: Aula }) {
   }, [aula, closed]);
 
   return (
-    <section className="px-4 pb-14 pt-8 sm:px-6 lg:px-8">
-      <div className="mx-auto grid w-full max-w-6xl items-start gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <p className="animate-fade-in-up text-[11px] font-bold tracking-[0.18em] text-yellow-400 sm:text-xs">
+    <section>
+      <div className="relative isolate min-h-[280px] overflow-hidden lg:hidden">
+        <Image
+          src={aula.host.foto}
+          alt={aula.host.nome}
+          fill
+          priority
+          className="object-cover object-[center_18%]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/55 to-black/25" />
+        <div className="relative z-10 flex min-h-[280px] flex-col justify-end px-4 pb-5 pt-8">
+          <p className="inline-flex w-fit items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900">
+            <span className="aula-pulse" aria-hidden="true" />
             {aula.eyebrow} · {quando}
           </p>
-          <h1
-            className="animate-fade-in-up mt-4 text-pretty text-[clamp(1.55rem,6.4vw,3.15rem)] font-bold leading-[1.1] text-white"
-            style={{ animationDelay: '80ms' }}
-          >
+          <h1 className="mt-3 text-[clamp(1.85rem,9vw,2.55rem)] font-bold leading-[1.05] text-white">
+            <span className="block">{aula.tituloLinha1}</span>
+            <span className="aula-title-shimmer mt-1 block">{aula.tituloLinha2}</span>
+          </h1>
+        </div>
+      </div>
+
+      <div className="mx-auto grid w-full max-w-6xl items-start gap-6 px-4 pb-10 pt-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pb-14 lg:pt-8">
+        <div>
+          <p className="hidden whitespace-nowrap text-xs font-bold tracking-wider text-yellow-400 lg:block">
+            {aula.eyebrow} · {quando}
+          </p>
+          <h1 className="mt-0 hidden text-[clamp(1.55rem,6.4vw,3.15rem)] font-bold leading-[1.1] text-white lg:block">
             <span className="block">{aula.tituloLinha1}</span>
             <span className="aula-title-shimmer mt-1 block whitespace-nowrap">{aula.tituloLinha2}</span>
           </h1>
-          <p
-            className="animate-fade-in-up mt-5 max-w-xl text-pretty text-lg font-bold leading-snug text-gray-300 sm:text-xl"
-            style={{ animationDelay: '160ms' }}
-          >
-            {aula.subtitulo}
+
+          <p className="text-lg font-bold leading-snug text-gray-100 lg:mt-5 lg:max-w-xl lg:text-xl lg:text-gray-300">
+            <span className="lg:hidden">Volta na lista que parou. Liga de novo.</span>
+            <span className="hidden whitespace-pre-line lg:block">{aula.subtitulo}</span>
           </p>
-          <div
-            className="animate-fade-in-up mt-4 max-w-xl space-y-3 text-pretty text-sm leading-relaxed text-gray-300 sm:text-base"
-            style={{ animationDelay: '220ms' }}
-          >
+          <p className="mt-1 text-sm font-medium text-gray-400 lg:hidden">Ainda em 2026. Grátis. 1h30 no Meet.</p>
+
+          <div className="mt-4 hidden max-w-xl space-y-3 text-base leading-relaxed text-gray-300 lg:block">
             {aula.paragrafosHero.map((paragrafo) => (
               <p key={paragrafo.slice(0, 28)}>{paragrafo}</p>
             ))}
           </div>
 
           {prova ? (
-            <figure
-              className="animate-fade-in-up mt-6 max-w-xl border-l-2 border-yellow-400 pl-4"
-              style={{ animationDelay: '260ms' }}
-            >
-              <blockquote className="text-pretty text-base font-medium leading-snug text-white sm:text-lg">
+            <figure className="mt-4 rounded-2xl border border-yellow-400/35 bg-gray-800/70 p-4 shadow-lg shadow-yellow-400/5 lg:mt-6 lg:max-w-xl lg:rounded-none lg:border-0 lg:border-l-2 lg:border-yellow-400 lg:bg-transparent lg:p-0 lg:pl-4 lg:shadow-none">
+              <blockquote className="text-[15px] font-medium leading-snug text-white lg:text-lg">
                 “{prova.texto}”
               </blockquote>
-              <figcaption className="mt-2 text-sm font-bold text-yellow-400">{prova.nome}</figcaption>
+              <figcaption className="mt-2 text-xs font-black uppercase tracking-wide text-yellow-400 lg:text-sm lg:font-bold lg:normal-case lg:tracking-normal">
+                {prova.nome}
+              </figcaption>
             </figure>
           ) : null}
 
-          <div
-            className="animate-fade-in-up mt-6 flex items-center gap-3"
-            style={{ animationDelay: '300ms' }}
-          >
+          <div className="mt-6 hidden items-center gap-3 lg:flex">
             <div className="relative h-12 w-12 overflow-hidden rounded-full border border-yellow-400/40">
               <Image src={aula.host.foto} alt={aula.host.nome} fill className="object-cover" sizes="48px" />
             </div>
@@ -80,26 +93,16 @@ export function AulaHero({ aula }: { aula: Aula }) {
           </div>
 
           {!closed ? (
-            <div className="animate-fade-in-up mt-8" style={{ animationDelay: '340ms' }}>
+            <div className="mt-5 lg:mt-8">
               <p className="mb-2 text-[11px] font-bold uppercase tracking-wide text-gray-500">
                 {aula.form.countdownLabel}
               </p>
               <AulaCountdown aula={aula} onClosed={() => setClosed(true)} />
             </div>
           ) : null}
-          {!closed ? (
-            <a
-              href="#cadastro"
-              className="aula-cta animate-fade-in-up mt-7 max-w-md lg:hidden"
-              style={{ animationDelay: '380ms' }}
-            >
-              {aula.ctaLabel}
-            </a>
-          ) : null}
         </div>
-        <div className="animate-fade-in-up" style={{ animationDelay: '180ms' }}>
-          <AulaSignupCard aula={aula} />
-        </div>
+
+        <AulaSignupCard aula={aula} />
       </div>
     </section>
   );

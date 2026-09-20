@@ -12,14 +12,17 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
   const [playingUrl, setPlayingUrl] = useState<string | null>(null);
 
   return (
-    <section className="px-4 py-20 sm:px-6 lg:px-8">
+    <section className="px-4 py-10 sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <AulaReveal>
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-yellow-400">
-            Assiste depois de garantir o link
+          <p className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-yellow-400">
+            <span className="lg:hidden">Depoimentos reais · 35 min</span>
+            <span className="hidden lg:inline">Assiste depois de garantir o link</span>
           </p>
-          <h2 className="aula-section-title mt-3 max-w-2xl text-3xl sm:text-5xl">{aula.historiasTitulo}</h2>
-          <p className="mt-4 max-w-xl text-pretty text-base text-gray-300">{aula.historiasApoio}</p>
+          <h2 className="aula-section-title mt-3 max-w-xl text-[1.75rem] leading-[1.15] sm:max-w-3xl sm:text-5xl">
+            {aula.historiasTitulo}
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-snug text-gray-300">{aula.historiasApoio}</p>
         </AulaReveal>
 
         <div className={`mt-10 ${aula.historiasVideos.length > 1 ? 'grid gap-6 md:grid-cols-2' : 'mx-auto max-w-4xl'}`}>
@@ -78,7 +81,7 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
                       </>
                     )}
                   </div>
-                  <h3 className="mt-4 text-pretty text-lg font-bold text-white sm:text-xl">{video.titulo}</h3>
+                  <h3 className="mt-4 whitespace-pre-line text-lg font-bold leading-snug text-white sm:text-xl">{video.titulo}</h3>
                 </article>
               </AulaReveal>
             );
@@ -90,18 +93,18 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
             <AulaReveal key={historia.resultado} delay={index * 0.05}>
               {historia.nome ? (
                 <figure className="max-w-2xl border-l-2 border-yellow-400 pl-4">
-                  <blockquote className="text-pretty text-lg font-medium leading-snug text-white">
+                  <blockquote className="text-lg font-medium leading-snug text-white">
                     “{historia.texto}”
                   </blockquote>
                   <figcaption className="mt-3 text-sm font-bold text-yellow-400">
                     {historia.nome}
-                    <span className="ml-2 font-medium text-gray-500">{historia.resultado}</span>
+                    <span className="ml-2 whitespace-pre-line font-medium text-gray-500">{historia.resultado}</span>
                   </figcaption>
                 </figure>
               ) : (
                 <article>
-                  <p className="text-pretty text-lg font-bold text-yellow-400">{historia.resultado}</p>
-                  <p className="mt-2 max-w-2xl text-pretty text-sm leading-relaxed text-gray-300">{historia.texto}</p>
+                  <p className="whitespace-pre-line text-lg font-bold leading-snug text-yellow-400">{historia.resultado}</p>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-300">{historia.texto}</p>
                 </article>
               )}
             </AulaReveal>

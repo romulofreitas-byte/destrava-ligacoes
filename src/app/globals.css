@@ -399,11 +399,14 @@ img {
 .aula-root {
   min-height: 100vh;
   overflow-x: hidden;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
   @apply bg-gray-900 text-white;
 }
 
 .aula-section-title {
-  @apply font-heading font-bold text-pretty text-white;
+  @apply font-heading font-bold whitespace-pre-line text-white;
 }
 
 .aula-panel {
@@ -415,7 +418,7 @@ img {
 }
 
 .aula-input {
-  @apply w-full rounded-2xl border border-gray-700 bg-gray-900/80 px-4 py-3 text-white placeholder:text-gray-500 transition-all duration-200;
+  @apply w-full rounded-2xl border border-gray-700 bg-gray-900/80 px-4 py-3.5 text-base text-white placeholder:text-gray-500 transition-all duration-200;
 }
 
 .aula-input:focus {

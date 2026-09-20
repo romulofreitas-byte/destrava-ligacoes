@@ -26,7 +26,7 @@ export function AulaObrigado({ aula }: { aula: Aula }) {
 
   return (
     <main className="mx-auto flex min-h-[80vh] max-w-xl flex-col justify-center px-4 py-16">
-      <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
+      <h1 className="whitespace-pre-line text-3xl font-bold leading-tight text-white sm:text-4xl">
         {aula.obrigado.titulo}
       </h1>
 

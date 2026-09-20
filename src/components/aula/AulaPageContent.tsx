@@ -21,17 +21,35 @@ export function AulaPageContent({ aula }: { aula: Aula }) {
           style={{ animationDelay: '2s' }}
         />
       </div>
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col pb-24 lg:pb-0">
       <AulaStickyBar aula={aula} />
-      <AulaHero aula={aula} />
-      <AulaPainSection aula={aula} />
-      <AulaDeliverablesSection aula={aula} />
-      <AulaForWhoSection aula={aula} />
-      <AulaHostSection aula={aula} />
-      <AulaFaqSection aula={aula} />
-      <AulaStoriesSection aula={aula} />
-      <AulaFinalCta aula={aula} />
-      <AulaFooter aula={aula} />
+      <div className="order-1">
+        <AulaHero aula={aula} />
+      </div>
+      <div className="order-2 lg:order-6">
+        <AulaStoriesSection aula={aula} />
+      </div>
+      <div className="order-3 lg:order-2">
+        <AulaPainSection aula={aula} />
+      </div>
+      <div className="order-4 lg:order-3">
+        <AulaDeliverablesSection aula={aula} />
+      </div>
+      <div className="order-5 lg:order-4">
+        <AulaForWhoSection aula={aula} />
+      </div>
+      <div className="order-6 lg:order-5">
+        <AulaHostSection aula={aula} />
+      </div>
+      <div className="order-7">
+        <AulaFaqSection aula={aula} />
+      </div>
+      <div className="order-8">
+        <AulaFinalCta aula={aula} />
+      </div>
+      <div className="order-9">
+        <AulaFooter aula={aula} />
+      </div>
       </div>
     </main>
   );

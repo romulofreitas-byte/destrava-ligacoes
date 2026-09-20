@@ -103,18 +103,18 @@ const LEAD_ANTIGO: Aula = {
   slug: 'lead-antigo-nao-e-lead-morto',
   titulo: 'Lead antigo não é lead morto',
   tituloLinha1: 'Lead antigo',
-  tituloLinha2: 'não é lead morto.',
-  subtitulo: 'Como voltar na lista que parou e ligar de novo — ainda em 2026.',
+  tituloLinha2: 'não é lead\u00A0morto.',
+  subtitulo: 'Como voltar na lista que parou\ne ligar de novo. Ainda em 2026.',
   paragrafosHero: [
-    'Você tem nomes que pediram e-mail, pediram proposta ou sumiram. Essa aula mostra como voltar neles — primeiro por ligação, depois no WhatsApp.',
+    'Você tem nomes que pediram e-mail, pediram proposta ou sumiram. Essa aula mostra como voltar neles: primeiro por ligação, depois no WhatsApp.',
   ],
   chips: [],
-  historiasTitulo: 'Quem ligou de novo — e o que aconteceu.',
-  historiasApoio: 'Reunião e venda que saíram de nome que estava parado.',
+  historiasTitulo: 'Quem ligou de novo.\nE o que aconteceu.',
+  historiasApoio: 'Reunião e venda de quem voltou a ligar.',
   historiasVideos: [
     {
       nome: '35 minutos',
-      titulo: 'Gente que ligou — e o que aconteceu depois.',
+      titulo: 'Gente que ligou.\nO que aconteceu depois.',
       url: 'https://www.youtube.com/watch?v=HKqIZtlBz6I',
       poster: '/videos/depoimentos-reais-thumb.png',
     },
@@ -122,17 +122,17 @@ const LEAD_ANTIGO: Aula = {
   historias: [
     {
       nome: 'Otávio',
-      resultado: 'Das 5 reuniões, 3 vieram de voltar no contato',
+      resultado: 'Das 5 reuniões, 3 vieram\nde voltar no contato',
       texto: 'Das 5 reuniões que marquei, 3 foi voltando no contato. Quem não faz tá perdendo oportunidade.',
     },
     {
       nome: 'Jonathan',
-      resultado: 'Ligou, mandou WhatsApp e fechou um site no mesmo dia',
+      resultado: 'Ligou, mandou WhatsApp\ne fechou um site no mesmo dia',
       texto: 'Acabamos de fechar uma venda de 1 site agora. Ligação do zero, depois WhatsApp.',
     },
     {
       nome: '',
-      resultado: 'Uma tarde voltando na lista: 5 reuniões e 1 fechamento',
+      resultado: 'Uma tarde voltando na lista:\n5 reuniões e 1 fechamento',
       texto: 'Nomes parados no WhatsApp. A volta foi por ligação.',
     },
   ],
@@ -155,7 +155,7 @@ const LEAD_ANTIGO: Aula = {
     nomeLabel: 'Nome',
     whatsappLabel: 'WhatsApp',
     emailLabel: 'E-mail',
-    consentLabel: 'Autorizo o contato do Mundo Pódium por WhatsApp e e-mail.',
+    consentLabel: 'Autorizo o contato do Mundo\u00A0Pódium por WhatsApp e e-mail.',
     submitLabel: 'QUERO O LINK GRÁTIS',
     microcopy: 'Aula gratuita. Sem cartão. Link na hora + e-mail de confirmação.',
     closedTitle: 'A aula já começou.',
@@ -163,7 +163,7 @@ const LEAD_ANTIGO: Aula = {
     gratisPill: '100% gratuita · sem cartão',
     countdownLabel: 'Aula começa em',
   },
-  doresTitulo: 'A sua lista não está fria. Ela está parada.',
+  doresTitulo: 'A sua lista não está fria.\nEla está parada.',
   dores: [
     {
       titulo: '"Me manda por e-mail"',
@@ -171,7 +171,7 @@ const LEAD_ANTIGO: Aula = {
     },
     {
       titulo: '"Agora não é o momento"',
-      texto: 'Quase nunca é não. É a hora. E a hora muda sozinha — em 3, 6, 12 meses.',
+      texto: 'Quase nunca é não. É a hora. E a hora muda sozinha, em 3, 6 ou 12 meses.',
     },
     {
       titulo: 'O silêncio depois da proposta',
@@ -180,7 +180,7 @@ const LEAD_ANTIGO: Aula = {
   ],
   doresFecho:
     'A maioria vai começar 2027 caçando nome novo com a lista antiga intacta. Isso é caro. E é burro.',
-  entregasTitulo: 'O que você sai sabendo fazer',
+  entregasTitulo: 'O que você sai\nsabendo fazer',
   entregas: [
     {
       titulo: 'Separar o que vale ligar do que é lixo',
@@ -191,19 +191,19 @@ const LEAD_ANTIGO: Aula = {
       texto: '“Oi, lembra de mim?” mata a chamada nos primeiros 4 segundos. Tem um jeito certo de voltar.',
     },
     {
-      titulo: 'WhatsApp depois da ligação — nunca antes',
+      titulo: 'WhatsApp depois da ligação.\nNunca antes.',
       texto: 'Primeiro liga. A mensagem no WhatsApp vem depois.',
     },
     {
       titulo: 'Fechar ainda em 2026, sem soar desesperado',
-      texto: 'Como usar o fim do ano como motivo real — sem pressão barata.',
+      texto: 'Como usar o fim do ano como motivo real, sem pressão barata.',
     },
   ],
-  paraQuemSecaoTitulo: 'Essa aula é pra quem vai ligar.',
+  paraQuemSecaoTitulo: 'Essa aula é pra\nquem vai ligar.',
   paraQuemTitulo: 'É pra você',
   paraQuem: [
     'Vive de marcar reunião e precisa da agenda cheia.',
-    'Tem uma lista antiga parada — e nunca voltou nela de verdade.',
+    'Tem uma lista antiga parada. E nunca voltou nela de verdade.',
     'Quer fechar contrato ainda este ano, não “ano que vem”.',
     'Aguenta ouvir a verdade sobre como você vende.',
   ],
@@ -221,13 +221,13 @@ const LEAD_ANTIGO: Aula = {
     foto: '/romulo-mentor-destrava.jpg',
     destaque: 'Eu já travei no telefone.',
     paragrafos: [
-      '12 anos vendendo pra empresa. Sete com a própria empresa — do zero, com um computador e uma mesa.',
+      '12 anos vendendo pra empresa. Sete com a própria empresa: do zero, com um computador e uma mesa.',
       'Passei anos desistindo antes da hora. Foi isso que eu tive que quebrar pra ligar todo dia.',
     ],
     fatos: [
       { valor: '12+', label: 'anos vendendo' },
       { valor: `${AULA_SOCIAL_PROOF.livesYoutube}+`, label: 'lives no YouTube' },
-      { valor: `${AULA_SOCIAL_PROOF.hoursLive}h`, label: 'de ligação ao vivo' },
+      { valor: `${AULA_SOCIAL_PROOF.hoursLive}h`, label: 'de ligação\nao vivo' },
     ],
   },
   stats: [
@@ -247,7 +247,7 @@ const LEAD_ANTIGO: Aula = {
     },
     {
       pergunta: 'Preciso ter lista pronta?',
-      resposta: 'Não. Traz o que você tem — mesmo que seja uma planilha bagunçada.',
+      resposta: 'Não. Traz o que você tem, mesmo que seja uma planilha bagunçada.',
     },
     {
       pergunta: 'Preciso ligar durante a aula?',
@@ -263,7 +263,7 @@ const LEAD_ANTIGO: Aula = {
     },
   ],
   ctaFinal: {
-    titulo: 'Ninguém liga por você. Liga você.',
+    titulo: 'Ninguém liga por você.\nLiga você.',
     subtitulo: 'Segunda, 20:30. Grátis. Google Meet. Sem gravação.',
     botao: 'QUERO O LINK GRÁTIS',
   },
@@ -276,7 +276,7 @@ const LEAD_ANTIGO: Aula = {
     youtubeUrl: 'https://www.youtube.com/@mundopodium',
   },
   obrigado: {
-    titulo: 'Inscrição confirmada. Te vejo na segunda, 20:30.',
+    titulo: 'Inscrição confirmada.\nTe vejo na segunda, 20:30.',
     ctaComunidade: 'ENTRAR NO GRUPO DO WHATSAPP',
     ctaAgenda: 'ADICIONAR NA AGENDA',
     meetLabel: 'Link do Google Meet',

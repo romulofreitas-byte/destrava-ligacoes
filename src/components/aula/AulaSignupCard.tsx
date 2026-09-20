@@ -89,7 +89,7 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
 
   if (closed) {
     return (
-      <div id="cadastro" className="aula-panel border-yellow-400/30 p-6 sm:p-8 hover:border-yellow-400/60 hover:shadow-lg hover:shadow-yellow-500/10">
+      <div id="cadastro" className="aula-panel border-yellow-400/50 p-4 shadow-lg shadow-yellow-500/10 sm:p-8 lg:border-yellow-400/30">
         <h2 className="text-2xl font-bold text-white">{aula.form.closedTitle}</h2>
         <a
           href={aula.linkComunidade}
@@ -104,11 +104,11 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
   }
 
   return (
-    <div id="cadastro" className="aula-panel border-yellow-400/30 p-6 sm:p-8 hover:border-yellow-400/60 hover:shadow-lg hover:shadow-yellow-500/10">
-      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-yellow-400">
+    <div id="cadastro" className="aula-panel border-yellow-400/50 p-4 shadow-lg shadow-yellow-500/10 sm:p-8 lg:border-yellow-400/30">
+      <p className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-yellow-400">
         {getAulaQuandoLabel(aula)} · ao vivo
       </p>
-      <h2 className="mt-2 text-pretty text-2xl font-bold text-white sm:text-3xl">{aula.form.title}</h2>
+      <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">{aula.form.title}</h2>
       <p className="mt-2 text-sm text-gray-400">1h30 no Meet. Grátis. Sem cartão. Sem gravação.</p>
       <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate>
         <div className="sr-only" aria-hidden="true">
