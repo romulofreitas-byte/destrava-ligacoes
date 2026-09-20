@@ -394,3 +394,136 @@ img {
   position: relative;
   z-index: 2;
 }
+
+/* Live-class LP — same tokens as the workshop page */
+.aula-root {
+  min-height: 100vh;
+  overflow-x: hidden;
+  @apply bg-gray-900 text-white;
+}
+
+.aula-section-title {
+  @apply font-heading font-bold text-pretty text-white;
+}
+
+.aula-panel {
+  @apply rounded-3xl border border-gray-700 bg-gray-800/50 transition-all duration-300;
+}
+
+.aula-panel-hover:hover {
+  @apply border-yellow-400/50 shadow-lg shadow-yellow-500/10;
+}
+
+.aula-input {
+  @apply w-full rounded-2xl border border-gray-700 bg-gray-900/80 px-4 py-3 text-white placeholder:text-gray-500 transition-all duration-200;
+}
+
+.aula-input:focus {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
+  border-color: #facc15;
+  box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.15);
+}
+
+.aula-cta {
+  @apply button-shine-effect relative inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600 px-5 py-3.5 text-sm font-black text-gray-900 shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:from-yellow-400 hover:to-yellow-500 hover:shadow-yellow-500/40;
+}
+
+.aula-cta:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 3px;
+}
+
+.aula-cta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.aula-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  animation: aula-pulse 1.6s ease-out infinite;
+}
+
+@keyframes aula-title-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.aula-title-shimmer {
+  background-image: linear-gradient(90deg, #facc15 0%, #fde68a 40%, #eab308 70%, #facc15 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aula-title-shimmer 3s linear infinite;
+}
+
+@keyframes aula-tick {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.aula-tick {
+  animation: aula-tick 0.35s ease-out;
+}
+
+@keyframes aula-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.aula-spin {
+  animation: aula-spin 0.7s linear infinite;
+}
+
+@keyframes aula-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aula-pulse,
+  .aula-title-shimmer,
+  .aula-tick,
+  .aula-spin {
+    animation: none;
+    box-shadow: none;
+  }
+
+  .aula-title-shimmer {
+    color: #facc15;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+  }
+
+  .aula-root * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

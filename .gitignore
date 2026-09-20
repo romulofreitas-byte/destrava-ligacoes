@@ -41,6 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local lead fallback (dev only)
+/.data/
+
 
 # Raw depoimento dumps (pipeline source only — UI uses depoimentos-2026-ready)
 /public/Depoimentos - 2026/

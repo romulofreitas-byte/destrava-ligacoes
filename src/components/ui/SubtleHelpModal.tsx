@@ -168,7 +168,7 @@ export const SubtleHelpModal: React.FC = () => {
           <div className="flex flex-col gap-2 sm:gap-2.5">
             {/* YouTube Button */}
             <a
-              href="https://youtube.com/@combustivelmv"
+              href="https://www.youtube.com/@mundopodium"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleYouTubeClick}

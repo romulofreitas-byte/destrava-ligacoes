@@ -49,11 +49,17 @@ export default function PrivacidadePage() {
             <h2 className="text-2xl font-bold text-yellow-400 mb-4">2. Dados Coletados</h2>
             <div className="space-y-4">
               <p className="text-gray-300">
-                Esta landing page <strong className="text-white">não coleta dados pessoais diretamente</strong>. 
-                Não possuímos formulários de cadastro ou campos de entrada de dados.
+                Nas páginas de <strong className="text-white">aulas ao vivo</strong> coletamos,
+                pelo formulário de inscrição, <strong className="text-white">nome</strong>,{' '}
+                <strong className="text-white">WhatsApp</strong> e{' '}
+                <strong className="text-white">e-mail</strong>, para confirmar a vaga e enviar o link da aula.
               </p>
               <p className="text-gray-300">
-                Os únicos dados que podem ser coletados são:
+                A landing page do Workshop Destrava Ligações não tem formulário próprio: os dados de compra
+                são tratados no checkout do parceiro de pagamento.
+              </p>
+              <p className="text-gray-300">
+                Também podem ser coletados:
               </p>
               <ul className="list-disc list-inside text-gray-300 space-y-2 ml-4">
                 <li>Dados de navegação (cookies técnicos essenciais)</li>
@@ -73,6 +79,7 @@ export default function PrivacidadePage() {
                 <li>Funcionamento técnico do site</li>
                 <li>Análise de performance e segurança</li>
                 <li>Melhoria da experiência do usuário</li>
+                <li>Enviar o link da aula e comunicar horários ou avisos por WhatsApp e e-mail</li>
                 <li>Comunicação através dos canais externos (WhatsApp, e-mail, Asaas)</li>
               </ul>
             </div>

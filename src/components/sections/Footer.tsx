@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
                 <span>Instagram</span>
               </a>
               <a
-                href="https://youtube.com/@combustivelmv"
+                href="https://www.youtube.com/@mundopodium"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-300 hover:text-yellow-400 transition-colors"

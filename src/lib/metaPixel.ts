@@ -274,6 +274,50 @@ export function trackVideoOpen(videoName?: string, contentType?: string): void {
 /**
  * Track custom events
  */
+const AULA_LEAD_PREFIX = 'aula_lead_';
+
+export function trackAulaViewContent(slug: string, title: string): void {
+  whenPixelReady(() => {
+    const fbq = window.fbq;
+    if (!fbq) return;
+    const params = {
+      content_name: title,
+      content_ids: [slug],
+      content_type: 'aula',
+      content_category: 'live-class',
+    };
+    fbq('track', 'ViewContent', params);
+    logDebug('ViewContent', params);
+  });
+}
+
+export function trackAulaLead(slug: string, title: string): void {
+  const dedupeKey = `${AULA_LEAD_PREFIX}${slug}`;
+
+  whenPixelReady(() => {
+    try {
+      if (sessionStorage.getItem(dedupeKey)) return;
+      sessionStorage.setItem(dedupeKey, String(Date.now()));
+    } catch {
+      // continue without dedupe if storage is blocked
+    }
+
+    const fbq = window.fbq;
+    if (!fbq) return;
+    const params = {
+      content_name: title,
+      content_ids: [slug],
+      content_type: 'aula',
+      content_category: 'live-class',
+      value: 0,
+      currency: 'BRL',
+    };
+    fbq('track', 'Lead', params);
+    fbq('track', 'CompleteRegistration', params);
+    logDebug('Lead', params);
+  });
+}
+
 export function trackCustomEvent(eventName: string, params?: Record<string, any>): void {
   if (!isPixelAvailable()) return;
   
