@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "name": "Aulas",
+      "path": "aulas"
+    },
+    {
+      "name": "Site",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "window.title": "Aulas — Mundo Pódium"
+  }
+}

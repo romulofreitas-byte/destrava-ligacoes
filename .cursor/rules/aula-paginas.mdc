@@ -1,0 +1,15 @@
+---
+description: Regras das LPs de aula ao vivo Mundo Pódium. Não misturar com o workshop.
+globs: aulas/**,src/content/aulas.ts,src/components/aula/**,src/app/aula/**,src/app/api/inscricao/**,src/lib/aula-*.ts
+alwaysApply: false
+---
+
+# Aulas ao vivo
+
+- Workshop (`/`, `src/components/sections`) não se mexe.
+- Página nova = objeto em `src/content/aulas.ts` + briefing em `aulas/<slug>.md`. Rotas `/aula/[slug]` já existem.
+- Topo de funil: sem Comunidade, follow-up, discar, CRM, Método, pista, Pilotos, pitch, R1.
+- Títulos com quebra explícita (`\n`). Sem `text-pretty`. Sem travessão no meio da frase.
+- Mobile primeiro (Instagram): foto + gancho + form no primeiro scroll. Não inventar layout paralelo.
+- Legal: Mundo Pódium LTDA, CNPJ 68.349.974/0001-19. `/aula` fica noindex.
+- Meet em `linkMeet` e `NEXT_PUBLIC_AULA_<SLUG>_MEET_URL`. Tabela `inscricoes` no Supabase.
