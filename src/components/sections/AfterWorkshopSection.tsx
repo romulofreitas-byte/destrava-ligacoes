@@ -14,6 +14,7 @@ export const AfterWorkshopSection: React.FC = () => {
     'Marcar reuniões em até 48h',
     'Abordar decisores com segurança',
     'Saber o que dizer em cada momento',
+    'Ler o mercado do seu nicho e entrar na ligação com diferencial claro',
   ];
 
   useEffect(() => {

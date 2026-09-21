@@ -2,7 +2,130 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Target, Phone, Zap, Clock, CheckCircle2, ChevronDown } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { WORKSHOP_DURATION, WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
+
+type StudyCard = {
+  title: string;
+  description: string;
+};
+
+type ModuleColorScheme = {
+  border: string;
+  iconBg: string;
+  icon: string;
+  badge: string;
+  hoverBorder: string;
+};
+
+type WorkshopModule = {
+  id: number;
+  title: string;
+  subtitle: string;
+  duration: string;
+  scheduleLine: string;
+  theme: string;
+  colorScheme: ModuleColorScheme;
+  icon: LucideIcon;
+  content: string[];
+  study?: {
+    heading: string;
+    cards: StudyCard[];
+  };
+  afterStudy?: string[];
+  benefitLine: string;
+};
+
+const MODULES: WorkshopModule[] = [
+  {
+    id: 1,
+    title: 'Módulo 1',
+    subtitle: 'Preparação e Fundação',
+    duration: WORKSHOP_DURATION.perModuleLabel,
+    scheduleLine: `${WORKSHOP_INFO.dateDisplayShort} · ${WORKSHOP_INFO.time} (BRT)`,
+    theme:
+      'Metas, ansiedade, estudo de mercado do seu nicho e construção da Anatomia da Ligação.',
+    colorScheme: {
+      border: 'border-green-400/50',
+      iconBg: 'bg-green-400/20 border-green-400/30',
+      icon: 'text-green-400',
+      badge: 'bg-green-400/20 border-green-400/30 text-green-400',
+      hoverBorder: 'hover:border-green-400/70',
+    },
+    icon: Target,
+    content: [
+      'Metas pessoais e objetivos comerciais',
+      'Técnicas de destravamento e controle de ansiedade',
+    ],
+    study: {
+      heading: 'Estudo de mercado',
+      cards: [
+        {
+          title: 'Dores do nicho',
+          description:
+            'O que trava o faturamento, urgências que o decisor não fala e sinais de que está pronto para ouvir.',
+        },
+        {
+          title: 'Como o ICP se comporta',
+          description:
+            'Quem decide, como busca solução, o que o qualifica e o que o desqualifica.',
+        },
+        {
+          title: 'Concorrentes e diferencial',
+          description:
+            'O que o mercado já oferece, onde você é diferente e a frase que sustenta isso na ligação.',
+        },
+      ],
+    },
+    afterStudy: [
+      'Anatomia da Ligação',
+      'Calculadoras de ligações e precificação',
+    ],
+    benefitLine: 'Sai com leitura de mercado, ICP, diferencial e Anatomia pronta para aplicar.',
+  },
+  {
+    id: 2,
+    title: 'Módulo 2',
+    subtitle: 'Sala de Ligação',
+    duration: WORKSHOP_DURATION.perModuleLabel,
+    scheduleLine: `${WORKSHOP_MODULE_2_INFO.dateDisplayShort} · ${WORKSHOP_MODULE_2_INFO.time} (BRT)`,
+    theme: 'Ligações ao vivo com feedback em tempo real e simulações.',
+    colorScheme: {
+      border: 'border-yellow-400/50',
+      iconBg: 'bg-yellow-400/20 border-yellow-400/30',
+      icon: 'text-yellow-400',
+      badge: 'bg-yellow-400/20 border-yellow-400/30 text-yellow-400',
+      hoverBorder: 'hover:border-yellow-400/70',
+    },
+    icon: Phone,
+    content: [
+      'Ligações ao vivo dos participantes',
+      'Acompanhamento direto do Rômulo',
+      'Feedback em tempo real',
+      'Simulações e correções na hora',
+    ],
+    benefitLine: 'Prática real, feedback personalizado e confiança para ligar sozinho.',
+  },
+];
+
+function ModuleBulletList({
+  items,
+  iconClass,
+}: {
+  items: string[];
+  iconClass: string;
+}) {
+  return (
+    <ul className="space-y-2">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3">
+          <CheckCircle2 className={`w-4 h-4 ${iconClass} flex-shrink-0 mt-0.5`} />
+          <span className="text-gray-300 text-sm leading-relaxed">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export const WorkshopModulesSection: React.FC = () => {
   const [openModule, setOpenModule] = useState<number | null>(null);
@@ -25,56 +148,6 @@ export const WorkshopModulesSection: React.FC = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const modules = [
-    {
-      id: 1,
-      title: 'Módulo 1',
-      subtitle: 'Preparação e Fundação',
-      duration: WORKSHOP_DURATION.perModuleLabel,
-      scheduleLine: `${WORKSHOP_INFO.dateDisplayShort} · ${WORKSHOP_INFO.time} (BRT)`,
-      theme:
-        'Metas, ansiedade, mercado e construção da Anatomia da Ligação.',
-      colorScheme: {
-        border: 'border-green-400/50',
-        iconBg: 'bg-green-400/20 border-green-400/30',
-        icon: 'text-green-400',
-        badge: 'bg-green-400/20 border-green-400/30 text-green-400',
-        hoverBorder: 'hover:border-green-400/70',
-      },
-      icon: Target,
-      content: [
-        'Metas pessoais e objetivos comerciais',
-        'Técnicas de destravamento e controle de ansiedade',
-        'ICP e Anatomia da Ligação',
-        'Calculadoras de ligações e precificação',
-      ],
-      benefitLine: 'Sai com base, mentalidade e Anatomia pronta para aplicar.',
-    },
-    {
-      id: 2,
-      title: 'Módulo 2',
-      subtitle: 'Sala de Ligação',
-      duration: WORKSHOP_DURATION.perModuleLabel,
-      scheduleLine: `${WORKSHOP_MODULE_2_INFO.dateDisplayShort} · ${WORKSHOP_MODULE_2_INFO.time} (BRT)`,
-      theme: 'Ligações ao vivo com feedback em tempo real e simulações.',
-      colorScheme: {
-        border: 'border-yellow-400/50',
-        iconBg: 'bg-yellow-400/20 border-yellow-400/30',
-        icon: 'text-yellow-400',
-        badge: 'bg-yellow-400/20 border-yellow-400/30 text-yellow-400',
-        hoverBorder: 'hover:border-yellow-400/70',
-      },
-      icon: Phone,
-      content: [
-        'Ligações ao vivo dos participantes',
-        'Acompanhamento direto do Rômulo',
-        'Feedback em tempo real',
-        'Simulações e correções na hora',
-      ],
-      benefitLine: 'Prática real, feedback personalizado e confiança para ligar sozinho.',
-    },
-  ];
 
   const toggleModule = (id: number) => {
     setOpenModule((current) => (current === id ? null : id));
@@ -119,7 +192,7 @@ export const WorkshopModulesSection: React.FC = () => {
         </div>
 
         <div className="max-w-3xl mx-auto space-y-4">
-          {modules.map((module, index) => {
+          {MODULES.map((module, index) => {
             const Icon = module.icon;
             const isOpen = openModule === module.id;
 
@@ -168,24 +241,54 @@ export const WorkshopModulesSection: React.FC = () => {
                 </button>
 
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  className={`grid transition-[grid-template-rows] duration-300 ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                   }`}
                 >
-                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 border-t border-gray-700/40">
-                    <ul className="space-y-2 mt-4 mb-4">
-                      {module.content.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <CheckCircle2
-                            className={`w-4 h-4 ${module.colorScheme.icon} flex-shrink-0 mt-0.5`}
+                  <div className="overflow-hidden">
+                    <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 border-t border-gray-700/40">
+                      <div className="mt-4 mb-4 space-y-4">
+                        <ModuleBulletList
+                          items={module.content}
+                          iconClass={module.colorScheme.icon}
+                        />
+
+                        {module.study && (
+                          <div>
+                            <p
+                              className={`text-xs font-semibold uppercase tracking-wide mb-3 ${module.colorScheme.icon}`}
+                            >
+                              {module.study.heading}
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                              {module.study.cards.map((card) => (
+                                <div
+                                  key={card.title}
+                                  className={`rounded-xl border ${module.colorScheme.border} bg-gray-900/40 p-3`}
+                                >
+                                  <p className="text-white font-semibold text-sm mb-1">
+                                    {card.title}
+                                  </p>
+                                  <p className="text-gray-400 text-xs leading-relaxed">
+                                    {card.description}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {module.afterStudy && module.afterStudy.length > 0 && (
+                          <ModuleBulletList
+                            items={module.afterStudy}
+                            iconClass={module.colorScheme.icon}
                           />
-                          <span className="text-gray-300 text-sm leading-relaxed">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className={`text-sm font-medium ${module.colorScheme.icon}`}>
-                      {module.benefitLine}
-                    </p>
+                        )}
+                      </div>
+                      <p className={`text-sm font-medium ${module.colorScheme.icon}`}>
+                        {module.benefitLine}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
