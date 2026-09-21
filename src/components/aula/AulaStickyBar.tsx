@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import type { Aula } from '@/content/aulas';
 import { getAulaQuandoLabel } from '@/content/aulas';
 
+const SHOW_CTA_BELOW = 0.02;
+const HIDE_CTA_ABOVE = 0.2;
+
 export function AulaStickyBar({ aula }: { aula: Aula }) {
   const [showCta, setShowCta] = useState(false);
 
@@ -13,9 +16,11 @@ export function AulaStickyBar({ aula }: { aula: Aula }) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setShowCta(!entry?.isIntersecting);
+        if (!entry) return;
+        const ratio = entry.intersectionRatio;
+        setShowCta((prev) => (prev ? ratio < HIDE_CTA_ABOVE : ratio < SHOW_CTA_BELOW));
       },
-      { threshold: 0.12 }
+      { threshold: [0, SHOW_CTA_BELOW, HIDE_CTA_ABOVE, 1] }
     );
 
     observer.observe(form);
@@ -25,21 +30,23 @@ export function AulaStickyBar({ aula }: { aula: Aula }) {
   return (
     <>
       <div className="sticky top-0 z-40 bg-yellow-400 text-gray-900">
-        <div className="mx-auto flex max-w-6xl items-center justify-center gap-3 px-4 py-2 sm:justify-between">
+        <div className="mx-auto flex min-h-[2.75rem] max-w-6xl items-center justify-center gap-3 px-4 py-2 sm:justify-between">
           <p className="flex min-w-0 items-center justify-center gap-2 text-center text-[11px] font-bold leading-snug sm:text-sm">
             <span className="aula-pulse shrink-0" aria-hidden="true" />
             <span className={showCta ? 'truncate' : undefined}>
               {aula.stickyBar} · {getAulaQuandoLabel(aula)}
             </span>
           </p>
-          {showCta ? (
-            <a
-              href="#cadastro"
-              className="hidden shrink-0 rounded-full bg-gray-900 px-3 py-1.5 text-[11px] font-black text-yellow-400 sm:inline-flex"
-            >
-              {aula.ctaLabel}
-            </a>
-          ) : null}
+          <a
+            href="#cadastro"
+            aria-hidden={!showCta}
+            tabIndex={showCta ? undefined : -1}
+            className={`hidden shrink-0 rounded-full bg-gray-900 px-3 py-1.5 text-[11px] font-black text-yellow-400 sm:inline-flex ${
+              showCta ? '' : 'invisible pointer-events-none'
+            }`}
+          >
+            {aula.ctaLabel}
+          </a>
         </div>
       </div>
 
