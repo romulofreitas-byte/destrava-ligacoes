@@ -16,6 +16,16 @@ Cada aula tem um briefing em `aulas/<slug>.md`. A página no site é `/aula/<slu
 2. No chat do Cursor: **“cria a aula com o briefing X”** (o subagente `aula-paginas` entra).
 3. Não mexer no workshop nem inventar rota nova — só um objeto em `src/content/aulas.ts`.
 
+## Ads e orgânico (21/09)
+
+- [organico-lead-antigo.md](organico-lead-antigo.md) — Circle, WhatsApp, stories
+- [ads/](ads/) — copy, roteiros e script da campanha Meta (sempre PAUSED)
+
+```bash
+cd aulas/ads
+node create-campaign.mjs --discover
+```
+
 ## Cursor
 
 Workspace dedicado: abre `aulas.code-workspace` (File → Open Workspace from File).

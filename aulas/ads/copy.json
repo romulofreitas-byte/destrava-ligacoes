@@ -1,0 +1,52 @@
+{
+  "campaign": {
+    "name": "AULA | Lead antigo | 21/09",
+    "budgetBrl": 400,
+    "stopAt": "2026-09-21T20:00:00-03:00",
+    "pixelId": "687023637552068",
+    "slug": "lead-antigo-nao-e-lead-morto",
+    "url": "https://workshop.mundopodium.com.br/aula/lead-antigo-nao-e-lead-morto",
+    "utm": {
+      "utm_source": "meta",
+      "utm_medium": "paid",
+      "utm_campaign": "lead-antigo-2109"
+    }
+  },
+  "adSets": [
+    {
+      "key": "ig",
+      "name": "IG engajados 365d",
+      "audience": "ig_engaged",
+      "utmContent": "ig365"
+    },
+    {
+      "key": "video",
+      "name": "Video 50pct 365d",
+      "audience": "video_50",
+      "utmContent": "video50"
+    }
+  ],
+  "ads": [
+    {
+      "id": "lista",
+      "primary": "Você tem nome que pediu proposta e sumiu.\n\nEssa lista não está morta. Ela está parada.\n\nSegunda, 20:30. Ao vivo. Grátis. Sem gravação.\n\nEu mostro como voltar nesses nomes. Primeiro por ligação.",
+      "headline": "Lead antigo não é lead morto",
+      "description": "Aula ao vivo. Grátis.",
+      "cta": "SIGN_UP"
+    },
+    {
+      "id": "urgencia",
+      "primary": "Segunda, 20:30.\n\nAula ao vivo. Grátis. Sem gravação.\n\nQuem não estiver, perdeu.\n\nLead antigo não é lead morto.",
+      "headline": "Segunda, 20:30. Sem gravação.",
+      "description": "21/09 · 20:30 · Google Meet",
+      "cta": "SIGN_UP"
+    },
+    {
+      "id": "prova",
+      "primary": "Otávio: das 5 reuniões que marquei, 3 foi voltando no contato.\n\nQuem não faz tá perdendo oportunidade.\n\nSegunda, 20:30. Ao vivo. Grátis.",
+      "headline": "Volta na lista. Liga de novo.",
+      "description": "Link na hora. Sem cartão.",
+      "cta": "SIGN_UP"
+    }
+  ]
+}
