@@ -5,13 +5,14 @@ import type { Aula } from '@/content/aulas';
 import { buildGoogleCalendarUrl } from '@/lib/aula-calendar';
 import { trackAulaLead, trackCommunityJoin } from '@/lib/metaPixel';
 
-export function AulaObrigado({ aula }: { aula: Aula }) {
+export function AulaObrigado({ aula, confirmed = false }: { aula: Aula; confirmed?: boolean }) {
   const [copied, setCopied] = useState(false);
   const calendarUrl = buildGoogleCalendarUrl(aula);
 
   useEffect(() => {
+    if (!confirmed) return;
     trackAulaLead(aula.slug, aula.titulo);
-  }, [aula.slug, aula.titulo]);
+  }, [aula.slug, aula.titulo, confirmed]);
 
   const copyMeet = async () => {
     if (!aula.linkMeet) return;

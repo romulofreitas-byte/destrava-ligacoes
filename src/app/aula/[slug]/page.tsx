@@ -25,7 +25,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const title = `${aula.titulo} — Mundo Pódium`;
   const description = oneLine(aula.subtitulo);
   const url = `${WORKSHOP_PUBLIC_SITE_URL}/aula/${aula.slug}`;
-  const ogImage = `${url}/opengraph-image`;
+  const ogImage = aula.ogImage
+    ? `${WORKSHOP_PUBLIC_SITE_URL}${aula.ogImage}`
+    : `${url}/opengraph-image`;
 
   return {
     title,

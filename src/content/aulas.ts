@@ -133,11 +133,6 @@ const LEAD_ANTIGO: Aula = {
       resultado: 'Ligou, mandou WhatsApp\ne fechou um site no mesmo dia',
       texto: 'Acabamos de fechar uma venda de 1 site agora. Ligação do zero, depois WhatsApp.',
     },
-    {
-      nome: '',
-      resultado: 'Uma tarde voltando na lista:\n5 reuniões e 1 fechamento',
-      texto: 'Nomes parados no WhatsApp. A volta foi por ligação.',
-    },
   ],
   data: '2026-09-21T20:30:00-03:00',
   duracaoMin: 90,
@@ -262,7 +257,7 @@ const LEAD_ANTIGO: Aula = {
     },
     {
       pergunta: 'O que eu recebo agora?',
-      resposta: 'O link do Meet e o grupo no WhatsApp. Se o horário mudar, o aviso chega lá.',
+      resposta: 'O link do Meet e o grupo no WhatsApp. Se acontecer qualquer imprevisto, o aviso chega lá.',
     },
   ],
   ctaFinal: {

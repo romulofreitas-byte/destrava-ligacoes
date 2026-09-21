@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { formatAulaQuandoLabel, getRelativeDayLabel } from './aula-date';
+import { formatAulaQuandoLabel, getRelativeDayLabel } from './aula-date.ts';
 
 const CLASS_AT = '2026-09-21T20:30:00-03:00';
 

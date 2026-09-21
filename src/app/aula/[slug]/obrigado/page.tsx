@@ -9,6 +9,7 @@ export const dynamic = 'force-dynamic';
 
 type PageProps = {
   params: { slug: string };
+  searchParams?: { inscrito?: string | string[] };
 };
 
 export function generateStaticParams() {
@@ -26,16 +27,18 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function AulaObrigadoPage({ params }: PageProps) {
+export default function AulaObrigadoPage({ params, searchParams }: PageProps) {
   const aula = getAulaBySlug(params.slug);
   if (!aula) notFound();
 
   const resolved = resolveAulaLinks(aula);
+  const inscrito = searchParams?.inscrito;
+  const confirmed = (Array.isArray(inscrito) ? inscrito[0] : inscrito) === '1';
 
   return (
     <>
       <AulaStickyBar aula={resolved} />
-      <AulaObrigado aula={resolved} />
+      <AulaObrigado aula={resolved} confirmed={confirmed} />
       <AulaFooter aula={resolved} />
     </>
   );

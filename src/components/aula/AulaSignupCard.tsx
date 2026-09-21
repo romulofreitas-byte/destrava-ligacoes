@@ -79,9 +79,10 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
       }
 
       const data = (await response.json().catch(() => null)) as { redirectTo?: string } | null;
-      router.push(data?.redirectTo || `/aula/${aula.slug}/obrigado`);
+      const dest = data?.redirectTo || `/aula/${aula.slug}/obrigado`;
+      router.push(dest.includes('?') ? `${dest}&inscrito=1` : `${dest}?inscrito=1`);
     } catch {
-      router.push(`/aula/${aula.slug}/obrigado`);
+      router.push(`/aula/${aula.slug}/obrigado?inscrito=1`);
     }
   };
 
