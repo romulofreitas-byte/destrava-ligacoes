@@ -8,6 +8,16 @@ function civilNoon(key: string): Date {
   return new Date(`${key}T12:00:00-03:00`);
 }
 
+function civilHour(date: Date): number {
+  return Number(
+    new Intl.DateTimeFormat('en-GB', {
+      hour: 'numeric',
+      hourCycle: 'h23',
+      timeZone: TIME_ZONE,
+    }).format(date)
+  );
+}
+
 export function formatAulaTime(dataISO: string): string {
   return new Intl.DateTimeFormat('pt-BR', {
     hour: '2-digit',
@@ -37,7 +47,7 @@ export function getRelativeDayLabel(dataISO: string, now: Date = new Date()): st
   const diffDays = Math.round((classDay.getTime() - today.getTime()) / 86_400_000);
 
   if (diffDays === 0) return 'Hoje';
-  if (diffDays === 1) return 'Amanhã';
+  if (diffDays === 1) return civilHour(now) >= 23 ? 'Hoje' : 'Amanhã';
   if (diffDays >= 7) return formatAulaDayMonth(dataISO);
 
   const weekday = new Intl.DateTimeFormat('pt-BR', {

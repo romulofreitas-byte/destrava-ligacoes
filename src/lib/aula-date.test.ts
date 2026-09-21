@@ -30,6 +30,8 @@ test('já passou → Encerrada', () => {
 });
 
 test('virada de meia-noite BRT', () => {
-  assert.equal(getRelativeDayLabel(CLASS_AT, new Date('2026-09-20T23:59:59-03:00')), 'Amanhã');
+  assert.equal(getRelativeDayLabel(CLASS_AT, new Date('2026-09-20T22:59:59-03:00')), 'Amanhã');
+  assert.equal(getRelativeDayLabel(CLASS_AT, new Date('2026-09-20T23:00:00-03:00')), 'Hoje');
+  assert.equal(getRelativeDayLabel(CLASS_AT, new Date('2026-09-20T23:59:59-03:00')), 'Hoje');
   assert.equal(getRelativeDayLabel(CLASS_AT, new Date('2026-09-21T00:00:00-03:00')), 'Hoje');
 });

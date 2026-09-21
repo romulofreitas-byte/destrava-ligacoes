@@ -3,8 +3,9 @@
 import { useRouter } from 'next/navigation';
 import { FormEvent, useEffect, useState } from 'react';
 import type { Aula } from '@/content/aulas';
-import { getAulaQuandoLabel, isAulaEncerrada } from '@/content/aulas';
+import { isAulaEncerrada } from '@/content/aulas';
 import { maskBrazilianWhatsApp, validateBrazilianWhatsApp, validateFullName } from '@/lib/phone';
+import { useAulaQuandoLabel } from './useAulaQuandoLabel';
 
 type FieldErrors = Partial<Record<'nome' | 'whatsapp' | 'email' | 'consentimento' | 'form', string>>;
 
@@ -18,6 +19,7 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
   const [closed, setClosed] = useState(() => isAulaEncerrada(aula));
+  const quando = useAulaQuandoLabel(aula);
 
   useEffect(() => {
     if (closed) return undefined;
@@ -107,7 +109,7 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
   return (
     <div id="cadastro" className="aula-panel border-yellow-400/50 p-4 text-center shadow-lg shadow-yellow-500/10 sm:p-8 lg:border-yellow-400/30 lg:text-left">
       <p className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-yellow-400">
-        {getAulaQuandoLabel(aula)} · ao vivo
+        {quando} · ao vivo
       </p>
       <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">{aula.form.title}</h2>
       <p className="mt-2 text-sm text-gray-400">1h30 no Meet. Grátis. Sem cartão. Sem gravação.</p>

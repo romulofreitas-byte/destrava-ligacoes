@@ -8,34 +8,33 @@ https://workshop.mundopodium.com.br/aula/lead-antigo-nao-e-lead-morto
 
 ## Hoje à noite (Circle / comunidade Pod)
 
-**Título:** Segunda, 20:30. Lista parada não é lista morta.
+**Título:** Hoje 20:30. Reativa lead antigo. Fecha contrato.
 
-Você tem nome que pediu e-mail, pediu proposta ou sumiu.
+Hoje, 20:30. Aula ao vivo. Grátis. Sem gravação.
 
-Amanhã, 20:30, aula ao vivo. Grátis. Sem gravação.
+Como reativar leads antigos e fechar contratos.
 
-Como voltar nessa lista. Primeiro por ligação. Depois no WhatsApp.
+Nome que pediu proposta e sumiu. Nome que pediu e-mail. Nome que “agora não é o momento”.
+
+Essa lista não está morta. Ela está parada. A aula mostra como voltar nela por ligação e fechar ainda em 2026.
 
 Otávio: das 5 reuniões que marquei, 3 foi voltando no contato. Quem não faz tá perdendo oportunidade.
 
-Traz o que você tem. Mesmo que seja uma planilha bagunçada.
+Traz o que você tem. Mesmo bagunçado.
 
-Link da vaga:
 https://workshop.mundopodium.com.br/aula/lead-antigo-nao-e-lead-morto
 
 ---
 
 ## Hoje à noite (WhatsApp do grupo)
 
-Amanhã 20:30.
-
-Aula ao vivo. Grátis. Sem gravação.
-
-Lead antigo não é lead morto.
+Hoje 20:30.
 
 Como reativar leads antigos e fechar contratos.
 
-Otávio fechou 3 das 5 reuniões voltando no contato.
+Ao vivo. Grátis. Sem gravação. Quem não estiver, perdeu.
+
+Otávio: das 5 reuniões, 3 veio de voltar no contato.
 
 Garante o link:
 https://workshop.mundopodium.com.br/aula/lead-antigo-nao-e-lead-morto
@@ -99,11 +98,11 @@ https://workshop.mundopodium.com.br/aula/lead-antigo-nao-e-lead-morto
 
 ---
 
-## Stories (uma frase cada)
+## Stories de hoje (uma frase cada)
 
-1. Segunda 20:30. Lista parada. Aula ao vivo. Grátis.
+1. Hoje 20:30. Reativa lead antigo. Fecha contrato.
 
-2. Sem gravação. Quem não estiver, perdeu.
+2. Ao vivo. Grátis. Sem gravação. Quem não estiver, perdeu.
 
 3. Das 5 reuniões, 3 veio de voltar no contato.
 

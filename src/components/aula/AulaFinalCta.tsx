@@ -1,8 +1,12 @@
+'use client';
+
 import type { Aula } from '@/content/aulas';
-import { getAulaQuandoLabel } from '@/content/aulas';
 import { AulaReveal } from './AulaReveal';
+import { useAulaQuandoLabel } from './useAulaQuandoLabel';
 
 export function AulaFinalCta({ aula }: { aula: Aula }) {
+  const quando = useAulaQuandoLabel(aula);
+
   return (
     <section className="px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
       <AulaReveal>
@@ -11,7 +15,7 @@ export function AulaFinalCta({ aula }: { aula: Aula }) {
             {aula.ctaFinal.titulo}
           </h2>
           <p className="mt-5 text-base font-bold text-gray-300 sm:text-xl">
-            {getAulaQuandoLabel(aula)}. Grátis. Google Meet. Sem gravação.
+            {quando}. Grátis. Google Meet. Sem gravação.
           </p>
           <a href="#cadastro" className="aula-cta mx-auto mt-8 max-w-md">
             {aula.ctaFinal.botao}
