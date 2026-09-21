@@ -37,7 +37,7 @@ export function AulaHero({ aula }: { aula: Aula }) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/55 to-black/25" />
-        <div className="relative z-10 flex min-h-[280px] flex-col justify-end px-4 pb-5 pt-8 lg:hidden">
+        <div className="relative z-10 flex min-h-[280px] flex-col items-center justify-end px-4 pb-5 pt-8 text-center lg:hidden">
           <p
             aria-hidden="true"
             className="inline-flex w-fit items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900"
@@ -53,7 +53,7 @@ export function AulaHero({ aula }: { aula: Aula }) {
       </div>
 
       <div className="mx-auto grid w-full max-w-6xl items-start gap-6 px-4 pb-10 pt-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pb-14 lg:pt-8">
-        <div>
+        <div className="text-center lg:text-left">
           <p className="sr-only lg:not-sr-only lg:whitespace-nowrap lg:text-xs lg:font-bold lg:tracking-wider lg:text-yellow-400">
             {aula.eyebrow} · {quando}
           </p>
@@ -75,7 +75,7 @@ export function AulaHero({ aula }: { aula: Aula }) {
           </div>
 
           {prova ? (
-            <figure className="mt-4 rounded-2xl border border-yellow-400/35 bg-gray-800/70 p-4 shadow-lg shadow-yellow-400/5 lg:mt-6 lg:max-w-xl lg:rounded-none lg:border-0 lg:border-l-2 lg:border-yellow-400 lg:bg-transparent lg:p-0 lg:pl-4 lg:shadow-none">
+            <figure className="mt-4 rounded-2xl border border-yellow-400/35 bg-gray-800/70 p-4 text-center shadow-lg shadow-yellow-400/5 lg:mt-6 lg:max-w-xl lg:rounded-none lg:border-0 lg:border-l-2 lg:border-yellow-400 lg:bg-transparent lg:p-0 lg:pl-4 lg:text-left lg:shadow-none">
               <blockquote className="text-[15px] font-medium leading-snug text-white lg:text-lg">
                 “{prova.texto}”
               </blockquote>
@@ -96,7 +96,7 @@ export function AulaHero({ aula }: { aula: Aula }) {
           </div>
 
           {!closed ? (
-            <div className="mt-5 lg:mt-8">
+            <div className="mt-5 flex flex-col items-center lg:mt-8 lg:items-start">
               <p className="mb-2 text-[11px] font-bold uppercase tracking-wide text-gray-500">
                 {aula.form.countdownLabel}
               </p>

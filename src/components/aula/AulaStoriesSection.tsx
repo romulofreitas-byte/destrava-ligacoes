@@ -15,14 +15,14 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
     <section className="px-4 py-10 sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <AulaReveal>
-          <p className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-yellow-400">
+          <p className="text-center text-[11px] font-bold uppercase tracking-wider text-yellow-400 lg:text-left">
             <span className="lg:hidden">Depoimentos reais · 35 min</span>
             <span className="hidden lg:inline">Assiste depois de garantir o link</span>
           </p>
-          <h2 className="aula-section-title mt-3 max-w-xl text-[1.75rem] leading-[1.15] sm:max-w-3xl sm:text-5xl">
+          <h2 className="aula-section-title mx-auto mt-3 max-w-xl text-[1.75rem] leading-[1.15] sm:max-w-3xl sm:text-5xl lg:mx-0">
             {aula.historiasTitulo}
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-snug text-gray-300">{aula.historiasApoio}</p>
+          <p className="mx-auto mt-4 max-w-xl text-center text-base leading-snug text-gray-300 lg:mx-0 lg:text-left">{aula.historiasApoio}</p>
         </AulaReveal>
 
         <div className={`mt-10 ${aula.historiasVideos.length > 1 ? 'grid gap-6 md:grid-cols-2' : 'mx-auto max-w-4xl'}`}>
@@ -81,7 +81,7 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
                       </>
                     )}
                   </div>
-                  <h3 className="mt-4 whitespace-pre-line text-lg font-bold leading-snug text-white sm:text-xl">{video.titulo}</h3>
+                  <h3 className="mt-4 whitespace-pre-line text-center text-lg font-bold leading-snug text-white sm:text-xl lg:text-left">{video.titulo}</h3>
                 </article>
               </AulaReveal>
             );
@@ -92,7 +92,7 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
           {aula.historias.map((historia, index) => (
             <AulaReveal key={historia.resultado} delay={index * 0.05}>
               {historia.nome ? (
-                <figure className="max-w-2xl border-l-2 border-yellow-400 pl-4">
+                <figure className="mx-auto max-w-2xl border-t-2 border-yellow-400 pt-4 text-center lg:mx-0 lg:border-l-2 lg:border-t-0 lg:pl-4 lg:pt-0 lg:text-left">
                   <blockquote className="text-lg font-medium leading-snug text-white">
                     “{historia.texto}”
                   </blockquote>
@@ -102,9 +102,9 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
                   </figcaption>
                 </figure>
               ) : (
-                <article>
+                <article className="text-center lg:text-left">
                   <p className="whitespace-pre-line text-lg font-bold leading-snug text-yellow-400">{historia.resultado}</p>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-300">{historia.texto}</p>
+                  <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-gray-300 lg:mx-0">{historia.texto}</p>
                 </article>
               )}
             </AulaReveal>

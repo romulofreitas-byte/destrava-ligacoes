@@ -64,7 +64,7 @@ export function AulaCountdown({
 
   return (
     <div
-      className="flex flex-wrap items-center gap-1.5"
+      className="flex flex-wrap items-center justify-center gap-1.5 lg:justify-start"
       role="timer"
       aria-live="polite"
       aria-label="Tempo até o início da aula"

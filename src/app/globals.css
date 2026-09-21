@@ -406,7 +406,7 @@ img {
 }
 
 .aula-section-title {
-  @apply font-heading font-bold whitespace-pre-line text-white;
+  @apply text-center font-heading font-bold whitespace-pre-line text-white lg:text-left;
 }
 
 .aula-panel {

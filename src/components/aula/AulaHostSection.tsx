@@ -19,22 +19,22 @@ export function AulaHostSection({ aula }: { aula: Aula }) {
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent lg:hidden" />
             </div>
 
-            <div className="flex flex-col justify-center border-t-2 border-yellow-400 pt-8 lg:border-l-2 lg:border-t-0 lg:pl-12 lg:pt-0">
+            <div className="flex flex-col items-center justify-center border-t-2 border-yellow-400 pt-8 text-center lg:items-start lg:border-l-2 lg:border-t-0 lg:pl-12 lg:pt-0 lg:text-left">
               <p className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-yellow-400">{aula.host.titulo}</p>
               <h2 className="aula-section-title mt-3 text-4xl sm:text-5xl">{aula.host.nome}</h2>
               <p className="mt-2 text-sm font-bold uppercase tracking-wide text-gray-400">{aula.host.cargo}</p>
 
-              <p className="aula-title-shimmer mt-8 max-w-md text-2xl font-bold leading-snug sm:text-3xl">
+              <p className="aula-title-shimmer mx-auto mt-8 max-w-md text-2xl font-bold leading-snug sm:text-3xl lg:mx-0">
                 {aula.host.destaque}
               </p>
 
-              <div className="mt-6 max-w-lg space-y-4 text-base leading-relaxed text-gray-300">
+              <div className="mx-auto mt-6 max-w-lg space-y-4 text-base leading-relaxed text-gray-300 lg:mx-0">
                 {aula.host.paragrafos.map((paragrafo) => (
                   <p key={paragrafo.slice(0, 24)}>{paragrafo}</p>
                 ))}
               </div>
 
-              <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-gray-800 pt-8">
+              <dl className="mt-10 grid w-full grid-cols-3 gap-4 border-t border-gray-800 pt-8">
                 {aula.host.fatos.map((fato) => (
                   <div key={fato.label}>
                     <dt className="whitespace-pre-line text-[11px] font-bold uppercase tracking-wide text-gray-500">{fato.label}</dt>

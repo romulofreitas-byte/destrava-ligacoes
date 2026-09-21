@@ -90,7 +90,7 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
 
   if (closed) {
     return (
-      <div id="cadastro" className="aula-panel border-yellow-400/50 p-4 shadow-lg shadow-yellow-500/10 sm:p-8 lg:border-yellow-400/30">
+      <div id="cadastro" className="aula-panel border-yellow-400/50 p-4 text-center shadow-lg shadow-yellow-500/10 sm:p-8 lg:border-yellow-400/30 lg:text-left">
         <h2 className="text-2xl font-bold text-white">{aula.form.closedTitle}</h2>
         <a
           href={aula.linkComunidade}
@@ -105,7 +105,7 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
   }
 
   return (
-    <div id="cadastro" className="aula-panel border-yellow-400/50 p-4 shadow-lg shadow-yellow-500/10 sm:p-8 lg:border-yellow-400/30">
+    <div id="cadastro" className="aula-panel border-yellow-400/50 p-4 text-center shadow-lg shadow-yellow-500/10 sm:p-8 lg:border-yellow-400/30 lg:text-left">
       <p className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-yellow-400">
         {getAulaQuandoLabel(aula)} · ao vivo
       </p>
@@ -202,7 +202,7 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
         </div>
 
         <div>
-          <label htmlFor="aula-consent" className="flex items-start gap-3 text-sm text-gray-300">
+          <label htmlFor="aula-consent" className="mx-auto flex max-w-sm items-start gap-3 text-left text-sm text-gray-300 lg:mx-0 lg:max-w-none">
             <input
               id="aula-consent"
               name="consentimento"
