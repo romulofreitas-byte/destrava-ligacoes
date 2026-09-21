@@ -1,8 +1,10 @@
 {
   "campaign": {
-    "name": "AULA | Lead antigo | 21/09",
-    "budgetBrl": 400,
-    "stopAt": "2026-09-21T20:00:00-03:00",
+    "name": "AULA | Lead antigo | 21/09 | video",
+    "objective": "OUTCOME_TRAFFIC",
+    "optimization": "LINK_CLICKS",
+    "dailyBudgetBrl": 300,
+    "stopAt": "2026-09-21T20:30:00-03:00",
     "pixelId": "687023637552068",
     "slug": "lead-antigo-nao-e-lead-morto",
     "url": "https://workshop.mundopodium.com.br/aula/lead-antigo-nao-e-lead-morto",
@@ -12,40 +14,56 @@
       "utm_campaign": "lead-antigo-2109"
     }
   },
-  "adSets": [
+  "adSet": {
+    "name": "Base quente IG+video",
+    "utmContent": "quente"
+  },
+  "videos": [
     {
-      "key": "ig",
-      "name": "IG engajados 365d",
-      "audience": "ig_engaged",
-      "utmContent": "ig365"
+      "id": "v25",
+      "file": "videos aula 21-09/ad-25s-safezone.mp4",
+      "label": "22s"
     },
     {
-      "key": "video",
-      "name": "Video 50pct 365d",
-      "audience": "video_50",
-      "utmContent": "video50"
+      "id": "v54",
+      "file": "videos aula 21-09/ad-54s-safezone.mp4",
+      "label": "54s"
     }
   ],
   "ads": [
     {
       "id": "lista",
-      "primary": "Você tem nome que pediu proposta e sumiu.\n\nEssa lista não está morta. Ela está parada.\n\nSegunda, 20:30. Ao vivo. Grátis. Sem gravação.\n\nEu mostro como voltar nesses nomes. Primeiro por ligação.",
+      "primary": "Sua lista não está fria. Está parada.\n\nAqueles nomes que falaram \"me manda por e-mail\" e sumiram. O que pediu proposta e nunca mais respondeu. O \"agora não é o momento\" de seis meses atrás.\n\nNão é lixo. É dinheiro parado esperando alguém ligar.\n\nHoje, 20:30, eu mostro ao vivo como voltar nessa lista e marcar reunião ainda em 2026.\n\n1h30 no Meet. Grátis. Sem gravação. Quem não estiver, perdeu.\n\nNinguém liga por você. Liga você.",
       "headline": "Lead antigo não é lead morto",
-      "description": "Aula ao vivo. Grátis.",
+      "description": "Aula ao vivo e gratuita · Hoje, 20:30",
       "cta": "SIGN_UP"
     },
     {
-      "id": "urgencia",
-      "primary": "Segunda, 20:30.\n\nAula ao vivo. Grátis. Sem gravação.\n\nQuem não estiver, perdeu.\n\nLead antigo não é lead morto.",
-      "headline": "Segunda, 20:30. Sem gravação.",
-      "description": "21/09 · 20:30 · Google Meet",
+      "id": "email",
+      "primary": "\"Me manda por e-mail.\"\n\nVocê mandou. Ele não respondeu. E você deixou morrer ali.\n\nE-mail é onde a oportunidade vai morrer se ninguém ligar de novo. Não é o cliente que some. É você que para.\n\nHoje, 20:30, aula ao vivo: como voltar num contato parado sem parecer desesperado, e sair com reunião marcada.\n\nGrátis. 1h30. Sem gravação.",
+      "headline": "O lead não sumiu. Você parou.",
+      "description": "Aula ao vivo · Hoje, 20:30 · Grátis",
+      "cta": "SIGN_UP"
+    },
+    {
+      "id": "ano",
+      "primary": "A maioria vai começar 2027 caçando nome novo com a lista antiga intacta.\n\nIsso é caro. E é burro.\n\nAinda dá pra fechar contrato este ano. Não com lead novo. Com o que já está na sua lista parada desde março.\n\nHoje, 20:30, eu mostro como voltar nessa lista ao vivo.\n\nGrátis, 1h30, sem gravação.",
+      "headline": "Ainda dá pra fechar em 2026",
+      "description": "Aula ao vivo e gratuita · Hoje, 20:30",
       "cta": "SIGN_UP"
     },
     {
       "id": "prova",
-      "primary": "Otávio: das 5 reuniões que marquei, 3 foi voltando no contato.\n\nQuem não faz tá perdendo oportunidade.\n\nSegunda, 20:30. Ao vivo. Grátis.",
-      "headline": "Volta na lista. Liga de novo.",
-      "description": "Link na hora. Sem cartão.",
+      "primary": "Otávio: das 5 reuniões que marquei, 3 foi voltando no contato. Quem não faz tá perdendo oportunidade.\n\nEle não comprou lista. Não rodou anúncio. Voltou em quem já tinha falado com ele.\n\nHoje, 20:30, eu mostro exatamente como fazer isso. Ao vivo, com ligação real.\n\nGrátis. Sem gravação.",
+      "headline": "3 das 5 reuniões vieram de voltar",
+      "description": "Aula ao vivo · Hoje, 20:30",
+      "cta": "SIGN_UP"
+    },
+    {
+      "id": "callout",
+      "primary": "Se você vive de marcar reunião, essa aula é sua.\n\nNão é pra quem quer script mágico. Não é pra quem acha que WhatsApp substitui o telefone. Não é pra quem vem só assistir.\n\nÉ pra quem vai abrir a lista e ligar.\n\nHoje, 20:30. 1h30 no Meet. Grátis. Sem gravação.",
+      "headline": "Essa aula é pra quem vai ligar",
+      "description": "Aula ao vivo · Hoje, 20:30 · Grátis",
       "cta": "SIGN_UP"
     }
   ]

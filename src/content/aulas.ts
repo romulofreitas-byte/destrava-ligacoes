@@ -321,7 +321,7 @@ export function isAulaEncerrada(aula: Aula, now: Date = new Date()): boolean {
   return now.getTime() >= new Date(aula.data).getTime();
 }
 
-/** "21/09, 20:30" — data civil em America/Sao_Paulo, igual em qualquer lançamento. */
+/** "Hoje, 20:30" no dia da aula; senão data civil em America/Sao_Paulo. */
 export function getAulaQuandoLabel(aula: Aula, now: Date = new Date()): string {
   return formatAulaQuandoLabel(aula.data, now);
 }

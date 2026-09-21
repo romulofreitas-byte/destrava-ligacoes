@@ -17,12 +17,30 @@ export function formatAulaDayMonth(dataISO: string): string {
   }).format(new Date(dataISO));
 }
 
-/** Data civil em America/Sao_Paulo. Sem Hoje/Amanhã, para servir qualquer lançamento. */
+function civilYmd(date: Date): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date);
+}
+
+function nextCivilYmd(ymd: string): string {
+  const next = new Date(`${ymd}T12:00:00-03:00`);
+  return civilYmd(new Date(next.getTime() + 24 * 60 * 60 * 1000));
+}
+
+/** Data civil em America/Sao_Paulo. Hoje/Amanhã no dia da aula. */
 export function getRelativeDayLabel(dataISO: string, now: Date = new Date()): string {
   const target = new Date(dataISO);
   if (Number.isNaN(target.getTime()) || now.getTime() >= target.getTime()) {
     return 'Encerrada';
   }
+  const nowYmd = civilYmd(now);
+  const targetYmd = civilYmd(target);
+  if (nowYmd === targetYmd) return 'Hoje';
+  if (nextCivilYmd(nowYmd) === targetYmd) return 'Amanhã';
   return formatAulaDayMonth(dataISO);
 }
 
