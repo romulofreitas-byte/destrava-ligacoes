@@ -37,31 +37,34 @@ export function AulaHero({ aula }: { aula: Aula }) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/55 to-black/25" />
-        <div className="relative z-10 flex min-h-[280px] flex-col justify-end px-4 pb-5 pt-8">
-          <p className="inline-flex w-fit items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900">
-            <span className="aula-pulse" aria-hidden="true" />
+        <div className="relative z-10 flex min-h-[280px] flex-col justify-end px-4 pb-5 pt-8 lg:hidden">
+          <p
+            aria-hidden="true"
+            className="inline-flex w-fit items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900"
+          >
+            <span className="aula-pulse" />
             {aula.eyebrow} · {quando}
           </p>
-          <h1 className="mt-3 text-[clamp(1.85rem,9vw,2.55rem)] font-bold leading-[1.05] text-white">
+          <p aria-hidden="true" className="mt-3 text-[clamp(1.85rem,9vw,2.55rem)] font-bold leading-[1.05] text-white">
             <span className="block">{aula.tituloLinha1}</span>
             <span className="aula-title-shimmer mt-1 block">{aula.tituloLinha2}</span>
-          </h1>
+          </p>
         </div>
       </div>
 
       <div className="mx-auto grid w-full max-w-6xl items-start gap-6 px-4 pb-10 pt-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pb-14 lg:pt-8">
         <div>
-          <p className="hidden whitespace-nowrap text-xs font-bold tracking-wider text-yellow-400 lg:block">
+          <p className="sr-only lg:not-sr-only lg:whitespace-nowrap lg:text-xs lg:font-bold lg:tracking-wider lg:text-yellow-400">
             {aula.eyebrow} · {quando}
           </p>
-          <h1 className="mt-0 hidden text-[clamp(1.55rem,6.4vw,3.15rem)] font-bold leading-[1.1] text-white lg:block">
+          <h1 className="mt-0 text-[clamp(1.85rem,9vw,2.55rem)] font-bold leading-[1.05] text-white max-lg:sr-only lg:text-[clamp(1.55rem,6.4vw,3.15rem)] lg:leading-[1.1]">
             <span className="block">{aula.tituloLinha1}</span>
-            <span className="aula-title-shimmer mt-1 block whitespace-nowrap">{aula.tituloLinha2}</span>
+            <span className="aula-title-shimmer mt-1 block lg:whitespace-nowrap">{aula.tituloLinha2}</span>
           </h1>
 
-          <p className="text-lg font-bold leading-snug text-gray-100 lg:mt-5 lg:max-w-xl lg:text-xl lg:text-gray-300">
-            <span className="lg:hidden">Volta na lista que parou. Liga de novo.</span>
-            <span className="hidden whitespace-pre-line lg:block">{aula.subtitulo}</span>
+          <p className="text-lg font-bold leading-snug text-gray-100 lg:hidden">{aula.ganchoMobile}</p>
+          <p className="mt-5 hidden max-w-xl whitespace-pre-line text-xl font-bold leading-snug text-gray-300 lg:block">
+            {aula.subtitulo}
           </p>
           <p className="mt-1 text-sm font-medium text-gray-400 lg:hidden">Ainda em 2026. Grátis. 1h30 no Meet.</p>
 

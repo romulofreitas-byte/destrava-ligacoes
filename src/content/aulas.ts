@@ -1,3 +1,4 @@
+import { formatAulaQuandoLabel } from '@/lib/aula-date';
 import { WORKSHOP_WHATSAPP } from '@/lib/constants';
 
 export type AulaStatus = 'aberta' | 'encerrada';
@@ -15,6 +16,7 @@ export type Aula = {
   tituloLinha1: string;
   tituloLinha2: string;
   subtitulo: string;
+  ganchoMobile: string;
   paragrafosHero: string[];
   chips: string[];
   historiasTitulo: string;
@@ -104,7 +106,8 @@ const LEAD_ANTIGO: Aula = {
   titulo: 'Lead antigo não é lead morto',
   tituloLinha1: 'Lead antigo',
   tituloLinha2: 'não é lead\u00A0morto.',
-  subtitulo: 'Como voltar na lista que parou\ne ligar de novo. Ainda em 2026.',
+  subtitulo: 'Como reativar leads antigos\ne fechar contratos.',
+  ganchoMobile: 'Reativa leads antigos. Fecha contratos.',
   paragrafosHero: [
     'Você tem nomes que pediram e-mail, pediram proposta ou sumiram. Essa aula mostra como voltar neles: primeiro por ligação, depois no WhatsApp.',
   ],
@@ -227,7 +230,7 @@ const LEAD_ANTIGO: Aula = {
     fatos: [
       { valor: '12+', label: 'anos vendendo' },
       { valor: `${AULA_SOCIAL_PROOF.livesYoutube}+`, label: 'lives no YouTube' },
-      { valor: `${AULA_SOCIAL_PROOF.hoursLive}h`, label: 'de ligação\nao vivo' },
+      { valor: `${AULA_SOCIAL_PROOF.hoursLive}h+`, label: 'de ligação\nao vivo' },
     ],
   },
   stats: [
@@ -318,29 +321,7 @@ export function isAulaEncerrada(aula: Aula, now: Date = new Date()): boolean {
   return now.getTime() >= new Date(aula.data).getTime();
 }
 
-/** "Amanhã, 20:30" / "Hoje, 20:30" / "Segunda, 20:30" — for TOF, not a calendar code. */
+/** "Amanhã, 20:30" / "Hoje, 20:30" / "Segunda, 20:30" — dia civil em America/Sao_Paulo. */
 export function getAulaQuandoLabel(aula: Aula, now: Date = new Date()): string {
-  const target = new Date(aula.data);
-  const time = new Intl.DateTimeFormat('pt-BR', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-    timeZone: 'America/Sao_Paulo',
-  }).format(target);
-
-  const todayKey = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(now);
-  const classKey = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(target);
-  const today = new Date(`${todayKey}T12:00:00-03:00`);
-  const classDay = new Date(`${classKey}T12:00:00-03:00`);
-  const diffDays = Math.round((classDay.getTime() - today.getTime()) / 86_400_000);
-
-  if (diffDays === 0) return `Hoje, ${time}`;
-  if (diffDays === 1) return `Amanhã, ${time}`;
-
-  const weekday = new Intl.DateTimeFormat('pt-BR', {
-    weekday: 'long',
-    timeZone: 'America/Sao_Paulo',
-  }).format(target);
-  const day = weekday.charAt(0).toUpperCase() + weekday.slice(1);
-  return `${day}, ${time}`;
+  return formatAulaQuandoLabel(aula.data, now);
 }

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { WORKSHOP_PUBLIC_SITE_URL } from '@/lib/constants';
 
 export const viewport: Viewport = {
   themeColor: '#111827',
@@ -7,6 +8,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(WORKSHOP_PUBLIC_SITE_URL),
+  keywords: [],
   robots: { index: false, follow: false },
 };
 
