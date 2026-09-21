@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
 import { trackCTAClick, trackInitiateCheckout, trackViewContent } from '@/lib/metaPixel';
 import { PainPointsMarquee } from './PainPointsMarquee';
@@ -20,17 +20,8 @@ import {
 import { scrollToCheckoutCard } from '@/lib/scrollToSection';
 
 export const HeroSectionWorkshop: React.FC = () => {
-  const [progressWidth, setProgressWidth] = useState<number>(WORKSHOP_SALES.progressPercent);
   const hasTrackedView = useRef(false);
   const salesOpen = WORKSHOP_SALES.isOpen;
-
-  useEffect(() => {
-    setProgressWidth(0);
-    const timer = setTimeout(() => {
-      setProgressWidth(WORKSHOP_SALES.progressPercent);
-    }, 120);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -108,28 +99,12 @@ export const HeroSectionWorkshop: React.FC = () => {
         </p>
       </div>
 
-      <div className="mt-5 flex items-end gap-2.5 sm:gap-3 w-full">
+      <div
+        className={`mt-5 flex w-full ${
+          align === 'center' ? 'justify-center' : 'justify-center sm:justify-start'
+        }`}
+      >
         <WorkshopCountdown inlineBoxes />
-        {WORKSHOP_SALES.showSpotsProgress ? (
-          <div className="flex-1 min-w-0 pb-0.5 space-y-1.5">
-            <p className="text-[10px] sm:text-xs leading-none">
-              <span className="text-gray-400">Vagas: </span>
-              <span className="text-yellow-400 font-semibold tabular-nums">
-                {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
-              </span>
-            </p>
-            <div className="w-full h-[3px] bg-gray-700/80 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-yellow-400 rounded-full transition-all duration-1000 ease-out"
-                style={{ width: `${progressWidth}%` }}
-              />
-            </div>
-          </div>
-        ) : (
-          <p className="flex-1 min-w-0 pb-0.5 text-[10px] sm:text-xs leading-snug text-yellow-400/90 font-semibold">
-            {WORKSHOP_LAST_CALL.spotsLine}
-          </p>
-        )}
       </div>
     </div>
   );

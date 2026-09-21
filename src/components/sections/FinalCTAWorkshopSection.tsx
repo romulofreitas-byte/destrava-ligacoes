@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Zap, Users, Video, Mail, MessageCircle, Calendar } from 'lucide-react';
 import { trackCTAClick, trackInitiateCheckout, trackViewContent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
@@ -16,19 +16,10 @@ import {
 import { WorkshopCountdown } from '@/components/ui/WorkshopCountdown';
 
 export const FinalCTAWorkshopSection: React.FC = () => {
-  const [progressWidth, setProgressWidth] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const hasTrackedView = useRef(false);
   const { setCtaButtonClicked } = useModalContext();
   const salesOpen = WORKSHOP_SALES.isOpen;
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgressWidth(WORKSHOP_SALES.progressPercent);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -184,28 +175,10 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 </div>
               </div>
 
-              {WORKSHOP_SALES.showSpotsProgress ? (
-              <div className="space-y-2 mb-8">
-                <div className="flex items-center justify-between text-xs sm:text-sm">
-                  <span className="text-gray-300">Vagas preenchidas</span>
-                  <span className="text-yellow-400 font-semibold">
-                    {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
-                  </span>
-                </div>
-                <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden relative shadow-inner">
-                  <div
-                    className="h-full bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full shadow-lg transition-all duration-1000"
-                    style={{ width: `${progressWidth}%` }}
-                  />
-                </div>
-                <p className="text-yellow-400/90 text-xs font-semibold">
-                  Turma limitada a {WORKSHOP_SALES.maxSpots} participantes
+              {!WORKSHOP_SALES.showSpotsProgress && (
+                <p className="text-yellow-400/90 text-xs sm:text-sm font-semibold mb-8">
+                  {WORKSHOP_LAST_CALL.liveToday} · {WORKSHOP_LAST_CALL.spotsLine}
                 </p>
-              </div>
-              ) : (
-              <p className="text-yellow-400/90 text-xs sm:text-sm font-semibold mb-8">
-                {WORKSHOP_LAST_CALL.liveToday} · {WORKSHOP_LAST_CALL.spotsLine}
-              </p>
               )}
 
               <div className="mb-8 text-left rounded-2xl border border-gray-600/50 bg-gray-900/40 p-5 sm:p-6">
