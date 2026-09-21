@@ -26,16 +26,18 @@ export function AulaObrigado({ aula, confirmed = false }: { aula: Aula; confirme
   };
 
   return (
-    <main className="mx-auto flex min-h-[80vh] max-w-xl flex-col justify-center px-4 py-16">
+    <main className="mx-auto flex min-h-[80vh] max-w-xl flex-col justify-center px-4 py-16 text-center">
       <h1 className="whitespace-pre-line text-3xl font-bold leading-tight text-white sm:text-4xl">
         {aula.obrigado.titulo}
       </h1>
+
+      <p className="mt-6 text-base leading-relaxed text-gray-300 sm:text-lg">{aula.obrigado.grupoMotivo}</p>
 
       <a
         href={aula.linkComunidade}
         target="_blank"
         rel="noopener noreferrer"
-        className="aula-cta mt-10"
+        className="aula-cta mt-6"
         onClick={() => trackCommunityJoin()}
       >
         {aula.obrigado.ctaComunidade}

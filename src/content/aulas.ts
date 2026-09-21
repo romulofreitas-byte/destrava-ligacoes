@@ -1,5 +1,7 @@
 import { formatAulaQuandoLabel } from '@/lib/aula-date';
-import { WORKSHOP_WHATSAPP } from '@/lib/constants';
+
+/** Grupo de aulas e anúncios. Troca por env `NEXT_PUBLIC_AULA_COMMUNITY_URL` quando a estratégia mudar. */
+const AULA_WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/B6kQhkMPdQuEMGumjA4Rkm';
 
 export type AulaStatus = 'aberta' | 'encerrada';
 
@@ -88,6 +90,7 @@ export type Aula = {
   };
   obrigado: {
     titulo: string;
+    grupoMotivo: string;
     ctaComunidade: string;
     ctaAgenda: string;
     meetLabel: string;
@@ -143,7 +146,7 @@ const LEAD_ANTIGO: Aula = {
   ogImage: '/og/lead-antigo-nao-e-lead-morto.png',
   meetEnvKey: 'NEXT_PUBLIC_AULA_LEAD_ANTIGO_MEET_URL',
   linkMeet: 'https://meet.google.com/zkv-gvbg-zqa',
-  linkComunidade: WORKSHOP_WHATSAPP.communityUrl,
+  linkComunidade: AULA_WHATSAPP_GROUP_URL,
   stickyBar: 'AO VIVO · GRÁTIS',
   eyebrow: 'AULA AO VIVO',
   metaLine: 'Segunda, 21/09 · 20:30 às 22:00 · 1h30 · Google Meet · Sem gravação · Grátis',
@@ -275,6 +278,7 @@ const LEAD_ANTIGO: Aula = {
   },
   obrigado: {
     titulo: 'Inscrição confirmada.\nTe vejo na segunda, 20:30.',
+    grupoMotivo: 'É nesse grupo que avisamos se o horário mudar e onde saem as próximas aulas.',
     ctaComunidade: 'ENTRAR NO GRUPO DO WHATSAPP',
     ctaAgenda: 'ADICIONAR NA AGENDA',
     meetLabel: 'Link do Google Meet',
@@ -302,6 +306,7 @@ export function getAulaBySlug(slug: string): Aula | null {
 
 export function resolveAulaLinks(aula: Aula): Aula {
   const meetFromNamedEnv = process.env[aula.meetEnvKey]?.trim() || '';
+  /** Grupo de aulas/anúncios. Nome da env legado; não é o WhatsApp da comunidade do workshop. */
   const communityFromEnv = process.env.NEXT_PUBLIC_AULA_COMMUNITY_URL?.trim() || '';
 
   return {
