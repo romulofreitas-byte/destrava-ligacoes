@@ -3,15 +3,14 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import type { Aula } from '@/content/aulas';
-import { isAulaEncerrada } from '@/content/aulas';
+import { getAulaQuandoLabel, isAulaEncerrada } from '@/content/aulas';
 import { trackAulaViewContent } from '@/lib/metaPixel';
 import { AulaCountdown } from './AulaCountdown';
 import { AulaSignupCard } from './AulaSignupCard';
-import { useAulaQuandoLabel } from './useAulaQuandoLabel';
 
 export function AulaHero({ aula }: { aula: Aula }) {
   const [closed, setClosed] = useState(() => isAulaEncerrada(aula));
-  const quando = useAulaQuandoLabel(aula);
+  const quando = getAulaQuandoLabel(aula);
   const prova = aula.historias.find((historia) => historia.nome && historia.texto);
 
   useEffect(() => {

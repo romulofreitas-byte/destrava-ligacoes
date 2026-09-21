@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import type { Aula } from '@/content/aulas';
-import { useAulaQuandoLabel } from './useAulaQuandoLabel';
+import { getAulaQuandoLabel } from '@/content/aulas';
 
 export function AulaStickyBar({ aula }: { aula: Aula }) {
   const [showCta, setShowCta] = useState(false);
-  const quando = useAulaQuandoLabel(aula);
 
   useEffect(() => {
     const form = document.getElementById('cadastro');
@@ -30,7 +29,7 @@ export function AulaStickyBar({ aula }: { aula: Aula }) {
           <p className="flex min-w-0 items-center justify-center gap-2 text-center text-[11px] font-bold leading-snug sm:text-sm">
             <span className="aula-pulse shrink-0" aria-hidden="true" />
             <span className={showCta ? 'truncate' : undefined}>
-              {aula.stickyBar} · {quando}
+              {aula.stickyBar} · {getAulaQuandoLabel(aula)}
             </span>
           </p>
           {showCta ? (
