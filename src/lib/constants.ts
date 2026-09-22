@@ -17,7 +17,7 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
 /** Checkout Asaas do Workshop (CTA final) */
-export const WORKSHOP_CHECKOUT_URL = 'https://www.asaas.com/c/9el40g7ep0i7voi7';
+export const WORKSHOP_CHECKOUT_URL = 'https://www.asaas.com/c/v0o8m7u1qbr11dqx';
 /** Âncora do card de compra no fim da landing */
 export const WORKSHOP_CHECKOUT_SECTION_ID = 'inscricao';
 /** Domínio público do workshop — precisa ser o mesmo cadastrado no Asaas */
