@@ -98,7 +98,7 @@ export function trackCTAClick(ctaName?: string, contentCategory?: string): void 
 }
 
 const CHECKOUT_INTENT_KEY = 'workshop_checkout_started';
-const PURCHASE_DEDUPE_KEY = 'meta_purchase_workshop_11';
+const PURCHASE_DEDUPE_KEY = 'meta_purchase_workshop_14';
 const PIXEL_READY_MAX_MS = 8000;
 
 export function markCheckoutStarted(): void {

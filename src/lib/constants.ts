@@ -33,8 +33,8 @@ export const WORKSHOP_SALES = {
   isOpen: true,
   /** Abertura das vendas (exibição em CTAs) */
   opensOnDisplay: '11/08',
-  /** Número da edição atual (ex.: 13 → "13ª") */
-  edition: 13,
+  /** Número da edição atual (ex.: 14 → "14ª") */
+  edition: 14,
   /** Vagas já preenchidas (hero + CTA final — números absolutos) */
   filledSpots: 0,
   /** Capacidade máxima da turma */
@@ -70,13 +70,13 @@ export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVA LIGAÇÕES | MUNDO PÓDIUM',
   /** Nome curto do produto (site, SEO, e-mails) */
   productName: 'Workshop Destrava Ligações',
-  date: '22 de setembro de 2026',
-  dateObj: new Date('2026-09-22T13:00:00-03:00'),
+  date: '22 de outubro de 2026',
+  dateObj: new Date('2026-10-22T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '22 de Setembro',
-  dateDisplayShort: '22/09',
+  dateDisplayLong: '22 de Outubro',
+  dateDisplayShort: '22/10',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Terça-feira, 22 de setembro de 2026',
+  dateEmailLine: 'Quinta-feira, 22 de outubro de 2026',
   time: '13:00 – 17:00',
   /** Início do módulo 1 (atalho para UI compacta) */
   timeStartBadge: '13h',
@@ -110,11 +110,11 @@ export const WORKSHOP_WHATSAPP = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '29 de setembro de 2026',
-  dateObj: new Date('2026-09-29T08:00:00-03:00'),
-  dateDisplayLong: '29 de Setembro',
-  dateDisplayShort: '29/09',
-  dateEmailLine: 'Terça-feira, 29 de setembro de 2026',
+  date: '23 de outubro de 2026',
+  dateObj: new Date('2026-10-23T08:00:00-03:00'),
+  dateDisplayLong: '23 de Outubro',
+  dateDisplayShort: '23/10',
+  dateEmailLine: 'Sexta-feira, 23 de outubro de 2026',
   time: '08:00 – 12:00',
   /** Zero à esquerda: evita ler como “8h de duração” */
   timeStartBadge: '08h',
