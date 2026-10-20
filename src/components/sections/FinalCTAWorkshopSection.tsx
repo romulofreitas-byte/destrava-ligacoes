@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Zap, Users, Video, Mail, MessageCircle, Calendar, Check, X } from 'lucide-react';
+import { Zap, Video, Mail, MessageCircle, Calendar, Check, X } from 'lucide-react';
 import { markCheckoutTier, trackCTAClick, trackInitiateCheckout, trackViewContent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
 import {
@@ -166,15 +166,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 <p className="text-green-400 text-xs font-semibold mt-1">{destravar.savingsLabel}</p>
               </div>
               <FeatureList items={destravar.includes} included />
-              <div className="mt-4 flex items-center gap-2 p-3 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
-                <Users className="w-5 h-5 text-yellow-400 flex-shrink-0" />
-                <span className="text-yellow-400 font-semibold text-sm">
-                  {WORKSHOP_SALES.showSpotsProgress
-                    ? `${WORKSHOP_SALES.filledSpots} de ${WORKSHOP_SALES.maxSpots} vagas preenchidas`
-                    : WORKSHOP_LAST_CALL.spotsLine}
-                </span>
-              </div>
-              <div className="mt-2 mb-5 flex items-center gap-2 p-3 bg-gray-700/40 border border-gray-500/40 rounded-xl">
+              <div className="mt-4 mb-5 flex items-center gap-2 p-3 bg-gray-700/40 border border-gray-500/40 rounded-xl">
                 <Video className="w-5 h-5 text-gray-300 flex-shrink-0" />
                 <span className="text-gray-300 font-semibold text-sm">Gravação na plataforma</span>
               </div>
@@ -209,17 +201,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 <a href="#grid-bonus" className="text-yellow-400 font-semibold hover:text-yellow-300 underline underline-offset-2">
                   acesso de fundador ao GRID
                 </a>
-                . {WORKSHOP_SALES.showSpotsProgress ? (
-                  <>
-                    Restam{' '}
-                    <span className="text-white font-semibold">
-                      {WORKSHOP_SALES.maxSpots - WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
-                    </span>{' '}
-                    vagas nesta turma.
-                  </>
-                ) : (
-                  <span className="text-white font-semibold">{WORKSHOP_LAST_CALL.closingLine}</span>
-                )}
+                .
               </p>
             </article>
 
