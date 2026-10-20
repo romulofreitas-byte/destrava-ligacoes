@@ -477,7 +477,7 @@ function ObrigadoContent() {
                     <div className="mb-6 p-4 bg-blue-400/10 border border-blue-400/30 rounded-xl">
                       <p className="text-white font-semibold mb-2">Módulo 1 ao vivo</p>
                       <p className="text-gray-300 text-sm leading-relaxed">
-                        Você entrou no {WORKSHOP_OFFER.entender.name} por {WORKSHOP_OFFER.entender.priceLabel}.{' '}
+                        Você entrou na {WORKSHOP_OFFER.entender.name} por {WORKSHOP_OFFER.entender.priceLabel}.{' '}
                         {WORKSHOP_OFFER.entender.deliveryLine} O link do Meet abaixo é o do Módulo 1.
                       </p>
                     </div>

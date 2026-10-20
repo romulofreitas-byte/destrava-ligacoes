@@ -18,12 +18,12 @@ export const WorkshopFAQSection: React.FC = () => {
     {
       question: 'O workshop e a Sala de Ligação ficam gravados?',
       answer:
-        'No Destravar, sim. Ficam gravados na Mundo Pódium durante o período de acesso incluso (60 dias). O Entender é só o ao vivo do Módulo 1, sem gravação.',
+        'No Destravar, sim. Ficam gravados na Mundo Pódium durante o período de acesso incluso (60 dias). A Anatomia é só o ao vivo do Módulo 1, sem gravação.',
     },
     {
       question: 'E se eu não puder participar no horário ao vivo?',
       answer:
-        'Horário de Brasília. No Destravar, as gravações ficam disponíveis na plataforma pelos 60 dias inclusos. O Entender não tem gravação.',
+        'Horário de Brasília. No Destravar, as gravações ficam disponíveis na plataforma pelos 60 dias inclusos. A Anatomia não tem gravação.',
     },
     {
       question: 'Preciso ter experiência em vendas?',
@@ -38,17 +38,17 @@ export const WorkshopFAQSection: React.FC = () => {
     {
       question: 'Vou realmente fazer ligações durante o workshop?',
       answer:
-        'No Destravar, sim. Você pratica ao vivo na Sala de Ligação, monta a Anatomia da Ligação e liga com suporte em tempo real. O Entender é o Módulo 1, a teoria do método, sem a Sala.',
+        'No Destravar, sim. Você pratica ao vivo na Sala de Ligação, monta a Anatomia da Ligação e liga com suporte em tempo real. A Anatomia é o Módulo 1, a base técnica do método, sem a Sala.',
     },
     {
-      question: 'Qual a diferença entre o Entender e o Destravar?',
+      question: 'Qual a diferença entre a Anatomia e o Destravar?',
       answer:
-        'O Entender é o Módulo 1, a teoria do método. O Destravar inclui o Módulo 2, onde você liga de verdade na Sala de Ligação, além da plataforma e do GRID.',
+        'A Anatomia é o Módulo 1, a base técnica do método. O Destravar inclui o Módulo 2, onde você liga de verdade na Sala de Ligação, além da plataforma e do GRID.',
     },
     ...(SHOW_UPGRADE_NOTE
       ? [
           {
-            question: 'Posso começar pelo Entender e depois fazer o completo?',
+            question: 'Posso começar pela Anatomia e depois fazer o completo?',
             answer: WORKSHOP_OFFER.upgradeNote,
           },
         ]
@@ -64,7 +64,7 @@ export const WorkshopFAQSection: React.FC = () => {
     },
     {
       question: 'Como funciona o acesso à plataforma?',
-      answer: `Isso é o Destravar. ${WORKSHOP_PLATFORM_RULES.faqHowPlatformWorks} O Entender não inclui a plataforma.`,
+      answer: `Isso é o Destravar. ${WORKSHOP_PLATFORM_RULES.faqHowPlatformWorks} A Anatomia não inclui a plataforma.`,
     },
     ...WORKSHOP_GRID_BONUS.faq,
   ];

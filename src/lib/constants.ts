@@ -29,7 +29,7 @@ export const WORKSHOP_SUCCESS_PATH = '/workshop-destrava-ligacoes/obrigado';
  * com autoRedirect = true.
  */
 export const WORKSHOP_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas`;
-/** Retorno do checkout Entender. Colar no link Asaas desse degrau, com autoRedirect. */
+/** Retorno do checkout Anatomia. Colar no link Asaas desse degrau, com autoRedirect. */
 export const WORKSHOP_ENTENDER_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas&tier=entender`;
 export const WORKSHOP_SALES = {
   isOpen: true,
@@ -89,31 +89,31 @@ export const WORKSHOP_INFO = {
 
 /**
  * Oferta em dois degraus. Preço, nome, checkout e flag de upgrade ficam só aqui.
- * O Entender não ocupa vaga da Sala. O upgrade fica desligado até existir no Asaas.
+ * A Anatomia não ocupa vaga da Sala. O upgrade fica desligado até existir no Asaas.
  */
 export const SHOW_UPGRADE_NOTE = false;
 
 export const WORKSHOP_OFFER = {
   sectionTitle: 'Escolha por onde começar.',
-  sectionSubtitle: 'Entender é só o começo. Destravar é ligar.',
+  sectionSubtitle: 'A Anatomia mostra como a ligação funciona. O Destravar faz você ligar.',
   decisionLine:
-    'Entender não destrava ligação. Ligar destrava. O Módulo 1 te mostra o caminho. O Módulo 2 é onde você anda nele.',
+    'A Anatomia mostra como a ligação funciona. Só ligar destrava. O Módulo 1 te mostra o caminho. O Módulo 2 é onde você anda nele.',
   upgradeNote:
-    'Começou pelo Entender? Você pode completar para o Destravar pagando só a diferença em até 7 dias.',
+    'Começou pela Anatomia? Você pode completar para o Destravar pagando só a diferença em até 7 dias.',
   entender: {
     id: 'entender',
-    name: 'Entender',
+    name: 'Anatomia',
     priceLabel: 'R$ 297,00',
     amountBRL: 297,
     contentId: 'workshop-destrava-ligacoes-entender',
-    contentName: 'Workshop Destrava Ligações — Entender',
+    contentName: 'Workshop Destrava Ligações — Anatomia',
     checkoutUrl: 'https://www.asaas.com/000/c/ymhmtqrpvo3gojx5',
     recommended: false,
     consumesSpot: false,
-    support: 'Pra quem quer entender o método antes de colocar a mão no telefone.',
-    cta: 'Quero entender o método',
+    support: 'Pra quem quer ver por dentro como uma ligação funciona antes de colocar a mão no telefone.',
+    cta: 'Quero a Anatomia da Ligação',
     deliveryLine: `Ao vivo do Módulo 1 em ${WORKSHOP_INFO.dateDisplayLong}, ${WORKSHOP_INFO.time}. Sem gravação e sem acesso à plataforma.`,
-    includes: ['Módulo 1, a base teórica do método'],
+    includes: ['Módulo 1, Anatomia da Ligação: a base técnica do método'],
     excludes: [
       'Sala de Ligação (prática ao vivo)',
       'Acesso à plataforma',
