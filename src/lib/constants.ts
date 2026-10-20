@@ -29,6 +29,8 @@ export const WORKSHOP_SUCCESS_PATH = '/workshop-destrava-ligacoes/obrigado';
  * com autoRedirect = true.
  */
 export const WORKSHOP_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas`;
+/** Retorno do checkout Entender. Colar no link Asaas desse degrau, com autoRedirect. */
+export const WORKSHOP_ENTENDER_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas&tier=entender`;
 export const WORKSHOP_SALES = {
   isOpen: true,
   /** Abertura das vendas (exibição em CTAs) */
@@ -85,6 +87,62 @@ export const WORKSHOP_INFO = {
   format: 'Online • Ao vivo',
 };
 
+/**
+ * Oferta em dois degraus. Preço, nome, checkout e flag de upgrade ficam só aqui.
+ * O Entender não ocupa vaga da Sala. O upgrade fica desligado até existir no Asaas.
+ */
+export const SHOW_UPGRADE_NOTE = false;
+
+export const WORKSHOP_OFFER = {
+  sectionTitle: 'Escolha por onde começar.',
+  sectionSubtitle: 'Entender é só o começo. Destravar é ligar.',
+  decisionLine:
+    'Entender não destrava ligação. Ligar destrava. O Módulo 1 te mostra o caminho. O Módulo 2 é onde você anda nele.',
+  upgradeNote:
+    'Começou pelo Entender? Você pode completar para o Destravar pagando só a diferença em até 7 dias.',
+  entender: {
+    id: 'entender',
+    name: 'Entender',
+    priceLabel: 'R$ 297,00',
+    amountBRL: 297,
+    contentId: 'workshop-destrava-ligacoes-entender',
+    contentName: 'Workshop Destrava Ligações — Entender',
+    checkoutUrl: 'https://www.asaas.com/000/c/ymhmtqrpvo3gojx5',
+    recommended: false,
+    consumesSpot: false,
+    support: 'Pra quem quer entender o método antes de colocar a mão no telefone.',
+    cta: 'Quero entender o método',
+    deliveryLine: `Ao vivo do Módulo 1 em ${WORKSHOP_INFO.dateDisplayLong}, ${WORKSHOP_INFO.time}. Sem gravação e sem acesso à plataforma.`,
+    includes: ['Módulo 1, a base teórica do método'],
+    excludes: [
+      'Sala de Ligação (prática ao vivo)',
+      'Acesso à plataforma',
+      'GRID',
+    ],
+  },
+  destravar: {
+    id: 'destravar',
+    name: 'Destravar',
+    priceLabel: WORKSHOP_PRICING.current,
+    amountBRL: WORKSHOP_PRICING.amountBRL,
+    contentId: 'workshop-destrava-ligacoes',
+    contentName: WORKSHOP_INFO.productName,
+    checkoutUrl: WORKSHOP_CHECKOUT_URL,
+    recommended: true,
+    consumesSpot: true,
+    anchor: WORKSHOP_PRICING.anchor,
+    savingsLabel: WORKSHOP_PRICING.savingsLabel,
+    support: 'Pra quem já decidiu parar de adiar e ligar. Aqui ninguém liga sozinho.',
+    cta: 'Quero destravar minhas ligações',
+    includes: [
+      'Módulo 1 + Módulo 2 (Sala de Ligação, ligações reais)',
+      'Acesso à plataforma (Casa Mundo Pódium)',
+      'GRID',
+    ],
+    excludes: [] as string[],
+  },
+} as const;
+
 /** Copy do dia D: urgência de horário, sem denominador de vagas */
 export const WORKSHOP_LAST_CALL = {
   heroCta: 'Entrar na turma de hoje',
@@ -110,11 +168,11 @@ export const WORKSHOP_WHATSAPP = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '23 de outubro de 2026',
-  dateObj: new Date('2026-10-23T08:00:00-03:00'),
-  dateDisplayLong: '23 de Outubro',
-  dateDisplayShort: '23/10',
-  dateEmailLine: 'Sexta-feira, 23 de outubro de 2026',
+  date: '27 de outubro de 2026',
+  dateObj: new Date('2026-10-27T08:00:00-03:00'),
+  dateDisplayLong: '27 de Outubro',
+  dateDisplayShort: '27/10',
+  dateEmailLine: 'Terça-feira, 27 de outubro de 2026',
   time: '08:00 – 12:00',
   /** Zero à esquerda: evita ler como “8h de duração” */
   timeStartBadge: '08h',

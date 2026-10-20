@@ -1,25 +1,55 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Zap, Users, Video, Mail, MessageCircle, Calendar } from 'lucide-react';
-import { trackCTAClick, trackInitiateCheckout, trackViewContent } from '@/lib/metaPixel';
+import { Zap, Users, Video, Mail, MessageCircle, Calendar, Check, X } from 'lucide-react';
+import { markCheckoutTier, trackCTAClick, trackInitiateCheckout, trackViewContent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
 import {
   WORKSHOP_INFO,
   WORKSHOP_SALES,
-  WORKSHOP_PRICING,
   WORKSHOP_CLOSED_COPY,
   WORKSHOP_LAST_CALL,
-  WORKSHOP_CHECKOUT_URL,
   WORKSHOP_CHECKOUT_SECTION_ID,
+  WORKSHOP_OFFER,
+  SHOW_UPGRADE_NOTE,
 } from '@/lib/constants';
 import { WorkshopCountdown } from '@/components/ui/WorkshopCountdown';
+
+type OfferTier = typeof WORKSHOP_OFFER.entender | typeof WORKSHOP_OFFER.destravar;
+
+function FeatureList({
+  items,
+  included,
+}: {
+  items: readonly string[];
+  included: boolean;
+}) {
+  if (items.length === 0) return null;
+  const Icon = included ? Check : X;
+  return (
+    <ul className="space-y-2 text-left">
+      {items.map((item) => (
+        <li key={`${included ? 'in' : 'out'}-${item}`} className="flex items-start gap-2 text-sm text-gray-200">
+          <Icon
+            className={`w-4 h-4 mt-0.5 flex-shrink-0 ${included ? 'text-green-400' : 'text-gray-400'}`}
+            aria-hidden
+          />
+          <span>
+            <span className="text-gray-400">{included ? 'Inclui: ' : 'Não inclui: '}</span>
+            {item}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export const FinalCTAWorkshopSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const hasTrackedView = useRef(false);
   const { setCtaButtonClicked } = useModalContext();
   const salesOpen = WORKSHOP_SALES.isOpen;
+  const { entender, destravar } = WORKSHOP_OFFER;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,21 +69,52 @@ export const FinalCTAWorkshopSection: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleCTAClick = () => {
+  const handleTierClick = (tier: OfferTier) => {
     if (salesOpen) {
-      trackInitiateCheckout(WORKSHOP_PRICING.amountBRL, 'BRL');
+      markCheckoutTier(tier.id);
+      trackInitiateCheckout(tier.amountBRL, 'BRL', {
+        contentId: tier.contentId,
+        contentName: tier.contentName,
+      });
     }
     trackCTAClick(
-      salesOpen ? 'Final CTA Workshop - Garantir Vaga' : 'Final CTA Workshop - Vendas em breve',
-      'final-cta'
+      salesOpen ? `Oferta ${tier.name}` : `Oferta ${tier.name} - vendas fechadas`,
+      `oferta-${tier.id}`
     );
     setCtaButtonClicked(true);
   };
 
-  const cardBorderClass = 'border-2 border-yellow-400/50 hover:shadow-yellow-400/30';
+  const ctaClass = (dominant: boolean) =>
+    dominant
+      ? 'group relative w-full inline-flex items-center justify-center min-h-12 px-6 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 font-black text-base sm:text-lg rounded-full hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 shadow-2xl hover:shadow-yellow-500/40 hover:scale-[1.02] button-shine-effect'
+      : 'group relative w-full inline-flex items-center justify-center min-h-12 px-6 py-4 border-2 border-gray-500 text-white font-bold text-base rounded-full hover:border-yellow-400/70 hover:text-yellow-300 transition-all duration-300';
 
-  const ctaButtonClass =
-    'group relative w-full max-w-md mx-auto inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-6 bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 font-black text-lg sm:text-xl rounded-full hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 shadow-2xl hover:shadow-yellow-500/40 hover:scale-105 button-shine-effect';
+  const renderCta = (tier: OfferTier, dominant: boolean) => {
+    if (!salesOpen) {
+      return (
+        <button
+          type="button"
+          disabled
+          aria-disabled="true"
+          className={`${ctaClass(dominant)} cursor-not-allowed opacity-80 hover:scale-100`}
+        >
+          {WORKSHOP_CLOSED_COPY.finalCta}
+        </button>
+      );
+    }
+
+    return (
+      <a
+        href={tier.checkoutUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => handleTierClick(tier)}
+        className={ctaClass(dominant)}
+      >
+        {tier.cta}
+      </a>
+    );
+  };
 
   return (
     <section
@@ -69,122 +130,57 @@ export const FinalCTAWorkshopSection: React.FC = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="max-w-3xl mx-auto">
-          <div
-            className={`bg-gray-800/40 ${cardBorderClass} rounded-3xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm shadow-2xl transition-all duration-300 relative overflow-hidden group`}
-          >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-yellow-400/10 via-transparent to-yellow-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20">
+              <Zap className="w-4 h-4 text-yellow-400 mr-2" />
+              <span className="text-yellow-400 font-semibold text-xs tracking-wide">
+                {WORKSHOP_SALES.showSpotsProgress
+                  ? `${WORKSHOP_SALES.edition}ª Edição — ${WORKSHOP_INFO.dateDisplayShort}`
+                  : WORKSHOP_LAST_CALL.liveToday}
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
+              {WORKSHOP_OFFER.sectionTitle}
+            </h2>
+            <p className="text-gray-300 text-sm sm:text-base mb-6">{WORKSHOP_OFFER.sectionSubtitle}</p>
+            <div className="flex justify-center">
+              <WorkshopCountdown withDate />
+            </div>
+          </div>
 
-            <div className="relative z-10 text-center">
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 border border-yellow-400/30 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-yellow-400/20">
-                <Zap className="w-4 h-4 text-yellow-400 mr-2" />
-                <span className="text-yellow-400 font-semibold text-xs tracking-wide">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+            <article className="order-1 lg:order-2 bg-gray-800/50 border-2 border-yellow-400/70 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-yellow-400/10 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="inline-flex px-3 py-1 bg-yellow-400 text-gray-900 text-xs font-black rounded-full tracking-wide">
+                  Recomendado
+                </span>
+              </div>
+              <h3 className="text-white font-black text-2xl mt-2 mb-1">{destravar.name}</h3>
+              <p className="text-gray-300 text-sm mb-4">{destravar.support}</p>
+              <div className="mb-5">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="text-gray-500 line-through text-lg font-semibold">{destravar.anchor}</span>
+                  <span className="text-yellow-400 font-black text-3xl">{destravar.priceLabel}</span>
+                </div>
+                <p className="text-green-400 text-xs font-semibold mt-1">{destravar.savingsLabel}</p>
+              </div>
+              <FeatureList items={destravar.includes} included />
+              <div className="mt-4 flex items-center gap-2 p-3 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
+                <Users className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                <span className="text-yellow-400 font-semibold text-sm">
                   {WORKSHOP_SALES.showSpotsProgress
-                    ? `${WORKSHOP_SALES.edition}ª Edição — ${WORKSHOP_INFO.dateDisplayShort}`
-                    : WORKSHOP_LAST_CALL.liveToday}
+                    ? `${WORKSHOP_SALES.filledSpots} de ${WORKSHOP_SALES.maxSpots} vagas preenchidas`
+                    : WORKSHOP_LAST_CALL.spotsLine}
                 </span>
               </div>
-
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
-                Garanta sua vaga na{' '}
-                <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">
-                  {WORKSHOP_SALES.edition}ª edição
-                </span>
-              </h2>
-
-              <p className="text-sm text-gray-300 font-medium mb-4">
-                <span className="text-gray-500 line-through">De {WORKSHOP_PRICING.anchor}</span>{' '}
-                <span className="text-yellow-400">por {WORKSHOP_PRICING.current}</span>{' '}
-                <span className="text-gray-400">• 2 módulos • Entrega real</span>
-              </p>
-
-              <div className="mb-6">
-                <div className="inline-flex flex-col sm:flex-row sm:items-baseline sm:justify-center gap-1 sm:gap-4 px-5 py-3 bg-gray-800/50 border border-yellow-400/30 rounded-xl">
-                  <div className="flex items-baseline justify-center gap-3">
-                    <span className="text-gray-500 line-through text-lg sm:text-xl font-semibold">{WORKSHOP_PRICING.anchor}</span>
-                    <span className="text-yellow-400 font-black text-2xl sm:text-3xl">{WORKSHOP_PRICING.current}</span>
-                  </div>
-                  <span className="text-center text-green-400 text-xs sm:text-sm font-semibold sm:self-center sm:pl-2 sm:border-l sm:border-gray-600">
-                    {WORKSHOP_PRICING.savingsLabel}
-                  </span>
-                </div>
+              <div className="mt-2 mb-5 flex items-center gap-2 p-3 bg-gray-700/40 border border-gray-500/40 rounded-xl">
+                <Video className="w-5 h-5 text-gray-300 flex-shrink-0" />
+                <span className="text-gray-300 font-semibold text-sm">Gravação na plataforma</span>
               </div>
-
-              <div className="mb-6 flex justify-center">
-                <WorkshopCountdown withDate />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center justify-center space-x-2 p-3 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
-                  <Users className="w-5 h-5 text-yellow-400" />
-                  <span className="text-yellow-400 font-semibold text-sm">
-                    {WORKSHOP_SALES.showSpotsProgress
-                      ? `${WORKSHOP_SALES.filledSpots} de ${WORKSHOP_SALES.maxSpots} vagas preenchidas`
-                      : WORKSHOP_LAST_CALL.spotsLine}
-                  </span>
-                </div>
-                <div className="flex items-center justify-center space-x-2 p-3 bg-gray-700/40 border border-gray-500/40 rounded-xl">
-                  <Video className="w-5 h-5 text-gray-300" />
-                  <span className="text-gray-300 font-semibold text-sm">Gravação na plataforma</span>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                {salesOpen ? (
-                  <a
-                    href={WORKSHOP_CHECKOUT_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={handleCTAClick}
-                    className={ctaButtonClass}
-                    title="Pagar com Asaas"
-                  >
-                      <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
-                      {WORKSHOP_SALES.showSpotsProgress
-                        ? 'Garantir Minha Vaga Agora'
-                        : WORKSHOP_LAST_CALL.finalCta}
-                    </span>
-                  </a>
-                ) : (
-                  <button
-                    type="button"
-                    disabled
-                    aria-disabled="true"
-                    className={`${ctaButtonClass} cursor-not-allowed opacity-90 hover:scale-100 hover:from-yellow-500 hover:to-yellow-600`}
-                    title={`Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`}
-                  >
-                    <span className="relative drop-shadow-sm scale-[0.8] sm:scale-100">
-                      {WORKSHOP_CLOSED_COPY.finalCta}
-                    </span>
-                  </button>
-                )}
-              </div>
-
-              <div className="mb-6">
-                <p className="text-gray-400 text-xs mb-3">Formas de pagamento:</p>
-                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-                  <div className="inline-flex items-center px-3 py-1.5 bg-green-500/10 border border-green-500/30 rounded-lg">
-                    <span className="text-green-400 font-semibold text-xs">Pix</span>
-                  </div>
-                  <div className="inline-flex items-center px-3 py-1.5 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-                    <span className="text-yellow-400 font-semibold text-xs">Boleto</span>
-                  </div>
-                  <div className="inline-flex items-center px-3 py-1.5 bg-gray-700/50 border border-gray-500/40 rounded-lg">
-                    <span className="text-gray-300 font-semibold text-xs">Cartão de Crédito</span>
-                  </div>
-                </div>
-              </div>
-
-              {!WORKSHOP_SALES.showSpotsProgress && (
-                <p className="text-yellow-400/90 text-xs sm:text-sm font-semibold mb-8">
-                  {WORKSHOP_LAST_CALL.liveToday} · {WORKSHOP_LAST_CALL.spotsLine}
-                </p>
-              )}
-
-              <div className="mb-8 text-left rounded-2xl border border-gray-600/50 bg-gray-900/40 p-5 sm:p-6">
-                <h3 className="text-white font-bold text-base sm:text-lg mb-3 text-center sm:text-left">
-                  O que acontece depois que você compra
-                </h3>
+              {renderCta(destravar, true)}
+              <div className="mt-6 text-left rounded-2xl border border-gray-600/50 bg-gray-900/40 p-5">
+                <h4 className="text-white font-bold text-base mb-3">O que acontece depois que você compra o Destravar</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
@@ -206,28 +202,61 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                   </li>
                 </ul>
               </div>
+              <p className="mt-4 text-gray-300 text-sm leading-relaxed">
+                Você sai com a <span className="text-yellow-400 font-semibold">Anatomia da Ligação</span>,{' '}
+                <span className="text-yellow-400 font-semibold">primeiras ligações feitas</span> e{' '}
+                <span className="text-yellow-400 font-semibold">60 dias na Plataforma</span>. Nesta edição, quem entra leva também{' '}
+                <a href="#grid-bonus" className="text-yellow-400 font-semibold hover:text-yellow-300 underline underline-offset-2">
+                  acesso de fundador ao GRID
+                </a>
+                . {WORKSHOP_SALES.showSpotsProgress ? (
+                  <>
+                    Restam{' '}
+                    <span className="text-white font-semibold">
+                      {WORKSHOP_SALES.maxSpots - WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
+                    </span>{' '}
+                    vagas nesta turma.
+                  </>
+                ) : (
+                  <span className="text-white font-semibold">{WORKSHOP_LAST_CALL.closingLine}</span>
+                )}
+              </p>
+            </article>
 
-              <div className="mt-2 pt-8 border-t border-gray-700/50">
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                  Você sai do Workshop com a <span className="text-yellow-400 font-semibold">Anatomia da Ligação</span>,{' '}
-                  <span className="text-yellow-400 font-semibold">primeiras ligações feitas</span> e{' '}
-                  <span className="text-yellow-400 font-semibold">60 dias na Plataforma</span> pra continuar.{' '}
-                  Nesta edição, quem entra leva também{' '}
-                  <a href="#grid-bonus" className="text-yellow-400 font-semibold hover:text-yellow-300 underline underline-offset-2">
-                    acesso de fundador ao GRID
-                  </a>
-                  . {WORKSHOP_SALES.showSpotsProgress ? (
-                    <>
-                      Restam{' '}
-                      <span className="text-white font-semibold">
-                        {WORKSHOP_SALES.maxSpots - WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots}
-                      </span>{' '}
-                      vagas nesta turma.
-                    </>
-                  ) : (
-                    <span className="text-white font-semibold">{WORKSHOP_LAST_CALL.closingLine}</span>
-                  )}
-                </p>
+            <article className="order-2 lg:order-1 bg-gray-800/30 border border-gray-600/70 rounded-3xl p-6 sm:p-8">
+              <h3 className="text-white font-bold text-2xl mb-1">{entender.name}</h3>
+              <p className="text-gray-300 text-sm mb-4">{entender.support}</p>
+              <p className="text-white font-black text-3xl mb-5">{entender.priceLabel}</p>
+              <div className="space-y-4 mb-5">
+                <FeatureList items={entender.includes} included />
+                <FeatureList items={entender.excludes} included={false} />
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-5">{entender.deliveryLine}</p>
+              {renderCta(entender, false)}
+            </article>
+          </div>
+
+          <p className="mt-8 text-center text-gray-200 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+            {WORKSHOP_OFFER.decisionLine}
+          </p>
+
+          {SHOW_UPGRADE_NOTE && (
+            <p className="mt-4 text-center text-yellow-200/90 text-sm leading-relaxed max-w-3xl mx-auto">
+              {WORKSHOP_OFFER.upgradeNote}
+            </p>
+          )}
+
+          <div className="mt-8 text-center">
+            <p className="text-gray-400 text-xs mb-3">Formas de pagamento:</p>
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <div className="inline-flex items-center px-3 py-1.5 bg-green-500/10 border border-green-500/30 rounded-lg">
+                <span className="text-green-400 font-semibold text-xs">Pix</span>
+              </div>
+              <div className="inline-flex items-center px-3 py-1.5 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+                <span className="text-yellow-400 font-semibold text-xs">Boleto</span>
+              </div>
+              <div className="inline-flex items-center px-3 py-1.5 bg-gray-700/50 border border-gray-500/40 rounded-lg">
+                <span className="text-gray-300 font-semibold text-xs">Cartão de Crédito</span>
               </div>
             </div>
           </div>

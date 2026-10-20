@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { ProtectedImage } from '@/components/ui/ProtectedImage';
-import { trackCTAClick, trackInitiateCheckout, trackViewContent } from '@/lib/metaPixel';
+import { trackCTAClick, trackViewContent } from '@/lib/metaPixel';
 import { PainPointsMarquee } from './PainPointsMarquee';
 import { HeroFeaturesBadge } from '@/components/ui/HeroFeaturesBadge';
 import { HeroProofVideoSlot } from '@/components/ui/HeroProofVideoSlot';
@@ -34,9 +34,6 @@ export const HeroSectionWorkshop: React.FC = () => {
   }, []);
 
   const handleCTAClick = () => {
-    if (salesOpen) {
-      trackInitiateCheckout(WORKSHOP_PRICING.amountBRL, 'BRL');
-    }
     trackCTAClick(
       salesOpen
         ? 'Hero Section Workshop - CTA Button'

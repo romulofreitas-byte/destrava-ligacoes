@@ -98,8 +98,27 @@ export function trackCTAClick(ctaName?: string, contentCategory?: string): void 
 }
 
 const CHECKOUT_INTENT_KEY = 'workshop_checkout_started';
+const CHECKOUT_TIER_KEY = 'workshop_checkout_tier';
 const PURCHASE_DEDUPE_KEY = 'meta_purchase_workshop_14';
 const PIXEL_READY_MAX_MS = 8000;
+
+/** Último degrau clicado. localStorage porque o checkout abre outra aba. */
+export function markCheckoutTier(tierId: string): void {
+  try {
+    localStorage.setItem(CHECKOUT_TIER_KEY, tierId);
+  } catch {
+    // storage may be unavailable
+  }
+}
+
+export function readCheckoutTier(): string | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    return localStorage.getItem(CHECKOUT_TIER_KEY);
+  } catch {
+    return null;
+  }
+}
 
 export function markCheckoutStarted(): void {
   try {
@@ -138,14 +157,15 @@ function whenPixelReady(callback: () => void): void {
  */
 export function trackInitiateCheckout(
   value: number = WORKSHOP_PRICING.amountBRL,
-  currency: string = 'BRL'
+  currency: string = 'BRL',
+  options?: { contentId?: string; contentName?: string }
 ): void {
   markCheckoutStarted();
 
   const params: Record<string, any> = {
-    content_name: WORKSHOP_INFO.productName,
+    content_name: options?.contentName || WORKSHOP_INFO.productName,
     content_type: 'product',
-    content_ids: ['workshop-destrava-ligacoes'],
+    content_ids: [options?.contentId || 'workshop-destrava-ligacoes'],
     num_items: 1,
     value,
     currency,
@@ -166,21 +186,25 @@ export function trackPurchase(options?: {
   eventId?: string;
   value?: number;
   currency?: string;
+  contentId?: string;
+  contentName?: string;
 }): void {
   const eventId = options?.eventId || `purchase_${Date.now()}`;
+  const contentId = options?.contentId || 'workshop-destrava-ligacoes';
   const params: Record<string, any> = {
-    content_name: WORKSHOP_INFO.productName,
+    content_name: options?.contentName || WORKSHOP_INFO.productName,
     content_type: 'product',
-    content_ids: ['workshop-destrava-ligacoes'],
+    content_ids: [contentId],
     num_items: 1,
     value: options?.value ?? WORKSHOP_PRICING.amountBRL,
     currency: options?.currency ?? 'BRL',
   };
 
   whenPixelReady(() => {
+    const dedupeKey = `${PURCHASE_DEDUPE_KEY}_${contentId}`;
     try {
-      if (sessionStorage.getItem(PURCHASE_DEDUPE_KEY)) return;
-      sessionStorage.setItem(PURCHASE_DEDUPE_KEY, eventId);
+      if (sessionStorage.getItem(dedupeKey)) return;
+      sessionStorage.setItem(dedupeKey, eventId);
     } catch {
       // continue without dedupe if storage is blocked
     }

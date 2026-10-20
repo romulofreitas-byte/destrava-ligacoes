@@ -5,8 +5,8 @@ import { CheckCircle, Users, Calendar, ArrowRight, CreditCard, Mail, Clock, Vide
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION, WORKSHOP_PRICING, WORKSHOP_WHATSAPP, WORKSHOP_GRID_BONUS, getGoogleMeetInfo } from '@/lib/constants';
-import { trackPurchase } from '@/lib/metaPixel';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PLATFORM_RULES, WORKSHOP_DURATION, WORKSHOP_PRICING, WORKSHOP_WHATSAPP, WORKSHOP_GRID_BONUS, WORKSHOP_OFFER, getGoogleMeetInfo } from '@/lib/constants';
+import { readCheckoutTier, trackPurchase } from '@/lib/metaPixel';
 
 const Footer = dynamic(() => import('@/components/sections/Footer').then(mod => ({ default: mod.Footer })), { ssr: false });
 
@@ -17,6 +17,14 @@ function ObrigadoContent() {
   const [emailSent, setEmailSent] = useState<boolean | null>(null);
   const [resendingEmail, setResendingEmail] = useState(false);
   const [resendMessage, setResendMessage] = useState('');
+  const tierFromUrl = searchParams?.get('tier');
+  const [storedTier, setStoredTier] = useState<string | null>(null);
+  const purchasedTier = tierFromUrl || storedTier;
+  const isEntender = purchasedTier === WORKSHOP_OFFER.entender.id;
+
+  useEffect(() => {
+    if (!tierFromUrl) setStoredTier(readCheckoutTier());
+  }, [tierFromUrl]);
 
   useEffect(() => {
     const chargeId = searchParams?.get('charge_id');
@@ -47,8 +55,14 @@ function ObrigadoContent() {
 
     if (paymentSucceeded) {
       setPaymentConfirmed(true);
+      const tier = searchParams?.get('tier') || readCheckoutTier();
+      const boughtEntender = tier === WORKSHOP_OFFER.entender.id;
+      const offer = boughtEntender ? WORKSHOP_OFFER.entender : WORKSHOP_OFFER.destravar;
       trackPurchase({
         eventId: chargeId || asaasPaymentId || `asaas_${Date.now()}`,
+        value: offer.amountBRL,
+        contentId: offer.contentId,
+        contentName: offer.contentName,
       });
 
       if (chargeId) {
@@ -364,6 +378,7 @@ function ObrigadoContent() {
                           <p className="text-white font-semibold text-sm">{WORKSHOP_INFO.date}</p>
                         </div>
                       </div>
+                      {!isEntender && (
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
                         <div className="w-8 h-8 bg-yellow-400/10 border border-yellow-400/30 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Calendar className="w-4 h-4 text-yellow-400" />
@@ -373,6 +388,7 @@ function ObrigadoContent() {
                           <p className="text-white font-semibold text-sm">{WORKSHOP_MODULE_2_INFO.date}</p>
                         </div>
                       </div>
+                      )}
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
                         <div className="w-8 h-8 bg-yellow-400/10 border border-yellow-400/30 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Clock className="w-4 h-4 text-yellow-400" />
@@ -380,7 +396,9 @@ function ObrigadoContent() {
                         <div>
                           <p className="text-gray-400 text-xs mb-1">Horários</p>
                           <p className="text-white font-semibold text-sm">Módulo 1: {WORKSHOP_INFO.time}</p>
+                          {!isEntender && (
                           <p className="text-white font-semibold text-sm mt-1">Módulo 2: {WORKSHOP_MODULE_2_INFO.time}</p>
+                          )}
                         </div>
                       </div>
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
@@ -389,7 +407,9 @@ function ObrigadoContent() {
                         </div>
                         <div>
                           <p className="text-gray-400 text-xs mb-1">Duração</p>
-                          <p className="text-white font-semibold text-sm">{WORKSHOP_DURATION.detailLine}</p>
+                          <p className="text-white font-semibold text-sm">
+                            {isEntender ? 'Módulo 1 · 4 horas · ao vivo, sem gravação' : WORKSHOP_DURATION.detailLine}
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3 p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300">
@@ -453,6 +473,16 @@ function ObrigadoContent() {
                       Acesso ao Workshop - Google Meet
                     </h3>
                     
+                    {isEntender ? (
+                    <div className="mb-6 p-4 bg-blue-400/10 border border-blue-400/30 rounded-xl">
+                      <p className="text-white font-semibold mb-2">Módulo 1 ao vivo</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        Você entrou no {WORKSHOP_OFFER.entender.name} por {WORKSHOP_OFFER.entender.priceLabel}.{' '}
+                        {WORKSHOP_OFFER.entender.deliveryLine} O link do Meet abaixo é o do Módulo 1.
+                      </p>
+                    </div>
+                    ) : (
+                    <>
                     <div className="mb-6 p-4 bg-blue-400/10 border border-blue-400/30 rounded-xl">
                       <p className="text-white font-semibold mb-2">🎉 Acesso Imediato à Plataforma Mundo Pódium</p>
                       <p className="text-gray-300 text-sm leading-relaxed">
@@ -472,6 +502,8 @@ function ObrigadoContent() {
                         GRID monta a lista — não liga por você.
                       </p>
                     </div>
+                    </>
+                    )}
 
                     <div className="space-y-4">
                       {/* Google Meet Link */}
@@ -534,9 +566,18 @@ function ObrigadoContent() {
                         <p className="text-yellow-400 font-semibold text-sm mb-2">📅 Workshop Destrava Ligações | 2026</p>
                         <p className="text-gray-300 text-sm">
                           <strong>Módulo 1:</strong> {WORKSHOP_INFO.dateEmailLine}<br />
-                          <strong>Módulo 2:</strong> {WORKSHOP_MODULE_2_INFO.dateEmailLine}<br />
-                          <strong>Horário módulo 1:</strong> {WORKSHOP_INFO.time} ({WORKSHOP_INFO.timezone})<br />
-                          <strong>Horário módulo 2:</strong> {WORKSHOP_MODULE_2_INFO.time} ({WORKSHOP_INFO.timezone})
+                          {!isEntender && (
+                            <>
+                              <strong>Módulo 2:</strong> {WORKSHOP_MODULE_2_INFO.dateEmailLine}<br />
+                            </>
+                          )}
+                          <strong>Horário módulo 1:</strong> {WORKSHOP_INFO.time} ({WORKSHOP_INFO.timezone})
+                          {!isEntender && (
+                            <>
+                              <br />
+                              <strong>Horário módulo 2:</strong> {WORKSHOP_MODULE_2_INFO.time} ({WORKSHOP_INFO.timezone})
+                            </>
+                          )}
                         </p>
                       </div>
                     </div>
