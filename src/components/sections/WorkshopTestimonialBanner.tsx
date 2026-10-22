@@ -89,17 +89,23 @@ export const WorkshopTestimonialBanner: React.FC = () => {
 
               <div className="text-center">
                 <p className="text-gray-300 text-sm sm:text-base">
-                  <span className="text-yellow-400 font-semibold">
-                    {WORKSHOP_SALES.edition}ª Edição aberta!
-                  </span>{' '}
-                  {WORKSHOP_SALES.showSpotsProgress ? (
+                  {WORKSHOP_SALES.isOpen ? (
                     <>
-                      Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
-                      {WORKSHOP_MODULE_2_INFO.dateDisplayShort} —{' '}
-                      {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas
+                      <span className="text-yellow-400 font-semibold">
+                        {WORKSHOP_SALES.edition}ª Edição aberta!
+                      </span>{' '}
+                      {WORKSHOP_SALES.showSpotsProgress ? (
+                        <>
+                          Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
+                          {WORKSHOP_MODULE_2_INFO.dateDisplayShort} —{' '}
+                          {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas
+                        </>
+                      ) : (
+                        WORKSHOP_LAST_CALL.bannerLine
+                      )}
                     </>
                   ) : (
-                    WORKSHOP_LAST_CALL.bannerLine
+                    <span className="text-yellow-400 font-semibold">Vagas encerradas</span>
                   )}
                 </p>
               </div>

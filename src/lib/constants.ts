@@ -32,7 +32,7 @@ export const WORKSHOP_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCE
 /** Retorno do checkout Anatomia. Colar no link Asaas desse degrau, com autoRedirect. */
 export const WORKSHOP_ENTENDER_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas&tier=entender`;
 export const WORKSHOP_SALES = {
-  isOpen: true,
+  isOpen: false,
   /** Abertura das vendas (exibição em CTAs) */
   opensOnDisplay: '11/08',
   /** Número da edição atual (ex.: 14 → "14ª") */
@@ -61,10 +61,10 @@ export const WORKSHOP_PRICING = {
   savingsLabel: 'Economia de R$ 600 nesta edição',
 } as const;
 
-/** Copy do botão quando vendas ainda não abriram */
+/** Copy dos CTAs com vendas fechadas */
 export const WORKSHOP_CLOSED_COPY = {
-  heroCta: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
-  finalCta: `Vendas abrem em ${WORKSHOP_SALES.opensOnDisplay}`,
+  heroCta: 'Vagas encerradas',
+  finalCta: 'Vagas encerradas',
 } as const;
 
 // Informações do Workshop
