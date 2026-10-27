@@ -10,22 +10,25 @@ import { AulaReveal } from './AulaReveal';
 
 export function AulaStoriesSection({ aula }: { aula: Aula }) {
   const [playingUrl, setPlayingUrl] = useState<string | null>(null);
+  const temVideo = aula.historiasVideos.length > 0;
 
   return (
     <section className="px-4 py-10 sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <AulaReveal>
-          <p className="text-center text-[11px] font-bold uppercase tracking-wider text-yellow-400 lg:text-left">
-            <span className="lg:hidden">{aula.eyebrowVideoMobile ?? 'Depoimentos reais · 35 min'}</span>
-            <span className="hidden lg:inline">Assiste depois de garantir o link</span>
-          </p>
-          <h2 className="aula-section-title mx-auto mt-3 max-w-xl text-[1.75rem] leading-[1.15] sm:max-w-3xl sm:text-5xl lg:mx-0">
+          {temVideo ? (
+            <p className="text-center text-[11px] font-bold uppercase tracking-wider text-yellow-400 lg:text-left">
+              <span className="lg:hidden">{aula.eyebrowVideoMobile ?? 'Depoimentos reais · 35 min'}</span>
+              <span className="hidden lg:inline">Assiste depois de garantir o link</span>
+            </p>
+          ) : null}
+          <h2 className={temVideo ? 'aula-section-title mx-auto mt-3 max-w-xl text-[1.75rem] leading-[1.15] sm:max-w-3xl sm:text-5xl lg:mx-0' : 'aula-section-title mx-auto max-w-xl text-[1.75rem] leading-[1.15] sm:max-w-3xl sm:text-5xl lg:mx-0'}>
             {aula.historiasTitulo}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-center text-base leading-snug text-gray-300 lg:mx-0 lg:text-left">{aula.historiasApoio}</p>
         </AulaReveal>
 
-        <div className={`mt-10 ${aula.historiasVideos.length > 1 ? 'grid gap-6 md:grid-cols-2' : 'mx-auto max-w-4xl'}`}>
+        {temVideo ? <div className={`mt-10 ${aula.historiasVideos.length > 1 ? 'grid gap-6 md:grid-cols-2' : 'mx-auto max-w-4xl'}`}>
           {aula.historiasVideos.map((video, index) => {
             const videoId = extractYouTubeId(video.url);
             if (!videoId) return null;
@@ -86,7 +89,7 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
               </AulaReveal>
             );
           })}
-        </div>
+        </div> : null}
 
         <div className="mt-14 space-y-8 border-t border-gray-800 pt-10">
           {aula.historias.map((historia, index) => (

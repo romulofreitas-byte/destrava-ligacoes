@@ -47,6 +47,8 @@ export type Aula = {
   apoioForm?: string;
   /** Padrão: "Depoimentos reais · 35 min" */
   eyebrowVideoMobile?: string;
+  /** Se existir, o quadro do hero usa este texto no lugar do primeiro depoimento. */
+  citacaoHero?: { rotulo: string; texto: string };
   stickyBar: string;
   eyebrow: string;
   metaLine: string;
@@ -319,28 +321,29 @@ const POR_QUE_O_CLIENTE_DESLIGA: Aula = {
     'Você tem cliente que atende, ouve duas frases e desliga. Nessa aula você vê onde isso acontece em ligações reais e como abrir, conduzir e voltar a ligar sem parecer cobrança.',
   ],
   chips: [],
-  historiasTitulo: 'Quem ligou de novo.\nE o que aconteceu.',
-  historiasApoio: 'Reunião e venda de quem voltou a ligar.',
-  historiasVideos: [
-    {
-      nome: '35 minutos',
-      titulo: 'Gente que ligou.\nO que aconteceu depois.',
-      url: 'https://www.youtube.com/watch?v=HKqIZtlBz6I',
-      poster: '/videos/depoimentos-reais-thumb.png',
-    },
-  ],
+  citacaoHero: {
+    rotulo: 'Nessa aula',
+    texto: 'A gente para a ligação no segundo em que o cliente desliga. Você ouve a objeção, vê o erro e refaz a frase na hora.',
+  },
+  historiasTitulo: 'O que muda\nquando a ligação continua.',
+  historiasApoio: 'A pessoa do outro lado para de desligar no automático. Você sabe a próxima frase.',
+  historiasVideos: [],
   historias: [
     {
-      nome: 'Otávio',
-      resultado: 'Das 5 reuniões, 3 vieram\nde voltar no contato',
-      texto: 'Das 5 reuniões que marquei, 3 foi voltando no contato. Quem não faz tá perdendo oportunidade.',
+      nome: '',
+      resultado: 'Quando a ligação não morre na segunda frase.',
+      texto: 'Ele atende, você fala, e a conversa continua. Você sabe qual frase derrubou a ligação anterior.',
     },
     {
-      nome: 'Jonathan',
-      resultado: 'Ligou, mandou WhatsApp\ne fechou um site no mesmo dia',
-      texto: 'Acabamos de fechar uma venda de 1 site agora. Ligação do zero, depois WhatsApp.',
+      nome: '',
+      resultado: 'A objeção deixa de ser um não.',
+      texto: '"Já tenho", "me manda no WhatsApp", "agora não". Cada uma tem uma próxima frase. Você ouve a dele e responde essa.',
     },
-    // TODO: depoimento de corretor (saúde, seguros ou consórcio), só com autorização confirmada pelo dono
+    {
+      nome: '',
+      resultado: 'Você liga de novo sem pedir desculpa.',
+      texto: 'A volta tem motivo. Não é cobrança e não é "só passando para saber se viu".',
+    },
   ],
   data: '2026-11-05T20:00:00-03:00',
   duracaoMin: 90,
@@ -386,23 +389,23 @@ const POR_QUE_O_CLIENTE_DESLIGA: Aula = {
     },
   ],
   doresFecho: 'Quem liga do mesmo jeito ouve o mesmo não. Isso custa caro.',
-  entregasTitulo: 'O que você sai\nsabendo fazer',
+  entregasTitulo: 'O que a gente faz\nna aula',
   entregas: [
     {
-      titulo: 'Ver onde a sua ligação morre.',
-      texto: 'Em poucos segundos o cliente decide se continua. Você vê isso em ligações reais, desmontadas ao vivo.',
+      titulo: 'A ligação para no segundo errado.',
+      texto: 'Você ouve uma ligação real até a frase em que a pessoa desliga. A gente marca esse segundo.',
     },
     {
-      titulo: 'Abrir sem soar como telemarketing.',
-      texto: 'Palavras como "seguro", "cotação" e "desculpa incomodar" derrubam a ligação. Tem um jeito melhor de começar.',
+      titulo: 'A objeção aparece do jeito que o cliente fala.',
+      texto: '"Já tenho", "me manda no WhatsApp", "agora não". Você vê qual delas encerrou a conversa.',
     },
     {
-      titulo: 'Responder "já tenho" sem brigar.',
-      texto: 'Concordar primeiro, reconectar depois e sair com data e hora.',
+      titulo: 'O erro fica na frase seguinte.',
+      texto: 'Discutir o que ele já tem, mandar a cotação e esperar, ou pedir desculpa por ter ligado.',
     },
     {
-      titulo: 'Voltar no cliente sem cobrar.',
-      texto: 'Primeiro a ligação, depois a mensagem em bloco. A estrutura de retorno em quatro passos.',
+      titulo: 'Essa frase é refeita na hora.',
+      texto: 'Você sai com a abertura e com o que dizer quando ele falar "já tenho", para a ligação continuar.',
     },
   ],
   paraQuemSecaoTitulo: 'Essa aula é pra\nquem vai ligar.',
@@ -427,8 +430,8 @@ const POR_QUE_O_CLIENTE_DESLIGA: Aula = {
     foto: '/romulo-mentor-destrava.jpg',
     destaque: 'Eu já travei no telefone.',
     paragrafos: [
-      '12 anos vendendo pra empresa. Sete com a própria empresa: do zero, com um computador e uma mesa.',
-      'Passei anos desistindo antes da hora. Foi isso que eu tive que quebrar pra ligar todo dia.',
+      'Passei anos desistindo antes da hora.',
+      'Nesta aula eu paro ligações reais, mostro a frase que fez o cliente desligar e refaço essa frase na sua frente.',
     ],
     fatos: [
       { valor: '12+', label: 'anos vendendo' },

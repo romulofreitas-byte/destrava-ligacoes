@@ -11,7 +11,9 @@ import { AulaSignupCard } from './AulaSignupCard';
 export function AulaHero({ aula }: { aula: Aula }) {
   const [closed, setClosed] = useState(() => isAulaEncerrada(aula));
   const quando = getAulaQuandoLabel(aula);
-  const prova = aula.historias.find((historia) => historia.nome && historia.texto);
+  const prova = aula.citacaoHero
+    ? { nome: aula.citacaoHero.rotulo, texto: aula.citacaoHero.texto }
+    : aula.historias.find((historia) => historia.nome && historia.texto);
   const semFotoMobile = aula.semFotoHeroMobile === true;
 
   const renderProva = () =>
