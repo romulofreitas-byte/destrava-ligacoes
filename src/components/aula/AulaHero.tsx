@@ -65,7 +65,7 @@ export function AulaHero({ aula }: { aula: Aula }) {
               <span className="aula-pulse" />
               {aula.eyebrow} · {quando}
             </p>
-            <p aria-hidden="true" className="mt-3 text-[clamp(1.85rem,9vw,2.55rem)] font-bold leading-[1.05] text-white">
+            <p aria-hidden="true" className={aula.tituloCompacto ? 'mt-3 text-[clamp(1.2rem,6.6vw,2.55rem)] font-bold leading-[1.05] text-white' : 'mt-3 text-[clamp(1.85rem,9vw,2.55rem)] font-bold leading-[1.05] text-white'}>
               <span className="block">{aula.tituloLinha1}</span>
               <span className="aula-title-shimmer mt-1 block">{aula.tituloLinha2}</span>
             </p>

@@ -312,7 +312,6 @@ const POR_QUE_O_CLIENTE_DESLIGA: Aula = {
   tituloLinha1: 'Por que o cliente desliga',
   tituloLinha2: 'na ligação do corretor.',
   tituloCompacto: true,
-  semFotoHeroMobile: true,
   subtitulo: 'Ligações reais desmontadas ao vivo\npara corretores de saúde, seguros e consórcio.',
   ganchoMobile: 'Veja onde a ligação morre. Refaça a sua.',
   apoioMobile: 'Grátis. 1h30 no Meet.',
