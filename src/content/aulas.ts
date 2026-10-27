@@ -323,7 +323,7 @@ const POR_QUE_O_CLIENTE_DESLIGA: Aula = {
   chips: [],
   citacaoHero: {
     rotulo: 'Nessa aula',
-    texto: 'A gente para a ligação no segundo em que o cliente desliga. Você ouve a objeção, vê o erro e refaz a frase na hora.',
+    texto: 'Você vai ouvir ligações reais até a frase em que o cliente desliga. A gente marca o erro e refaz essa frase na sua frente.',
   },
   historiasTitulo: 'O que muda\nquando a ligação continua.',
   historiasApoio: 'A pessoa do outro lado para de desligar no automático. Você sabe a próxima frase.',
