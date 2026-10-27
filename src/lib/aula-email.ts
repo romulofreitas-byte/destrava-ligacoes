@@ -2,7 +2,7 @@ import type { Aula } from '@/content/aulas';
 import { getAulaQuandoLabel } from '@/content/aulas';
 import { WORKSHOP_PUBLIC_SITE_URL } from '@/lib/constants';
 import { buildGoogleCalendarUrl } from '@/lib/aula-calendar';
-import { formatAulaJanelaEmail } from '@/lib/aula-date';
+import { formatAulaJanelaEmail, formatAulaTime, type AulaLembreteKind } from '@/lib/aula-date';
 import { sendEmail } from '@/lib/email';
 import { escapeHtml } from '@/lib/escape-html';
 
@@ -22,9 +22,29 @@ function aulaFromAddress(): string {
   return raw.includes('<') ? raw : `Mundo Pódium <${raw}>`;
 }
 
-export function getAulaConfirmationHtml(aula: Aula, nome: string): string {
+export function aulaLembreteSubject(aula: Aula, kind: AulaLembreteKind): string {
+  const hora = formatAulaTime(aula.data);
+  if (kind === 'vespera') return `Amanhã, ${hora}: ${aula.tituloLinha1}. Sem gravação.`;
+  return `Hoje, ${hora}: ${aula.tituloLinha1}`;
+}
+
+export function getAulaConfirmationHtml(
+  aula: Aula,
+  nome: string,
+  kind: 'confirmacao' | AulaLembreteKind = 'confirmacao'
+): string {
   const calendarUrl = buildGoogleCalendarUrl(aula);
   const quando = getAulaQuandoLabel(aula);
+  const hora = formatAulaTime(aula.data);
+  const intro =
+    kind === 'vespera'
+      ? `Amanhã, ${hora}. Sem gravação. Te vejo no Google Meet.`
+      : kind === 'dia'
+        ? `Hoje, ${hora}. Sem gravação. O link do Meet está aqui.`
+        : `Inscrição confirmada. Te vejo ${quando} no Google Meet.`;
+  const preheader =
+    kind === 'confirmacao' ? `${quando}. Grátis. Google Meet. Sem gravação.` : `${intro}`;
+  const title = kind === 'confirmacao' ? aula.email.subject : aulaLembreteSubject(aula, kind);
   const janela = formatAulaJanelaEmail(aula.data, aula.duracaoMin);
   const meetUrl = aula.linkMeet;
   const whatsappUrl = aula.linkComunidade;
@@ -42,11 +62,11 @@ export function getAulaConfirmationHtml(aula: Aula, nome: string): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
   <meta name="supported-color-schemes" content="dark">
-  <title>${escapeHtml(aula.email.subject)}</title>
+  <title>${escapeHtml(title)}</title>
 </head>
 <body style="margin:0;padding:0;background-color:#111827;font-family:Arial,Helvetica,sans-serif;color:#ffffff;">
   <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
-    ${escapeHtml(quando)}. Grátis. Google Meet. Sem gravação.
+    ${escapeHtml(preheader)}
   </div>
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" bgcolor="#111827" style="background-color:#111827;padding:28px 12px;">
     <tr>
@@ -76,7 +96,7 @@ export function getAulaConfirmationHtml(aula: Aula, nome: string): string {
                 <tr>
                   <td style="padding:16px 24px 0;color:#d1d5db;font-size:16px;line-height:1.55;">
                     <p style="margin:0 0 16px;color:#ffffff;">Olá, <strong>${safeName(nome, aula.email.primeiroNome)}</strong>.</p>
-                    <p style="margin:0;">Inscrição confirmada. Te vejo ${escapeHtml(quando)} no Google Meet.</p>
+                    <p style="margin:0;">${escapeHtml(intro)}</p>
                   </td>
                 </tr>
                 <tr>
@@ -134,6 +154,15 @@ export async function sendAulaConfirmationEmail(aula: Aula, nome: string, email:
     to: email,
     subject: aula.email.subject,
     html: getAulaConfirmationHtml(aula, nome),
+    from: aulaFromAddress(),
+  });
+}
+
+export async function sendAulaLembreteEmail(aula: Aula, nome: string, email: string, kind: AulaLembreteKind) {
+  return sendEmail({
+    to: email,
+    subject: aulaLembreteSubject(aula, kind),
+    html: getAulaConfirmationHtml(aula, nome, kind),
     from: aulaFromAddress(),
   });
 }

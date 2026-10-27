@@ -1,1 +1,12 @@
-{}
+{
+  "crons": [
+    {
+      "path": "/api/aula/lembretes",
+      "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/aula/lembretes",
+      "schedule": "0 21 * * *"
+    }
+  ]
+}

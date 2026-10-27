@@ -16,6 +16,8 @@ ALTER TABLE inscricoes ADD COLUMN IF NOT EXISTS email TEXT;
 ALTER TABLE inscricoes ADD COLUMN IF NOT EXISTS whatsapp TEXT;
 ALTER TABLE inscricoes ADD COLUMN IF NOT EXISTS consentimento BOOLEAN NOT NULL DEFAULT TRUE;
 ALTER TABLE inscricoes ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT NOW();
+ALTER TABLE inscricoes ADD COLUMN IF NOT EXISTS lembrete_vespera_em TIMESTAMPTZ;
+ALTER TABLE inscricoes ADD COLUMN IF NOT EXISTS lembrete_dia_em TIMESTAMPTZ;
 
 UPDATE inscricoes
 SET slug = 'lead-antigo-nao-e-lead-morto'

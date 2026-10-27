@@ -60,6 +60,36 @@ const WEEKDAY_LABEL: Record<string, string> = {
   Sat: 'Sábado',
 };
 
+function previousCivilYmd(ymd: string): string {
+  const prev = new Date(`${ymd}T12:00:00-03:00`);
+  return civilYmd(new Date(prev.getTime() - 24 * 60 * 60 * 1000));
+}
+
+export type AulaLembreteKind = 'vespera' | 'dia';
+
+/** 10h da véspera, ou 18h do dia, em America/Sao_Paulo. Fora da janela, null. */
+export function aulaLembreteKindAt(dataISO: string, now: Date = new Date()): AulaLembreteKind | null {
+  const start = new Date(dataISO);
+  if (Number.isNaN(start.getTime()) || now.getTime() >= start.getTime()) return null;
+
+  const classYmd = civilYmd(start);
+  const dayBefore = previousCivilYmd(classYmd);
+  const nowYmd = civilYmd(now);
+  const vesperaAt = new Date(`${dayBefore}T10:00:00-03:00`);
+  const diaAt = new Date(`${classYmd}T18:00:00-03:00`);
+
+  if (nowYmd === dayBefore && now.getTime() >= vesperaAt.getTime()) return 'vespera';
+  if (nowYmd === classYmd && diaAt.getTime() < start.getTime() && now.getTime() >= diaAt.getTime()) return 'dia';
+  return null;
+}
+
+/** Quem entrou neste instante já não recebe esse lembrete. */
+export function aulaLembreteCutoff(dataISO: string, kind: AulaLembreteKind): Date {
+  const classYmd = civilYmd(new Date(dataISO));
+  if (kind === 'vespera') return new Date(`${previousCivilYmd(classYmd)}T00:00:00-03:00`);
+  return new Date(`${classYmd}T18:00:00-03:00`);
+}
+
 /** "Segunda, 21/09 · 20:30 às 22:00 · horário de Brasília" */
 export function formatAulaJanelaEmail(dataISO: string, duracaoMin: number): string {
   const start = new Date(dataISO);
