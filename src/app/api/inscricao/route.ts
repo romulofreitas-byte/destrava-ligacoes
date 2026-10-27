@@ -6,6 +6,12 @@ import { persistAulaInscricao } from '@/lib/aula-persist';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 import { validateBrazilianWhatsApp, validateFullName } from '@/lib/phone';
 
+function maskInscricaoEmail(email: string): string {
+  const [local, domain] = email.split('@');
+  if (!local || !domain) return '***';
+  return `${local.slice(0, 1)}***@${domain}`;
+}
+
 const inscricaoSchema = z.object({
   nome: z.string().trim().min(3, 'Informe nome e sobrenome.'),
   whatsapp: z.string().trim().min(1, 'Informe um WhatsApp.'),
@@ -73,15 +79,17 @@ export async function POST(request: NextRequest) {
 
   const resolvedAula = resolveAulaLinks(aula);
   const trimmedEmail = email.trim();
+  let inscricaoId: string | undefined;
 
   try {
-    await persistAulaInscricao({
+    const persisted = await persistAulaInscricao({
       slug,
       nome: nome.trim(),
       whatsapp: phoneCheck.e164,
       email: trimmedEmail,
       consentimento,
     });
+    inscricaoId = persisted.id;
   } catch (error) {
     console.error('[inscricao] Persistência falhou:', error);
   }
@@ -89,10 +97,18 @@ export async function POST(request: NextRequest) {
   try {
     const emailResult = await sendAulaConfirmationEmail(resolvedAula, nome.trim(), trimmedEmail);
     if (!emailResult.success) {
-      console.error('[inscricao] E-mail de confirmação não enviado:', emailResult.error);
+      console.error('[inscricao] E-mail de confirmação não enviado:', {
+        id: inscricaoId ?? null,
+        email: maskInscricaoEmail(trimmedEmail),
+        error: emailResult.error,
+      });
     }
   } catch (error) {
-    console.error('[inscricao] E-mail de confirmação falhou:', error);
+    console.error('[inscricao] E-mail de confirmação falhou:', {
+      id: inscricaoId ?? null,
+      email: maskInscricaoEmail(trimmedEmail),
+      error,
+    });
   }
 
   return NextResponse.json({ ok: true, redirectTo });

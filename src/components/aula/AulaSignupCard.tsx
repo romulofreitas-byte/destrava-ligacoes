@@ -106,11 +106,11 @@ export function AulaSignupCard({ aula }: { aula: Aula }) {
 
   return (
     <div id="cadastro" className="aula-panel border-yellow-400/50 p-4 text-center shadow-lg shadow-yellow-500/10 sm:p-8 lg:border-yellow-400/30 lg:text-left">
-      <p className="whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-yellow-400">
+      <p className={`whitespace-nowrap text-[11px] font-bold uppercase tracking-wider text-yellow-400${aula.semFotoHeroMobile ? ' max-lg:hidden' : ''}`}>
         {getAulaQuandoLabel(aula)} · ao vivo
       </p>
       <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">{aula.form.title}</h2>
-      <p className="mt-2 text-sm text-gray-400">1h30 no Meet. Grátis. Sem cartão. Sem gravação.</p>
+      <p className="mt-2 text-sm text-gray-400">{aula.apoioForm ?? '1h30 no Meet. Grátis. Sem cartão. Sem gravação.'}</p>
       <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate>
         <div className="sr-only" aria-hidden="true">
           <label htmlFor="aula-website">Website</label>

@@ -13,6 +13,7 @@ export type AulaInscricao = {
 export type PersistResult = {
   stored: boolean;
   destination: 'webhook' | 'supabase' | 'log';
+  id?: string;
   error?: string;
 };
 
@@ -46,22 +47,26 @@ async function persistSupabase(payload: AulaInscricao): Promise<PersistResult> {
     return { stored: false, destination: 'supabase', error: 'Supabase ausente' };
   }
 
-  const { error } = await supabase.from('inscricoes').upsert(
-    {
-      slug: payload.slug,
-      nome: payload.nome,
-      email: payload.email,
-      whatsapp: payload.whatsapp,
-      consentimento: payload.consentimento,
-    },
-    { onConflict: 'slug,whatsapp' }
-  );
+  const { data, error } = await supabase
+    .from('inscricoes')
+    .upsert(
+      {
+        slug: payload.slug,
+        nome: payload.nome,
+        email: payload.email,
+        whatsapp: payload.whatsapp,
+        consentimento: payload.consentimento,
+      },
+      { onConflict: 'slug,whatsapp' }
+    )
+    .select('id')
+    .maybeSingle();
 
   if (error) {
     throw new Error(error.message);
   }
 
-  return { stored: true, destination: 'supabase' };
+  return { stored: true, destination: 'supabase', id: data?.id };
 }
 
 async function persistLocalLog(payload: AulaInscricao): Promise<PersistResult> {

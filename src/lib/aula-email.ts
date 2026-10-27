@@ -2,13 +2,16 @@ import type { Aula } from '@/content/aulas';
 import { getAulaQuandoLabel } from '@/content/aulas';
 import { WORKSHOP_PUBLIC_SITE_URL } from '@/lib/constants';
 import { buildGoogleCalendarUrl } from '@/lib/aula-calendar';
+import { formatAulaJanelaEmail } from '@/lib/aula-date';
 import { sendEmail } from '@/lib/email';
 import { escapeHtml } from '@/lib/escape-html';
 
 const LOGO_URL = `${WORKSHOP_PUBLIC_SITE_URL}/logos-mundo-podium/logo_horizontal_claro.png`;
 
-function safeName(nome: string): string {
-  return escapeHtml(nome.trim() || 'Participante');
+function safeName(nome: string, primeiroNome?: boolean): string {
+  const trimmed = nome.trim() || 'Participante';
+  const chosen = primeiroNome ? trimmed.split(/\s+/)[0] || trimmed : trimmed;
+  return escapeHtml(chosen);
 }
 
 function aulaFromAddress(): string {
@@ -22,6 +25,7 @@ function aulaFromAddress(): string {
 export function getAulaConfirmationHtml(aula: Aula, nome: string): string {
   const calendarUrl = buildGoogleCalendarUrl(aula);
   const quando = getAulaQuandoLabel(aula);
+  const janela = formatAulaJanelaEmail(aula.data, aula.duracaoMin);
   const meetUrl = aula.linkMeet;
   const whatsappUrl = aula.linkComunidade;
   const siteUrl = `${WORKSHOP_PUBLIC_SITE_URL}/aula/${aula.slug}`;
@@ -71,7 +75,7 @@ export function getAulaConfirmationHtml(aula: Aula, nome: string): string {
                 </tr>
                 <tr>
                   <td style="padding:16px 24px 0;color:#d1d5db;font-size:16px;line-height:1.55;">
-                    <p style="margin:0 0 16px;color:#ffffff;">Olá, <strong>${safeName(nome)}</strong>.</p>
+                    <p style="margin:0 0 16px;color:#ffffff;">Olá, <strong>${safeName(nome, aula.email.primeiroNome)}</strong>.</p>
                     <p style="margin:0;">Inscrição confirmada. Te vejo ${escapeHtml(quando)} no Google Meet.</p>
                   </td>
                 </tr>
@@ -82,7 +86,7 @@ export function getAulaConfirmationHtml(aula: Aula, nome: string): string {
                         <td style="padding:18px 20px;">
                           <p style="margin:0 0 6px;color:#facc15;font-size:11px;font-weight:700;letter-spacing:0.14em;">QUANDO</p>
                           <p style="margin:0 0 14px;color:#ffffff;font-size:16px;font-weight:700;">${escapeHtml(quando)} · 1h30 · Sem gravação</p>
-                          <p style="margin:0;color:#9ca3af;font-size:14px;line-height:1.45;">Segunda, 21/09 · 20:30 às 22:00 · horário de Brasília</p>
+                          <p style="margin:0;color:#9ca3af;font-size:14px;line-height:1.45;">${escapeHtml(janela)}</p>
                         </td>
                       </tr>
                     </table>

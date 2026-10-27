@@ -16,7 +16,7 @@ export function AulaStoriesSection({ aula }: { aula: Aula }) {
       <div className="mx-auto max-w-6xl">
         <AulaReveal>
           <p className="text-center text-[11px] font-bold uppercase tracking-wider text-yellow-400 lg:text-left">
-            <span className="lg:hidden">Depoimentos reais · 35 min</span>
+            <span className="lg:hidden">{aula.eyebrowVideoMobile ?? 'Depoimentos reais · 35 min'}</span>
             <span className="hidden lg:inline">Assiste depois de garantir o link</span>
           </p>
           <h2 className="aula-section-title mx-auto mt-3 max-w-xl text-[1.75rem] leading-[1.15] sm:max-w-3xl sm:text-5xl lg:mx-0">

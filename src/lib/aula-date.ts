@@ -49,3 +49,25 @@ export function formatAulaQuandoLabel(dataISO: string, now: Date = new Date()): 
   if (day === 'Encerrada') return day;
   return `${day}, ${formatAulaTime(dataISO)}`;
 }
+
+const WEEKDAY_LABEL: Record<string, string> = {
+  Sun: 'Domingo',
+  Mon: 'Segunda',
+  Tue: 'Terça',
+  Wed: 'Quarta',
+  Thu: 'Quinta',
+  Fri: 'Sexta',
+  Sat: 'Sábado',
+};
+
+/** "Segunda, 21/09 · 20:30 às 22:00 · horário de Brasília" */
+export function formatAulaJanelaEmail(dataISO: string, duracaoMin: number): string {
+  const start = new Date(dataISO);
+  const end = new Date(start.getTime() + duracaoMin * 60 * 1000);
+  const weekdayKey = new Intl.DateTimeFormat('en-US', {
+    weekday: 'short',
+    timeZone: TIME_ZONE,
+  }).format(start);
+  const weekday = WEEKDAY_LABEL[weekdayKey] ?? weekdayKey;
+  return `${weekday}, ${formatAulaDayMonth(dataISO)} · ${formatAulaTime(dataISO)} às ${formatAulaTime(end.toISOString())} · horário de Brasília`;
+}

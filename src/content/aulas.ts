@@ -17,6 +17,10 @@ export type Aula = {
   titulo: string;
   tituloLinha1: string;
   tituloLinha2: string;
+  /** true = H1 desktop um pouco menor, para a linha 1 caber em 1280 px. */
+  tituloCompacto?: boolean;
+  /** true = sem a foto de fundo do hero no mobile. O desktop não muda. */
+  semFotoHeroMobile?: boolean;
   subtitulo: string;
   ganchoMobile: string;
   paragrafosHero: string[];
@@ -34,7 +38,15 @@ export type Aula = {
   ogImage: string;
   meetEnvKey: string;
   linkMeet: string;
+  /** Se existir, ignora NEXT_PUBLIC_AULA_COMMUNITY_URL e usa só esta env, com linkComunidade de reserva. */
+  communityEnvKey?: string;
   linkComunidade: string;
+  /** Padrão: "Ainda em 2026. Grátis. 1h30 no Meet." */
+  apoioMobile?: string;
+  /** Padrão: "1h30 no Meet. Grátis. Sem cartão. Sem gravação." */
+  apoioForm?: string;
+  /** Padrão: "Depoimentos reais · 35 min" */
+  eyebrowVideoMobile?: string;
   stickyBar: string;
   eyebrow: string;
   metaLine: string;
@@ -101,6 +113,8 @@ export type Aula = {
   };
   email: {
     subject: string;
+    /** Padrão: nome completo. true = só o primeiro nome. */
+    primeiroNome?: boolean;
   };
 };
 
@@ -292,8 +306,206 @@ const LEAD_ANTIGO: Aula = {
   },
 };
 
+const POR_QUE_O_CLIENTE_DESLIGA: Aula = {
+  slug: 'por-que-o-cliente-desliga',
+  titulo: 'Por que o cliente desliga (e o que fazer no lugar)',
+  tituloLinha1: 'Por que o cliente desliga',
+  tituloLinha2: 'na ligação do corretor.',
+  tituloCompacto: true,
+  semFotoHeroMobile: true,
+  subtitulo: 'Ligações reais desmontadas ao vivo\npara corretores de saúde, seguros e consórcio.',
+  ganchoMobile: 'Veja onde a ligação morre. Refaça a sua.',
+  apoioMobile: 'Grátis. 1h30 no Meet.',
+  paragrafosHero: [
+    'Você tem cliente que atende, ouve duas frases e desliga. Nessa aula você vê onde isso acontece em ligações reais e como abrir, conduzir e voltar a ligar sem parecer cobrança.',
+  ],
+  chips: [],
+  historiasTitulo: 'Quem ligou de novo.\nE o que aconteceu.',
+  historiasApoio: 'Reunião e venda de quem voltou a ligar.',
+  historiasVideos: [
+    {
+      nome: '35 minutos',
+      titulo: 'Gente que ligou.\nO que aconteceu depois.',
+      url: 'https://www.youtube.com/watch?v=HKqIZtlBz6I',
+      poster: '/videos/depoimentos-reais-thumb.png',
+    },
+  ],
+  historias: [
+    {
+      nome: 'Otávio',
+      resultado: 'Das 5 reuniões, 3 vieram\nde voltar no contato',
+      texto: 'Das 5 reuniões que marquei, 3 foi voltando no contato. Quem não faz tá perdendo oportunidade.',
+    },
+    {
+      nome: 'Jonathan',
+      resultado: 'Ligou, mandou WhatsApp\ne fechou um site no mesmo dia',
+      texto: 'Acabamos de fechar uma venda de 1 site agora. Ligação do zero, depois WhatsApp.',
+    },
+    // TODO: depoimento de corretor (saúde, seguros ou consórcio), só com autorização confirmada pelo dono
+  ],
+  data: '2026-11-05T20:00:00-03:00',
+  duracaoMin: 90,
+  plataforma: 'Google Meet',
+  temGravacao: false,
+  status: 'aberta',
+  heroImage: '/romulo-mentor-destrava.jpg',
+  ogImage: '/og/por-que-o-cliente-desliga.png',
+  meetEnvKey: 'NEXT_PUBLIC_AULA_POR_QUE_O_CLIENTE_DESLIGA_MEET_URL',
+  linkMeet: '',
+  communityEnvKey: 'NEXT_PUBLIC_AULA_POR_QUE_O_CLIENTE_DESLIGA_WHATSAPP_URL',
+  linkComunidade: 'https://chat.whatsapp.com/F82ZRlJ0NSf9TQ7kz03nAj',
+  stickyBar: 'AO VIVO · GRÁTIS',
+  eyebrow: 'AULA AO VIVO',
+  metaLine: 'Quinta, 05/11 · 20h às 21h30 · 1h30 · Google Meet · Sem gravação · Grátis',
+  ctaLabel: 'QUERO O LINK GRÁTIS',
+  form: {
+    title: 'Garante sua vaga',
+    nomeLabel: 'Nome',
+    whatsappLabel: 'WhatsApp',
+    emailLabel: 'E-mail',
+    consentLabel: 'Autorizo o contato do Mundo\u00A0Pódium por WhatsApp e e-mail.',
+    submitLabel: 'QUERO O LINK GRÁTIS',
+    microcopy: 'Aula gratuita. Sem cartão. Link na hora + e-mail de confirmação.',
+    closedTitle: 'A aula já começou.',
+    closedCta: 'Entrar no grupo do WhatsApp',
+    gratisPill: '100% gratuita · sem cartão',
+    countdownLabel: 'Aula começa em',
+  },
+  doresTitulo: 'Ele atende.\nE desliga.',
+  dores: [
+    {
+      titulo: '"Já tenho plano"',
+      texto: 'Costuma ser resposta automática, não decisão. O que você fala depois dela define se a ligação continua.',
+    },
+    {
+      titulo: '"Me manda a cotação"',
+      texto: 'Ele pediu, você mandou, ele sumiu. A mensagem deixa a decisão na mão dele. A ligação, não.',
+    },
+    {
+      titulo: 'O silêncio depois da cotação',
+      texto: 'Ele não desistiu. Está resolvendo vários problemas, e a sua cotação ficou no meio.',
+    },
+  ],
+  doresFecho: 'Quem liga do mesmo jeito ouve o mesmo não. Isso custa caro.',
+  entregasTitulo: 'O que você sai\nsabendo fazer',
+  entregas: [
+    {
+      titulo: 'Ver onde a sua ligação morre.',
+      texto: 'Em poucos segundos o cliente decide se continua. Você vê isso em ligações reais, desmontadas ao vivo.',
+    },
+    {
+      titulo: 'Abrir sem soar como telemarketing.',
+      texto: 'Palavras como "seguro", "cotação" e "desculpa incomodar" derrubam a ligação. Tem um jeito melhor de começar.',
+    },
+    {
+      titulo: 'Responder "já tenho" sem brigar.',
+      texto: 'Concordar primeiro, reconectar depois e sair com data e hora.',
+    },
+    {
+      titulo: 'Voltar no cliente sem cobrar.',
+      texto: 'Primeiro a ligação, depois a mensagem em bloco. A estrutura de retorno em quatro passos.',
+    },
+  ],
+  paraQuemSecaoTitulo: 'Essa aula é pra\nquem vai ligar.',
+  paraQuemTitulo: 'É pra você',
+  paraQuem: [
+    'Vende saúde, seguros ou consórcio por telefone e WhatsApp.',
+    'Tem cotações paradas ou clientes que atendem e desligam.',
+    'Liga (ou quer ligar) para empresa, para quem tem CNPJ ou para pessoa física.',
+    'Aguenta ouvir como a sua ligação soa de verdade.',
+  ],
+  naoEhParaTitulo: 'Não perde tempo',
+  naoEhPara: [
+    'Quer um texto mágico que dispense ligar.',
+    'Acha que WhatsApp substitui o telefone.',
+    'Veio só assistir e não vai ligar.',
+  ],
+  faqTitulo: 'Perguntas frequentes',
+  host: {
+    titulo: 'Quem conduz',
+    nome: 'Rômulo Freitas',
+    cargo: 'Liga ao vivo, com cliente real',
+    foto: '/romulo-mentor-destrava.jpg',
+    destaque: 'Eu já travei no telefone.',
+    paragrafos: [
+      '12 anos vendendo pra empresa. Sete com a própria empresa: do zero, com um computador e uma mesa.',
+      'Passei anos desistindo antes da hora. Foi isso que eu tive que quebrar pra ligar todo dia.',
+    ],
+    fatos: [
+      { valor: '12+', label: 'anos vendendo' },
+      { valor: `${AULA_SOCIAL_PROOF.livesYoutube}+`, label: 'lives no YouTube' },
+      { valor: `${AULA_SOCIAL_PROOF.hoursLive}h+`, label: 'de ligação\nao vivo' },
+    ],
+  },
+  stats: [
+    { valor: `${AULA_SOCIAL_PROOF.livesYoutube}+`, label: 'lives no YouTube' },
+    { valor: `${AULA_SOCIAL_PROOF.hoursLive}h+`, label: 'de ligação ao vivo' },
+    { valor: `${AULA_SOCIAL_PROOF.pilots}+`, label: 'pessoas no WhatsApp' },
+  ],
+  depoimentoPrints: [],
+  faq: [
+    {
+      pergunta: 'É pago?',
+      resposta: 'Não. 100% gratuita. Sem cartão.',
+    },
+    {
+      pergunta: 'Vai ter gravação?',
+      resposta: 'Não. Essa aula não fica gravada. Quem não estiver às 20h, perdeu.',
+    },
+    {
+      pergunta: 'Preciso ter cotações paradas?',
+      resposta: 'Não. Traga o que tiver, mesmo que esteja no caderno ou no WhatsApp.',
+    },
+    {
+      pergunta: 'Preciso ligar durante a aula?',
+      resposta: 'Não. Quem quiser pode mandar no chat a abertura que usa, e ela é reescrita ao vivo.',
+    },
+    {
+      pergunta: 'Serve para consórcio, seguros e saúde?',
+      resposta: 'Sim. A ordem da ligação é a mesma. Muda a linguagem de cada um.',
+    },
+    {
+      pergunta: 'Quanto tempo dura?',
+      resposta: '1 hora e 30 minutos, a partir das 20h.',
+    },
+    {
+      pergunta: 'O que eu recebo agora?',
+      resposta: 'O link do Meet e o grupo no WhatsApp. Se acontecer qualquer imprevisto, o aviso chega lá.',
+    },
+  ],
+  ctaFinal: {
+    titulo: 'Ninguém liga por você.\nLiga você.',
+    subtitulo: 'Quinta, 20h. Grátis. Google Meet. Sem gravação.',
+    botao: 'QUERO O LINK GRÁTIS',
+  },
+  footer: {
+    brand: 'Mundo Pódium',
+    razao: 'Mundo Pódium LTDA',
+    cnpj: '68.349.974/0001-19',
+    cidade: 'Belo Horizonte, MG',
+    instagramUrl: 'https://instagram.com/romulocsfreitas',
+    youtubeUrl: 'https://www.youtube.com/@mundopodium',
+  },
+  obrigado: {
+    titulo: 'Inscrição confirmada.\nTe vejo quinta, 20h.',
+    grupoMotivo: 'É nesse grupo que avisamos se o horário mudar e onde saem as próximas aulas.',
+    ctaComunidade: 'ENTRAR NO GRUPO DO WHATSAPP',
+    ctaAgenda: 'ADICIONAR NA AGENDA',
+    meetLabel: 'Link do Google Meet',
+    aviso: 'Não vai ter gravação. Se o horário mudar, o aviso chega no WhatsApp.',
+    emailLine: 'Mandamos um e-mail de confirmação com o horário, o Meet e o grupo no WhatsApp.',
+    copiar: 'Copiar',
+    copiado: 'Copiado',
+  },
+  email: {
+    subject: 'Sua vaga: Por que o cliente desliga, quinta às 20h',
+    primeiroNome: true,
+  },
+};
+
 export const AULAS: Record<string, Aula> = {
   [LEAD_ANTIGO.slug]: LEAD_ANTIGO,
+  [POR_QUE_O_CLIENTE_DESLIGA.slug]: POR_QUE_O_CLIENTE_DESLIGA,
 };
 
 export function getAulaSlugs(): string[] {
@@ -306,13 +518,18 @@ export function getAulaBySlug(slug: string): Aula | null {
 
 export function resolveAulaLinks(aula: Aula): Aula {
   const meetFromNamedEnv = process.env[aula.meetEnvKey]?.trim() || '';
+  const communityFromNamedEnv = aula.communityEnvKey
+    ? process.env[aula.communityEnvKey]?.trim() || ''
+    : '';
   /** Grupo de aulas/anúncios. Nome da env legado; não é o WhatsApp da comunidade do workshop. */
-  const communityFromEnv = process.env.NEXT_PUBLIC_AULA_COMMUNITY_URL?.trim() || '';
+  const communityFromGlobal = aula.communityEnvKey
+    ? ''
+    : process.env.NEXT_PUBLIC_AULA_COMMUNITY_URL?.trim() || '';
 
   return {
     ...aula,
     linkMeet: meetFromNamedEnv || aula.linkMeet,
-    linkComunidade: communityFromEnv || aula.linkComunidade,
+    linkComunidade: communityFromNamedEnv || communityFromGlobal || aula.linkComunidade,
   };
 }
 
