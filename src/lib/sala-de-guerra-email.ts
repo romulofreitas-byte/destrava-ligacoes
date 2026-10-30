@@ -1,4 +1,4 @@
-import { SALA_MEET_URL, SALA_TITLE } from '../components/sala-de-guerra/constants';
+import { SALA_JOIN_URL, SALA_TITLE } from '../components/sala-de-guerra/constants';
 import { getRelativeDayLabel } from './aula-date';
 import { WORKSHOP_PUBLIC_SITE_URL } from './constants';
 import { sendEmail } from './email';
@@ -38,7 +38,7 @@ export function salaConfirmationSubject(now: Date = new Date()): string {
 export function getSalaDeGuerraConfirmationHtml(nome: string, now: Date = new Date()): string {
   const quando = salaQuandoLabel(now);
   const subject = salaConfirmationSubject(now);
-  const meetUrl = escapeHtml(SALA_MEET_URL);
+  const joinUrl = escapeHtml(SALA_JOIN_URL);
 
   return `
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ export function getSalaDeGuerraConfirmationHtml(nome: string, now: Date = new Da
 </head>
 <body style="margin:0;padding:0;background-color:#111827;font-family:Arial,Helvetica,sans-serif;color:#ffffff;">
   <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
-    ${escapeHtml(quando)}. O link da sala está aqui.
+    Seu acesso à Mundo Pódium está liberado. ${escapeHtml(quando)}.
   </div>
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" bgcolor="#111827" style="background-color:#111827;padding:28px 12px;">
     <tr>
@@ -79,18 +79,18 @@ export function getSalaDeGuerraConfirmationHtml(nome: string, now: Date = new Da
                 <tr>
                   <td style="padding:16px 24px 0;color:#d1d5db;font-size:16px;line-height:1.55;">
                     <p style="margin:0 0 16px;color:#ffffff;">Olá, <strong>${firstName(nome)}</strong>.</p>
-                    <p style="margin:0;">Inscrição confirmada. ${escapeHtml(quando)}. Chega cedo e liga a câmera.</p>
+                    <p style="margin:0;">Seu acesso à Mundo Pódium está liberado. Entre na plataforma para acessar o Treino Livre | Aulas Abertas e acompanhar a Sala de Guerra. ${escapeHtml(quando)}.</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:24px 24px 8px;">
-                    <a href="${meetUrl}" style="display:block;background:#eab308;color:#111827;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:0.04em;padding:14px 20px;border-radius:999px;text-align:center;">ENTRAR NA SALA</a>
+                    <a href="${joinUrl}" style="display:block;background:#eab308;color:#111827;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:0.04em;padding:14px 20px;border-radius:999px;text-align:center;">ENTRAR NA MUNDO PÓDIUM</a>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:8px 24px 28px;color:#9ca3af;font-size:14px;line-height:1.5;">
                     <p style="margin:0;">Se o botão não abrir, copia este link:<br />
-                    <a href="${meetUrl}" style="color:#facc15;word-break:break-all;">${meetUrl}</a></p>
+                    <a href="${joinUrl}" style="color:#facc15;word-break:break-all;">${joinUrl}</a></p>
                   </td>
                 </tr>
               </table>

@@ -5,12 +5,13 @@ import { FormEvent, useEffect, useId, useRef, useState } from 'react';
 import { trackAulaLead } from '@/lib/metaPixel';
 import { maskBrazilianWhatsApp, validateBrazilianWhatsApp } from '@/lib/phone';
 import {
-  SALA_MEET_URL,
+  SALA_JOIN_URL,
   SALA_PAGE_TITLE,
   SALA_PROMISES,
   SALA_SLUG,
   SALA_TITLE,
   SALA_TRAVES,
+  SALA_UNLOCK_URL,
   type SalaTrava,
 } from './constants';
 
@@ -38,7 +39,7 @@ function icsEscape(value: string): string {
 }
 
 function buildIcs(): string {
-  const description = `Ao vivo no Google Meet: ${SALA_MEET_URL}`;
+  const description = `Sala de Guerra no Treino Livre | Aulas Abertas. Entre na Mundo Pódium: ${SALA_JOIN_URL}`;
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -58,10 +59,10 @@ function buildIcs(): string {
     'BEGIN:VEVENT',
     'UID:sala-de-guerra-pos-eleicao@mundopodium.com.br',
     'DTSTART;TZID=America/Sao_Paulo:20261031T100000',
-    'DTEND;TZID=America/Sao_Paulo:20261031T120000',
+    'DTEND;TZID=America/Sao_Paulo:20261031T130000',
     `SUMMARY:${icsEscape(SALA_PAGE_TITLE)}`,
     `DESCRIPTION:${icsEscape(description)}`,
-    `LOCATION:${icsEscape(SALA_MEET_URL)}`,
+    `LOCATION:${icsEscape('Treino Livre | Aulas Abertas, Mundo Pódium')}`,
     'END:VEVENT',
     'END:VCALENDAR',
   ];
@@ -217,21 +218,15 @@ export function SalaDeGuerraPage() {
             tabIndex={-1}
             className="text-3xl font-bold leading-tight text-white outline-none sm:text-4xl"
           >
-            Você está dentro.
+            Seu acesso à Mundo Pódium está liberado, Piloto!
           </h1>
           <p className="mt-6 text-base leading-relaxed text-gray-300 sm:text-lg">
-            Sábado, 31/10, às 10h. Chega cedo e liga a câmera.
+            Agora você faz parte da Mundo Pódium. Entre na plataforma para acessar o{' '}
+            <span className="whitespace-nowrap">Treino Livre | Aulas Abertas</span>, acompanhar a Sala de Guerra e começar sua jornada.
           </p>
-          <p className="mt-3 text-base leading-relaxed text-gray-300">
-            O link da sala também foi para o seu e-mail.
-          </p>
-          <a
-            href={SALA_MEET_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="aula-cta mt-6"
-          >
-            Entrar na sala (Google Meet)
+          <p className="mt-3 text-sm font-bold text-white">Sábado, 31/10, às 10h. 3 horas.</p>
+          <a href={SALA_JOIN_URL} className="aula-cta mt-6">
+            Entrar na Mundo Pódium
           </a>
           <button
             type="button"
@@ -241,26 +236,33 @@ export function SalaDeGuerraPage() {
             Adicionar ao calendário
           </button>
           <p className="mt-8 text-sm leading-relaxed text-gray-300">
-            Fica de olho no grupo da Comunidade. Os avisos saem por lá.
+            Você já pode acessar aulas abertas, eventos e os primeiros espaços da comunidade. Quando estiver pronto para acelerar, desbloqueie a experiência completa da Plataforma Mundo Pódium.
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-gray-500">
-            Segunda é feriado e vai ter sala mesmo assim. Terça, 9h, todo mundo ligando junto.
+          <p className="mt-6 text-sm leading-relaxed text-gray-300">
+            Você já entrou na pista. Agora, desbloqueie a estrutura completa para evoluir com método, acompanhamento, treinamentos, mentorias e prática comercial.
           </p>
+          <a
+            href={SALA_UNLOCK_URL}
+            className="mt-4 inline-flex w-full items-center justify-center rounded-full border-2 border-yellow-400 px-5 py-3.5 text-sm font-bold text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+          >
+            Desbloquear a Plataforma Mundo Pódium
+          </a>
         </main>
       ) : (
         <main className="mx-auto grid w-full max-w-6xl flex-1 items-start gap-6 px-4 py-6 sm:px-6 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-6 lg:py-10 lg:px-8">
           <div className="text-center lg:col-start-1 lg:row-start-1 lg:text-left">
             <p className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900">
               <span className="aula-pulse" aria-hidden="true" />
-              AULA AO VIVO · GRATUITA
+              SALA AO VIVO · GRATUITA
             </p>
-            <h1 className="mt-4 text-[clamp(1.9rem,8vw,3.15rem)] font-bold leading-[1.05] text-white">
-              Sala de Guerra Pós-Eleição
+            <h1 className="mt-4 whitespace-pre-line text-[clamp(1.9rem,8vw,3.15rem)] font-bold leading-[1.05] text-white">
+              {'Sala de Guerra\nPós-Eleição'}
             </h1>
             <p className="mt-3 text-lg font-bold leading-snug text-white">
-              O empresário travou. Você não pode travar.
+              Garanta sua vaga na Sala de Guerra e entre na Mundo Pódium para viver essa experiência ao vivo.
             </p>
-            <p className="mt-2 text-base text-gray-300">Sábado, 31/10, às 10h. Ao vivo no Google Meet.</p>
+            <p className="mt-2 text-base text-gray-300">Sábado, 31/10, às 10h. 3 horas.</p>
+            <p className="text-base text-gray-300">No Treino Livre | Aulas Abertas.</p>
           </div>
 
           <div className="aula-panel border-yellow-400/50 p-4 text-left shadow-lg shadow-yellow-500/10 sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:border-yellow-400/30">
@@ -424,7 +426,7 @@ export function SalaDeGuerraPage() {
                     aria-describedby={errors.consentimento ? `${formId}-consent-error` : undefined}
                   />
                   <span>
-                    Concordo em receber o link da aula e comunicações do Mundo Pódium por WhatsApp e e-mail.{' '}
+                    Concordo em receber o acesso à Mundo Pódium e comunicações por WhatsApp e e-mail.{' '}
                     <a href="/privacidade" className="font-bold text-yellow-400 underline underline-offset-2">
                       Política de Privacidade
                     </a>
@@ -446,7 +448,7 @@ export function SalaDeGuerraPage() {
                     Enviando…
                   </span>
                 ) : (
-                  'Quero entrar na sala'
+                  'Garantir minha vaga'
                 )}
               </button>
               <p className="text-sm leading-relaxed text-gray-300">
