@@ -222,6 +222,9 @@ export function SalaDeGuerraPage() {
           <p className="mt-6 text-base leading-relaxed text-gray-300 sm:text-lg">
             Sábado, 31/10, às 10h. Chega cedo e liga a câmera.
           </p>
+          <p className="mt-3 text-base leading-relaxed text-gray-300">
+            O link da sala também foi para o seu e-mail.
+          </p>
           <a
             href={SALA_MEET_URL}
             target="_blank"

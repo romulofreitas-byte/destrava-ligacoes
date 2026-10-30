@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { SALA_SLUG, SALA_TRAVES } from '@/components/sala-de-guerra/constants';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
+import { sendSalaDeGuerraConfirmationEmail } from '@/lib/sala-de-guerra-email';
 import { validateBrazilianWhatsApp } from '@/lib/phone';
 import { supabase } from '@/lib/supabase';
 
@@ -116,6 +117,15 @@ export async function POST(request: NextRequest) {
       { error: 'Não conseguimos salvar agora. Seus dados continuam aqui. Tente de novo.' },
       { status: 500 }
     );
+  }
+
+  try {
+    const emailResult = await sendSalaDeGuerraConfirmationEmail(nome, email);
+    if (!emailResult.success) {
+      console.error('[inscricao-sala] E-mail de confirmação não enviado:', emailResult.error);
+    }
+  } catch (emailError) {
+    console.error('[inscricao-sala] E-mail de confirmação falhou:', emailError);
   }
 
   return NextResponse.json({ ok: true });
