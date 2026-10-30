@@ -10,6 +10,7 @@ Cada aula tem um briefing em `aulas/<slug>.md`. A página no site é `/aula/<slu
 | --- | --- | --- |
 | Lead antigo não é lead morto | 21/09/2026, 20:30 | `/aula/lead-antigo-nao-e-lead-morto` |
 | Por que o cliente desliga | 05/11/2026, 20:00 | `/aula/por-que-o-cliente-desliga` |
+| Sala de Guerra Pós-Eleição | 31/10/2026, 10:00 | `/aula/sala-de-guerra-pos-eleicao` |
 
 ## Nova aula
 
