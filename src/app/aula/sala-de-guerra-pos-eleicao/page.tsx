@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 
 export function generateMetadata(): Metadata {
   const url = `${WORKSHOP_PUBLIC_SITE_URL}/aula/${SALA_SLUG}`;
-  const ogImage = `${url}/opengraph-image`;
+  const ogImage = `${WORKSHOP_PUBLIC_SITE_URL}/og/sala-de-guerra-pos-eleicao.png`;
   const userAgent = headers().get('user-agent') || '';
   const previewBot = PREVIEW_BOT.test(userAgent);
 
