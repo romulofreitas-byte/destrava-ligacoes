@@ -202,12 +202,12 @@ export function SalaDeGuerraPage() {
   };
 
   return (
-    <div className="sala-fit flex h-dvh flex-col overflow-x-hidden overflow-y-auto">
+    <div className="sala-fit flex min-h-dvh flex-col">
       <style>{`
         .sala-fit .sala-input {
-          border-radius: 0.75rem;
-          padding-top: 0.35rem;
-          padding-bottom: 0.35rem;
+          border-radius: 1rem;
+          padding-top: 0.7rem;
+          padding-bottom: 0.7rem;
         }
       `}</style>
       {success ? (
@@ -245,38 +245,25 @@ export function SalaDeGuerraPage() {
           </p>
         </main>
       ) : (
-        <main className="mx-auto grid min-h-0 w-full max-w-6xl flex-1 content-center items-center gap-3 px-4 py-3 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:px-8">
-          <div className="text-center lg:text-left">
+        <main className="mx-auto grid w-full max-w-6xl flex-1 items-start gap-6 px-4 py-6 sm:px-6 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-6 lg:py-10 lg:px-8">
+          <div className="text-center lg:col-start-1 lg:row-start-1 lg:text-left">
             <p className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900">
               <span className="aula-pulse" aria-hidden="true" />
               AULA AO VIVO · GRATUITA
             </p>
-            <h1 className="mt-2 text-[clamp(1.55rem,4vw,2.6rem)] font-bold leading-[1.05] text-white">
+            <h1 className="mt-4 text-[clamp(1.9rem,8vw,3.15rem)] font-bold leading-[1.05] text-white">
               Sala de Guerra Pós-Eleição
             </h1>
-            <p className="mt-2 text-base font-bold leading-snug text-white sm:text-lg">
+            <p className="mt-3 text-lg font-bold leading-snug text-white">
               O empresário travou. Você não pode travar.
             </p>
-            <p className="mt-1 text-sm text-gray-300">Sábado, 31/10, às 10h. Ao vivo no Google Meet.</p>
-            <ul className="mx-auto mt-3 max-w-md space-y-1.5 text-left lg:mx-0">
-              {SALA_PROMISES.map((promise, index) => (
-                <li key={promise} className="flex items-start gap-2 text-sm leading-snug text-gray-200">
-                  <span
-                    aria-hidden="true"
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-yellow-400 text-xs font-black text-gray-900"
-                  >
-                    {index + 1}
-                  </span>
-                  {promise}
-                </li>
-              ))}
-            </ul>
+            <p className="mt-2 text-base text-gray-300">Sábado, 31/10, às 10h. Ao vivo no Google Meet.</p>
           </div>
 
-          <div className="aula-panel min-h-0 border-yellow-400/50 p-3 text-center shadow-lg shadow-yellow-500/10 lg:border-yellow-400/30 lg:p-4 lg:text-left">
+          <div className="aula-panel border-yellow-400/50 p-4 text-left shadow-lg shadow-yellow-500/10 sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:border-yellow-400/30">
             <form
               ref={formRef}
-              className="space-y-1.5"
+              className="space-y-3"
               method="post"
               action="/api/inscricao/sala-de-guerra"
               onSubmit={handleSubmit}
@@ -296,7 +283,7 @@ export function SalaDeGuerraPage() {
               </div>
 
               <div>
-                <label htmlFor={`${formId}-nome`} className="mb-0.5 block text-xs font-bold text-gray-300">
+                <label htmlFor={`${formId}-nome`} className="mb-1 block text-sm font-bold text-gray-300">
                   Nome
                 </label>
                 <input
@@ -315,7 +302,7 @@ export function SalaDeGuerraPage() {
               </div>
 
               <div>
-                <label htmlFor={`${formId}-whatsapp`} className="mb-0.5 block text-xs font-bold text-gray-300">
+                <label htmlFor={`${formId}-whatsapp`} className="mb-1 block text-sm font-bold text-gray-300">
                   WhatsApp com DDD
                 </label>
                 <div className="relative">
@@ -343,7 +330,7 @@ export function SalaDeGuerraPage() {
               </div>
 
               <div>
-                <label htmlFor={`${formId}-email`} className="mb-0.5 block text-xs font-bold text-gray-300">
+                <label htmlFor={`${formId}-email`} className="mb-1 block text-sm font-bold text-gray-300">
                   E-mail
                 </label>
                 <input
@@ -362,7 +349,7 @@ export function SalaDeGuerraPage() {
               </div>
 
               <div>
-                <label htmlFor={`${formId}-nicho`} className="mb-0.5 block text-xs font-bold text-gray-300">
+                <label htmlFor={`${formId}-nicho`} className="mb-1 block text-sm font-bold text-gray-300">
                   Seu nicho: quem você prospecta?
                 </label>
                 <input
@@ -380,7 +367,7 @@ export function SalaDeGuerraPage() {
               </div>
 
               <div>
-                <label htmlFor={`${formId}-frase`} className="mb-0.5 block text-xs font-bold text-gray-300">
+                <label htmlFor={`${formId}-frase`} className="mb-1 block text-sm font-bold text-gray-300">
                   O que seus leads estão dizendo agora? Cola a frase literal.
                 </label>
                 <textarea
@@ -398,7 +385,7 @@ export function SalaDeGuerraPage() {
               </div>
 
               <div>
-                <label htmlFor={`${formId}-trava`} className="mb-0.5 block text-xs font-bold text-gray-300">
+                <label htmlFor={`${formId}-trava`} className="mb-1 block text-sm font-bold text-gray-300">
                   Sua maior trava hoje
                 </label>
                 <select
@@ -422,7 +409,7 @@ export function SalaDeGuerraPage() {
               </div>
 
               <div>
-                <label htmlFor={`${formId}-consent`} className="flex items-start gap-2 text-left text-xs leading-snug text-gray-300">
+                <label htmlFor={`${formId}-consent`} className="flex items-start gap-3 text-left text-sm leading-snug text-gray-300">
                   <input
                     id={`${formId}-consent`}
                     name="consentimento"
@@ -467,18 +454,35 @@ export function SalaDeGuerraPage() {
               </p>
             </form>
           </div>
+
+          <ul className="aula-panel mx-auto w-full max-w-md space-y-4 p-4 sm:p-5 lg:col-start-1 lg:row-start-2 lg:mx-0 lg:max-w-none">
+            {SALA_PROMISES.map((promise, index) => (
+              <li
+                key={promise}
+                className="flex items-start gap-3 text-left text-sm leading-snug text-gray-200 sm:text-base"
+              >
+                <span
+                  aria-hidden="true"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-yellow-400 text-xs font-black text-gray-900"
+                >
+                  {index + 1}
+                </span>
+                {promise}
+              </li>
+            ))}
+          </ul>
         </main>
       )}
 
-      <footer className="flex shrink-0 items-center justify-center gap-3 border-t border-yellow-400/20 px-4 py-2 text-center">
+      <footer className="mt-auto flex flex-col items-center gap-2 border-t border-yellow-400/20 px-4 py-5 text-center sm:flex-row sm:justify-center sm:gap-4">
         <Image
           src="/logos-mundo-podium/logo_horizontal_claro.png"
           alt="Mundo Pódium"
-          width={110}
-          height={24}
-          className="h-5 w-auto"
+          width={120}
+          height={28}
+          className="h-6 w-auto"
         />
-        <p className="text-[11px] leading-tight text-gray-400">
+        <p className="text-xs leading-relaxed text-gray-400">
           Mundo Pódium LTDA · CNPJ 68.349.974/0001-19 · Belo Horizonte, MG
         </p>
       </footer>
