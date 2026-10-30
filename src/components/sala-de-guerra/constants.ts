@@ -27,5 +27,4 @@ export const SALA_PROMISES = [
   'Como ligar pra quem está com medo de investir.',
   'Como reposicionar sua oferta pra quem quer proteger caixa.',
   'Quando fazer downsell em vez de desconto.',
-  'Entre na Mundo Pódium e acompanhe a sala com aulas abertas, eventos e a comunidade.',
 ] as const;

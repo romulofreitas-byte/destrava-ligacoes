@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { FormEvent, useEffect, useId, useRef, useState } from 'react';
-import { trackAulaLead } from '@/lib/metaPixel';
+import { trackAulaLead, trackCustomEvent } from '@/lib/metaPixel';
 import { maskBrazilianWhatsApp, validateBrazilianWhatsApp } from '@/lib/phone';
 import {
   SALA_JOIN_URL,
@@ -81,12 +81,78 @@ function downloadIcs() {
   URL.revokeObjectURL(url);
 }
 
+const ACCESS_CARDS = [
+  {
+    title: 'Treino Livre | Aulas Abertas',
+    text: 'Aulas abertas e eventos ao vivo, como a Sala de Guerra.',
+  },
+  { title: 'Comece aqui!', text: 'Sua apresentação e os primeiros passos da jornada.' },
+  { title: 'Desafio Pódium', text: 'Desafios simples pra você dar sua primeira ação.' },
+  { title: 'Chegada ao Pódium', text: 'A vitrine de resultados e conquistas dos Pilotos.' },
+  { title: 'Rádio Pódium', text: 'O chat da comunidade.' },
+  { title: 'Torre de Controle', text: 'Os avisos da plataforma.' },
+] as const;
+
+const HOW_STEPS = [
+  'Garanta sua vaga. Preenche o cadastro acima.',
+  'Crie seu acesso. Você entra na plataforma e se apresenta no "Comece aqui!".',
+  'Entre na sala. Sábado, 10h, ao vivo, no Treino Livre | Aulas Abertas.',
+] as const;
+
+const FAQ = [
+  {
+    question: 'Preciso pagar pra entrar?',
+    answer: 'Não. O acesso à plataforma e à Sala de Guerra é gratuito.',
+  },
+  {
+    question: 'Pra quem é?',
+    answer: 'Pra quem vive de marcar reunião: vendedor, SDR e dono de pequena empresa.',
+  },
+] as const;
+
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
     <p id={id} className="mt-1 text-sm text-red-400">
       {message}
     </p>
+  );
+}
+
+function FaqList() {
+  const baseId = useId();
+  const [open, setOpen] = useState<number | null>(null);
+
+  return (
+    <div className="space-y-3">
+      {FAQ.map((item, index) => {
+        const expanded = open === index;
+        const panelId = `${baseId}-panel-${index}`;
+        const buttonId = `${baseId}-button-${index}`;
+        return (
+          <div key={item.question} className="aula-panel overflow-hidden">
+            <h3>
+              <button
+                id={buttonId}
+                type="button"
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                aria-expanded={expanded}
+                aria-controls={panelId}
+                onClick={() => setOpen(expanded ? null : index)}
+              >
+                {item.question}
+                <span aria-hidden="true" className="text-yellow-400">
+                  {expanded ? '−' : '+'}
+                </span>
+              </button>
+            </h3>
+            <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!expanded}>
+              <p className="px-5 pb-4 text-sm leading-relaxed text-gray-300">{item.answer}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -108,6 +174,15 @@ export function SalaDeGuerraPage() {
   const [success, setSuccess] = useState(false);
 
   const phoneValid = validateBrazilianWhatsApp(whatsapp).ok;
+
+  const scrollToForm = () => {
+    trackCustomEvent('ClickCTAFinal', { content_name: SALA_SLUG });
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const field = document.getElementById(`${formId}-nome`);
+    window.setTimeout(() => {
+      if (field instanceof HTMLElement) field.focus({ preventScroll: true });
+    }, 400);
+  };
 
   useEffect(() => {
     if (!success) return;
@@ -249,6 +324,7 @@ export function SalaDeGuerraPage() {
           </a>
         </main>
       ) : (
+        <>
         <main className="mx-auto grid w-full max-w-6xl flex-1 items-start gap-6 px-4 py-6 sm:px-6 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-6 lg:py-10 lg:px-8">
           <div className="text-center lg:col-start-1 lg:row-start-1 lg:text-left">
             <p className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900">
@@ -259,10 +335,13 @@ export function SalaDeGuerraPage() {
               {'Sala de Guerra\nPós-Eleição'}
             </h1>
             <p className="mt-3 text-lg font-bold leading-snug text-white">
-              Garanta sua vaga na Sala de Guerra e entre na Mundo Pódium para viver essa experiência ao vivo.
+              O empresário travou. Você não pode travar.
             </p>
             <p className="mt-2 text-base text-gray-300">Sábado, 31/10, às 10h. 3 horas.</p>
-            <p className="text-base text-gray-300">No Treino Livre | Aulas Abertas.</p>
+            <p className="text-base text-gray-300">
+              Dentro da plataforma Mundo Pódium, no espaço{' '}
+              <span className="whitespace-nowrap">Treino Livre | Aulas Abertas</span>.
+            </p>
           </div>
 
           <div className="aula-panel border-yellow-400/50 p-4 text-left shadow-lg shadow-yellow-500/10 sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:border-yellow-400/30">
@@ -275,13 +354,14 @@ export function SalaDeGuerraPage() {
               noValidate
               aria-busy={submitting}
             >
-              <div className="sr-only" aria-hidden="true">
+              <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
                 <label htmlFor={`${formId}-website`}>Website</label>
                 <input
                   id={`${formId}-website`}
                   name="website"
                   tabIndex={-1}
                   autoComplete="off"
+                  aria-hidden="true"
                   value={website}
                   onChange={(event) => setWebsite(event.target.value)}
                 />
@@ -477,6 +557,67 @@ export function SalaDeGuerraPage() {
             ))}
           </ul>
         </main>
+
+        <div className="mx-auto w-full max-w-6xl space-y-14 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <section className="mx-auto max-w-3xl space-y-4 text-center lg:text-left" aria-labelledby="sala-plataforma">
+            <h2 id="sala-plataforma" className="text-2xl font-bold leading-tight text-white sm:text-3xl">
+              O que é a plataforma Mundo Pódium
+            </h2>
+            <p className="text-base leading-relaxed text-gray-300">
+              A Mundo Pódium é uma plataforma de desenvolvimento comercial para quem vive de gerar oportunidades, ligar, negociar e fechar contrato. É onde o Rômulo Freitas ensina cold call e prospecção ativa com ligação real, ao vivo, sem corte. Quem entra é chamado de Piloto.
+            </p>
+          </section>
+
+          <section className="mx-auto max-w-3xl space-y-5" aria-labelledby="sala-como">
+            <h2 id="sala-como" className="text-center text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-left">
+              Como funciona
+            </h2>
+            <ol className="space-y-4">
+              {HOW_STEPS.map((step, index) => (
+                <li key={step} className="flex items-start gap-3 text-left text-base leading-relaxed text-gray-200">
+                  <span
+                    aria-hidden="true"
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-yellow-400 text-xs font-black text-gray-900"
+                  >
+                    {index + 1}
+                  </span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section className="space-y-5" aria-labelledby="sala-acessa">
+            <h2 id="sala-acessa" className="text-center text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-left">
+              O que você acessa ao criar sua conta
+            </h2>
+            <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {ACCESS_CARDS.map((card) => (
+                <li key={card.title} className="aula-panel p-5 text-left">
+                  <h3 className="text-base font-bold text-white">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-300">{card.text}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-gray-300 lg:mx-0 lg:text-left">
+              Quando quiser acelerar, dá pra desbloquear a experiência completa: treinamentos, mentorias, Sala de Ligação e revisões.
+            </p>
+          </section>
+
+          <section className="mx-auto max-w-3xl space-y-5" aria-labelledby="sala-faq">
+            <h2 id="sala-faq" className="text-center text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-left">
+              Perguntas rápidas
+            </h2>
+            <FaqList />
+          </section>
+
+          <div className="mx-auto max-w-md">
+            <button type="button" className="aula-cta" onClick={scrollToForm}>
+              Garantir minha vaga
+            </button>
+          </div>
+        </div>
+      </>
       )}
 
       <footer className="mt-auto flex flex-col items-center gap-2 border-t border-yellow-400/20 px-4 py-5 text-center sm:flex-row sm:justify-center sm:gap-4">
