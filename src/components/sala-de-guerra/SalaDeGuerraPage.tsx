@@ -7,7 +7,6 @@ import { maskBrazilianWhatsApp, validateBrazilianWhatsApp } from '@/lib/phone';
 import {
   SALA_JOIN_URL,
   SALA_PAGE_TITLE,
-  SALA_PROMISES,
   SALA_SLUG,
   SALA_TITLE,
   SALA_TRAVES,
@@ -82,21 +81,31 @@ function downloadIcs() {
 }
 
 const ACCESS_CARDS = [
-  {
-    title: 'Treino Livre | Aulas Abertas',
-    text: 'Aulas abertas e eventos ao vivo, como a Sala de Guerra.',
-  },
-  { title: 'Comece aqui!', text: 'Sua apresentação e os primeiros passos da jornada.' },
-  { title: 'Desafio Pódium', text: 'Desafios simples pra você dar sua primeira ação.' },
-  { title: 'Chegada ao Pódium', text: 'A vitrine de resultados e conquistas dos Pilotos.' },
-  { title: 'Rádio Pódium', text: 'O chat da comunidade.' },
-  { title: 'Torre de Controle', text: 'Os avisos da plataforma.' },
+  { title: 'Treino Livre | Aulas Abertas', text: 'Aulas abertas e eventos ao vivo, como a Sala de Guerra.', bar: 'bg-teal-400' },
+  { title: 'Comece aqui!', text: 'Sua apresentação e os primeiros passos da jornada.', bar: 'bg-violet-400' },
+  { title: 'Desafio Pódium', text: 'Desafios simples pra você dar sua primeira ação.', bar: 'bg-rose-400' },
+  { title: 'Chegada ao Pódium', text: 'A vitrine de resultados e conquistas dos Pilotos.', bar: 'bg-amber-300' },
+  { title: 'Rádio Pódium', text: 'O chat da comunidade.', bar: 'bg-sky-400' },
+  { title: 'Torre de Controle', text: 'Os avisos da plataforma.', bar: 'bg-emerald-400' },
+] as const;
+
+const OUTCOMES = [
+  'Um discurso pra ligar pra quem está com medo de investir',
+  'Sua oferta reposicionada pra quem quer proteger caixa',
+  'Seu plano de novembro e dezembro: meta de ligações, de reuniões e o follow-up',
 ] as const;
 
 const HOW_STEPS = [
   'Garanta sua vaga. Preenche o cadastro acima.',
   'Crie seu acesso. Você entra na plataforma e se apresenta no "Comece aqui!".',
   'Entre na sala. Sábado, 10h, ao vivo, no Treino Livre | Aulas Abertas.',
+] as const;
+
+const HERO_CHIPS = [
+  'Sábado, 31/10',
+  '10h às 13h (Brasília)',
+  'Ao vivo',
+  'Grátis, dentro da plataforma Mundo Pódium',
 ] as const;
 
 const FAQ = [
@@ -107,6 +116,11 @@ const FAQ = [
   {
     question: 'Pra quem é?',
     answer: 'Pra quem vive de marcar reunião: vendedor, SDR e dono de pequena empresa.',
+  },
+  {
+    question: 'Já sou membro ou já fui aluno. Preciso me cadastrar de novo?',
+    answer:
+      'Se você é membro ativo da Mundo Pódium, já tem acesso: abre o Treino Livre | Aulas Abertas na plataforma. Se saiu da plataforma, é só se cadastrar de novo e voltar pra pista.',
   },
 ] as const;
 
@@ -146,8 +160,17 @@ function FaqList() {
                 </span>
               </button>
             </h3>
-            <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!expanded}>
-              <p className="px-5 pb-4 text-sm leading-relaxed text-gray-300">{item.answer}</p>
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
+              className={expanded ? 'grid grid-rows-[1fr]' : 'grid grid-rows-[0fr]'}
+            >
+              <div className="min-h-0 overflow-hidden">
+                <p className={`px-5 text-sm leading-relaxed text-gray-300 ${expanded ? 'visible pb-4' : 'invisible pb-0'}`}>
+                  {item.answer}
+                </p>
+              </div>
             </div>
           </div>
         );
@@ -285,6 +308,11 @@ export function SalaDeGuerraPage() {
           padding-top: 0.7rem;
           padding-bottom: 0.7rem;
         }
+        @keyframes sala-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(18px); }
+        }
+        .sala-orb { animation: sala-float 9s ease-in-out infinite; }
       `}</style>
       {success ? (
         <main className="mx-auto flex w-full max-w-xl flex-1 flex-col justify-center px-4 py-16 text-center">
@@ -324,27 +352,116 @@ export function SalaDeGuerraPage() {
           </a>
         </main>
       ) : (
-        <>
-        <main className="mx-auto grid w-full max-w-6xl flex-1 items-start gap-6 px-4 py-6 sm:px-6 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-6 lg:py-10 lg:px-8">
-          <div className="text-center lg:col-start-1 lg:row-start-1 lg:text-left">
-            <p className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900">
-              <span className="aula-pulse" aria-hidden="true" />
-              SALA AO VIVO · GRATUITA
+        <div className="relative flex flex-col overflow-hidden">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="sala-orb absolute left-[-8%] top-24 h-72 w-72 rounded-full bg-teal-400/25 blur-3xl" />
+          <div className="sala-orb absolute right-[-6%] top-[28rem] h-80 w-80 rounded-full bg-violet-500/25 blur-3xl" style={{ animationDelay: '-3s' }} />
+          <div className="sala-orb absolute left-[30%] top-[52rem] h-72 w-72 rounded-full bg-rose-400/20 blur-3xl" style={{ animationDelay: '-6s' }} />
+        </div>
+        <header className="relative order-1 mx-auto flex max-w-3xl flex-col items-center px-4 pb-6 pt-8 text-center sm:pt-10">
+          <Image
+            src="/logos-mundo-podium/logo_horizontal_claro.png"
+            alt="Mundo Pódium"
+            width={132}
+            height={30}
+            priority
+            className="mb-6 h-7 w-auto opacity-90"
+          />
+          <p className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-gray-900">
+            <span className="aula-pulse" aria-hidden="true" />
+            SALA AO VIVO · GRATUITA
+          </p>
+          <h1 className="mt-5 whitespace-pre-line text-[clamp(2.6rem,8vw,4.6rem)] font-bold leading-[0.95] text-white">
+            {'Sala de Guerra\nPós-Eleição'}
+          </h1>
+          <p className="mt-4 max-w-xl text-lg font-bold leading-snug text-white">
+            O empresário travou. Você não pode travar.
+          </p>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-gray-200">
+            Com Rômulo Freitas · 170+ lives e 400+ horas de ligação real. Ao vivo. Sem corte.
+          </p>
+          <div className="mt-6 w-full max-w-xl rounded-3xl border border-white/10 bg-white/5 p-5 text-left">
+            <p className="text-base font-bold text-white">Você sai da sala com:</p>
+            <ul className="mt-3 space-y-3">
+              {OUTCOMES.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm leading-snug text-gray-100">
+                  <span aria-hidden="true" className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-yellow-400 text-xs font-black text-gray-950">
+                    ✓
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <ul className="mt-5 flex flex-wrap justify-center gap-2">
+            {HERO_CHIPS.map((pill) => (
+              <li key={pill} className="rounded-full border border-teal-300/40 bg-teal-400/10 px-3 py-1 text-xs font-bold text-teal-200">
+                {pill}
+              </li>
+            ))}
+          </ul>
+          <button type="button" className="aula-cta mt-8 max-w-sm" onClick={scrollToForm}>
+            Garantir minha vaga
+          </button>
+        </header>
+
+        <section className="relative order-3 mx-auto mt-16 max-w-3xl px-4 pb-4 text-center" aria-labelledby="sala-plataforma">
+          <h2 id="sala-plataforma" className="text-3xl font-bold leading-tight text-white sm:text-4xl">
+            O que é a plataforma Mundo Pódium
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-100">
+            A Mundo Pódium é uma plataforma de desenvolvimento comercial para quem vive de gerar oportunidades, ligar, negociar e fechar contrato. É onde o Rômulo Freitas ensina cold call e prospecção ativa com ligação real, ao vivo, sem corte. Quem entra é chamado de Piloto.
+          </p>
+        </section>
+
+        <section className="relative order-3 mx-auto mt-10 max-w-3xl px-4">
+          <div className="rounded-[2rem] bg-gradient-to-br from-amber-300 via-orange-400 to-rose-400 p-8 text-center text-gray-950 shadow-2xl shadow-orange-500/30">
+            <p className="text-[11px] font-black tracking-[0.18em]">NOVIDADE</p>
+            <p className="mt-3 text-3xl font-bold leading-tight sm:text-4xl">
+              Acesso gratuito à plataforma Mundo Pódium.
             </p>
-            <h1 className="mt-4 whitespace-pre-line text-[clamp(1.9rem,8vw,3.15rem)] font-bold leading-[1.05] text-white">
-              {'Sala de Guerra\nPós-Eleição'}
-            </h1>
-            <p className="mt-3 text-lg font-bold leading-snug text-white">
-              O empresário travou. Você não pode travar.
-            </p>
-            <p className="mt-2 text-base text-gray-300">Sábado, 31/10, às 10h. 3 horas.</p>
-            <p className="text-base text-gray-300">
-              Dentro da plataforma Mundo Pódium, no espaço{' '}
-              <span className="whitespace-nowrap">Treino Livre | Aulas Abertas</span>.
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed">
+              Se você nunca acessou, agora pode criar sua conta e já entrar na Plataforma.
             </p>
           </div>
+        </section>
 
-          <div className="aula-panel border-yellow-400/50 p-4 text-left shadow-lg shadow-yellow-500/10 sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:border-yellow-400/30">
+        <section className="relative order-3 mx-auto mt-16 max-w-3xl px-4" aria-labelledby="sala-acessa">
+          <h2 id="sala-acessa" className="text-center text-3xl font-bold leading-tight text-white">
+            O que você acessa ao criar sua conta
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-base leading-relaxed text-gray-300">
+            Quem entra é chamado de Piloto e já começa por esses espaços.
+          </p>
+          <ul className="mt-6 grid grid-cols-1 gap-3 text-left lg:grid-cols-3">
+            {ACCESS_CARDS.map((card) => (
+              <li key={card.title} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <span aria-hidden="true" className={`mb-3 block h-1.5 w-10 rounded-full ${card.bar}`} />
+                <p className="text-base font-bold text-white">{card.title}</p>
+                <p className="mt-2 text-sm leading-relaxed text-gray-100">{card.text}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mx-auto mt-5 max-w-xl text-center text-sm leading-relaxed text-gray-400">
+            Quando quiser acelerar, dá pra desbloquear a experiência completa: treinamentos, mentorias, Sala de Ligação e revisões.
+          </p>
+        </section>
+
+        <section className="relative order-3 mx-auto mt-16 max-w-3xl px-4 text-center" aria-labelledby="sala-como">
+          <h2 id="sala-como" className="text-3xl font-bold leading-tight text-white">
+            Como funciona
+          </h2>
+          <ol className="mt-6 grid grid-cols-1 gap-3 text-left lg:grid-cols-3">
+            {HOW_STEPS.map((step, index) => (
+              <li key={step} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-gray-100">
+                <span className="mb-2 block text-xs font-black text-yellow-400">{index + 1}</span>
+                {step}
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <div id="cadastro" className="relative z-10 order-2 mx-auto mt-16 w-full max-w-xl rounded-[2rem] border border-white/15 bg-gray-950/80 p-4 text-left shadow-2xl shadow-violet-500/10 sm:p-6">
             <form
               ref={formRef}
               className="space-y-3"
@@ -354,6 +471,9 @@ export function SalaDeGuerraPage() {
               noValidate
               aria-busy={submitting}
             >
+              <p className="text-sm leading-relaxed text-gray-100">
+                Quanto mais real o que você escrever, melhor a sala fica.
+              </p>
               <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
                 <label htmlFor={`${formId}-website`}>Website</label>
                 <input
@@ -521,6 +641,9 @@ export function SalaDeGuerraPage() {
                 </p>
               ) : null}
 
+              <p className="text-sm leading-relaxed text-gray-300">
+                Garanta sua vaga na Sala de Guerra e entre na Mundo Pódium para viver essa experiência ao vivo.
+              </p>
               <button type="submit" className="aula-cta" disabled={submitting}>
                 {submitting ? (
                   <span className="inline-flex items-center gap-2">
@@ -534,90 +657,26 @@ export function SalaDeGuerraPage() {
               <p className="text-sm leading-relaxed text-gray-300">
                 170+ lives e 400+ horas de ligação real. Ao vivo. Sem corte.
               </p>
-              <p className="text-xs leading-relaxed text-gray-500">
-                Quanto mais real o que você escrever, melhor a sala fica.
-              </p>
             </form>
           </div>
 
-          <ul className="aula-panel mx-auto w-full max-w-md space-y-4 p-4 sm:p-5 lg:col-start-1 lg:row-start-2 lg:mx-0 lg:max-w-none">
-            {SALA_PROMISES.map((promise, index) => (
-              <li
-                key={promise}
-                className="flex items-start gap-3 text-left text-sm leading-snug text-gray-200 sm:text-base"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-yellow-400 text-xs font-black text-gray-900"
-                >
-                  {index + 1}
-                </span>
-                {promise}
-              </li>
-            ))}
-          </ul>
-        </main>
-
-        <div className="mx-auto w-full max-w-6xl space-y-14 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-          <section className="mx-auto max-w-3xl space-y-4 text-center lg:text-left" aria-labelledby="sala-plataforma">
-            <h2 id="sala-plataforma" className="text-2xl font-bold leading-tight text-white sm:text-3xl">
-              O que é a plataforma Mundo Pódium
-            </h2>
-            <p className="text-base leading-relaxed text-gray-300">
-              A Mundo Pódium é uma plataforma de desenvolvimento comercial para quem vive de gerar oportunidades, ligar, negociar e fechar contrato. É onde o Rômulo Freitas ensina cold call e prospecção ativa com ligação real, ao vivo, sem corte. Quem entra é chamado de Piloto.
-            </p>
-          </section>
-
-          <section className="mx-auto max-w-3xl space-y-5" aria-labelledby="sala-como">
-            <h2 id="sala-como" className="text-center text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-left">
-              Como funciona
-            </h2>
-            <ol className="space-y-4">
-              {HOW_STEPS.map((step, index) => (
-                <li key={step} className="flex items-start gap-3 text-left text-base leading-relaxed text-gray-200">
-                  <span
-                    aria-hidden="true"
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-yellow-400 text-xs font-black text-gray-900"
-                  >
-                    {index + 1}
-                  </span>
-                  {step}
-                </li>
-              ))}
-            </ol>
-          </section>
-
-          <section className="space-y-5" aria-labelledby="sala-acessa">
-            <h2 id="sala-acessa" className="text-center text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-left">
-              O que você acessa ao criar sua conta
-            </h2>
-            <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {ACCESS_CARDS.map((card) => (
-                <li key={card.title} className="aula-panel p-5 text-left">
-                  <h3 className="text-base font-bold text-white">{card.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-300">{card.text}</p>
-                </li>
-              ))}
-            </ul>
-            <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-gray-300 lg:mx-0 lg:text-left">
-              Quando quiser acelerar, dá pra desbloquear a experiência completa: treinamentos, mentorias, Sala de Ligação e revisões.
-            </p>
-          </section>
-
-          <section className="mx-auto max-w-3xl space-y-5" aria-labelledby="sala-faq">
-            <h2 id="sala-faq" className="text-center text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-left">
+        <section className="relative order-4 mx-auto mt-16 max-w-3xl space-y-5 px-4" aria-labelledby="sala-faq">
+            <h2 id="sala-faq" className="text-center text-3xl font-bold leading-tight text-white">
               Perguntas rápidas
             </h2>
             <FaqList />
           </section>
 
-          <div className="mx-auto max-w-md">
-            <button type="button" className="aula-cta" onClick={scrollToForm}>
+          <section className="order-4 mx-auto w-full max-w-3xl px-4 py-12 text-center">
+            <h2 className="text-3xl font-bold leading-tight text-white">Sábado, 10h, a pista abre.</h2>
+            <p className="mt-3 text-base leading-relaxed text-gray-100">
+              Cria seu acesso e chega já dentro da plataforma.
+            </p>
+            <button type="button" className="aula-cta mx-auto mt-8 max-w-sm" onClick={scrollToForm}>
               Garantir minha vaga
             </button>
-          </div>
+          </section>
         </div>
-      </>
       )}
 
       <footer className="mt-auto flex flex-col items-center gap-2 border-t border-yellow-400/20 px-4 py-5 text-center sm:flex-row sm:justify-center sm:gap-4">
