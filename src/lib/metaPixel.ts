@@ -219,21 +219,31 @@ export function trackPurchase(options?: {
 /**
  * Track content views (ViewContent event)
  */
-export function trackViewContent(contentName?: string, contentCategory?: string): void {
-  if (!isPixelAvailable()) return;
-  
-  const params: Record<string, any> = {
-    content_type: 'page-section'
-  };
-  
-  if (contentName) params.content_name = contentName;
-  if (contentCategory) params.content_category = contentCategory;
-  
-  const fbq = (window as any).fbq as (...args: any[]) => void;
-  if (fbq) {
+export function trackViewContent(
+  contentName?: string,
+  contentCategory?: string,
+  options?: { contentId?: string; wait?: boolean }
+): void {
+  const send = () => {
+    if (!isPixelAvailable()) return;
+    const fbq = (window as any).fbq as (...args: any[]) => void;
+    if (!fbq) return;
+    const params: Record<string, any> = {
+      content_type: options?.contentId ? 'product' : 'page-section',
+    };
+    if (contentName) params.content_name = contentName;
+    if (contentCategory) params.content_category = contentCategory;
+    if (options?.contentId) params.content_ids = [options.contentId];
     fbq('track', 'ViewContent', params);
     logDebug('ViewContent', params);
+  };
+
+  if (options?.wait) {
+    whenPixelReady(send);
+    return;
   }
+
+  send();
 }
 
 /**
@@ -343,12 +353,11 @@ export function trackAulaLead(slug: string, title: string): void {
 }
 
 export function trackCustomEvent(eventName: string, params?: Record<string, any>): void {
-  if (!isPixelAvailable()) return;
-  
-  const fbq = (window as any).fbq as (...args: any[]) => void;
-  if (fbq) {
+  whenPixelReady(() => {
+    const fbq = (window as any).fbq as (...args: any[]) => void;
+    if (!fbq) return;
     fbq('trackCustom', eventName, params);
     logDebug(`Custom: ${eventName}`, params);
-  }
+  });
 }
 

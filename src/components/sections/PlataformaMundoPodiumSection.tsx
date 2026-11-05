@@ -102,7 +102,9 @@ const PLATFORM_CIRCLE_SCREENSHOTS = [
   },
 ] as const;
 
-export const PlataformaMundoPodiumSection: React.FC = () => {
+export const PlataformaMundoPodiumSection: React.FC<{ mostrarLinkCasa?: boolean }> = ({
+  mostrarLinkCasa = true,
+}) => {
   const sectionRef = useRef<HTMLElement>(null);
   const hasTrackedView = useRef(false);
   const [activeBenefit, setActiveBenefit] = useState(0);
@@ -406,16 +408,18 @@ export const PlataformaMundoPodiumSection: React.FC = () => {
                 {copy.accessBlurbTail}
               </p>
             </div>
-            <a
-              href={CASA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 shrink-0 rounded-xl border border-yellow-400/50 bg-yellow-400/15 px-5 py-3 text-sm font-bold text-yellow-200 hover:bg-yellow-400/25 hover:border-yellow-400/70 hover:text-white transition-all shadow-lg shadow-yellow-500/10"
-            >
-              {copy.accessCta}
-              <ArrowRight className="w-4 h-4" />
-              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-            </a>
+            {mostrarLinkCasa ? (
+              <a
+                href={CASA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 shrink-0 rounded-xl border border-yellow-400/50 bg-yellow-400/15 px-5 py-3 text-sm font-bold text-yellow-200 hover:bg-yellow-400/25 hover:border-yellow-400/70 hover:text-white transition-all shadow-lg shadow-yellow-500/10"
+              >
+                {copy.accessCta}
+                <ArrowRight className="w-4 h-4" />
+                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+              </a>
+            ) : null}
           </div>
         </div>
 

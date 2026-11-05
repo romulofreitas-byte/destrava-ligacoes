@@ -42,7 +42,9 @@ const featuredWorkshopTestimonials = [
   },
 ];
 
-export const WorkshopTestimonialBanner: React.FC = () => {
+export const WorkshopTestimonialBanner: React.FC<{ showEditionLine?: boolean }> = ({
+  showEditionLine = true,
+}) => {
   return (
     <section className="relative overflow-hidden py-8 md:py-10 bg-gradient-to-br from-yellow-500/10 via-green-400/5 to-transparent border-b border-yellow-400/20">
       <div className="absolute inset-0 z-0">
@@ -87,28 +89,30 @@ export const WorkshopTestimonialBanner: React.FC = () => {
                 ))}
               </div>
 
-              <div className="text-center">
-                <p className="text-gray-300 text-sm sm:text-base">
-                  {WORKSHOP_SALES.isOpen ? (
-                    <>
-                      <span className="text-yellow-400 font-semibold">
-                        {WORKSHOP_SALES.edition}ª Edição aberta!
-                      </span>{' '}
-                      {WORKSHOP_SALES.showSpotsProgress ? (
-                        <>
-                          Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
-                          {WORKSHOP_MODULE_2_INFO.dateDisplayShort} —{' '}
-                          {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas
-                        </>
-                      ) : (
-                        WORKSHOP_LAST_CALL.bannerLine
-                      )}
-                    </>
-                  ) : (
-                    <span className="text-yellow-400 font-semibold">Vagas encerradas</span>
-                  )}
-                </p>
-              </div>
+              {showEditionLine ? (
+                <div className="text-center">
+                  <p className="text-gray-300 text-sm sm:text-base">
+                    {WORKSHOP_SALES.isOpen ? (
+                      <>
+                        <span className="text-yellow-400 font-semibold">
+                          {WORKSHOP_SALES.edition}ª Edição aberta!
+                        </span>{' '}
+                        {WORKSHOP_SALES.showSpotsProgress ? (
+                          <>
+                            Módulo 1 em {WORKSHOP_INFO.dateDisplayShort} e módulo 2 em{' '}
+                            {WORKSHOP_MODULE_2_INFO.dateDisplayShort} —{' '}
+                            {WORKSHOP_SALES.filledSpots} de {WORKSHOP_SALES.maxSpots} vagas
+                          </>
+                        ) : (
+                          WORKSHOP_LAST_CALL.bannerLine
+                        )}
+                      </>
+                    ) : (
+                      <span className="text-yellow-400 font-semibold">Vagas encerradas</span>
+                    )}
+                  </p>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
