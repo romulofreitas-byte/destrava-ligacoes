@@ -53,21 +53,28 @@ async function sendForAula(aula: Aula, kind: AulaLembreteKind, now: Date) {
   const cutoff = aulaLembreteCutoff(aula.data, kind).toISOString();
   const column = columnFor(kind);
   const usesRespostas = LEMBRETES_SO_DESSA_AULA.has(kind);
-  let query = supabase
-    .from('inscricoes')
-    .select(usesRespostas ? 'id, nome, email, created_at, respostas' : 'id, nome, email, created_at')
-    .eq('slug', aula.slug)
-    .eq('consentimento', true)
-    .lt('created_at', cutoff)
-    .not('email', 'is', null);
-  if (!usesRespostas) query = query.is(column, null);
-  const { data, error } = await query;
+  const { data, error } = usesRespostas
+    ? await supabase
+        .from('inscricoes')
+        .select('id, nome, email, created_at, respostas')
+        .eq('slug', aula.slug)
+        .eq('consentimento', true)
+        .lt('created_at', cutoff)
+        .not('email', 'is', null)
+    : await supabase
+        .from('inscricoes')
+        .select('id, nome, email, created_at')
+        .eq('slug', aula.slug)
+        .eq('consentimento', true)
+        .lt('created_at', cutoff)
+        .is(column, null)
+        .not('email', 'is', null);
 
   if (error) {
     return { slug: aula.slug, kind, sent: 0, failed: 0, error: error.message };
   }
 
-  const rows = (data ?? []) as InscricaoRow[];
+  const rows = (data ?? []) as unknown as InscricaoRow[];
   let sent = 0;
   let failed = 0;
 
