@@ -6,7 +6,19 @@
     },
     {
       "path": "/api/aula/lembretes",
+      "schedule": "0 15 * * *"
+    },
+    {
+      "path": "/api/aula/lembretes",
       "schedule": "0 21 * * *"
+    },
+    {
+      "path": "/api/aula/lembretes",
+      "schedule": "30 22 * * *"
+    },
+    {
+      "path": "/api/aula/lembretes",
+      "schedule": "0 23 * * *"
     }
   ]
 }

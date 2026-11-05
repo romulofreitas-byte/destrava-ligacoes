@@ -3,11 +3,15 @@ import { aulaLembreteCutoff, aulaLembreteKindAt, type AulaLembreteKind } from '@
 import { sendAulaLembreteEmail } from '@/lib/aula-email';
 import { supabase } from '@/lib/supabase';
 
+const SLUG_LEMBRETES_DO_DIA = 'por-que-o-cliente-desliga';
+const LEMBRETES_SO_DESSA_AULA = new Set<AulaLembreteKind>(['meio-dia', 'trinta', 'inicio']);
+
 type InscricaoRow = {
   id: string | number;
   nome: string;
   email: string | null;
   created_at: string;
+  respostas?: Record<string, unknown> | null;
 };
 
 function maskEmail(email: string): string {
@@ -16,8 +20,31 @@ function maskEmail(email: string): string {
   return `${(local || '?')[0]}***@${domain}`;
 }
 
-function columnFor(kind: AulaLembreteKind): 'lembrete_vespera_em' | 'lembrete_dia_em' {
-  return kind === 'vespera' ? 'lembrete_vespera_em' : 'lembrete_dia_em';
+function columnFor(kind: AulaLembreteKind): string {
+  if (kind === 'vespera') return 'lembrete_vespera_em';
+  if (kind === 'meio-dia') return 'lembrete_meio_dia_em';
+  if (kind === 'trinta') return 'lembrete_trinta_em';
+  if (kind === 'inicio') return 'lembrete_inicio_em';
+  return 'lembrete_dia_em';
+}
+
+function lembreteStamp(respostas: InscricaoRow['respostas'], kind: AulaLembreteKind): string | null {
+  const bag = respostas?.lembretes;
+  if (!bag || typeof bag !== 'object') return null;
+  const stamp = (bag as Record<string, unknown>)[kind];
+  return typeof stamp === 'string' ? stamp : null;
+}
+
+function withLembreteStamp(
+  respostas: InscricaoRow['respostas'],
+  kind: AulaLembreteKind,
+  stamp: string | null,
+): Record<string, unknown> {
+  const base = respostas && typeof respostas === 'object' ? { ...respostas } : {};
+  const bag = base.lembretes && typeof base.lembretes === 'object' ? { ...(base.lembretes as object) } : {};
+  if (stamp) (bag as Record<string, string>)[kind] = stamp;
+  else delete (bag as Record<string, string>)[kind];
+  return { ...base, lembretes: bag };
 }
 
 async function sendForAula(aula: Aula, kind: AulaLembreteKind, now: Date) {
@@ -25,14 +52,16 @@ async function sendForAula(aula: Aula, kind: AulaLembreteKind, now: Date) {
 
   const cutoff = aulaLembreteCutoff(aula.data, kind).toISOString();
   const column = columnFor(kind);
-  const { data, error } = await supabase
+  const usesRespostas = LEMBRETES_SO_DESSA_AULA.has(kind);
+  let query = supabase
     .from('inscricoes')
-    .select('id, nome, email, created_at')
+    .select(usesRespostas ? 'id, nome, email, created_at, respostas' : 'id, nome, email, created_at')
     .eq('slug', aula.slug)
     .eq('consentimento', true)
     .lt('created_at', cutoff)
-    .is(column, null)
     .not('email', 'is', null);
+  if (!usesRespostas) query = query.is(column, null);
+  const { data, error } = await query;
 
   if (error) {
     return { slug: aula.slug, kind, sent: 0, failed: 0, error: error.message };
@@ -45,14 +74,21 @@ async function sendForAula(aula: Aula, kind: AulaLembreteKind, now: Date) {
   for (const row of rows) {
     const email = row.email?.trim();
     if (!email) continue;
+    if (usesRespostas && lembreteStamp(row.respostas, kind)) continue;
 
     const claimedAt = now.toISOString();
-    const claim = await supabase
-      .from('inscricoes')
-      .update({ [column]: claimedAt })
-      .eq('id', row.id)
-      .is(column, null)
-      .select('id');
+    const claim = usesRespostas
+      ? await supabase
+          .from('inscricoes')
+          .update({ respostas: withLembreteStamp(row.respostas, kind, claimedAt) })
+          .eq('id', row.id)
+          .select('id')
+      : await supabase
+          .from('inscricoes')
+          .update({ [column]: claimedAt })
+          .eq('id', row.id)
+          .is(column, null)
+          .select('id');
 
     if (claim.error || !claim.data?.length) continue;
 
@@ -69,7 +105,14 @@ async function sendForAula(aula: Aula, kind: AulaLembreteKind, now: Date) {
       kind,
       error: result.error,
     });
-    await supabase.from('inscricoes').update({ [column]: null }).eq('id', row.id).eq(column, claimedAt);
+    if (usesRespostas) {
+      await supabase
+        .from('inscricoes')
+        .update({ respostas: withLembreteStamp(row.respostas, kind, null) })
+        .eq('id', row.id);
+    } else {
+      await supabase.from('inscricoes').update({ [column]: null }).eq('id', row.id).eq(column, claimedAt);
+    }
   }
 
   return { slug: aula.slug, kind, sent, failed };
@@ -79,9 +122,10 @@ export async function sendAulaLembretes(now: Date = new Date()) {
   const results = [];
 
   for (const aula of Object.values(AULAS)) {
-    if (isAulaEncerrada(aula, now)) continue;
     const kind = aulaLembreteKindAt(aula.data, now);
     if (!kind) continue;
+    if (kind !== 'inicio' && isAulaEncerrada(aula, now)) continue;
+    if (LEMBRETES_SO_DESSA_AULA.has(kind) && aula.slug !== SLUG_LEMBRETES_DO_DIA) continue;
     results.push(await sendForAula(aula, kind, now));
   }
 

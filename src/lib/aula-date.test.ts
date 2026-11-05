@@ -39,12 +39,24 @@ test('lembrete da véspera às 10h, só para quem entrou antes da quarta', () =>
   assert.ok(!(new Date('2026-11-04T09:00:00-03:00') < aulaLembreteCutoff(NOVA, 'vespera')));
 });
 
-test('lembrete do dia às 18h, só para quem entrou antes', () => {
-  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T17:59:00-03:00')), null);
+test('lembretes do dia: meio-dia, 18h, 19h30 e o começo', () => {
+  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T11:59:00-03:00')), null);
+  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T12:00:00-03:00')), 'meio-dia');
+  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T17:59:00-03:00')), 'meio-dia');
   assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T18:00:00-03:00')), 'dia');
-  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T20:00:00-03:00')), null);
+  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T19:29:00-03:00')), 'dia');
+  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T19:30:00-03:00')), 'trinta');
+  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T20:00:00-03:00')), 'inicio');
+  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T20:44:00-03:00')), 'inicio');
+  assert.equal(aulaLembreteKindAt(NOVA, new Date('2026-11-05T20:45:00-03:00')), null);
+  assert.ok(new Date('2026-11-05T11:00:00-03:00') < aulaLembreteCutoff(NOVA, 'meio-dia'));
+  assert.ok(!(new Date('2026-11-05T12:00:00-03:00') < aulaLembreteCutoff(NOVA, 'meio-dia')));
   assert.ok(new Date('2026-11-04T15:00:00-03:00') < aulaLembreteCutoff(NOVA, 'dia'));
   assert.ok(!(new Date('2026-11-05T18:00:00-03:00') < aulaLembreteCutoff(NOVA, 'dia')));
+  assert.ok(new Date('2026-11-05T19:00:00-03:00') < aulaLembreteCutoff(NOVA, 'trinta'));
+  assert.ok(!(new Date('2026-11-05T19:30:00-03:00') < aulaLembreteCutoff(NOVA, 'trinta')));
+  assert.ok(new Date('2026-11-05T19:59:00-03:00') < aulaLembreteCutoff(NOVA, 'inicio'));
+  assert.ok(!(new Date('2026-11-05T20:00:00-03:00') < aulaLembreteCutoff(NOVA, 'inicio')));
 });
 
 test('já passou → Encerrada', () => {

@@ -65,21 +65,28 @@ function previousCivilYmd(ymd: string): string {
   return civilYmd(new Date(prev.getTime() - 24 * 60 * 60 * 1000));
 }
 
-export type AulaLembreteKind = 'vespera' | 'dia';
+export type AulaLembreteKind = 'vespera' | 'meio-dia' | 'dia' | 'trinta' | 'inicio';
 
-/** 10h da véspera, ou 18h do dia, em America/Sao_Paulo. Fora da janela, null. */
+/** 10h da véspera, ou no dia: 12h, 18h, 19h30 e os primeiros 45 min depois do início. */
 export function aulaLembreteKindAt(dataISO: string, now: Date = new Date()): AulaLembreteKind | null {
   const start = new Date(dataISO);
-  if (Number.isNaN(start.getTime()) || now.getTime() >= start.getTime()) return null;
+  if (Number.isNaN(start.getTime())) return null;
 
   const classYmd = civilYmd(start);
   const dayBefore = previousCivilYmd(classYmd);
   const nowYmd = civilYmd(now);
   const vesperaAt = new Date(`${dayBefore}T10:00:00-03:00`);
+  const meioDiaAt = new Date(`${classYmd}T12:00:00-03:00`);
   const diaAt = new Date(`${classYmd}T18:00:00-03:00`);
+  const trintaAt = new Date(`${classYmd}T19:30:00-03:00`);
+  const inicioUntil = new Date(start.getTime() + 45 * 60 * 1000);
 
   if (nowYmd === dayBefore && now.getTime() >= vesperaAt.getTime()) return 'vespera';
-  if (nowYmd === classYmd && diaAt.getTime() < start.getTime() && now.getTime() >= diaAt.getTime()) return 'dia';
+  if (nowYmd !== classYmd) return null;
+  if (now.getTime() >= start.getTime() && now.getTime() < inicioUntil.getTime()) return 'inicio';
+  if (now.getTime() >= trintaAt.getTime() && now.getTime() < start.getTime()) return 'trinta';
+  if (now.getTime() >= diaAt.getTime() && now.getTime() < trintaAt.getTime()) return 'dia';
+  if (now.getTime() >= meioDiaAt.getTime() && now.getTime() < diaAt.getTime()) return 'meio-dia';
   return null;
 }
 
@@ -87,7 +94,10 @@ export function aulaLembreteKindAt(dataISO: string, now: Date = new Date()): Aul
 export function aulaLembreteCutoff(dataISO: string, kind: AulaLembreteKind): Date {
   const classYmd = civilYmd(new Date(dataISO));
   if (kind === 'vespera') return new Date(`${previousCivilYmd(classYmd)}T00:00:00-03:00`);
-  return new Date(`${classYmd}T18:00:00-03:00`);
+  if (kind === 'meio-dia') return new Date(`${classYmd}T12:00:00-03:00`);
+  if (kind === 'dia') return new Date(`${classYmd}T18:00:00-03:00`);
+  if (kind === 'trinta') return new Date(`${classYmd}T19:30:00-03:00`);
+  return new Date(dataISO);
 }
 
 /** "Segunda, 21/09 · 20:30 às 22:00 · horário de Brasília" */

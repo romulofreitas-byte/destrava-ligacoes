@@ -25,6 +25,9 @@ function aulaFromAddress(): string {
 export function aulaLembreteSubject(aula: Aula, kind: AulaLembreteKind): string {
   const hora = formatAulaTime(aula.data);
   if (kind === 'vespera') return `Amanhã, ${hora}: ${aula.tituloLinha1}. Sem gravação.`;
+  if (kind === 'dia') return `Daqui a pouco, ${hora}: ${aula.tituloLinha1}`;
+  if (kind === 'trinta') return `Faltam 30 minutos: ${aula.tituloLinha1}`;
+  if (kind === 'inicio') return `Já começamos: ${aula.tituloLinha1}`;
   return `Hoje, ${hora}: ${aula.tituloLinha1}`;
 }
 
@@ -34,14 +37,25 @@ export function getAulaConfirmationHtml(
   kind: 'confirmacao' | AulaLembreteKind = 'confirmacao'
 ): string {
   const calendarUrl = buildGoogleCalendarUrl(aula);
-  const quando = getAulaQuandoLabel(aula);
   const hora = formatAulaTime(aula.data);
+  const quando =
+    kind === 'vespera'
+      ? `Amanhã, ${hora}`
+      : kind === 'confirmacao'
+        ? getAulaQuandoLabel(aula)
+        : `Hoje, ${hora}`;
   const intro =
     kind === 'vespera'
       ? `Amanhã, ${hora}. Sem gravação. Te vejo no Google Meet.`
-      : kind === 'dia'
-        ? `Hoje, ${hora}. Sem gravação. O link do Meet está aqui.`
-        : `Inscrição confirmada. Te vejo ${quando} no Google Meet.`;
+      : kind === 'meio-dia'
+        ? `É hoje, às ${hora}. Sem gravação. O link do Meet está aqui.`
+        : kind === 'dia'
+          ? `Daqui a pouco, às ${hora}. Sem gravação. O link do Meet está aqui.`
+          : kind === 'trinta'
+            ? 'Faltam 30 minutos. Sem gravação. O link do Meet está aqui.'
+            : kind === 'inicio'
+              ? 'Já começamos. Entra no Google Meet agora.'
+              : `Inscrição confirmada. Te vejo ${quando} no Google Meet.`;
   const preheader =
     kind === 'confirmacao' ? `${quando}. Grátis. Google Meet. Sem gravação.` : `${intro}`;
   const title = kind === 'confirmacao' ? aula.email.subject : aulaLembreteSubject(aula, kind);
