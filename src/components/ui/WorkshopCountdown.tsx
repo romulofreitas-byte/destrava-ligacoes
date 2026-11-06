@@ -34,6 +34,10 @@ type WorkshopCountdownProps = {
   size?: 'default' | 'sm';
   /** Hero: boxes (dias/hrs/min/seg) in a row, no caption */
   inlineBoxes?: boolean;
+  /** Quando definido, a contagem vai até esse instante (ISO), não até o módulo 1. */
+  targetIso?: string;
+  caption?: string;
+  expiredLabel?: string;
 };
 
 export const WorkshopCountdown: React.FC<WorkshopCountdownProps> = ({
@@ -44,16 +48,19 @@ export const WorkshopCountdown: React.FC<WorkshopCountdownProps> = ({
   hideCaption = false,
   size = 'default',
   inlineBoxes = false,
+  targetIso,
+  caption,
+  expiredLabel = 'Módulo 1 iniciado',
 }) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
-    const target = WORKSHOP_INFO.dateObj;
+    const target = targetIso ? new Date(targetIso) : WORKSHOP_INFO.dateObj;
     const tick = () => setTimeLeft(computeTimeLeft(target));
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [targetIso]);
 
   if (!timeLeft) {
     return (
@@ -66,7 +73,7 @@ export const WorkshopCountdown: React.FC<WorkshopCountdownProps> = ({
   if (timeLeft.expired) {
     return (
       <div className={`text-yellow-400 text-xs font-semibold ${className}`}>
-        Módulo 1 iniciado
+        {expiredLabel}
       </div>
     );
   }
@@ -140,15 +147,17 @@ export const WorkshopCountdown: React.FC<WorkshopCountdownProps> = ({
               align === 'start' ? 'text-center sm:text-left' : 'text-center'
             }`}
           >
-            {WORKSHOP_SALES.showSpotsProgress
-              ? `Módulo 1 — ${WORKSHOP_INFO.dateDisplayLong}`
-              : WORKSHOP_LAST_CALL.countdownCaption}
+            {caption ??
+              (WORKSHOP_SALES.showSpotsProgress
+                ? `Módulo 1 — ${WORKSHOP_INFO.dateDisplayLong}`
+                : WORKSHOP_LAST_CALL.countdownCaption)}
           </p>
         ) : (
           <p className="text-gray-400 text-[10px] sm:text-xs text-center sm:text-left">
-            {WORKSHOP_SALES.showSpotsProgress
-              ? `Contagem para o Módulo 1 (${WORKSHOP_INFO.dateDisplayShort})`
-              : WORKSHOP_LAST_CALL.countdownCaption}
+            {caption ??
+              (WORKSHOP_SALES.showSpotsProgress
+                ? `Contagem para o Módulo 1 (${WORKSHOP_INFO.dateDisplayShort})`
+                : WORKSHOP_LAST_CALL.countdownCaption)}
           </p>
         ))}
       <div className={`flex items-center gap-1 sm:gap-1.5 ${justifyClass}`}>

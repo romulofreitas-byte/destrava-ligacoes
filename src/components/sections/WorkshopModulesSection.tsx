@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Target, Phone, Zap, Clock, CheckCircle2, ChevronDown } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { WORKSHOP_DURATION, WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO } from '@/lib/constants';
+import { WORKSHOP_DURATION, WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_PRACTICE_DAY } from '@/lib/constants';
 
 type StudyCard = {
   title: string;
@@ -54,8 +54,10 @@ const MODULES: WorkshopModule[] = [
     },
     icon: Target,
     content: [
-      'Metas pessoais e objetivos comerciais',
-      'Técnicas de destravamento e controle de ansiedade',
+      'Abertura e as dores da turma',
+      'Mentalidade: meta, ansiedade e a regra dos 5 minutos',
+      'Treino da abertura',
+      'Tarefa de terça: 5 ligações reais com a sua lista',
     ],
     study: {
       heading: 'Estudo de mercado',
@@ -99,10 +101,11 @@ const MODULES: WorkshopModule[] = [
     },
     icon: Phone,
     content: [
-      'Ligações ao vivo dos participantes',
-      'Acompanhamento direto do Rômulo',
-      'Feedback em tempo real',
-      'Simulações e correções na hora',
+      'Revisão e banco de objeções da turma',
+      'Simulação com cliente difícil',
+      'A ligação de retorno',
+      'Ligação ao vivo com feedback na hora',
+      'Plano de 30 dias',
     ],
     benefitLine: 'Prática real, feedback personalizado e confiança para ligar sozinho.',
   },
@@ -186,8 +189,8 @@ export const WorkshopModulesSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-2xl mx-auto">
-            Preparação no primeiro. Prática no segundo. Módulo 1 à tarde e módulo 2 pela
-            manhã — em dias diferentes ({WORKSHOP_DURATION.detailLine}).
+            Segunda ao vivo, terça na sua lista, quarta na sala. Os dois encontros começam às 13h
+            ({WORKSHOP_DURATION.detailLine}).
           </p>
         </div>
 
@@ -199,6 +202,9 @@ export const WorkshopModulesSection: React.FC = () => {
             return (
               <div
                 key={module.id}
+                className="contents"
+              >
+              <div
                 className={`bg-gray-800/40 border-2 ${module.colorScheme.border} rounded-2xl backdrop-blur-xl transition-all duration-300 ${module.colorScheme.hoverBorder} ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
@@ -291,6 +297,16 @@ export const WorkshopModulesSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              {index === 0 ? (
+                <div className="rounded-2xl border border-gray-600/70 bg-gray-800/30 px-5 py-4 sm:px-6">
+                  <p className="text-yellow-400 text-xs font-semibold uppercase tracking-wide mb-1">
+                    Entre os encontros
+                  </p>
+                  <p className="text-white font-bold text-base mb-1">{WORKSHOP_PRACTICE_DAY.scheduleLine}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed">{WORKSHOP_PRACTICE_DAY.summary}</p>
+                </div>
+              ) : null}
               </div>
             );
           })}

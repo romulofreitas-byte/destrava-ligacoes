@@ -11,9 +11,11 @@ import {
   WORKSHOP_LAST_CALL,
   WORKSHOP_CHECKOUT_SECTION_ID,
   WORKSHOP_OFFER,
-  SHOW_UPGRADE_NOTE,
+  WORKSHOP_PROMO,
 } from '@/lib/constants';
 import { WorkshopCountdown } from '@/components/ui/WorkshopCountdown';
+import { useWorkshopSalesOpen } from '@/lib/useWorkshopSalesOpen';
+import { BlackFridayPill } from '@/components/ui/BlackFridayPill';
 
 type OfferTier = typeof WORKSHOP_OFFER.entender | typeof WORKSHOP_OFFER.destravar;
 
@@ -48,8 +50,8 @@ export const FinalCTAWorkshopSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const hasTrackedView = useRef(false);
   const { setCtaButtonClicked } = useModalContext();
-  const salesOpen = WORKSHOP_SALES.isOpen;
-  const { entender, destravar } = WORKSHOP_OFFER;
+  const salesOpen = useWorkshopSalesOpen();
+  const { destravar } = WORKSHOP_OFFER;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -144,19 +146,27 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               {WORKSHOP_OFFER.sectionTitle}
             </h2>
             <p className="text-gray-300 text-sm sm:text-base mb-6">{WORKSHOP_OFFER.sectionSubtitle}</p>
-            <div className="flex justify-center">
-              <WorkshopCountdown withDate />
-            </div>
+            {salesOpen ? (
+              <div className="flex justify-center">
+                <WorkshopCountdown
+                  withDate
+                  targetIso={WORKSHOP_PROMO.endsAt}
+                  caption="Esse preço acaba em"
+                  expiredLabel="Promoção encerrada"
+                />
+              </div>
+            ) : null}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-            <article className="order-1 lg:order-2 bg-gray-800/50 border-2 border-yellow-400/70 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-yellow-400/10 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="inline-flex px-3 py-1 bg-yellow-400 text-gray-900 text-xs font-black rounded-full tracking-wide">
-                  Recomendado
-                </span>
-              </div>
-              <h3 className="text-white font-black text-2xl mt-2 mb-1">{destravar.name}</h3>
+          <div className="max-w-xl mx-auto">
+            <article className="bg-gray-800/50 border-2 border-yellow-400/70 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-yellow-400/10 relative">
+              {salesOpen ? (
+                <div className="mb-4 flex flex-col items-start gap-2">
+                  <BlackFridayPill />
+                  <p className="text-gray-400 text-xs">{WORKSHOP_PROMO.deadlineLabel}</p>
+                </div>
+              ) : null}
+              <h3 className="text-white font-black text-2xl mb-1">{destravar.name}</h3>
               <p className="text-gray-300 text-sm mb-4">{destravar.support}</p>
               <div className="mb-5">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -204,29 +214,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
                 .
               </p>
             </article>
-
-            <article className="order-2 lg:order-1 bg-gray-800/30 border border-gray-600/70 rounded-3xl p-6 sm:p-8">
-              <h3 className="text-white font-bold text-2xl mb-1">{entender.name}</h3>
-              <p className="text-gray-300 text-sm mb-4">{entender.support}</p>
-              <p className="text-white font-black text-3xl mb-5">{entender.priceLabel}</p>
-              <div className="space-y-4 mb-5">
-                <FeatureList items={entender.includes} included />
-                <FeatureList items={entender.excludes} included={false} />
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-5">{entender.deliveryLine}</p>
-              {renderCta(entender, false)}
-            </article>
           </div>
-
-          <p className="mt-8 text-center text-gray-200 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-            {WORKSHOP_OFFER.decisionLine}
-          </p>
-
-          {SHOW_UPGRADE_NOTE && (
-            <p className="mt-4 text-center text-yellow-200/90 text-sm leading-relaxed max-w-3xl mx-auto">
-              {WORKSHOP_OFFER.upgradeNote}
-            </p>
-          )}
 
           <div className="mt-8 text-center">
             <p className="text-gray-400 text-xs mb-3">Formas de pagamento:</p>

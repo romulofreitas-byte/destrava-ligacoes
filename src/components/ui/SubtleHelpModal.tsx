@@ -4,7 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Youtube, MessageCircle } from 'lucide-react';
 import { trackWhatsAppClick, trackCustomEvent } from '@/lib/metaPixel';
 import { useModalContext } from '@/contexts/ModalContext';
-import { WORKSHOP_SALES, WORKSHOP_WHATSAPP } from '@/lib/constants';
+import { WORKSHOP_WHATSAPP } from '@/lib/constants';
+import { useWorkshopSalesOpen } from '@/lib/useWorkshopSalesOpen';
 
 export const SubtleHelpModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,6 +17,7 @@ export const SubtleHelpModal: React.FC = () => {
   const ctaObserverRef = useRef<IntersectionObserver | null>(null);
   const hasShownModalRef = useRef(false);
   const ctaButtonClickedRef = useRef(ctaButtonClicked);
+  const salesOpen = useWorkshopSalesOpen();
   
   // Atualizar ref quando ctaButtonClicked mudar
   useEffect(() => {
@@ -23,7 +25,7 @@ export const SubtleHelpModal: React.FC = () => {
   }, [ctaButtonClicked]);
 
   useEffect(() => {
-    if (!WORKSHOP_SALES.isOpen) return;
+    if (!salesOpen) return;
 
     setIsMounted(true);
 
@@ -77,7 +79,7 @@ export const SubtleHelpModal: React.FC = () => {
         ctaObserverRef.current.disconnect();
       }
     };
-  }, []);
+  }, [salesOpen]);
 
   // Efeito separado para cancelar timeouts quando o botão for clicado
   useEffect(() => {
@@ -136,7 +138,7 @@ export const SubtleHelpModal: React.FC = () => {
     trackWhatsAppClick('Subtle Help Modal - WhatsApp', 'help-modal');
   };
 
-  if (!WORKSHOP_SALES.isOpen || !isMounted || !isVisible) return null;
+  if (!salesOpen || !isMounted || !isVisible) return null;
 
   return (
     <div 

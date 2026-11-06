@@ -16,12 +16,15 @@ import {
   WORKSHOP_CLOSED_COPY,
   WORKSHOP_LAST_CALL,
   WORKSHOP_CHECKOUT_SECTION_ID,
+  WORKSHOP_PROMO,
 } from '@/lib/constants';
 import { scrollToCheckoutCard } from '@/lib/scrollToSection';
+import { useWorkshopSalesOpen } from '@/lib/useWorkshopSalesOpen';
+import { BlackFridayPill } from '@/components/ui/BlackFridayPill';
 
 export const HeroSectionWorkshop: React.FC = () => {
   const hasTrackedView = useRef(false);
-  const salesOpen = WORKSHOP_SALES.isOpen;
+  const salesOpen = useWorkshopSalesOpen();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -79,6 +82,16 @@ export const HeroSectionWorkshop: React.FC = () => {
           align === 'center' ? 'items-center' : 'items-center sm:items-start'
         }`}
       >
+        {salesOpen ? (
+          <div
+            className={`flex flex-col gap-1.5 ${
+              align === 'center' ? 'items-center' : 'items-center sm:items-start'
+            }`}
+          >
+            <BlackFridayPill />
+            <p className="text-gray-400 text-[10px] sm:text-xs">{WORKSHOP_PROMO.deadlineLabel}</p>
+          </div>
+        ) : null}
         {priceBlock}
         <a
           href={ctaHref}
@@ -101,7 +114,9 @@ export const HeroSectionWorkshop: React.FC = () => {
           align === 'center' ? 'justify-center' : 'justify-center sm:justify-start'
         }`}
       >
-        <WorkshopCountdown inlineBoxes />
+        {salesOpen ? (
+          <WorkshopCountdown inlineBoxes targetIso={WORKSHOP_PROMO.endsAt} expiredLabel="Promoção encerrada" />
+        ) : null}
       </div>
     </div>
   );
@@ -159,7 +174,7 @@ export const HeroSectionWorkshop: React.FC = () => {
                   style={{ fontFamily: 'var(--font-ubuntu), sans-serif' }}
                 >
                   <span className="hidden sm:inline">{WORKSHOP_DURATION.headerLine}</span>
-                  <span className="sm:hidden">8h · 2×4h</span>
+                  <span className="sm:hidden">~7h · 2×3h30</span>
                 </span>
               </div>
             </div>

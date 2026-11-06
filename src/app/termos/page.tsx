@@ -7,6 +7,7 @@ import {
   WORKSHOP_MODULE_2_INFO,
   WORKSHOP_PLATFORM_RULES,
   WORKSHOP_PRICING,
+  WORKSHOP_PRACTICE_DAY,
   WORKSHOP_SALES,
 } from '@/lib/constants';
 
@@ -86,6 +87,7 @@ export default function TermosPage() {
                     Módulo 1 — Preparação e Fundação ({WORKSHOP_INFO.dateDisplayLong},{' '}
                     {WORKSHOP_INFO.time} BRT)
                   </li>
+                  <li>{WORKSHOP_PRACTICE_DAY.termosLine}</li>
                   <li>
                     Módulo 2 — Sala de Ligação ({WORKSHOP_MODULE_2_INFO.dateDisplayLong},{' '}
                     {WORKSHOP_MODULE_2_INFO.time} BRT)

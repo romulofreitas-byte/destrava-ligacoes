@@ -11,11 +11,13 @@ import {
   WORKSHOP_CHECKOUT_SECTION_ID,
 } from '@/lib/constants';
 import { scrollToCheckoutCard } from '@/lib/scrollToSection';
+import { useWorkshopSalesOpen } from '@/lib/useWorkshopSalesOpen';
 
 const copy = WORKSHOP_GRID_BONUS;
 
 export const GridBonusSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const salesOpen = useWorkshopSalesOpen();
   const hasTrackedView = useRef(false);
 
   useEffect(() => {
@@ -162,7 +164,7 @@ export const GridBonusSection: React.FC = () => {
             className="group relative inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 font-black text-base sm:text-lg rounded-full hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 shadow-2xl hover:shadow-yellow-500/40 hover:scale-105 button-shine-effect"
           >
             <span className="relative drop-shadow-sm">
-              {WORKSHOP_SALES.isOpen
+              {salesOpen
                 ? `Quero minha vaga na ${WORKSHOP_SALES.edition}ª edição`
                 : WORKSHOP_CLOSED_COPY.finalCta}
             </span>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Calendar, Clock, Video, MapPin, Monitor } from 'lucide-react';
-import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_DURATION } from '@/lib/constants';
+import { WORKSHOP_INFO, WORKSHOP_MODULE_2_INFO, WORKSHOP_DURATION, WORKSHOP_PRACTICE_DAY } from '@/lib/constants';
 
 export const EventDetailsSection: React.FC = () => {
   return (
@@ -42,6 +42,9 @@ export const EventDetailsSection: React.FC = () => {
                       Módulo 1: {WORKSHOP_INFO.dateDisplayLong} ({WORKSHOP_INFO.dateDisplayShort})
                     </p>
                     <p className="text-gray-300 text-sm mt-1">
+                      Tarefa: {WORKSHOP_PRACTICE_DAY.dateDisplayLong} ({WORKSHOP_PRACTICE_DAY.dateDisplayShort})
+                    </p>
+                    <p className="text-gray-300 text-sm mt-1">
                       Módulo 2: {WORKSHOP_MODULE_2_INFO.dateDisplayLong} ({WORKSHOP_MODULE_2_INFO.dateDisplayShort})
                     </p>
                   </div>
@@ -77,10 +80,10 @@ export const EventDetailsSection: React.FC = () => {
                   <div>
                     <h3 className="text-white font-bold text-lg mb-1">Horários</h3>
                     <p className="text-gray-300 text-sm">
-                      Módulo 1: {WORKSHOP_INFO.time} (tarde)
+                      Módulo 1 e módulo 2: {WORKSHOP_INFO.time}
                     </p>
                     <p className="text-gray-300 text-sm mt-1">
-                      Módulo 2: {WORKSHOP_MODULE_2_INFO.time} (manhã)
+                      Terça, {WORKSHOP_PRACTICE_DAY.dateDisplayShort}: horário comercial
                     </p>
                   </div>
                 </div>

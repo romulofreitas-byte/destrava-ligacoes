@@ -14,8 +14,8 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
     },
     {
       icon: Zap,
-      title: '8h práticas',
-      description: 'Anatomia da Ligação + prática no mesmo dia seguinte.',
+      title: 'Dois encontros',
+      description: 'Anatomia na segunda, 5 ligações na terça e sala ao vivo na quarta.',
     },
     {
       icon: Shield,

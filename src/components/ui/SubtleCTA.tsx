@@ -4,6 +4,7 @@ import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { WORKSHOP_SALES, WORKSHOP_CLOSED_COPY, WORKSHOP_LAST_CALL } from '@/lib/constants';
 import { scrollToCheckoutCard } from '@/lib/scrollToSection';
+import { useWorkshopSalesOpen } from '@/lib/useWorkshopSalesOpen';
 
 interface SubtleCTAProps {
   text?: string;
@@ -14,9 +15,10 @@ export const SubtleCTA: React.FC<SubtleCTAProps> = ({
   text,
   className = '',
 }) => {
+  const salesOpen = useWorkshopSalesOpen();
   const label =
     text ??
-    (WORKSHOP_SALES.isOpen
+    (salesOpen
       ? WORKSHOP_SALES.showSpotsProgress
         ? 'Garantir vaga'
         : WORKSHOP_LAST_CALL.subtleCta
