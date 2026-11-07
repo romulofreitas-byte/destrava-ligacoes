@@ -63,13 +63,13 @@ export const WORKSHOP_SALES = {
 
 /** Preço de venda + ancoragem (hero e CTA final devem usar a mesma fonte) */
 export const WORKSHOP_PRICING = {
-  current: 'R$ 497,00',
+  current: 'R$ 597,00',
   /** Valor numérico em reais (APIs de pagamento — nunca confiar no client) */
-  amountBRL: 497,
-  amountCents: 49700,
+  amountBRL: 597,
+  amountCents: 59700,
   /** Preço “de” riscado — ancoragem visual */
   anchor: 'R$ 897,00',
-  savingsLabel: 'Economia de R$ 400 na Black Friday',
+  savingsLabel: 'Economia de R$ 300 na Black Friday',
 } as const;
 
 /** Copy dos CTAs com vendas fechadas */
