@@ -8,7 +8,7 @@ export const CORRETORES_OG = {
   imageAlt: 'Workshop ao vivo para corretores. Aprenda a ligar para quem não te conhece.',
 };
 
-export const CORRETORES_INSTAGRAM_URL = 'https://instagram.com/romulocsfreitas';
+export const CORRETORES_INSTAGRAM_URL = 'https://instagram.com/romulodebh';
 
 export const CORRETORES_PLATAFORMA_PADRAO = 'https://casa.mundopodium.com.br';
 

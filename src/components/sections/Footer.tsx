@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
                 <span>LinkedIn</span>
               </a>
               <a
-                href="https://instagram.com/romulocsfreitas"
+                href="https://instagram.com/romulodebh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-300 hover:text-yellow-400 transition-colors"

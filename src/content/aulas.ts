@@ -289,7 +289,7 @@ const LEAD_ANTIGO: Aula = {
     razao: 'Mundo Pódium LTDA',
     cnpj: '68.349.974/0001-19',
     cidade: 'Belo Horizonte, MG',
-    instagramUrl: 'https://instagram.com/romulocsfreitas',
+    instagramUrl: 'https://instagram.com/romulodebh',
     youtubeUrl: 'https://www.youtube.com/@mundopodium',
   },
   obrigado: {
@@ -485,7 +485,7 @@ const POR_QUE_O_CLIENTE_DESLIGA: Aula = {
     razao: 'Mundo Pódium LTDA',
     cnpj: '68.349.974/0001-19',
     cidade: 'Belo Horizonte, MG',
-    instagramUrl: 'https://instagram.com/romulocsfreitas',
+    instagramUrl: 'https://instagram.com/romulodebh',
     youtubeUrl: 'https://www.youtube.com/@mundopodium',
   },
   obrigado: {
