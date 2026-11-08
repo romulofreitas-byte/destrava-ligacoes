@@ -496,7 +496,8 @@ export async function getPaidRegistrations(): Promise<{ success: boolean; data?:
         .from('workshop_registrations')
         .select('*')
         .eq('status', 'PAID')
-        .not('email', 'is', null); // Apenas registros com email
+        .not('email', 'is', null)
+        .or('reference_id.is.null,reference_id.neq.workshop-corretores');
       
       if (response.error) {
         throw response.error;

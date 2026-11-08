@@ -1,6 +1,9 @@
 import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
-import { CORRETORES_PLATAFORMA_PADRAO } from '@/content/workshop-corretores';
+import {
+  CORRETORES_PLATAFORMA_PADRAO,
+  CORRETORES_WHATSAPP_URL,
+} from '@/content/workshop-corretores';
 import { CorretoresFooter } from '@/components/corretores/CorretoresFooter';
 import { CorretoresCompraPixel } from '@/components/corretores/CorretoresCompraPixel';
 
@@ -12,7 +15,8 @@ export const metadata: Metadata = {
 export default function CorretoresObrigadoPage() {
   const plataforma =
     process.env.NEXT_PUBLIC_WDL_PLATAFORMA_URL?.trim() || CORRETORES_PLATAFORMA_PADRAO;
-  const grupo = process.env.NEXT_PUBLIC_WDL_TURMA_WHATSAPP_URL?.trim() || '';
+  const grupo =
+    process.env.NEXT_PUBLIC_WDL_TURMA_WHATSAPP_URL?.trim() || CORRETORES_WHATSAPP_URL;
 
   return (
     <main className="min-h-screen bg-gray-900">
@@ -27,14 +31,20 @@ export default function CorretoresObrigadoPage() {
           <span className="block">Você está dentro.</span>
           <span className="block">Nos vemos segunda, 13h.</span>
         </h1>
-        <ul className="mt-8 space-y-2 text-gray-300 text-sm sm:text-base">
-          <li>Segunda, 09/11, às 13h: Dia 1</li>
-          <li>Terça, 10/11, em horário comercial: 5 ligações reais</li>
-          <li>Quarta, 11/11, às 13h: Dia 2</li>
-        </ul>
-        <p className="mt-6 text-gray-300 text-sm sm:text-base leading-relaxed">
-          Os encontros acontecem dentro da plataforma exclusiva do Mundo Pódium. O acesso chega por
-          e-mail.
+        <p className="mt-8 text-gray-300 text-sm sm:text-base leading-relaxed">
+          Assim que a compra confirma, você entra na plataforma do Mundo Pódium. O e-mail de acesso
+          chega da própria plataforma, no Circle.
+        </p>
+        <p className="mt-4 text-gray-300 text-sm sm:text-base leading-relaxed">
+          Lá dentro, à direita, em Eventos futuros, estão os dois encontros: segunda, 09/11, e
+          quarta, 11/11, às 13h. Confirma a participação nos dois.
+        </p>
+        <p className="mt-4 text-gray-300 text-sm sm:text-base leading-relaxed">
+          Na terça, 10/11, em horário comercial, são as 5 ligações reais.
+        </p>
+        <p className="mt-6 text-white text-sm sm:text-base leading-relaxed">
+          Entra no grupo da turma. É por lá que a gente comunica os movimentos das aulas: avisos,
+          dúvidas e o que vai acontecer no workshop.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
           <a
@@ -43,14 +53,12 @@ export default function CorretoresObrigadoPage() {
           >
             Acessar a plataforma
           </a>
-          {grupo ? (
-            <a
-              href={grupo}
-              className="inline-flex items-center justify-center px-6 py-3.5 border border-yellow-400/60 text-yellow-300 font-bold text-sm rounded-full"
-            >
-              Grupo da turma
-            </a>
-          ) : null}
+          <a
+            href={grupo}
+            className="inline-flex items-center justify-center px-6 py-3.5 border border-yellow-400/60 text-yellow-300 font-bold text-sm rounded-full"
+          >
+            Grupo da turma
+          </a>
         </div>
       </div>
       <CorretoresFooter />

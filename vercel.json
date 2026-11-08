@@ -19,6 +19,14 @@
     {
       "path": "/api/aula/lembretes",
       "schedule": "0 23 * * *"
+    },
+    {
+      "path": "/api/corretores/lembrete",
+      "schedule": "0 15 9 11 *"
+    },
+    {
+      "path": "/api/corretores/lembrete",
+      "schedule": "0 15 11 11 *"
     }
   ]
 }

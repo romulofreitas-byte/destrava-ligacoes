@@ -12,6 +12,8 @@ export const CORRETORES_INSTAGRAM_URL = 'https://instagram.com/romulocsfreitas';
 
 export const CORRETORES_PLATAFORMA_PADRAO = 'https://casa.mundopodium.com.br';
 
+export const CORRETORES_WHATSAPP_URL = 'https://chat.whatsapp.com/F82ZRlJ0NSf9TQ7kz03nAj';
+
 /** P6: revisão jurídica. Esvazie a string para tirar o bloco da página. */
 export const CORRETORES_AVISO_REGRAS =
   'Inclui o que pode e o que não pode na ligação: aviso de gravação, listas de bloqueio e, no consórcio, nada de promessa de contemplação.';
