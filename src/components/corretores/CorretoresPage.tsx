@@ -46,7 +46,7 @@ const LEVA_ICONES: LucideIcon[] = [PhoneCall, CalendarDays, MessageCircle, Rotat
 
 const FAIXA_AMARELA: { icon: LucideIcon; texto: string }[] = [
   { icon: Video, texto: '2 encontros ao vivo' },
-  { icon: Phone, texto: '5 ligações reais' },
+  { icon: Phone, texto: 'Faça suas ligações' },
   { icon: MonitorPlay, texto: 'Gravação na plataforma' },
   { icon: Users, texto: 'Saúde, seguros e consórcio' },
   { icon: PhoneCall, texto: 'Treino com a sua lista' },
@@ -312,10 +312,10 @@ export function CorretoresPage({ oferta }: { oferta: OfertaCorretores }) {
           </div>
         </div>
 
-        <div className="container-custom relative z-10 flex flex-1 items-center py-8 lg:py-10">
+        <div className="container-custom relative z-10 flex flex-1 items-center py-4 lg:py-10">
           <div className="grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
             <div>
-              <div className="mb-5 inline-flex rounded-2xl border border-yellow-400/30 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 px-4 py-2 shadow-lg shadow-yellow-400/10">
+              <div className="mb-5 hidden rounded-2xl border border-yellow-400/30 bg-gradient-to-r from-yellow-400/20 to-yellow-500/10 px-4 py-2 shadow-lg shadow-yellow-400/10 lg:inline-flex">
                 <span className="text-xs font-semibold leading-snug text-yellow-400">
                   Corretores de plano de saúde, seguros e consórcio
                 </span>
@@ -326,11 +326,22 @@ export function CorretoresPage({ oferta }: { oferta: OfertaCorretores }) {
                   para quem não te conhece.
                 </span>
               </h1>
-              <p className="mt-4 max-w-xl text-base font-normal leading-relaxed text-white sm:text-lg">
+              <p className="mt-4 hidden max-w-xl text-base font-normal leading-relaxed text-white sm:text-lg lg:block">
                 Para quem vende plano de saúde, seguros ou consórcio. Você sabe o produto. O que
                 trava é a ligação.
               </p>
               <CorretoresPrecoHero oferta={oferta} />
+              <ul className="mt-4 grid grid-cols-3 gap-2 lg:hidden">
+                <li className="rounded-xl border border-gray-700/50 bg-gray-800/40 px-2 py-2 text-center text-[11px] font-semibold leading-tight text-white">
+                  2 encontros
+                </li>
+                <li className="rounded-xl border border-gray-700/50 bg-gray-800/40 px-2 py-2 text-center text-[11px] font-semibold leading-tight text-white">
+                  Faça suas ligações
+                </li>
+                <li className="rounded-xl border border-gray-700/50 bg-gray-800/40 px-2 py-2 text-center text-[11px] font-semibold leading-tight text-white">
+                  Gravação na plataforma
+                </li>
+              </ul>
             </div>
             <HeroProofVideoSlot />
           </div>
@@ -341,6 +352,10 @@ export function CorretoresPage({ oferta }: { oferta: OfertaCorretores }) {
       </section>
 
       <Fold>
+        <p className="mx-auto mb-8 max-w-xl text-center text-base leading-relaxed text-white lg:hidden">
+          Para quem vende plano de saúde, seguros ou consórcio. Você sabe o produto. O que trava é a
+          ligação.
+        </p>
         <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-gray-700/50 bg-gray-800/40 p-6 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-yellow-400/50 hover:shadow-yellow-400/20 sm:p-8">
             <h2 className="mb-5 text-xl font-bold text-white sm:text-2xl">É pra você</h2>

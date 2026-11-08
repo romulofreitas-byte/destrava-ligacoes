@@ -32,7 +32,13 @@ export function registrarCliqueCorretores(oferta: OfertaCorretores) {
   });
 }
 
-export function CorretoresCta({ oferta }: { oferta: OfertaCorretores }) {
+export function CorretoresCta({
+  oferta,
+  rotulo,
+}: {
+  oferta: OfertaCorretores;
+  rotulo?: string;
+}) {
   if (oferta.estado === 'encerrada') {
     return (
       <a
@@ -60,7 +66,7 @@ export function CorretoresCta({ oferta }: { oferta: OfertaCorretores }) {
       onClick={() => registrarCliqueCorretores(oferta)}
       className={CTA_CLASS}
     >
-      QUERO ENTRAR NO WORKSHOP
+      {rotulo ?? 'QUERO ENTRAR NO WORKSHOP'}
     </a>
   );
 }
@@ -189,17 +195,19 @@ export function CorretoresPrecoHero({ oferta }: { oferta: OfertaCorretores }) {
     );
   }
 
+  const rotulo = oferta.precoLabel ? `Quero entrar · ${oferta.precoLabel}` : undefined;
+
   return (
-    <div className="mt-8 w-full max-w-sm">
+    <div className="mt-4 w-full max-w-sm lg:mt-8">
       <div className="mb-4">
         <PrecoAncorado oferta={oferta} grande />
       </div>
-      <CorretoresCta oferta={oferta} />
-      <p className="mt-3 text-xs leading-relaxed text-[#CDCDD2]">
+      <CorretoresCta oferta={oferta} rotulo={rotulo} />
+      <p className="mt-3 hidden text-xs leading-relaxed text-[#CDCDD2] sm:block">
         {oferta.pixLinhas.join(' ')}{' '}
         <span className="font-semibold text-yellow-400">Vagas limitadas.</span>
       </p>
-      <div className="mt-3">
+      <div className="mt-3 hidden sm:block">
         <CorretoresContagem oferta={oferta} compact />
       </div>
     </div>

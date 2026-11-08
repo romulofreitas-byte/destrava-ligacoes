@@ -96,6 +96,20 @@ export const CookieConsent: React.FC = () => {
     }));
   };
 
+  useEffect(() => {
+    const root = document.documentElement;
+    if (!isVisible || showSettings) {
+      root.style.setProperty('--cookie-bar', '0px');
+      return;
+    }
+    const mobile = window.matchMedia('(max-width: 639px)').matches;
+    root.style.setProperty(
+      '--cookie-bar',
+      mobile ? 'calc(2.75rem + env(safe-area-inset-bottom))' : '0px'
+    );
+    return () => root.style.setProperty('--cookie-bar', '0px');
+  }, [isVisible, showSettings]);
+
   if (!isVisible) return null;
 
   return (
@@ -104,8 +118,34 @@ export const CookieConsent: React.FC = () => {
       role="dialog"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
-      aria-modal="true"
+      aria-modal={showSettings}
     >
+      {!showSettings ? (
+        <div className="sm:hidden border-t border-gray-700 bg-gray-900/95 backdrop-blur px-3 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+          <div className="flex items-center justify-between gap-3">
+            <p id="cookie-consent-description" className="min-w-0 text-[11px] leading-snug text-gray-300">
+              Usamos cookies de anúncio.
+            </p>
+            <div className="flex shrink-0 items-center gap-3">
+              <button
+                type="button"
+                onClick={handleAcceptEssential}
+                className="text-[11px] font-semibold text-gray-400 underline"
+              >
+                Recusar
+              </button>
+              <button
+                type="button"
+                onClick={handleAcceptAll}
+                className="text-[11px] font-bold text-white underline"
+              >
+                Aceitar
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+      <div className={showSettings ? '' : 'hidden sm:block'}>
       <div className="w-full px-4 sm:px-6">
         <div className="bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-t-2xl shadow-2xl">
           {!showSettings ? (
@@ -125,10 +165,7 @@ export const CookieConsent: React.FC = () => {
                     Cookies e Privacidade
                   </h3>
                   {/* Mobile: texto curto | Desktop: texto completo */}
-                  <p 
-                    id="cookie-consent-description"
-                    className="text-xs leading-relaxed text-gray-300 mb-3 sm:mb-0"
-                  >
+                  <p className="text-xs leading-relaxed text-gray-300 mb-3 sm:mb-0">
                     <span className="sm:hidden">
                       Utilizamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa{' '}
                       <a 
@@ -343,6 +380,7 @@ export const CookieConsent: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ export function CorretoresBarraFixa({ oferta }: { oferta: OfertaCorretores }) {
   }
 
   return (
-    <div className="min-[769px]:hidden fixed inset-x-0 bottom-0 z-40 border-t border-gray-700 bg-gray-900/95 backdrop-blur px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+    <div className="min-[769px]:hidden fixed inset-x-0 bottom-[var(--cookie-bar,0px)] z-40 border-t border-gray-700 bg-gray-900/95 backdrop-blur px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       <a
         href={oferta.checkoutUrl}
         onClick={() => registrarCliqueCorretores(oferta)}
