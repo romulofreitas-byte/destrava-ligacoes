@@ -93,12 +93,12 @@ const platformBenefits = [
 
 const PLATFORM_CIRCLE_SCREENSHOTS = [
   {
-    src: '/Plataforma 1.png',
-    alt: 'Captura da Plataforma Mundo Pódium no Circle — área de membros e navegação.',
+    src: '/plataforma/feed.png',
+    alt: 'Feed da plataforma Mundo Pódium, com a publicação da Sala de Ligação e os eventos futuros.',
   },
   {
-    src: '/Plataforma 2.png',
-    alt: 'Outra captura do ambiente Mundo Pódium no Circle — conteúdos e estrutura.',
+    src: '/plataforma/biblioteca.png',
+    alt: 'PódiumFlix, a biblioteca do método, com as aulas da plataforma Mundo Pódium.',
   },
 ] as const;
 
@@ -375,7 +375,7 @@ export const PlataformaMundoPodiumSection: React.FC<{ mostrarLinkCasa?: boolean 
                         key={shot.src}
                         className="group relative overflow-hidden rounded-2xl border border-gray-700/60 bg-gray-900/80 shadow-lg shadow-black/30 ring-1 ring-white/5 transition-all duration-300 hover:border-yellow-400/25 hover:ring-yellow-400/10"
                       >
-                        <div className="relative aspect-[16/10] w-full bg-gray-950">
+                        <div className="relative aspect-[2/1] w-full bg-gray-950">
                           <Image
                             src={shot.src}
                             alt={shot.alt}
