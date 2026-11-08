@@ -32,11 +32,11 @@ export async function POST(request: NextRequest) {
   }
 
   const body = (await request.json().catch(() => null)) as AsaasNotice | null;
-  if (!body?.payment?.id || !isPaidEvent(body.event)) {
+  const payment = body?.payment;
+  const paymentId = payment?.id;
+  if (!payment || !paymentId || !isPaidEvent(body?.event)) {
     return NextResponse.json({ ok: true, ignored: true });
   }
-
-  const payment = body.payment;
   let linkUrl: string | null = null;
   if (payment.paymentLink && process.env.ASAAS_API_KEY?.trim()) {
     const link = await asaasGet(`/paymentLinks/${payment.paymentLink}`);
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
   }
 
   const result = await registrarEEnviarConfirmacao({
-    paymentId: payment.id,
+    paymentId,
     email,
     nome,
     valor: typeof payment.value === 'number' ? payment.value : undefined,
