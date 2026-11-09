@@ -5,6 +5,7 @@ import {
   encontroDoDia,
   htmlConfirmacao,
   htmlMeioDia,
+  htmlUltimaChamada,
   isPaidEvent,
   jaAvisouNoDia,
   pareceDestaEdicao,
@@ -42,4 +43,14 @@ test('e-mails citam o grupo e os encontros', () => {
   assert.match(hora, /Falta uma hora|13h/);
   assert.equal(compra.includes('—'), false);
   assert.equal(hora.includes('—'), false);
+});
+
+test('última chamada fecha quarta às 13h e não fala de gravação', () => {
+  const html = htmlUltimaChamada('Maria Silva');
+  assert.match(html, /Olá, Maria/);
+  assert.match(html, /quarta, 11\/11, às 13h/);
+  assert.match(html, /R\$597/);
+  assert.match(html, /utm_content=ultima-chamada/);
+  assert.equal(/grava/i.test(html), false);
+  assert.equal(html.includes('—'), false);
 });

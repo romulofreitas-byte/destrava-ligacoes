@@ -101,6 +101,25 @@ function button(href: string, label: string): string {
   return `<a href="${escapeHtml(href)}" style="display:inline-block;background:#eab308;color:#111827;text-decoration:none;font-weight:800;font-size:14px;padding:14px 22px;border-radius:999px;">${escapeHtml(label)}</a>`;
 }
 
+export const ULTIMA_CHAMADA_SUBJECT = 'Última chamada: Workshop até quarta, 13h';
+export const ULTIMA_CHAMADA_URL =
+  'https://workshop.mundopodium.com.br/corretores?utm_source=email&utm_medium=base-aula&utm_campaign=wdl-0911&utm_content=ultima-chamada';
+
+export function htmlUltimaChamada(nome: string): string {
+  const primeiro = escapeHtml(nome.trim().split(/\s+/)[0] || 'oi');
+  return `<!DOCTYPE html><html lang="pt-BR"><body style="margin:0;background:#111827;font-family:Arial,sans-serif;">
+  <table role="presentation" width="100%" style="background:#111827;padding:32px 16px;"><tr><td align="center">
+  <table role="presentation" width="100%" style="max-width:560px;background:#1f2937;border-radius:16px;padding:32px;">
+  <tr><td style="color:#fbbf24;font-size:13px;font-weight:700;letter-spacing:0.08em;">ÚLTIMA CHAMADA</td></tr>
+  <tr><td style="color:#ffffff;font-size:28px;font-weight:800;padding-top:12px;">O workshop fica aberto até quarta, 13h.</td></tr>
+  <tr><td style="color:#e5e7eb;font-size:16px;line-height:1.6;padding-top:16px;">Olá, ${primeiro}. Na quinta você viu por que o cliente desliga. O workshop é o treino disso, ao vivo.</td></tr>
+  <tr><td style="color:#e5e7eb;font-size:16px;line-height:1.6;padding-top:12px;">Dois encontros: segunda, 09/11, e quarta, 11/11, às 13h. De R$897 por R$597. As inscrições encerram quarta, 11/11, às 13h.</td></tr>
+  <tr><td style="color:#e5e7eb;font-size:16px;line-height:1.6;padding-top:12px;">Pix ou cartão. A confirmação é imediata.</td></tr>
+  <tr><td style="padding-top:24px;">${button(ULTIMA_CHAMADA_URL, 'Quero entrar · R$597')}</td></tr>
+  <tr><td style="color:#9ca3af;font-size:12px;line-height:1.5;padding-top:24px;">Mundo Pódium. Você recebeu porque se inscreveu na aula de quinta.</td></tr>
+  </table></td></tr></table></body></html>`;
+}
+
 export function htmlConfirmacao(nome: string): string {
   const safe = escapeHtml(nome.trim() || 'oi');
   return `<!DOCTYPE html><html lang="pt-BR"><body style="margin:0;background:#111827;font-family:Arial,sans-serif;">
