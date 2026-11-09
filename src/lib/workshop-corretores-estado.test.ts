@@ -33,7 +33,7 @@ test('até 06/11 23h59:59 continua na onda 1', () => {
   assert.deepEqual(result.pixLinhas, ['Pix ou cartão.']);
   assert.deepEqual(result.urgencia, [
     'O preço muda no sábado, 07/11.',
-    'As inscrições encerram segunda, 09/11, às 12h, uma hora antes do início.',
+    'As inscrições encerram quarta, 11/11, às 13h.',
   ]);
 });
 
@@ -47,7 +47,7 @@ test('00:00:00 de 07/11 abre a onda 2', () => {
   assert.equal(result.pixLinhas.length, 2);
   assert.deepEqual(result.urgencia, [
     'Última chamada.',
-    'As inscrições encerram segunda, 09/11, às 12h, uma hora antes do início.',
+    'As inscrições encerram quarta, 11/11, às 13h.',
   ]);
   assert.match(result.contagemLegenda || '', /Última chance/);
 });
@@ -56,12 +56,16 @@ test('um segundo antes da virada ainda é onda 1', () => {
   assert.equal(oferta('2026-11-06T23:59:58-03:00').estado, 'onda1');
 });
 
-test('até 09/11 11h59:59 continua na onda 2', () => {
+test('09/11 ao meio-dia continua na onda 2', () => {
+  assert.equal(oferta('2026-11-09T12:00:00-03:00').estado, 'onda2');
+});
+
+test('até 11/11 12h59:59 continua na onda 2', () => {
   assert.equal(oferta(ONDA2_FIM_PADRAO).estado, 'onda2');
 });
 
-test('09/11 às 12h encerra, sem preço e sem checkout', () => {
-  const result = oferta('2026-11-09T12:00:00-03:00');
+test('11/11 às 13h encerra, sem preço e sem checkout', () => {
+  const result = oferta('2026-11-11T13:00:00-03:00');
   assert.equal(result.estado, 'encerrada');
   assert.equal(result.precoLabel, null);
   assert.equal(result.precoCheio, null);

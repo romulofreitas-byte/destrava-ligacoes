@@ -1,7 +1,7 @@
 export type EstadoCorretores = 'onda1' | 'onda2' | 'encerrada';
 
 export const ONDA1_FIM_PADRAO = '2026-11-06T23:59:59-03:00';
-export const ONDA2_FIM_PADRAO = '2026-11-09T11:59:59-03:00';
+export const ONDA2_FIM_PADRAO = '2026-11-11T12:59:59-03:00';
 
 const PRECO = {
   onda1: { label: 'R$497', amountBRL: 497, onda: 1 as const },
@@ -12,12 +12,12 @@ const PRECO_CHEIO = 'R$897';
 
 const ROTULO: Record<EstadoCorretores, string> = {
   onda1: 'Black Friday até sexta, 06/11, 23h59',
-  onda2: 'Até segunda, 09/11, às 12h',
+  onda2: 'Até quarta, 11/11, às 13h',
   encerrada: 'As inscrições desta edição foram encerradas.',
 };
 
 const FRASE_ENCERRAMENTO =
-  'As inscrições encerram segunda, 09/11, às 12h, uma hora antes do início.';
+  'As inscrições encerram quarta, 11/11, às 13h.';
 
 const URGENCIA: Record<Exclude<EstadoCorretores, 'encerrada'>, string[]> = {
   onda1: ['O preço muda no sábado, 07/11.', FRASE_ENCERRAMENTO],

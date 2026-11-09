@@ -220,7 +220,7 @@ export const CORRETORES_FAQ = [
   {
     pergunta: 'Até quando posso me inscrever?',
     resposta:
-      'O preço de Black Friday vale até sexta, 06/11, às 23h59. Depois sobe, e as inscrições encerram segunda, 09/11, às 12h.',
+      'O preço de R$597 vale até quarta, 11/11, às 13h. As inscrições encerram nesse horário.',
   },
 ];
 
