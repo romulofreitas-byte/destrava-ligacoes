@@ -21,7 +21,7 @@ const montserrat = Montserrat({
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://destrava-ligacoes.vercel.app'
 
 const workshopMetaDescription =
-  'Workshop em dois encontros ao vivo (9 e 11 de novembro, cerca de 3h30 cada) onde você aprende a destravar ligações, a Anatomia da Ligação e faz ligações reais com acompanhamento direto.';
+  'Workshop em dois encontros ao vivo (16 e 18 de novembro, cerca de 3h30 cada) onde você aprende a destravar ligações, a Anatomia da Ligação e faz ligações reais com acompanhamento direto.';
 
 export const metadata: Metadata = {
   title: 'Workshop Destrava Ligações | Aprenda Cold Call e Marque Reuniões de Vendas em 48h',

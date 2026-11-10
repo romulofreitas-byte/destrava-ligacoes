@@ -16,7 +16,7 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 }
 
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
-/** Checkout Asaas do Workshop (CTA final) — Black Friday, comunidade de marketing */
+/** Checkout Asaas do Workshop (CTA final) — primeiro lote */
 export const WORKSHOP_CHECKOUT_URL = 'https://www.asaas.com/000/c/renbtkavuint6qxp';
 /** Âncora do card de compra no fim da landing */
 export const WORKSHOP_CHECKOUT_SECTION_ID = 'inscricao';
@@ -31,14 +31,18 @@ export const WORKSHOP_SUCCESS_PATH = '/workshop-destrava-ligacoes/obrigado';
 export const WORKSHOP_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas`;
 /** Retorno do checkout Anatomia. Colar no link Asaas desse degrau, com autoRedirect. */
 export const WORKSHOP_ENTENDER_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas&tier=entender`;
-/** Black Friday desta página. Depois desse instante os CTAs fecham sozinhos. */
+/**
+ * Primeiro lote sem data de virada.
+ * endsAt null mantém as vendas abertas até o preço ser trocado.
+ */
 export const WORKSHOP_PROMO = {
-  endsAt: '2026-11-06T23:59:59-03:00',
-  badge: 'Black Friday',
-  deadlineLabel: 'até hoje, 06/11, 23h59',
+  endsAt: null as string | null,
+  badge: 'Primeiro lote',
+  deadlineLabel: '',
 } as const;
 
 export function isWorkshopSalesOpen(now = Date.now()): boolean {
+  if (!WORKSHOP_PROMO.endsAt) return true;
   return now <= new Date(WORKSHOP_PROMO.endsAt).getTime();
 }
 
@@ -47,7 +51,7 @@ export const WORKSHOP_SALES = {
   /** Abertura das vendas (exibição em CTAs) */
   opensOnDisplay: '11/08',
   /** Número da edição atual (ex.: 14 → "14ª") */
-  edition: 15,
+  edition: 16,
   /** Vagas já preenchidas (hero + CTA final — números absolutos) */
   filledSpots: 0,
   /** Capacidade máxima da turma */
@@ -63,13 +67,13 @@ export const WORKSHOP_SALES = {
 
 /** Preço de venda + ancoragem (hero e CTA final devem usar a mesma fonte) */
 export const WORKSHOP_PRICING = {
-  current: 'R$ 597,00',
+  current: 'R$ 497,00',
   /** Valor numérico em reais (APIs de pagamento — nunca confiar no client) */
-  amountBRL: 597,
-  amountCents: 59700,
+  amountBRL: 497,
+  amountCents: 49700,
   /** Preço “de” riscado — ancoragem visual */
   anchor: 'R$ 897,00',
-  savingsLabel: 'Economia de R$ 300 na Black Friday',
+  savingsLabel: 'Economia de R$ 400 no primeiro lote',
 } as const;
 
 /** Copy dos CTAs com vendas fechadas */
@@ -83,13 +87,13 @@ export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVA LIGAÇÕES | MUNDO PÓDIUM',
   /** Nome curto do produto (site, SEO, e-mails) */
   productName: 'Workshop Destrava Ligações',
-  date: '9 de novembro de 2026',
-  dateObj: new Date('2026-11-09T13:00:00-03:00'),
+  date: '16 de novembro de 2026',
+  dateObj: new Date('2026-11-16T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '9 de Novembro',
-  dateDisplayShort: '09/11',
+  dateDisplayLong: '16 de Novembro',
+  dateDisplayShort: '16/11',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Segunda-feira, 9 de novembro de 2026',
+  dateEmailLine: 'Segunda-feira, 16 de novembro de 2026',
   time: '13:00 – 16:30',
   /** Início do módulo 1 (atalho para UI compacta) */
   timeStartBadge: '13h',
@@ -179,11 +183,11 @@ export const WORKSHOP_WHATSAPP = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '11 de novembro de 2026',
-  dateObj: new Date('2026-11-11T13:00:00-03:00'),
-  dateDisplayLong: '11 de Novembro',
-  dateDisplayShort: '11/11',
-  dateEmailLine: 'Quarta-feira, 11 de novembro de 2026',
+  date: '18 de novembro de 2026',
+  dateObj: new Date('2026-11-18T13:00:00-03:00'),
+  dateDisplayLong: '18 de Novembro',
+  dateDisplayShort: '18/11',
+  dateEmailLine: 'Quarta-feira, 18 de novembro de 2026',
   time: '13:00 – 16:30',
   /** Zero à esquerda: evita ler como “8h de duração” */
   timeStartBadge: '13h',
@@ -191,12 +195,12 @@ export const WORKSHOP_MODULE_2_INFO = {
 
 /** Tarefa entre os dois encontros — não é um terceiro ao vivo */
 export const WORKSHOP_PRACTICE_DAY = {
-  dateDisplayLong: '10 de Novembro',
-  dateDisplayShort: '10/11',
-  dateEmailLine: 'Terça-feira, 10 de novembro de 2026',
-  scheduleLine: 'Terça, 10/11 · horário comercial',
+  dateDisplayLong: '17 de Novembro',
+  dateDisplayShort: '17/11',
+  dateEmailLine: 'Terça-feira, 17 de novembro de 2026',
+  scheduleLine: 'Terça, 17/11 · horário comercial',
   summary: '5 ligações reais com a sua lista. Você anota as objeções e publica o resultado na plataforma.',
-  termosLine: 'Tarefa de terça, 10 de novembro: 5 ligações reais com a sua lista',
+  termosLine: 'Tarefa de terça, 17 de novembro: 5 ligações reais com a sua lista',
 } as const;
 
 /**

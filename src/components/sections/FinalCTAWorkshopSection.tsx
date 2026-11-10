@@ -146,7 +146,7 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               {WORKSHOP_OFFER.sectionTitle}
             </h2>
             <p className="text-gray-300 text-sm sm:text-base mb-6">{WORKSHOP_OFFER.sectionSubtitle}</p>
-            {salesOpen ? (
+            {salesOpen && WORKSHOP_PROMO.endsAt ? (
               <div className="flex justify-center">
                 <WorkshopCountdown
                   withDate
@@ -163,7 +163,9 @@ export const FinalCTAWorkshopSection: React.FC = () => {
               {salesOpen ? (
                 <div className="mb-4 flex flex-col items-start gap-2">
                   <BlackFridayPill />
-                  <p className="text-gray-400 text-xs">{WORKSHOP_PROMO.deadlineLabel}</p>
+                  {WORKSHOP_PROMO.deadlineLabel ? (
+                    <p className="text-gray-400 text-xs">{WORKSHOP_PROMO.deadlineLabel}</p>
+                  ) : null}
                 </div>
               ) : null}
               <h3 className="text-white font-black text-2xl mb-1">{destravar.name}</h3>

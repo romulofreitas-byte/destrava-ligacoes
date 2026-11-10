@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { isWorkshopSalesOpen } from '@/lib/constants';
 
-/** Vendas abertas só até o fim da Black Friday. Atualiza se a página ficar aberta na virada. */
+/** Vendas abertas enquanto o primeiro lote não tiver data de virada. */
 export function useWorkshopSalesOpen(): boolean {
   const [open, setOpen] = useState(() => isWorkshopSalesOpen());
 

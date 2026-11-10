@@ -89,7 +89,9 @@ export const HeroSectionWorkshop: React.FC = () => {
             }`}
           >
             <BlackFridayPill />
-            <p className="text-gray-400 text-[10px] sm:text-xs">{WORKSHOP_PROMO.deadlineLabel}</p>
+            {WORKSHOP_PROMO.deadlineLabel ? (
+              <p className="text-gray-400 text-[10px] sm:text-xs">{WORKSHOP_PROMO.deadlineLabel}</p>
+            ) : null}
           </div>
         ) : null}
         {priceBlock}
@@ -114,7 +116,7 @@ export const HeroSectionWorkshop: React.FC = () => {
           align === 'center' ? 'justify-center' : 'justify-center sm:justify-start'
         }`}
       >
-        {salesOpen ? (
+        {salesOpen && WORKSHOP_PROMO.endsAt ? (
           <WorkshopCountdown inlineBoxes targetIso={WORKSHOP_PROMO.endsAt} expiredLabel="Promoção encerrada" />
         ) : null}
       </div>
