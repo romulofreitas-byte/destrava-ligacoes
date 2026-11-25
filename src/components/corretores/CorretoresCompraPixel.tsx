@@ -61,7 +61,7 @@ export function CorretoresCompraPixel() {
       }
 
       const stored = Number(sessionStorage.getItem('wdl_corretores_valor'));
-      const value = stored === 497 || stored === 597 ? stored : undefined;
+      const value = stored === 497 || stored === 597 || stored === 897 ? stored : undefined;
       const params: Record<string, unknown> = {
         content_name: 'Workshop Destrava Ligações Corretores',
         content_type: 'product',

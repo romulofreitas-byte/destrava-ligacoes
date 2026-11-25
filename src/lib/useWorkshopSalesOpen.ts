@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { isWorkshopSalesOpen } from '@/lib/constants';
 
-/** Vendas abertas enquanto o primeiro lote não tiver data de virada. */
+/** Vendas fechadas enquanto não houver checkout de R$ 897. */
 export function useWorkshopSalesOpen(): boolean {
   const [open, setOpen] = useState(() => isWorkshopSalesOpen());
 

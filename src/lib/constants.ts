@@ -16,8 +16,11 @@ export function getGoogleMeetInfo(): GoogleMeetInfo {
 }
 
 export const PLATAFORMA_CASA_URL = 'https://casa.mundopodium.com.br/';
-/** Checkout Asaas do Workshop (CTA final) — primeiro lote */
-export const WORKSHOP_CHECKOUT_URL = 'https://www.asaas.com/000/c/renbtkavuint6qxp';
+/**
+ * Checkout de R$ 897. Vazio até existir o link novo.
+ * O link de R$ 497 não pode voltar ao botão.
+ */
+export const WORKSHOP_CHECKOUT_URL = '';
 /** Âncora do card de compra no fim da landing */
 export const WORKSHOP_CHECKOUT_SECTION_ID = 'inscricao';
 /** Domínio público do workshop — precisa ser o mesmo cadastrado no Asaas */
@@ -32,12 +35,12 @@ export const WORKSHOP_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCE
 /** Retorno do checkout Anatomia. Colar no link Asaas desse degrau, com autoRedirect. */
 export const WORKSHOP_ENTENDER_SUCCESS_URL = `${WORKSHOP_PUBLIC_SITE_URL}${WORKSHOP_SUCCESS_PATH}?status=PAID&source=asaas&tier=entender`;
 /**
- * Primeiro lote sem data de virada.
- * endsAt null mantém as vendas abertas até o preço ser trocado.
+ * Vendas fechadas até existir o checkout de R$ 897.
+ * endsAt no passado mantém o botão em "Vagas encerradas".
  */
 export const WORKSHOP_PROMO = {
-  endsAt: null as string | null,
-  badge: 'Primeiro lote',
+  endsAt: '2026-11-24T23:59:59-03:00' as string | null,
+  badge: '17ª edição',
   deadlineLabel: '',
 } as const;
 
@@ -51,7 +54,7 @@ export const WORKSHOP_SALES = {
   /** Abertura das vendas (exibição em CTAs) */
   opensOnDisplay: '11/08',
   /** Número da edição atual (ex.: 14 → "14ª") */
-  edition: 16,
+  edition: 17,
   /** Vagas já preenchidas (hero + CTA final — números absolutos) */
   filledSpots: 0,
   /** Capacidade máxima da turma */
@@ -67,13 +70,13 @@ export const WORKSHOP_SALES = {
 
 /** Preço de venda + ancoragem (hero e CTA final devem usar a mesma fonte) */
 export const WORKSHOP_PRICING = {
-  current: 'R$ 497,00',
+  current: 'R$ 897,00',
   /** Valor numérico em reais (APIs de pagamento — nunca confiar no client) */
-  amountBRL: 497,
-  amountCents: 49700,
+  amountBRL: 897,
+  amountCents: 89700,
   /** Preço “de” riscado — ancoragem visual */
-  anchor: 'R$ 897,00',
-  savingsLabel: 'Economia de R$ 400 no primeiro lote',
+  anchor: 'R$ 1.497,00',
+  savingsLabel: 'Economia de R$ 600',
 } as const;
 
 /** Copy dos CTAs com vendas fechadas */
@@ -87,13 +90,13 @@ export const WORKSHOP_INFO = {
   title: 'WORKSHOP DESTRAVA LIGAÇÕES | MUNDO PÓDIUM',
   /** Nome curto do produto (site, SEO, e-mails) */
   productName: 'Workshop Destrava Ligações',
-  date: '16 de novembro de 2026',
-  dateObj: new Date('2026-11-16T13:00:00-03:00'),
+  date: '12 de janeiro de 2027',
+  dateObj: new Date('2027-01-12T13:00:00-03:00'),
   /** Cabeçalho / hero (sem ano, capitalização do mês) */
-  dateDisplayLong: '16 de Novembro',
-  dateDisplayShort: '16/11',
+  dateDisplayLong: '12 de Janeiro',
+  dateDisplayShort: '12/01',
   /** Texto completo para e-mails (com dia da semana) */
-  dateEmailLine: 'Segunda-feira, 16 de novembro de 2026',
+  dateEmailLine: 'Terça-feira, 12 de janeiro de 2027',
   time: '13:00 – 16:30',
   /** Início do módulo 1 (atalho para UI compacta) */
   timeStartBadge: '13h',
@@ -183,11 +186,11 @@ export const WORKSHOP_WHATSAPP = {
 
 /** Segundo módulo (Sala de Ligação) — dia distinto do módulo 1 */
 export const WORKSHOP_MODULE_2_INFO = {
-  date: '18 de novembro de 2026',
-  dateObj: new Date('2026-11-18T13:00:00-03:00'),
-  dateDisplayLong: '18 de Novembro',
-  dateDisplayShort: '18/11',
-  dateEmailLine: 'Quarta-feira, 18 de novembro de 2026',
+  date: '14 de janeiro de 2027',
+  dateObj: new Date('2027-01-14T13:00:00-03:00'),
+  dateDisplayLong: '14 de Janeiro',
+  dateDisplayShort: '14/01',
+  dateEmailLine: 'Quinta-feira, 14 de janeiro de 2027',
   time: '13:00 – 16:30',
   /** Zero à esquerda: evita ler como “8h de duração” */
   timeStartBadge: '13h',
@@ -195,12 +198,12 @@ export const WORKSHOP_MODULE_2_INFO = {
 
 /** Tarefa entre os dois encontros — não é um terceiro ao vivo */
 export const WORKSHOP_PRACTICE_DAY = {
-  dateDisplayLong: '17 de Novembro',
-  dateDisplayShort: '17/11',
-  dateEmailLine: 'Terça-feira, 17 de novembro de 2026',
-  scheduleLine: 'Terça, 17/11 · horário comercial',
+  dateDisplayLong: '13 de Janeiro',
+  dateDisplayShort: '13/01',
+  dateEmailLine: 'Quarta-feira, 13 de janeiro de 2027',
+  scheduleLine: 'Quarta, 13/01 · horário comercial',
   summary: '5 ligações reais com a sua lista. Você anota as objeções e publica o resultado na plataforma.',
-  termosLine: 'Tarefa de terça, 17 de novembro: 5 ligações reais com a sua lista',
+  termosLine: 'Tarefa de quarta, 13 de janeiro: 5 ligações reais com a sua lista',
 } as const;
 
 /**

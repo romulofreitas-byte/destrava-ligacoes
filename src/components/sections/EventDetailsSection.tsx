@@ -83,7 +83,7 @@ export const EventDetailsSection: React.FC = () => {
                       Módulo 1 e módulo 2: {WORKSHOP_INFO.time}
                     </p>
                     <p className="text-gray-300 text-sm mt-1">
-                      Terça, {WORKSHOP_PRACTICE_DAY.dateDisplayShort}: horário comercial
+                      Quarta, {WORKSHOP_PRACTICE_DAY.dateDisplayShort}: horário comercial
                     </p>
                   </div>
                 </div>

@@ -1,19 +1,19 @@
 const DIAS = [
   {
-    quando: 'Segunda, 09/11',
+    quando: 'Terça, 12/01',
     hora: '13h',
     titulo: 'Primeiro encontro',
     detalhe:
       'Ao vivo, dentro da plataforma do Mundo Pódium. Antes das 13h, confirma a sua presença em Eventos futuros.',
   },
   {
-    quando: 'Terça, 10/11',
+    quando: 'Quarta, 13/01',
     hora: 'Horário comercial',
     titulo: '5 ligações reais',
     detalhe: 'Neste dia não tem encontro às 13h. As ligações acontecem no horário comercial.',
   },
   {
-    quando: 'Quarta, 11/11',
+    quando: 'Quinta, 14/01',
     hora: '13h',
     titulo: 'Segundo encontro',
     detalhe:
@@ -40,7 +40,7 @@ export function CorretoresObrigadoAgenda() {
             <p className="mt-2 text-white font-bold text-lg">Confirma os dois encontros</p>
             <p className="mt-2 text-gray-300 text-sm sm:text-base leading-relaxed">
               Dentro da plataforma, olhe à direita. O menu se chama Eventos futuros. Lá estão a
-              segunda, 09/11, e a quarta, 11/11, às 13h. Confirma a participação nos dois.
+              terça, 12/01, e a quinta, 14/01, às 13h. Confirma a participação nos dois.
             </p>
           </li>
         </ol>

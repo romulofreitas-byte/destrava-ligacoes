@@ -15,7 +15,7 @@ export const WhyDifferentWorkshopSection: React.FC = () => {
     {
       icon: Zap,
       title: 'Dois encontros',
-      description: 'Anatomia na segunda, 5 ligações na terça e sala ao vivo na quarta.',
+      description: 'Anatomia na terça, 5 ligações na quarta e sala ao vivo na quinta.',
     },
     {
       icon: Shield,

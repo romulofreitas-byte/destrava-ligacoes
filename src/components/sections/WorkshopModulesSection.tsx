@@ -57,7 +57,7 @@ const MODULES: WorkshopModule[] = [
       'Abertura e as dores da turma',
       'Mentalidade: meta, ansiedade e a regra dos 5 minutos',
       'Treino da abertura',
-      'Tarefa de terça: 5 ligações reais com a sua lista',
+      'Tarefa de quarta: 5 ligações reais com a sua lista',
     ],
     study: {
       heading: 'Estudo de mercado',
@@ -189,7 +189,7 @@ export const WorkshopModulesSection: React.FC = () => {
           </h2>
 
           <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-2xl mx-auto">
-            Segunda ao vivo, terça na sua lista, quarta na sala. Os dois encontros começam às 13h
+            Terça ao vivo, quarta na sua lista, quinta na sala. Os dois encontros começam às 13h
             ({WORKSHOP_DURATION.detailLine}).
           </p>
         </div>

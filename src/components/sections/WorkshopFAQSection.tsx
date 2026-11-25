@@ -36,7 +36,7 @@ export const WorkshopFAQSection: React.FC = () => {
     {
       question: 'Vou realmente fazer ligações durante o workshop?',
       answer:
-        'Sim. Na segunda você monta a Anatomia da Ligação. Na terça faz 5 ligações reais com a sua lista. Na quarta pratica ao vivo, com feedback na hora.',
+        'Sim. Na terça você monta a Anatomia da Ligação. Na quarta faz 5 ligações reais com a sua lista. Na quinta pratica ao vivo, com feedback na hora.',
     },
     {
       question: `Por que custa ${WORKSHOP_PRICING.current}?`,

@@ -240,7 +240,7 @@ function CorretoresPrograma() {
         </p>
         <p className="mt-4 text-[#CDCDD2] text-sm leading-relaxed">
           Com a turma cheia, nem todo mundo liga ao vivo. Quem avalia também treina, e todo mundo
-          liga na tarefa de terça.
+          liga na tarefa de quarta.
         </p>
       </div>
     </Fold>
@@ -306,8 +306,8 @@ export function CorretoresPage({ oferta }: { oferta: OfertaCorretores }) {
               style={{ fontFamily: 'var(--font-ubuntu), sans-serif' }}
             >
               <Calendar className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" aria-hidden />
-              <span className="hidden sm:inline">09 de Novembro e 11 de Novembro · 13h</span>
-              <span className="sm:hidden">09/11 e 11/11 · 13h</span>
+              <span className="hidden sm:inline">12 de Janeiro e 14 de Janeiro · 13h</span>
+              <span className="sm:hidden">12/01 e 14/01 · 13h</span>
             </p>
           </div>
         </div>
@@ -462,7 +462,7 @@ export function CorretoresPage({ oferta }: { oferta: OfertaCorretores }) {
         <div className="max-w-3xl mx-auto grid lg:grid-cols-[minmax(0,1fr)_22rem] gap-8 items-start">
           <div>
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-6">
-              Entre na edição de 09 e 11 de novembro.
+              Entre na edição de 12 e 14 de janeiro.
             </h2>
             <ul className="space-y-3">
               {CORRETORES_OFERTA_ITENS.map((item) => (

@@ -27,7 +27,7 @@ export default function CorretoresObrigadoPage() {
         </p>
         <h1 className="text-3xl sm:text-5xl font-bold text-white leading-tight">
           <span className="block">Você está dentro.</span>
-          <span className="block">Nos vemos segunda, 13h.</span>
+          <span className="block">Nos vemos terça, 13h.</span>
         </h1>
         <CorretoresObrigadoAgenda />
         <section className="mt-8">

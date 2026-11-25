@@ -1,26 +1,27 @@
 export type EstadoCorretores = 'onda1' | 'onda2' | 'encerrada';
 
-export const ONDA1_FIM_PADRAO = '2026-11-06T23:59:59-03:00';
-export const ONDA2_FIM_PADRAO = '2026-11-11T12:59:59-03:00';
+/** Inscrições desta edição até o início do Módulo 1. Sem segundo preço. */
+export const ONDA1_FIM_PADRAO = '2027-01-12T12:59:59-03:00';
+export const ONDA2_FIM_PADRAO = '2027-01-12T12:59:59-03:00';
 
 const PRECO = {
-  onda1: { label: 'R$497', amountBRL: 497, onda: 1 as const },
-  onda2: { label: 'R$597', amountBRL: 597, onda: 2 as const },
+  onda1: { label: 'R$897', amountBRL: 897, onda: 1 as const },
+  onda2: { label: 'R$897', amountBRL: 897, onda: 2 as const },
 };
 
-const PRECO_CHEIO = 'R$897';
+const PRECO_CHEIO = 'R$1.497';
 
 const ROTULO: Record<EstadoCorretores, string> = {
-  onda1: 'Black Friday até sexta, 06/11, 23h59',
-  onda2: 'Até quarta, 11/11, às 13h',
+  onda1: '17ª edição · 12 e 14/01, 13h',
+  onda2: '17ª edição · 12 e 14/01, 13h',
   encerrada: 'As inscrições desta edição foram encerradas.',
 };
 
 const FRASE_ENCERRAMENTO =
-  'As inscrições encerram quarta, 11/11, às 13h.';
+  'As inscrições encerram terça, 12/01, às 13h.';
 
 const URGENCIA: Record<Exclude<EstadoCorretores, 'encerrada'>, string[]> = {
-  onda1: ['O preço muda no sábado, 07/11.', FRASE_ENCERRAMENTO],
+  onda1: ['O link de pagamento entra no ar em seguida.', FRASE_ENCERRAMENTO],
   onda2: ['Última chamada.', FRASE_ENCERRAMENTO],
 };
 
@@ -108,6 +109,7 @@ export function resolveOfertaCorretores(input: ResolverOfertaInput): OfertaCorre
     estado === 'onda1' ? urlLimpa(input.checkoutOnda1) : urlLimpa(input.checkoutOnda2);
   const fim = estado === 'onda1' ? onda1Fim : onda2Fim;
   const preco = PRECO[estado];
+  const comCheckout = Boolean(checkoutUrl);
 
   return {
     estado,
@@ -115,9 +117,9 @@ export function resolveOfertaCorretores(input: ResolverOfertaInput): OfertaCorre
     precoCheio: PRECO_CHEIO,
     amountBRL: preco.amountBRL,
     rotulo: ROTULO[estado],
-    urgencia: URGENCIA[estado],
-    contagemLegenda: CONTAGEM[estado],
-    fimIso: fim.toISOString(),
+    urgencia: comCheckout ? URGENCIA[estado] : [],
+    contagemLegenda: comCheckout ? CONTAGEM[estado] : null,
+    fimIso: comCheckout ? fim.toISOString() : null,
     pixLinhas:
       estado === 'onda2'
         ? ['Pix ou cartão.', 'Prefira Pix ou cartão: a confirmação é imediata.']

@@ -41,10 +41,6 @@ export default function CorretoresRoute({
 }) {
   const oferta = resolveOfertaCorretores({
     now: new Date(),
-    onda1Fim: process.env.NEXT_PUBLIC_WDL_ONDA1_FIM,
-    onda2Fim: process.env.NEXT_PUBLIC_WDL_ONDA2_FIM,
-    checkoutOnda1: process.env.NEXT_PUBLIC_WDL_CHECKOUT_ONDA1_URL,
-    checkoutOnda2: process.env.NEXT_PUBLIC_WDL_CHECKOUT_ONDA2_URL,
     estadoForcado: searchParams?.estado,
     permitirForcar: process.env.NODE_ENV !== 'production',
   });

@@ -3,7 +3,7 @@
 export const CORRETORES_OG = {
   title: 'Workshop Destrava Ligações · Corretores',
   description:
-    'Segunda 09/11 e quarta 11/11, 13h, ao vivo, 3h30 por encontro. Para corretores de saúde, seguros e consórcio.',
+    'Terça 12/01 e quinta 14/01, 13h, ao vivo, 3h30 por encontro. Para corretores de saúde, seguros e consórcio.',
   image: '/og/workshop-corretores.png',
   imageAlt: 'Workshop ao vivo para corretores. Aprenda a ligar para quem não te conhece.',
 };
@@ -81,18 +81,18 @@ export const CORRETORES_PROGRAMA: {
   itens: string[];
 }[] = [
   {
-    quando: 'Segunda, 09/11 · 13h',
+    quando: 'Terça, 12/01 · 13h',
     itens: [
       'Abertura e as dores da turma',
       'Mentalidade enxuta: meta, ansiedade, a regra dos 5 minutos',
       'Estudo de mercado da sua vertical, rodado com IA, com fonte conferida',
       'A Anatomia da Ligação: abertura e gancho montados com o seu estudo',
       'Treino da abertura em trios',
-      'Tarefa de terça: 5 ligações reais com a sua lista',
+      'Tarefa de quarta: 5 ligações reais com a sua lista',
     ],
   },
   {
-    quando: 'Terça, 10/11 · horário comercial',
+    quando: 'Quarta, 13/01 · horário comercial',
     destaque:
       '5 ligações reais, com a sua lista. Você publica o resultado dentro do evento, na plataforma.',
     itens: [
@@ -100,7 +100,7 @@ export const CORRETORES_PROGRAMA: {
     ],
   },
   {
-    quando: 'Quarta, 11/11 · 13h',
+    quando: 'Quinta, 14/01 · 13h',
     itens: [
       'Revisão e banco de objeções da turma',
       'Simulação com cliente difícil',
@@ -150,12 +150,12 @@ export const CORRETORES_TRILHAS = [
 ];
 
 export const CORRETORES_OFERTA_ITENS: { texto: string; destaque?: boolean }[] = [
-  { texto: 'Dois encontros ao vivo (09 e 11/11)' },
+  { texto: 'Dois encontros ao vivo (12 e 14/01)' },
   { texto: 'Manual de destravamento' },
   { texto: 'Prompts prontos' },
   { texto: 'Planilha de metas' },
   { texto: 'Treino em trios e ligação ao vivo com feedback' },
-  { texto: 'Avaliação das 5 ligações da tarefa de terça' },
+  { texto: 'Avaliação das 5 ligações da tarefa de quarta' },
   { texto: 'Gravação dos encontros na plataforma', destaque: true },
   {
     texto: 'Acesso à plataforma exclusiva do Mundo Pódium por 90 dias, com a Sala de Ligação',
@@ -167,7 +167,7 @@ export const CORRETORES_FAQ = [
   {
     pergunta: 'Quando e onde é?',
     resposta:
-      'Segunda, 09/11, e quarta, 11/11, a partir das 13h, ao vivo, com cerca de 3h30 por encontro, dentro da plataforma exclusiva do Mundo Pódium. O acesso chega por e-mail e no grupo da turma no WhatsApp.',
+      'Terça, 12/01, e quinta, 14/01, a partir das 13h, ao vivo, com cerca de 3h30 por encontro, dentro da plataforma exclusiva do Mundo Pódium. O acesso chega por e-mail e no grupo da turma no WhatsApp.',
   },
   {
     pergunta: 'Serve para saúde, seguros e consórcio?',
@@ -182,10 +182,10 @@ export const CORRETORES_FAQ = [
   {
     pergunta: 'Vou ter que ligar ao vivo?',
     resposta:
-      'Nos encontros, uma parte da turma liga ao vivo e os outros avaliam, e todo mundo treina em trio. Na terça você liga para a sua própria lista.',
+      'Nos encontros, uma parte da turma liga ao vivo e os outros avaliam, e todo mundo treina em trio. Na quarta você liga para a sua própria lista.',
   },
   {
-    pergunta: 'O que é a tarefa de terça?',
+    pergunta: 'O que é a tarefa de quarta?',
     resposta:
       'Cinco ligações reais, em horário comercial, para a sua lista ou carteira. As ligações são transcritas e avaliadas.',
   },
@@ -220,7 +220,7 @@ export const CORRETORES_FAQ = [
   {
     pergunta: 'Até quando posso me inscrever?',
     resposta:
-      'O preço de R$597 vale até quarta, 11/11, às 13h. As inscrições encerram nesse horário.',
+      'O ingresso desta edição é R$ 897. As inscrições abrem quando o link de pagamento estiver no ar.',
   },
 ];
 

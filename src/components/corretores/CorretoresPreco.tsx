@@ -163,10 +163,7 @@ function PrecoAncorado({
 }) {
   return (
     <div>
-      <p className="mb-2 inline-flex items-center rounded-full bg-gray-950 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-yellow-400">
-        Black Friday
-      </p>
-      {oferta.rotulo ? <p className="mb-2 text-sm text-[#CDCDD2]">{oferta.rotulo}</p> : null}
+{oferta.rotulo ? <p className="mb-2 text-sm text-[#CDCDD2]">{oferta.rotulo}</p> : null}
       <p className="flex items-baseline gap-3">
         {oferta.precoCheio ? (
           <span className="text-base font-semibold tabular-nums text-[#969EAE] line-through">
